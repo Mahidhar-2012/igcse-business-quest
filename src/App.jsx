@@ -5,6 +5,7 @@ import LessonPlayer from './components/LessonPlayer.jsx';
 import MistakeBankModal from './components/MistakeBankModal.jsx';
 import ExamPlayer from './components/ExamPlayer.jsx';
 import GlossaryModal from './components/GlossaryModal.jsx';
+import AiSettingsModal from './components/AiSettingsModal.jsx';
 import { units, questionIndex, subQuestionIds } from './data/syllabusData.js';
 import { useProgress } from './lib/store.js';
 
@@ -36,6 +37,7 @@ export default function App() {
   const [view, setView] = useState({ name: 'dashboard' });
   const [mistakesOpen, setMistakesOpen] = useState(false);
   const [glossaryOpen, setGlossaryOpen] = useState(false);
+  const [aiOpen, setAiOpen] = useState(false);
 
   const baseActions = useMemo(
     () => ({ addXp, addMistake, clearMistake, completeSub, completeBoss }),
@@ -125,6 +127,7 @@ export default function App() {
           onSelectUnit={setActiveUnitId}
           onOpenMistakes={() => setMistakesOpen(true)}
           onOpenGlossary={() => setGlossaryOpen(true)}
+          onOpenAi={() => setAiOpen(true)}
           onToggle={toggle}
           onReset={reset}
           showUnits
@@ -147,6 +150,7 @@ export default function App() {
     <>
       {body}
       {glossaryOpen && <GlossaryModal onClose={() => setGlossaryOpen(false)} />}
+      {aiOpen && <AiSettingsModal onClose={() => setAiOpen(false)} />}
       {mistakesOpen && (
         <MistakeBankModal mistakes={state.mistakes} onClose={() => setMistakesOpen(false)} onStartDrill={startDrill} />
       )}
