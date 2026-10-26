@@ -139,13 +139,17 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
                 <div className="min-w-0">
                   <p className="font-black leading-tight">{sub.title}</p>
                   <p className="text-xs font-bold text-slate-400">
-                    Syllabus {sub.syllabus} · {sub.cards.length} bytes · {sub.cards.reduce((n, c) => n + c.tests.length, 0) + 6} questions
+                    Syllabus {sub.syllabus} · {sub.cards.length} bytes ·{' '}
+                    {sub.challenges.length + sub.cards.reduce((n, c) => n + c.tests.length, 0) === 0
+                      ? 'notes only, no questions'
+                      : `${sub.cards.reduce((n, c) => n + c.tests.length, 0) + Math.min(6, sub.challenges.length)} questions`}
                   </p>
                   {rec?.done && <Stars n={rec.stars} />}
                 </div>
               </li>
             );
           })}
+          {unit.submodules.some((s) => s.challenges.length || s.cards.some((c) => c.tests.length)) && (
           <li
             className="flex items-center gap-4"
             style={{ transform: `translateX(${[0, 40, 0, -40][unit.submodules.length % 4]}px)` }}
@@ -173,6 +177,7 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
               );
             })()}
           </li>
+          )}
           {(unit.exams || []).map((exam, ei) => {
             const open = state.openAll || unitStats[unit.id].allDone;
             const best = state.exams?.[exam.id];

@@ -10,7 +10,8 @@ const XP_RETEST = 5;
 const XP_COMPLETE = 20;
 
 const starsFor = (firstTry, total) => {
-  const ratio = total ? firstTry / total : 0;
+  if (!total) return 3; // notes-only lesson: finishing it is full credit
+  const ratio = firstTry / total;
   return ratio === 1 ? 3 : ratio >= 0.66 ? 2 : 1;
 };
 
@@ -116,7 +117,10 @@ export default function LessonPlayer({ mode = 'lesson', title, badge, items, act
     return () => window.removeEventListener('keydown', onKey);
   }, [onExit]);
 
-  const pct = total ? Math.min(100, Math.round((cleared / total) * 100)) : 0;
+  const notesOnly = total === 0;
+  const hasPractice = queue.some((it) => it.kind === 'q');
+  const nextIsQuestion = queue[idx + 1]?.kind === 'q';
+  const pct = notesOnly ? Math.round((idx / Math.max(1, queue.length)) * 100) : Math.min(100, Math.round((cleared / total) * 100));
   const label = isCard
     ? current.recap ? 'Recap' : `Byte ${current.no} of ${current.of}`
     : inBoss
@@ -145,11 +149,11 @@ export default function LessonPlayer({ mode = 'lesson', title, badge, items, act
             <Stat icon={<Zap className="h-5 w-5 text-amber-500" />} label="XP earned" value={`+${xp}`} />
             <Stat
               icon={<Swords className="h-5 w-5 text-rose-500" />}
-              label="First-try correct"
-              value={mode === 'drill' ? `${total} cleared` : `${firstTry}/${total}`}
+              label={notesOnly ? 'Bytes read' : 'First-try correct'}
+              value={notesOnly ? `${queue.filter((q) => q.kind === 'card').length}` : mode === 'drill' ? `${total} cleared` : `${firstTry}/${total}`}
             />
           </div>
-          {mode !== 'drill' && stars < 3 && (
+          {mode !== 'drill' && !notesOnly && stars < 3 && (
             <p className="mt-4 text-sm font-bold text-slate-500">Get every question right first time for 3 stars — replay any time.</p>
           )}
         </div>
@@ -178,14 +182,14 @@ export default function LessonPlayer({ mode = 'lesson', title, badge, items, act
           </p>
         )}
         {isCard ? (
-          <KnowledgeCard card={current.card} no={current.no} of={current.of} recap={current.recap} />
+          <KnowledgeCard card={current.card} no={current.no} of={current.of} recap={current.recap} hasPractice={hasPractice} />
         ) : (
           <View q={current.challenge} onResolve={handleResolve} />
         )}
       </div>
       <Footer>
         <button type="button" className={`btn w-full sm:w-auto ${verdict === false ? 'btn-red' : isCard ? 'btn-blue' : 'btn-green'}`} disabled={!canContinue} onClick={next}>
-          {isCard ? 'Got it — test me' : 'Continue'} <ArrowRight className="h-5 w-5" aria-hidden />
+          {isCard ? (idx + 1 >= queue.length ? 'Finish' : nextIsQuestion ? 'Got it — test me' : 'Next') : 'Continue'} <ArrowRight className="h-5 w-5" aria-hidden />
         </button>
       </Footer>
     </Shell>

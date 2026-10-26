@@ -10,6 +10,7 @@ import { unit5 } from './units/unit5.js';
 import { unit6 } from './units/unit6.js';
 import { unit7 } from './units/unit7.js';
 import { cards7 } from './cards/cards7.js';
+import { cards7b } from './cards/cards7b.js';
 import { cards1 } from './cards/cards1.js';
 import { cards2 } from './cards/cards2.js';
 import { cards3 } from './cards/cards3.js';
@@ -38,7 +39,7 @@ export const units = [unit1, unit2, unit3, unit4, unit5, unit6, unit7];
 const examMap = { ...exams1, ...exams2, ...exams3, ...exams4, ...exams5, ...exams6 };
 for (const unit of units) unit.exams = examMap[unit.id] || [];
 
-const cards = { ...cards1, ...cards2, ...cards3, ...cards4, ...cards5, ...cards6, ...cards7 };
+const cards = { ...cards1, ...cards2, ...cards3, ...cards4, ...cards5, ...cards6, ...cards7, ...cards7b };
 const procons = { ...pc1, ...pc2, ...pc3 };
 const ctMap = { ...ct1, ...ct2, ...ct3, ...ct4, ...ct5, ...ct6 };
 for (const unit of units) {

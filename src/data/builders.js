@@ -40,6 +40,17 @@ export const calc = (q, answer, { unit = '', formula, steps, tol = 0.01 }) => ({
 export const card = (title, points, ...tests) => ({ title, points, tests });
 
 /**
+ * Worked A* example (no test). Shows a case, a question, the mark map and a colour-coded model answer.
+ *   answer: string or array of paragraphs; wrap segments in [[K|…]] [[A|…]] [[N|…]] [[E|…]] to colour them by objective.
+ *   notes:  short bullets explaining why the answer earns the marks.
+ */
+export const worked = (title, { stem, question, marks, map, answer, notes }) => ({
+  title,
+  example: { stem, question, marks, map, answer: Array.isArray(answer) ? answer : [answer], notes },
+  tests: [],
+});
+
+/**
  * Advantages & disadvantages card. options = [[name, [pros...], [cons...]], ...], then test question(s).
  */
 export const pc = (title, options, ...tests) => ({

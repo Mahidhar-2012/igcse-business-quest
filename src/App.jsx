@@ -22,7 +22,7 @@ const buildLessonItems = (sub) => {
     card.tests.forEach((_, ti) => items.push(qItem(`${sub.id}:c${ci}.${ti}`)));
   });
   items.push({ kind: 'card', recap: true, card: { title: `Recap: ${sub.title}`, points: sub.microConcept } });
-  const practiceIds = sub.challenges.map((_, i) => `${sub.id}:${i}`);
+  const practiceIds = sub.challenges.map((_, i) => `${sub.id}:${i}`); // empty for notes-only lessons
   pickRandom(practiceIds, PRACTICE_SIZE).forEach((qid) => items.push(qItem(qid)));
   return items;
 };
