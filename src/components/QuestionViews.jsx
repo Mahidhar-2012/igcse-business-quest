@@ -10,9 +10,19 @@ const shuffle = (arr) => {
   return a;
 };
 
-const Prompt = ({ label, children }) => (
+const AO_CHIP = {
+  1: ['AO1 Knowledge', 'bg-yellow-200 text-yellow-900'],
+  2: ['AO2 Application', 'bg-sky-200 text-sky-900'],
+  3: ['AO3 Analysis', 'bg-green-200 text-green-900'],
+  4: ['AO4 Evaluation', 'bg-orange-200 text-orange-900'],
+};
+
+const Prompt = ({ label, ao, children }) => (
   <div className="mb-5">
-    <p className="mb-2 text-xs font-extrabold uppercase tracking-widest text-slate-400">{label}</p>
+    <p className="mb-2 flex flex-wrap items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-slate-400">
+      {label}
+      {ao && AO_CHIP[ao] && <span className={`rounded-full px-2 py-0.5 normal-case tracking-normal ${AO_CHIP[ao][1]}`}>{AO_CHIP[ao][0]}</span>}
+    </p>
     <h2 className="text-xl font-extrabold leading-snug sm:text-2xl">{children}</h2>
   </div>
 );
@@ -63,7 +73,7 @@ export function MultiChoice({ q, onResolve }) {
 
   return (
     <div>
-      <Prompt label="Multiple choice">{q.q}</Prompt>
+      <Prompt label="Multiple choice" ao={q.ao}>{q.q}</Prompt>
       <ul className="space-y-3">
         {order.map((orig, di) => {
           const opt = q.options[orig];
@@ -122,7 +132,7 @@ export function Ordering({ q, onResolve }) {
 
   return (
     <div>
-      <Prompt label="Put it in order — tap steps in sequence">{q.q}</Prompt>
+      <Prompt label="Put it in order — tap steps in sequence" ao={q.ao}>{q.q}</Prompt>
       <ol className="mb-4 min-h-[3.5rem] space-y-2 rounded-2xl border-2 border-dashed border-slate-300 bg-white p-3" aria-label="Your sequence">
         {seq.length === 0 && <li className="text-sm font-semibold text-slate-400">Tap the steps below, first step first…</li>}
         {seq.map((idx, pos) => {
@@ -188,7 +198,7 @@ export function Scenario({ q, onResolve }) {
 
   return (
     <div>
-      <Prompt label="Scenario — make the call">{q.q}</Prompt>
+      <Prompt label="Scenario — make the call" ao={q.ao}>{q.q}</Prompt>
       <ul className="space-y-3">
         {order.map((orig, di) => {
           const d = q.decisions[orig];
@@ -255,7 +265,7 @@ export function Calculation({ q, onResolve }) {
 
   return (
     <div>
-      <Prompt label="Calculate">{q.q}</Prompt>
+      <Prompt label="Calculate" ao={q.ao}>{q.q}</Prompt>
       <p className="mb-3 rounded-xl bg-sky-50 px-3 py-2 text-sm font-bold text-sky-800">Formula: {q.formula}</p>
       <div className="flex gap-3">
         <input
@@ -306,7 +316,7 @@ export function TrueFalse({ q, onResolve }) {
 
   return (
     <div>
-      <Prompt label="Rapid fire — true, false or depends?">“{q.q}”</Prompt>
+      <Prompt label="Rapid fire — true, false or depends?" ao={q.ao}>“{q.q}”</Prompt>
       <div className="grid gap-3 sm:grid-cols-3">
         {TFD_OPTIONS.map((o, i) => {
           let style = '';

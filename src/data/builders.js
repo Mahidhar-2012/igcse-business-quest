@@ -1,5 +1,8 @@
 // Tiny helpers so question data stays compact and readable.
 
+/** Tag a question with the assessment objective it trains (2 = application, 3 = analysis, 4 = evaluation). */
+export const ao = (n, question) => ({ ...question, ao: n });
+
 /** Multi-choice with distractor analysis. options = [[text, whyThisIsRightOrWrong], ...]; answer = index of correct option. */
 export const mc = (q, options, answer) => ({
   type: 'mcq',

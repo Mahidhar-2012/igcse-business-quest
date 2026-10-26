@@ -2,7 +2,9 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { units, questionIndex } from '../data/syllabusData.js';
 import { SoundController } from './SoundController.js';
 
-const KEY = 'igcse-business-quest:v1';
+// v2: questions were rewritten as critical-thinking questions, so saved mistake ids from v1 no longer match.
+const KEY = 'igcse-business-quest:v2';
+const OLD_KEY = 'igcse-business-quest:v1';
 
 const defaults = {
   xp: 0,
@@ -28,7 +30,12 @@ const yesterdayKey = () => {
 
 const load = () => {
   try {
-    const raw = JSON.parse(localStorage.getItem(KEY) || 'null');
+    let raw = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (!raw) {
+      // migrate progress (XP, streak, completed lessons, settings) from v1 but start with an empty mistake bank
+      const old = JSON.parse(localStorage.getItem(OLD_KEY) || 'null');
+      if (old) raw = { ...old, mistakes: [], exams: {} };
+    }
     const s = { ...defaults, ...(raw || {}) };
     s.mistakes = (s.mistakes || []).filter((id) => questionIndex[id]);
     // reset today's XP and break the streak if a day was missed

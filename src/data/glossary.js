@@ -369,6 +369,18 @@ const G = [
   ['justify', 'A command word: support a case with evidence or argument.'],
   ['evaluate', 'A command word: weigh up evidence and reach a reasoned judgement.'],
   ['recommend', 'To suggest the best option for a given situation, supported by reasons.', ['recommendation']],
+
+  /* ---------- Exam technique terms ---------- */
+  ['assessment objective', 'What an exam tests: AO1 knowledge and understanding, AO2 application, AO3 analysis, AO4 evaluation.', ['assessment objectives', 'AO1', 'AO2', 'AO3', 'AO4']],
+  ['knowledge and understanding', 'AO1: knowing business concepts, terms and theories and using correct terminology.', ['knowledge']],
+  ['application', 'AO2: using details from the given business (what it sells, what it does, its sector, numbers) in your answer.'],
+  ['analysis', 'AO3: explaining the impact of a point and interpreting data, using a chain of reasoning (what → how → effect).', ['analyse']],
+  ['evaluation', 'AO4: making a justified decision, rejecting the alternative(s) and reaching a conclusion based on evidence.', ['evaluate']],
+  ['chain of reasoning', 'Linked steps in analysis: what (the point), how (the direct impact), effect (the final result).', ['chains of reasoning', 'chain of logic']],
+  ['command word', 'The word in a question (define, identify, outline, explain, justify…) that tells you what to do.', ['command words']],
+  ['case study', 'The business scenario and data (appendices) given in Paper 2 that you must apply your knowledge to.'],
+  ['level of response', 'Marking by levels: level 1 knowledge, level 2 analysis, level 3 evaluation (used in 12-mark Paper 2 questions).', ['levels', 'level 2', 'level 3', 'level 1']],
+  ['stem', 'The short scenario at the start of a Paper 1 question that you must use for application.'],
 ];
 
 export const glossary = G.map(([term, def, aliases = []]) => ({ term, def, names: [term, ...aliases] }));
@@ -380,7 +392,7 @@ const names = glossary
   .flatMap((g) => g.names.map((n) => ({ n, g })))
   .sort((a, b) => b.n.length - a.n.length);
 
-const GENERIC = new Set(['owners', 'owner', 'managers', 'manager', 'customers', 'customer', 'suppliers', 'supplier', 'lenders', 'lender', 'government', 'local community', 'finance', 'operations', 'employer', 'employers', 'employee', 'employees', 'business', 'social', 'safety', 'esteem', 'physiological', 'competition', 'competitors', 'competitor', 'representative', 'long-term', 'short-term', 'tests', 'letter', 'letters', 'meeting', 'meetings', 'email', 'emails', 'recommend', 'inform', 'persuade', 'remind', 'bias', 'biased', 'imports', 'exports', 'direct','price', 'product', 'place', 'tall', 'flat', 'direct', 'stock', 'share', 'primary', 'secondary', 'tertiary', 'want', 'need', 'sample', 'medium', 'barriers', 'ethical', 'sustainable', 'import', 'export', 'new business', 'introduction', 'decline', 'maturity', 'growth', 'taylor']);
+const GENERIC = new Set(['knowledge', 'application', 'analysis', 'analyse', 'evaluation', 'evaluate', 'stem', 'levels', 'level 1', 'level 2', 'level 3', 'owners', 'owner', 'managers', 'manager', 'customers', 'customer', 'suppliers', 'supplier', 'lenders', 'lender', 'government', 'local community', 'finance', 'operations', 'employer', 'employers', 'employee', 'employees', 'business', 'social', 'safety', 'esteem', 'physiological', 'competition', 'competitors', 'competitor', 'representative', 'long-term', 'short-term', 'tests', 'letter', 'letters', 'meeting', 'meetings', 'email', 'emails', 'recommend', 'inform', 'persuade', 'remind', 'bias', 'biased', 'imports', 'exports', 'direct','price', 'product', 'place', 'tall', 'flat', 'direct', 'stock', 'share', 'primary', 'secondary', 'tertiary', 'want', 'need', 'sample', 'medium', 'barriers', 'ethical', 'sustainable', 'import', 'export', 'new business', 'introduction', 'decline', 'maturity', 'growth', 'taylor']);
 
 const re = new RegExp(`(?<![\\w-])(${names.map(({ n }) => esc(n)).join('|')})(?:s|es)?(?![\\w-])`, 'gi');
 const lookup = new Map();

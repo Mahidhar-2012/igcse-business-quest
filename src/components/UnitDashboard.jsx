@@ -9,6 +9,7 @@ export const UNIT_COLORS = {
   amber: '#f59e0b',
   violet: '#8b5cf6',
   teal: '#14b8a6',
+  indigo: '#6366f1',
 };
 
 export function ProgressRing({ value, color, size = 64, stroke = 7, children }) {
