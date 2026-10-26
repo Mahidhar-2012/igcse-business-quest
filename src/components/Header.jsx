@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Zap, Flame, Volume2, VolumeX, ShieldAlert, Settings, Unlock, Trash2, BookText, Bot } from 'lucide-react';
+import { Zap, Flame, Volume2, VolumeX, ShieldAlert, Settings, Unlock, Trash2, BookText } from 'lucide-react';
 import { units } from '../data/syllabusData.js';
 import { UNIT_COLORS, ProgressRing } from './UnitDashboard.jsx';
 
-export default function Header({ state, unitStats, activeUnitId, onSelectUnit, onOpenMistakes, onOpenGlossary, onOpenAi, onToggle, onReset, showUnits }) {
+export default function Header({ state, unitStats, activeUnitId, onSelectUnit, onOpenMistakes, onOpenGlossary, onToggle, onReset, showUnits }) {
   const [menu, setMenu] = useState(false);
   const active = units.find((u) => u.id === activeUnitId);
 
@@ -67,9 +67,6 @@ export default function Header({ state, unitStats, activeUnitId, onSelectUnit, o
             </button>
             {menu && (
               <div className="pop absolute right-0 mt-2 w-64 rounded-2xl border-2 border-slate-200 bg-white p-2 shadow-xl">
-                <button type="button" onClick={() => { setMenu(false); onOpenAi(); }} className="flex w-full items-center gap-2 rounded-xl p-3 text-left text-sm font-bold hover:bg-slate-50">
-                  <Bot className="h-4 w-4" aria-hidden /> AI teacher settings
-                </button>
                 <button type="button" onClick={() => onToggle('openAll')} className="flex w-full items-center gap-2 rounded-xl p-3 text-left text-sm font-bold hover:bg-slate-50">
                   <Unlock className="h-4 w-4" aria-hidden />
                   <span className="flex-1">Cram mode: unlock all lessons</span>
