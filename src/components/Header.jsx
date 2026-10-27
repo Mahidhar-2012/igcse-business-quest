@@ -1,15 +1,26 @@
 import { useState } from 'react';
-import { Zap, Flame, Volume2, VolumeX, ShieldAlert, Settings, Unlock, Trash2, BookText } from 'lucide-react';
+import { Zap, Flame, Volume2, VolumeX, ShieldAlert, Settings, Unlock, Trash2, BookText, LayoutGrid } from 'lucide-react';
 import { units } from '../data/syllabusData.js';
 import { UNIT_COLORS, ProgressRing } from './UnitDashboard.jsx';
 
-export default function Header({ state, unitStats, activeUnitId, onSelectUnit, onOpenMistakes, onOpenGlossary, onToggle, onReset, showUnits }) {
+export default function Header({ state, unitStats, activeUnitId, onSelectUnit, onOpenMistakes, onOpenGlossary, onHome, onToggle, onReset, showUnits }) {
   const [menu, setMenu] = useState(false);
   const active = units.find((u) => u.id === activeUnitId);
 
   return (
     <header className="sticky top-0 z-30 border-b-2 border-slate-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center gap-2 px-4 py-2.5">
+        {onHome && (
+          <button
+            type="button"
+            onClick={onHome}
+            aria-label="Back to all subjects"
+            title="All subjects"
+            className="rounded-xl p-2 text-slate-500 hover:bg-slate-100 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300"
+          >
+            <LayoutGrid className="h-5 w-5" />
+          </button>
+        )}
         <span className="hidden text-lg font-black text-brand-dark sm:block">Business Quest</span>
         {active && (
           <span className="whitespace-nowrap rounded-full px-3 py-1 text-xs font-extrabold text-white" style={{ background: UNIT_COLORS[active.color] }}>

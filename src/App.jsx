@@ -1,151 +1,92 @@
-import { useMemo, useState, useCallback } from 'react';
-import Header from './components/Header.jsx';
-import UnitDashboard from './components/UnitDashboard.jsx';
-import LessonPlayer from './components/LessonPlayer.jsx';
-import MistakeBankModal from './components/MistakeBankModal.jsx';
-import ExamPlayer from './components/ExamPlayer.jsx';
-import GlossaryModal from './components/GlossaryModal.jsx';import { units, questionIndex, subQuestionIds } from './data/syllabusData.js';
-import { useProgress } from './lib/store.js';
+import { useEffect, useState } from 'react';
+import { Briefcase, PenLine, FlaskConical, ArrowRight } from 'lucide-react';
+import BusinessApp from './BusinessApp.jsx';
+import EnglishApp from './english/EnglishApp.jsx';
+import { countEnglishDone } from './english/useEnglishProgress.js';
+import { allLessons } from './english/data/index.js';
 
-const MEGA_PER_LESSON = 5; // mega quiz draws this many questions from EVERY lesson in the unit
-const PRACTICE_SIZE = 6; // random practice questions at the end of each lesson
-const pickRandom = (arr, n) => [...arr].sort(() => Math.random() - 0.5).slice(0, n);
+const SUBJECTS = [
+  {
+    id: 'english',
+    hash: '#/english',
+    title: 'English as a Second Language',
+    code: '0510 / 0511',
+    blurb: 'Byte-sized notes and model answers for every writing task: email, review, report, essay and article.',
+    tag: 'Notes only',
+    icon: PenLine,
+    color: '#0ea5e9',
+  },
+  {
+    id: 'business',
+    hash: '#/business',
+    title: 'Business Studies',
+    code: '0264',
+    blurb: 'Knowledge bytes, tests, mega quizzes, exam-style questions and an exam technique unit.',
+    tag: 'Lessons + quizzes',
+    icon: Briefcase,
+    color: '#58cc02',
+  },
+];
 
-const qItem = (qid) => ({ kind: 'q', qid, challenge: questionIndex[qid].challenge });
+const routeFromHash = () => SUBJECTS.find((s) => s.hash === window.location.hash)?.id ?? null;
 
-/** Lesson = [byte card -> its test(s)] x N, then recap card, then a random practice round. */
-const buildLessonItems = (sub) => {
-  const items = [];
-  sub.cards.forEach((card, ci) => {
-    items.push({ kind: 'card', card, no: ci + 1, of: sub.cards.length });
-    card.tests.forEach((_, ti) => items.push(qItem(`${sub.id}:c${ci}.${ti}`)));
-  });
-  items.push({ kind: 'card', recap: true, card: { title: `Recap: ${sub.title}`, points: sub.microConcept } });
-  const practiceIds = sub.challenges.map((_, i) => `${sub.id}:${i}`); // empty for notes-only lessons
-  pickRandom(practiceIds, PRACTICE_SIZE).forEach((qid) => items.push(qItem(qid)));
-  return items;
-};
+function Hub({ onOpen }) {
+  const englishDone = countEnglishDone();
+  return (
+    <div className="mx-auto min-h-screen max-w-3xl px-4 py-10">
+      <header className="mb-8 text-center">
+        <h1 className="text-4xl font-black text-brand-dark">IGCSE Quest</h1>
+        <p className="mt-2 font-semibold text-slate-600">Pick a subject to start studying.</p>
+      </header>
+      <ul className="grid gap-4 sm:grid-cols-2">
+        {SUBJECTS.map((s) => (
+          <li key={s.id}>
+            <button
+              type="button"
+              onClick={() => onOpen(s)}
+              className="card group flex h-full w-full flex-col p-5 text-left transition hover:-translate-y-0.5 hover:bg-slate-50 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300"
+            >
+              <span className="mb-3 grid h-14 w-14 place-items-center rounded-2xl text-white" style={{ background: s.color }}>
+                <s.icon className="h-7 w-7" aria-hidden />
+              </span>
+              <span className="text-xl font-black leading-tight">{s.title}</span>
+              <span className="text-xs font-extrabold uppercase tracking-widest text-slate-400">{s.code} · {s.tag}</span>
+              <span className="mt-2 flex-1 text-sm font-semibold text-slate-600">{s.blurb}</span>
+              {s.id === 'english' && englishDone > 0 && (
+                <span className="mt-2 text-xs font-extrabold text-sky-700">{englishDone}/{allLessons.length} lessons read</span>
+              )}
+              <span className="mt-3 flex items-center gap-1 text-sm font-black" style={{ color: s.color }}>
+                Open <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden />
+              </span>
+            </button>
+          </li>
+        ))}
+        <li>
+          <div className="flex h-full flex-col rounded-3xl border-2 border-dashed border-slate-300 p-5 text-slate-400">
+            <span className="mb-3 grid h-14 w-14 place-items-center rounded-2xl bg-slate-200"><FlaskConical className="h-7 w-7" aria-hidden /></span>
+            <span className="text-xl font-black leading-tight">More subjects</span>
+            <span className="mt-2 text-sm font-semibold">Coming soon.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  );
+}
 
 export default function App() {
-  const progress = useProgress();
-  const { state, unitStats, isSubUnlocked, addXp, addMistake, clearMistake, completeSub, completeBoss, recordExam, toggle, reset } = progress;
+  const [subject, setSubject] = useState(routeFromHash);
 
-  // Start on the first unit that isn't fully done.
-  const [activeUnitId, setActiveUnitId] = useState(() => (units.find((u) => !unitStats[u.id].allDone) || units[0]).id);
-  const [view, setView] = useState({ name: 'dashboard' });
-  const [mistakesOpen, setMistakesOpen] = useState(false);
-  const [glossaryOpen, setGlossaryOpen] = useState(false);
-  const baseActions = useMemo(
-    () => ({ addXp, addMistake, clearMistake, completeSub, completeBoss }),
-    [addXp, addMistake, clearMistake, completeSub, completeBoss],
-  );
-
-  const exit = useCallback(() => setView({ name: 'dashboard' }), []);
-
-  const startSub = useCallback((unit, sub) => {
-    setActiveUnitId(unit.id);
-    setView({ name: 'lesson', unit, sub, items: buildLessonItems(sub) });
+  // keep the browser back button working
+  useEffect(() => {
+    const onHash = () => setSubject(routeFromHash());
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
-  const startBoss = useCallback((unit) => {
-    // stratified: equal share from every lesson, so the whole unit is covered
-    const ids = unit.submodules.flatMap((sub) => pickRandom(subQuestionIds(sub), MEGA_PER_LESSON));
-    setView({ name: 'boss', unit, ids: pickRandom(ids, ids.length) });
-  }, []);
+  const open = (s) => { window.location.hash = s.hash; };
+  const home = () => { window.location.hash = ''; setSubject(null); window.scrollTo(0, 0); };
 
-  const startExam = useCallback((unit, exam) => setView({ name: 'exam', unit, exam }), []);
-
-  const startDrill = useCallback((ids) => {
-    setMistakesOpen(false);
-    setView({ name: 'drill', ids: [...ids] });
-  }, []);
-
-  let body;
-  if (view.name === 'lesson') {
-    const { unit, sub } = view;
-    const subIndex = unit.submodules.indexOf(sub);
-    const nextSub = unit.submodules[subIndex + 1];
-    body = (
-      <LessonPlayer
-        key={sub.id}
-        mode="lesson"
-        title={sub.title}
-        badge={`Unit ${unit.number}`}
-        items={view.items}
-        actions={{ ...baseActions, subId: sub.id }}
-        onExit={exit}
-        onNextSub={nextSub ? () => startSub(unit, nextSub) : null}
-      />
-    );
-  } else if (view.name === 'boss') {
-    body = (
-      <LessonPlayer
-        key={`boss-${view.unit.id}-${view.ids.join()}`}
-        mode="boss"
-        title={`Unit ${view.unit.number} Mega Quiz`}
-        badge="Mega Quiz"
-        items={view.ids.map(qItem)}
-        actions={{ ...baseActions, unitId: view.unit.id }}
-        onExit={exit}
-      />
-    );
-  } else if (view.name === 'exam') {
-    body = (
-      <ExamPlayer
-        key={view.exam.id}
-        exam={view.exam}
-        onExit={exit}
-        onFinish={(pct, score) => {
-          recordExam(view.exam.id, pct);
-          addXp(score); // 1 XP per mark earned
-        }}
-      />
-    );
-  } else if (view.name === 'drill') {
-    body = (
-      <LessonPlayer
-        key={`drill-${view.ids.join()}`}
-        mode="drill"
-        title="Mistake Bank drill"
-        badge="Review"
-        items={view.ids.map(qItem)}
-        actions={baseActions}
-        onExit={exit}
-      />
-    );
-  } else {
-    body = (
-      <>
-        <Header
-          state={state}
-          unitStats={unitStats}
-          activeUnitId={activeUnitId}
-          onSelectUnit={setActiveUnitId}
-          onOpenMistakes={() => setMistakesOpen(true)}
-          onOpenGlossary={() => setGlossaryOpen(true)}          onToggle={toggle}
-          onReset={reset}
-          showUnits
-        />
-        <UnitDashboard
-          state={state}
-          unitStats={unitStats}
-          isSubUnlocked={isSubUnlocked}
-          activeUnitId={activeUnitId}
-          onSelectUnit={setActiveUnitId}
-          onStartSub={startSub}
-          onStartBoss={startBoss}
-          onStartExam={startExam}
-        />
-      </>
-    );
-  }
-
-  return (
-    <>
-      {body}
-      {glossaryOpen && <GlossaryModal onClose={() => setGlossaryOpen(false)} />}      {mistakesOpen && (
-        <MistakeBankModal mistakes={state.mistakes} onClose={() => setMistakesOpen(false)} onStartDrill={startDrill} />
-      )}
-    </>
-  );
+  if (subject === 'business') return <BusinessApp onHome={home} />;
+  if (subject === 'english') return <EnglishApp onHome={home} />;
+  return <Hub onOpen={open} />;
 }
