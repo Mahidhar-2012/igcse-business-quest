@@ -193,8 +193,8 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
                   <FileText className="h-9 w-9" />
                 </button>
                 <div>
-                  <p className="font-black">Past paper practice</p>
-                  <p className="text-xs font-bold text-slate-400">{paper.title} · {paper.ids.length} exam questions with diagrams</p>
+                  <p className="font-black">{paper.kind === 'written' ? 'Written exam questions' : 'Past paper practice'}</p>
+                  <p className="text-xs font-bold text-slate-400">{paper.title} · {paper.round ? `${paper.round} random of ${paper.ids.length}` : paper.ids.length} {paper.kind === 'written' ? 'written questions, self-marked' : 'exam questions with diagrams'}</p>
                   {best > 0 && <p className="text-xs font-extrabold text-violet-600">Best: {best}%</p>}
                 </div>
               </li>

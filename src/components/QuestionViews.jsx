@@ -383,8 +383,46 @@ export function PaperMCQ({ q, onResolve }) {
   );
 }
 
+/* ---------- Past-paper written question: answer on paper, reveal the mark scheme, self-mark ---------- */
+export function PaperWritten({ q, onResolve }) {
+  const [shown, setShown] = useState(false);
+  const [done, setDone] = useState(false);
+  const rate = (good) => {
+    if (done) return;
+    setDone(true);
+    onResolve(good);
+  };
+  return (
+    <div>
+      <p className="mb-2 text-xs font-extrabold uppercase tracking-widest text-slate-400">Written question · {q.src}</p>
+      <p className="mb-2 text-sm font-bold text-slate-500">Answer it on paper first{q.marks ? ` (${q.marks} marks)` : ''}, then compare with the mark scheme.</p>
+      <Figure fig={{ src: q.img, alt: 'Exam question with its diagrams', full: true }} />
+      {!shown ? (
+        <button type="button" className="btn btn-blue mt-4 w-full" onClick={() => setShown(true)}>Show mark scheme</button>
+      ) : (
+        <>
+          <p className="mb-1 mt-5 text-sm font-extrabold text-green-700">Mark scheme</p>
+          <Figure fig={{ src: q.msImg, alt: 'Mark scheme for this question', full: true }} />
+          {!done ? (
+            <div className="mt-4">
+              <p className="mb-2 text-sm font-extrabold text-slate-500">How did you do?</p>
+              <div className="grid grid-cols-2 gap-3">
+                <button type="button" className="btn btn-green" onClick={() => rate(true)}>Got most marks</button>
+                <button type="button" className="btn btn-red" onClick={() => rate(false)}>Missed marks</button>
+              </div>
+            </div>
+          ) : (
+            <Verdict correct={true}>Saved. Questions you marked as missed go to your Mistake Bank so you can retry them.</Verdict>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
 export const VIEWS = {
   paper: PaperMCQ,
+  written: PaperWritten,
   mcq: MultiChoice,
   order: Ordering,
   scenario: Scenario,

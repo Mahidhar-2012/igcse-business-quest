@@ -47,7 +47,10 @@ export default function PhysicsApp({ onHome }) {
     setView({ name: 'boss', unit, ids: pickRandom(ids, ids.length) });
   }, []);
 
-  const startPaper = useCallback((unit, paper) => setView({ name: 'paper', unit, paper }), []);
+  const startPaper = useCallback(
+    (unit, paper) => setView({ name: 'paper', unit, paper, ids: paper.round ? pickRandom(paper.ids, paper.round) : paper.ids }),
+    [],
+  );
 
   const startDrill = useCallback((ids) => {
     setMistakesOpen(false);
@@ -88,11 +91,11 @@ export default function PhysicsApp({ onHome }) {
     const { paper } = view;
     body = (
       <LessonPlayer
-        key={paper.id}
+        key={`${paper.id}-${view.ids.join()}`}
         mode="paper"
         title={paper.title}
         badge="Past paper"
-        items={paper.ids.map(qItem)}
+        items={view.ids.map(qItem)}
         actions={{
           ...baseActions,
           onComplete: (firstTry, total) => recordExam(paper.id, Math.round((firstTry / total) * 100)),

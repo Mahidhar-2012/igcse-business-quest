@@ -59,7 +59,7 @@ export default function MistakeBankModal({ mistakes, onClose, onStartDrill, cour
                     return (
                       <li key={id} className="rounded-xl border-2 border-slate-100 p-3 text-sm">
                         <p className="mb-0.5 text-[11px] font-extrabold uppercase tracking-wider text-slate-400">{sub.title} · {TYPE_LABEL[challenge.type] || 'Past paper'}</p>
-                        <p className="font-bold">{challenge.q || 'Past-paper question (diagram)'}</p>
+                        <p className="font-bold">{challenge.q || challenge.src || 'Past-paper question'}</p>
                       </li>
                     );
                   })}

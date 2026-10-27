@@ -15,7 +15,7 @@ export default function Figure({ fig, className = '' }) {
         {Svg ? (
           <Svg />
         ) : (
-          <img src={`${BASE}${f.src}`} alt={f.alt || 'Diagram'} loading="lazy" className="mx-auto block h-auto max-h-[28rem] w-auto max-w-full" />
+          <img src={`${BASE}${f.src}`} alt={f.alt || 'Diagram'} loading="lazy" className={`mx-auto block h-auto w-auto max-w-full ${f.full ? '' : 'max-h-[28rem]'}`} />
         )}
       </div>
       {f.caption && <figcaption className="mt-1 text-center text-xs font-bold text-slate-500">{f.caption}</figcaption>}

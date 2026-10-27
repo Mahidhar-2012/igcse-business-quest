@@ -19,6 +19,8 @@ import { emPaper } from './papers/em.js';
 import { elecQPaper } from './papers/elecq.js';
 import { circuitsPaper } from './papers/circuits.js';
 import { radioPaper } from './papers/radio.js';
+import { extendedSets } from './extended.js';
+import { writtenSets } from './written.js';
 
 const paper = (id, title, questions) => ({ id, title, questions });
 
@@ -71,6 +73,54 @@ export const units = [
   },
 ];
 
+
+/** Extended (Paper 2) multiple-choice questions 2020-2025, one random-round set per topic group. */
+const SESSION = { m: 'Feb/Mar', s: 'May/Jun', w: 'Oct/Nov' };
+const extQuestions = (rows) =>
+  rows.map(([code, n, ans]) => ({
+    type: 'paper',
+    img: `physics/e/${code}-${n}.webp`,
+    src: `Extended · ${SESSION[code[0]]} 20${code.slice(1, 3)} · Paper ${code.slice(4)} · Q${n}`,
+    answer: ans,
+    why: 'This is the answer given in the official Cambridge mark scheme.',
+  }));
+const EXT = [
+  ['motion', 'p1', 'Measurement and motion'],
+  ['massdensity', 'p1', 'Mass, weight and density'],
+  ['forces', 'p1', 'Forces and momentum'],
+  ['moments', 'p1', 'Moments and centre of mass'],
+  ['energy', 'p1', 'Energy, work, power and resources'],
+  ['pressure', 'p1', 'Pressure'],
+  ['thermal', 'p2', 'Particle model and thermal properties'],
+  ['transfer', 'p2', 'Thermal energy transfer'],
+  ['waves', 'p3', 'General properties of waves'],
+  ['light', 'p3', 'Light'],
+  ['em', 'p3', 'Electromagnetic spectrum'],
+  ['sound', 'p3', 'Sound'],
+  ['magem', 'p4', 'Magnetism and electromagnetic effects'],
+  ['elec', 'p4', 'Electrical quantities, circuits and safety'],
+  ['nuclear', 'p5', 'Atom and radioactivity'],
+  ['space', 'p6', 'Space physics'],
+];
+for (const [g, uid, title] of EXT) {
+  const unit = units.find((u) => u.id === uid);
+  unit.papers.push({ id: `${uid}-ext-${g}`, title: `Extended exam questions 2020–2025: ${title}`, questions: extQuestions(extendedSets[g] || []), round: 20 });
+}
+/** Extended (Paper 4) written questions 2020-2025: question and mark scheme images, self-marked. */
+const writtenQuestions = (rows) =>
+  rows.map(([code, n, marks]) => ({
+    type: 'written',
+    img: `physics/w/${code}-${n}q.webp`,
+    msImg: `physics/w/${code}-${n}m.webp`,
+    marks,
+    src: `Extended Paper 4 · ${SESSION[code[0]]} 20${code.slice(1, 3)} · Paper ${code.slice(4)} · Q${n}`,
+  }));
+for (const [g, uid, title] of EXT) {
+  const rows = writtenSets[g];
+  if (!rows || !rows.length) continue;
+  const unit = units.find((u) => u.id === uid);
+  unit.papers.push({ id: `${uid}-wr-${g}`, kind: 'written', title: `Extended written questions 2020–2025: ${title}`, questions: writtenQuestions(rows), round: 6 });
+}
 /** Past-paper sets get ids so that missed questions land in the mistake bank. */
 for (const unit of units) {
   for (const p of unit.papers) p.ids = p.questions.map((_, i) => `${p.id}:${i}`);
