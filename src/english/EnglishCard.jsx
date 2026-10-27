@@ -81,7 +81,7 @@ function Model({ card }) {
     <div className="space-y-4">
       <section className="rounded-2xl border-2 border-sky-200 bg-sky-50/70 p-4 text-sm font-semibold leading-relaxed text-slate-700" aria-label="Task">
         <p className="mb-1 text-xs font-extrabold uppercase tracking-widest text-sky-700">Task</p>
-        <Rich text={card.task} />
+        {[].concat(card.task).map((t) => <p key={t} className="mb-1.5 last:mb-0"><Rich text={t} /></p>)}
         {card.words && <p className="mt-2 text-xs font-extrabold text-slate-500">{card.words}</p>}
       </section>
       <section className="rounded-2xl border-2 border-green-200 bg-green-50 p-4" aria-label="Model answer">
@@ -90,14 +90,14 @@ function Model({ card }) {
           <p key={p} className="mb-3 text-sm font-semibold leading-loose text-slate-700 last:mb-0"><Rich text={p} /></p>
         ))}
       </section>
-      <section className="rounded-2xl border-2 border-slate-200 bg-white p-4" aria-label="Why it works">
-        <h3 className="mb-2 flex items-center gap-2 text-sm font-black"><Lightbulb className="h-4 w-4 text-amber-500" aria-hidden /> Why it works</h3>
+      {card.why.length > 0 && <section className="rounded-2xl border-2 border-slate-200 bg-white p-4" aria-label="Why it works">
+        <h3 className="mb-2 flex items-center gap-2 text-sm font-black"><Lightbulb className="h-4 w-4 text-amber-500" aria-hidden /> Notes</h3>
         <ul className="space-y-1.5 text-sm font-semibold leading-snug text-slate-700">
           {card.why.map((w) => (
             <li key={w} className="flex gap-2"><span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-500" aria-hidden /><span><Rich text={w} /></span></li>
           ))}
         </ul>
-      </section>
+      </section>}
     </div>
   );
 }

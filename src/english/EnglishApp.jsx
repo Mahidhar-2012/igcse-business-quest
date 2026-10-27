@@ -109,7 +109,7 @@ export default function EnglishApp({ onHome }) {
             Byte-sized notes for every writing task: email, review, report, essay and article. Read a lesson, then try the task on paper. No quizzes here, only notes and model answers.
           </p>
           <p className="mt-2 text-xs font-bold text-slate-500">
-            All notes and model answers are original study material. Your own past papers and teacher feedback remain the final guide.
+            The “A* model answers” section holds sample scripts with their exam questions (Cambridge past-paper prompts and student samples, shared for personal study). The other notes are original. Your own past papers and teacher feedback remain the final guide.
           </p>
         </section>
 
