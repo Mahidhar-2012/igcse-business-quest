@@ -28,16 +28,16 @@ const yesterdayKey = () => {
   return dayKey(d);
 };
 
-const load = () => {
+const load = (course) => {
   try {
-    let raw = JSON.parse(localStorage.getItem(KEY) || 'null');
-    if (!raw) {
+    let raw = JSON.parse(localStorage.getItem(course.key) || 'null');
+    if (!raw && course.oldKey) {
       // migrate progress (XP, streak, completed lessons, settings) from v1 but start with an empty mistake bank
-      const old = JSON.parse(localStorage.getItem(OLD_KEY) || 'null');
+      const old = JSON.parse(localStorage.getItem(course.oldKey) || 'null');
       if (old) raw = { ...old, mistakes: [], exams: {} };
     }
     const s = { ...defaults, ...(raw || {}) };
-    s.mistakes = (s.mistakes || []).filter((id) => questionIndex[id]);
+    s.mistakes = (s.mistakes || []).filter((id) => course.questionIndex[id]);
     // reset today's XP and break the streak if a day was missed
     const today = dayKey();
     if (s.lastDay !== today) s.todayXp = 0;
@@ -48,12 +48,12 @@ const load = () => {
   }
 };
 
-export function useProgress() {
-  const [state, setState] = useState(load);
+export function useProgress(course = { units, questionIndex, key: KEY, oldKey: OLD_KEY }) {
+  const [state, setState] = useState(() => load(course));
 
   useEffect(() => {
     try {
-      localStorage.setItem(KEY, JSON.stringify(state));
+      localStorage.setItem(course.key, JSON.stringify(state));
     } catch {
       /* storage full or blocked: keep working in memory */
     }
@@ -107,7 +107,7 @@ export function useProgress() {
 
   const unitStats = useMemo(() => {
     const out = {};
-    for (const u of units) {
+    for (const u of course.units) {
       const subsDone = u.submodules.filter((sub) => state.subs[sub.id]?.done).length;
       const starSum = u.submodules.reduce((n, sub) => n + (state.subs[sub.id]?.stars || 0), 0);
       const mastery = Math.round((starSum / (u.submodules.length * 3)) * 100);
@@ -120,7 +120,7 @@ export function useProgress() {
       };
     }
     return out;
-  }, [state.subs, state.bosses]);
+  }, [state.subs, state.bosses, course.units]);
 
   const isSubUnlocked = useCallback(
     (unit, index) => state.openAll || index === 0 || !!state.subs[unit.submodules[index - 1].id]?.done,

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Check, X, Lightbulb, RotateCcw } from 'lucide-react';
+import Figure from './Figure.jsx';
 
 const shuffle = (arr) => {
   const a = [...arr];
@@ -17,13 +18,14 @@ const AO_CHIP = {
   4: ['AO4 Evaluation', 'bg-orange-200 text-orange-900'],
 };
 
-const Prompt = ({ label, ao, children }) => (
+const Prompt = ({ label, ao, fig, children }) => (
   <div className="mb-5">
     <p className="mb-2 flex flex-wrap items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-slate-400">
       {label}
       {ao && AO_CHIP[ao] && <span className={`rounded-full px-2 py-0.5 normal-case tracking-normal ${AO_CHIP[ao][1]}`}>{AO_CHIP[ao][0]}</span>}
     </p>
     <h2 className="text-xl font-extrabold leading-snug sm:text-2xl">{children}</h2>
+    {fig && <Figure fig={fig} />}
   </div>
 );
 
@@ -73,7 +75,7 @@ export function MultiChoice({ q, onResolve }) {
 
   return (
     <div>
-      <Prompt label="Multiple choice" ao={q.ao}>{q.q}</Prompt>
+      <Prompt label="Multiple choice" ao={q.ao} fig={q.fig}>{q.q}</Prompt>
       <ul className="space-y-3">
         {order.map((orig, di) => {
           const opt = q.options[orig];
@@ -132,7 +134,7 @@ export function Ordering({ q, onResolve }) {
 
   return (
     <div>
-      <Prompt label="Put it in order — tap steps in sequence" ao={q.ao}>{q.q}</Prompt>
+      <Prompt label="Put it in order — tap steps in sequence" ao={q.ao} fig={q.fig}>{q.q}</Prompt>
       <ol className="mb-4 min-h-[3.5rem] space-y-2 rounded-2xl border-2 border-dashed border-slate-300 bg-white p-3" aria-label="Your sequence">
         {seq.length === 0 && <li className="text-sm font-semibold text-slate-400">Tap the steps below, first step first…</li>}
         {seq.map((idx, pos) => {
@@ -198,7 +200,7 @@ export function Scenario({ q, onResolve }) {
 
   return (
     <div>
-      <Prompt label="Scenario — make the call" ao={q.ao}>{q.q}</Prompt>
+      <Prompt label="Scenario — make the call" ao={q.ao} fig={q.fig}>{q.q}</Prompt>
       <ul className="space-y-3">
         {order.map((orig, di) => {
           const d = q.decisions[orig];
@@ -265,7 +267,7 @@ export function Calculation({ q, onResolve }) {
 
   return (
     <div>
-      <Prompt label="Calculate" ao={q.ao}>{q.q}</Prompt>
+      <Prompt label="Calculate" ao={q.ao} fig={q.fig}>{q.q}</Prompt>
       <p className="mb-3 rounded-xl bg-sky-50 px-3 py-2 text-sm font-bold text-sky-800">Formula: {q.formula}</p>
       <div className="flex gap-3">
         <input
@@ -316,7 +318,7 @@ export function TrueFalse({ q, onResolve }) {
 
   return (
     <div>
-      <Prompt label="Rapid fire — true, false or depends?" ao={q.ao}>“{q.q}”</Prompt>
+      <Prompt label="Rapid fire — true, false or depends?" ao={q.ao} fig={q.fig}>“{q.q}”</Prompt>
       <div className="grid gap-3 sm:grid-cols-3">
         {TFD_OPTIONS.map((o, i) => {
           let style = '';
@@ -339,7 +341,50 @@ export function TrueFalse({ q, onResolve }) {
   );
 }
 
+/* ---------- Past-paper multiple choice: the question is shown as it appears in the paper ---------- */
+export function PaperMCQ({ q, onResolve }) {
+  const [picked, setPicked] = useState(null);
+  const resolved = picked !== null;
+  const letters = ['A', 'B', 'C', 'D'];
+
+  const choose = (i) => {
+    if (resolved) return;
+    setPicked(i);
+    onResolve(i === q.answer);
+  };
+  useNumberKeys(4, choose, !resolved);
+
+  return (
+    <div>
+      <p className="mb-2 text-xs font-extrabold uppercase tracking-widest text-slate-400">Past-paper question · {q.src}</p>
+      <Figure fig={{ src: q.img, alt: 'Exam question with its diagram and options' }} />
+      <p className="mb-2 mt-4 text-sm font-extrabold text-slate-500">Choose your answer</p>
+      <ul className="grid grid-cols-4 gap-3">
+        {letters.map((L, i) => {
+          let style = '';
+          if (resolved && i === q.answer) style = '!border-green-400 !bg-green-50';
+          else if (resolved && i === picked) style = '!border-rose-400 !bg-rose-50 shake';
+          return (
+            <li key={L}>
+              <button type="button" className={`choice !text-center text-xl font-black ${style}`} disabled={resolved} onClick={() => choose(i)} aria-label={`Option ${L}`}>
+                {L}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      {resolved && (
+        <Verdict correct={picked === q.answer}>
+          <p className="mb-1 font-extrabold">The answer is {letters[q.answer]}.</p>
+          {q.why}
+        </Verdict>
+      )}
+    </div>
+  );
+}
+
 export const VIEWS = {
+  paper: PaperMCQ,
   mcq: MultiChoice,
   order: Ordering,
   scenario: Scenario,

@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { X, ShieldAlert, Swords, PartyPopper } from 'lucide-react';
-import { units, questionIndex } from '../data/syllabusData.js';
+import { units as businessUnits, questionIndex as businessIndex } from '../data/syllabusData.js';
 
 const TYPE_LABEL = { mcq: 'Multiple choice', order: 'Ordering', scenario: 'Scenario', calc: 'Calculation', tfd: 'True/False' };
 
-export default function MistakeBankModal({ mistakes, onClose, onStartDrill }) {
+export default function MistakeBankModal({ mistakes, onClose, onStartDrill, course }) {
+  const units = course ? course.units : businessUnits;
+  const questionIndex = course ? course.questionIndex : businessIndex;
   const closeRef = useRef(null);
 
   useEffect(() => {
@@ -56,8 +58,8 @@ export default function MistakeBankModal({ mistakes, onClose, onStartDrill }) {
                     const { challenge, sub } = questionIndex[id];
                     return (
                       <li key={id} className="rounded-xl border-2 border-slate-100 p-3 text-sm">
-                        <p className="mb-0.5 text-[11px] font-extrabold uppercase tracking-wider text-slate-400">{sub.title} · {TYPE_LABEL[challenge.type]}</p>
-                        <p className="font-bold">{challenge.q}</p>
+                        <p className="mb-0.5 text-[11px] font-extrabold uppercase tracking-wider text-slate-400">{sub.title} · {TYPE_LABEL[challenge.type] || 'Past paper'}</p>
+                        <p className="font-bold">{challenge.q || 'Past-paper question (diagram)'}</p>
                       </li>
                     );
                   })}

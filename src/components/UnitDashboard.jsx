@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Lock, Check, Star, Crown, Swords, Play, FileText } from 'lucide-react';
-import { units } from '../data/syllabusData.js';
+import { units as businessUnits } from '../data/syllabusData.js';
 
 export const UNIT_COLORS = {
   emerald: '#10b981',
@@ -45,7 +45,7 @@ const Stars = ({ n, size = 'h-4 w-4' }) => (
   </span>
 );
 
-export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeUnitId, onSelectUnit, onStartSub, onStartBoss, onStartExam }) {
+export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeUnitId, onSelectUnit, onStartSub, onStartBoss, onStartExam, onStartPaper, units = businessUnits, heading = 'IGCSE Business 0264', gradient = 'from-brand to-emerald-500' }) {
   const unit = units.find((u) => u.id === activeUnitId) || units[0];
   const pathRef = useRef(null);
   const lastUnit = useRef(activeUnitId);
@@ -65,8 +65,8 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
 
   return (
     <main className="mx-auto max-w-5xl px-4 pb-16 pt-6">
-      <section className="mb-6 rounded-3xl bg-gradient-to-br from-brand to-emerald-500 p-6 text-white">
-        <h1 className="text-3xl font-black">IGCSE Business 0264</h1>
+      <section className={`mb-6 rounded-3xl bg-gradient-to-br ${gradient} p-6 text-white`}>
+        <h1 className="text-3xl font-black">{heading}</h1>
         <p className="mt-1 font-bold text-white/90">
           {doneSubs}/{totalSubs} lessons done · {overall}% overall mastery · Active recall beats re-reading.
         </p>
@@ -178,6 +178,28 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
             })()}
           </li>
           )}
+          {(unit.papers || []).map((paper, pi) => {
+            const best = state.exams?.[paper.id];
+            const offset = [0, 40, 0, -40][(unit.submodules.length + 1 + pi) % 4];
+            return (
+              <li key={paper.id} className="flex items-center gap-4" style={{ transform: `translateX(${offset}px)` }}>
+                <button
+                  type="button"
+                  onClick={() => onStartPaper(unit, paper)}
+                  aria-label={`${paper.title}, past paper questions`}
+                  className="grid h-20 w-20 shrink-0 place-items-center rounded-full border-b-8 text-white transition active:translate-y-1 active:border-b-4 focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-sky-300"
+                  style={{ background: '#7c3aed', borderColor: '#5b21b6' }}
+                >
+                  <FileText className="h-9 w-9" />
+                </button>
+                <div>
+                  <p className="font-black">Past paper practice</p>
+                  <p className="text-xs font-bold text-slate-400">{paper.title} · {paper.ids.length} exam questions with diagrams</p>
+                  {best > 0 && <p className="text-xs font-extrabold text-violet-600">Best: {best}%</p>}
+                </div>
+              </li>
+            );
+          })}
           {(unit.exams || []).map((exam, ei) => {
             const open = state.openAll || unitStats[unit.id].allDone;
             const best = state.exams?.[exam.id];

@@ -3,9 +3,9 @@ import { Zap, Flame, Volume2, VolumeX, ShieldAlert, Settings, Unlock, Trash2, Bo
 import { units } from '../data/syllabusData.js';
 import { UNIT_COLORS, ProgressRing } from './UnitDashboard.jsx';
 
-export default function Header({ state, unitStats, activeUnitId, onSelectUnit, onOpenMistakes, onOpenGlossary, onHome, onToggle, onReset, showUnits }) {
+export default function Header({ state, unitStats, activeUnitId, onSelectUnit, onOpenMistakes, onOpenGlossary, onHome, onToggle, onReset, showUnits, courseUnits = units, title = 'Business Quest' }) {
   const [menu, setMenu] = useState(false);
-  const active = units.find((u) => u.id === activeUnitId);
+  const active = courseUnits.find((u) => u.id === activeUnitId);
 
   return (
     <header className="sticky top-0 z-30 border-b-2 border-slate-200 bg-white/95 backdrop-blur">
@@ -21,7 +21,7 @@ export default function Header({ state, unitStats, activeUnitId, onSelectUnit, o
             <LayoutGrid className="h-5 w-5" />
           </button>
         )}
-        <span className="hidden text-lg font-black text-brand-dark sm:block">Business Quest</span>
+        <span className="hidden text-lg font-black text-brand-dark sm:block">{title}</span>
         {active && (
           <span className="whitespace-nowrap rounded-full px-3 py-1 text-xs font-extrabold text-white" style={{ background: UNIT_COLORS[active.color] }}>
             Unit {active.number}<span className="hidden sm:inline">: {active.short}</span>
@@ -49,14 +49,14 @@ export default function Header({ state, unitStats, activeUnitId, onSelectUnit, o
               </span>
             )}
           </button>
-          <button
+          {onOpenGlossary && <button
             type="button"
             onClick={onOpenGlossary}
             aria-label="Open glossary of key terms"
             className="rounded-xl p-2 text-amber-500 hover:bg-amber-50 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300"
           >
             <BookText className="h-5 w-5" />
-          </button>
+          </button>}
           <button
             type="button"
             onClick={() => onToggle('sound')}
@@ -102,7 +102,7 @@ export default function Header({ state, unitStats, activeUnitId, onSelectUnit, o
       {showUnits && (
         <nav aria-label="Jump to unit" className="border-t border-slate-100">
           <ul className="mx-auto flex max-w-5xl gap-2 overflow-x-auto px-4 py-2">
-            {units.map((u) => (
+            {courseUnits.map((u) => (
               <li key={u.id}>
                 <button
                   type="button"

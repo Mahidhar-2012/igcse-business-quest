@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Briefcase, PenLine, FlaskConical, ArrowRight } from 'lucide-react';
+import { Briefcase, PenLine, Atom, FlaskConical, ArrowRight } from 'lucide-react';
 import BusinessApp from './BusinessApp.jsx';
 import EnglishApp from './english/EnglishApp.jsx';
+import PhysicsApp from './physics/PhysicsApp.jsx';
 import { countEnglishDone } from './english/useEnglishProgress.js';
 import { allLessons } from './english/data/index.js';
 
@@ -15,6 +16,16 @@ const SUBJECTS = [
     tag: 'Notes only',
     icon: PenLine,
     color: '#0ea5e9',
+  },
+  {
+    id: 'physics',
+    hash: '#/physics',
+    title: 'Physics',
+    code: '0625',
+    blurb: 'Knowledge bytes with diagrams, tests, and past-paper questions exactly as they appear in the exam.',
+    tag: 'Lessons + past papers',
+    icon: Atom,
+    color: '#6366f1',
   },
   {
     id: 'business',
@@ -88,5 +99,6 @@ export default function App() {
 
   if (subject === 'business') return <BusinessApp onHome={home} />;
   if (subject === 'english') return <EnglishApp onHome={home} />;
+  if (subject === 'physics') return <PhysicsApp onHome={home} />;
   return <Hub onOpen={open} />;
 }
