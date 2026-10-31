@@ -4,7 +4,7 @@ Last updated: Phase 2. This is an honest status, not a claim of completeness. Sy
 
 ## Physics 0625
 
-**Structure:** 6 units, 26 lessons, about 150 knowledge bytes (each with a test), 25+ original vector diagrams.
+**Structure:** 6 units, 26 lessons, 176 knowledge bytes (each with a test), 25+ original vector diagrams.
 **Past-paper practice:** 1,885 multiple-choice questions (208 topical booklet questions and 1,678 Extended Paper 2 questions, 2020–2025) and 392 Extended Paper 4 written questions with mark schemes. Answers come from the official mark schemes. Topic grouping of the 2020–2025 questions is automatic and may contain mistakes.
 
 ### Gap audit (Phase 2)
@@ -40,7 +40,7 @@ Syllabus sections 2.1 to 6.2 were compared against the lessons and the following
 ## Chemistry 0620
 
 **Syllabus:** Cambridge IGCSE Chemistry 0620, version for examination in 2026, 2027 and 2028 (verified on the Cambridge International website). Content is original and was written from the published topic structure.
-**Structure:** 6 units, 48 lessons, about 150 knowledge bytes covering all 12 syllabus topics (particles, atoms and bonding; quantities and electrochemistry; energy and reactions; acids, salts and the Periodic Table; metals and the environment; organic chemistry and experimental techniques), each with one test, and 30 original vector diagrams (electron shells, dot-and-cross diagrams, giant structures, electrolysis, fuel cell, reaction profiles, rate graph, pH scale, reactivity series, blast furnace, organic formulae, fractional distillation, polymerisation, titration, chromatography, distillation).
+**Structure:** 6 units, 48 lessons, 127 knowledge bytes covering all 12 syllabus topics (particles, atoms and bonding; quantities and electrochemistry; energy and reactions; acids, salts and the Periodic Table; metals and the environment; organic chemistry and experimental techniques), each with one test, and 19 original vector diagrams (electron shells, dot-and-cross diagrams, giant structures, electrolysis, fuel cell, reaction profiles, rate graph, pH scale, reactivity series, blast furnace, organic formulae, fractional distillation, polymerisation, titration, chromatography, distillation).
 
 Known limits:
 - This is a first pass at byte level. Each syllabus sub-topic has coverage, but not every individual learning objective has been mapped one by one, and Supplement-only depth varies.
