@@ -3,7 +3,7 @@
 
 /** Lesson totals are kept here so the hub never has to load the subject data. Each subject app warns in the console if its data disagrees. */
 export const SUBJECT_META = {
-  english: { key: 'igcse-english:v1', total: 36, lessonsLabel: 'lessons read' },
+  english: { key: 'igcse-english:v1', total: 42, lessonsLabel: 'lessons read' },
   physics: { key: 'igcse-physics-quest:v1', total: 26, lessonsLabel: 'lessons done' },
   business: { key: 'igcse-business-quest:v2', total: 38, lessonsLabel: 'lessons done' },
 };

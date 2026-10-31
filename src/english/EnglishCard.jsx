@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { BookOpen, ThumbsUp, ThumbsDown, Lightbulb, PenLine } from 'lucide-react';
 
 /** Renders **bold** and {{phrase}} markup. */
@@ -102,8 +102,69 @@ function Model({ card }) {
   );
 }
 
-const BODY = { note: Note, steps: Steps, dont: Dont, bank: Bank, model: Model };
-const KIND = { note: 'Note', steps: 'Steps', dont: 'Do & avoid', bank: 'Phrase bank', model: 'Model answer' };
+
+function Try({ card }) {
+  const [shown, setShown] = useState(false);
+  return (
+    <div className="space-y-4">
+      <section className="rounded-2xl border-2 border-sky-200 bg-sky-50/70 p-4 text-base font-semibold leading-relaxed text-slate-700" aria-label="Task">
+        <p className="mb-1 text-xs font-extrabold uppercase tracking-widest text-sky-800">Try it on paper first</p>
+        {card.task.map((t) => <p key={t} className="mb-1.5 last:mb-0"><Rich text={t} /></p>)}
+        {card.hint && <p className="mt-2 text-sm font-bold text-slate-600">Hint: <Rich text={card.hint} /></p>}
+      </section>
+      {!shown ? (
+        <button type="button" className="btn btn-blue w-full" onClick={() => setShown(true)}>Show model answer</button>
+      ) : (
+        <>
+          <section className="rounded-2xl border-2 border-green-200 bg-green-50 p-4" aria-live="polite">
+            <p className="mb-2 flex items-center gap-1 text-xs font-extrabold uppercase tracking-widest text-green-800"><PenLine className="h-4 w-4" aria-hidden /> Model answer</p>
+            {card.answer.map((p) => <p key={p} className="mb-2 text-base font-semibold leading-relaxed text-slate-700 last:mb-0"><Rich text={p} /></p>)}
+          </section>
+          {card.why.length > 0 && (
+            <section className="rounded-2xl border-2 border-slate-200 bg-white p-4">
+              <h3 className="mb-2 flex items-center gap-2 text-sm font-black"><Lightbulb className="h-4 w-4 text-amber-600" aria-hidden /> Why it works</h3>
+              <ul className="space-y-1.5 text-sm font-semibold leading-snug text-slate-700">
+                {card.why.map((w) => <li key={w} className="flex gap-2"><span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-600" aria-hidden /><span><Rich text={w} /></span></li>)}
+              </ul>
+            </section>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
+const TINTS = ['bg-amber-100', 'bg-sky-100', 'bg-green-100', 'bg-violet-100', 'bg-rose-100', 'bg-orange-100'];
+
+function Annotated({ card }) {
+  return (
+    <div className="space-y-4">
+      {card.task && (
+        <section className="rounded-2xl border-2 border-sky-200 bg-sky-50/70 p-4 text-sm font-semibold leading-relaxed text-slate-700" aria-label="Task">
+          <Rich text={card.task} />
+        </section>
+      )}
+      <ol className="space-y-3">
+        {card.parts.map(([text, note], i) => (
+          <li key={text} className="rounded-2xl border-2 border-slate-200 bg-white p-3">
+            <p className={`rounded-lg px-2 py-1.5 text-sm font-semibold leading-relaxed text-slate-800 ${TINTS[i % TINTS.length]}`}><Rich text={text} /></p>
+            <p className="mt-2 flex gap-2 text-sm font-semibold leading-snug text-slate-700"><span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-slate-800 text-[11px] font-black text-white" aria-hidden>{i + 1}</span><span><Rich text={note} /></span></p>
+          </li>
+        ))}
+      </ol>
+      {card.summary.length > 0 && (
+        <section className="rounded-2xl border-2 border-green-200 bg-green-50 p-4">
+          <h3 className="mb-2 text-sm font-black text-green-900">What to take from it</h3>
+          <ul className="space-y-1.5 text-sm font-semibold leading-snug text-slate-700">
+            {card.summary.map((w) => <li key={w} className="flex gap-2"><span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-600" aria-hidden /><span><Rich text={w} /></span></li>)}
+          </ul>
+        </section>
+      )}
+    </div>
+  );
+}
+const BODY = { note: Note, steps: Steps, dont: Dont, bank: Bank, model: Model, try: Try, annotated: Annotated };
+const KIND = { note: 'Note', steps: 'Steps', dont: 'Do & avoid', bank: 'Phrase bank', model: 'Model answer', try: 'Try it', annotated: 'Annotated model' };
 
 export default function EnglishCard({ card, no, of }) {
   const Body = BODY[card.type] || Note;

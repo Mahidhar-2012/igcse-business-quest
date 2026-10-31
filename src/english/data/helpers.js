@@ -18,3 +18,9 @@ export const steps = (title, ...items) => ({ type: 'steps', title, items });
 
 export const lesson = (id, title, emoji, cards) => ({ id, title, emoji, cards });
 export const section = (id, title, emoji, color, blurb, lessons) => ({ id, title, emoji, color, blurb, lessons });
+
+/** Try-it card: do the task on paper first, then reveal a model answer. task/answer are arrays of strings. */
+export const tryIt = (title, { task, hint, answer, why }) => ({ type: 'try', title, task: [].concat(task), hint, answer: [].concat(answer), why: why ? [].concat(why) : [] });
+
+/** Annotated model: parts = [[text, comment], ...] shown as highlighted segments with notes. */
+export const annotated = (title, { task, parts, summary }) => ({ type: 'annotated', title, task, parts, summary: summary ? [].concat(summary) : [] });
