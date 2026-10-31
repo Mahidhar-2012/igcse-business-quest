@@ -37,6 +37,18 @@ Syllabus sections 2.1 to 6.2 were compared against the lessons and the following
 - Explanations for the 1,885 multiple-choice past-paper questions are not yet written; learners see the official correct letter only.
 - Diagrams are original code; none has been reviewed by a subject expert. Treat them as needing expert review before being relied on for teaching.
 
+## Chemistry 0620
+
+**Syllabus:** Cambridge IGCSE Chemistry 0620, version for examination in 2026, 2027 and 2028 (verified on the Cambridge International website). Content is original and was written from the published topic structure.
+**Structure:** 6 units, 48 lessons, about 150 knowledge bytes covering all 12 syllabus topics (particles, atoms and bonding; quantities and electrochemistry; energy and reactions; acids, salts and the Periodic Table; metals and the environment; organic chemistry and experimental techniques), each with one test, and 30 original vector diagrams (electron shells, dot-and-cross diagrams, giant structures, electrolysis, fuel cell, reaction profiles, rate graph, pH scale, reactivity series, blast furnace, organic formulae, fractional distillation, polymerisation, titration, chromatography, distillation).
+
+Known limits:
+- This is a first pass at byte level. Each syllabus sub-topic has coverage, but not every individual learning objective has been mapped one by one, and Supplement-only depth varies.
+- There are no past-paper questions, mega-quiz extras or written exam practice for Chemistry yet. Test questions are original.
+- Diagrams are original code and have been checked visually and for electron and atom counts where relevant, but have not been reviewed by a subject expert.
+- No Core versus Supplement labelling yet.
+- Calculation questions accept numeric answers only (no units in the answer box).
+
 ## English 0510 / 0511
 
 **Structure:** 11 sections, 42 lessons: exam map, reading, the five writing tasks (email, review, report, essay, article), language boosters, a skills workshop (grammar fixes, sentence upgrades, planning, annotated models, self-check lists, reading practice), listening and speaking, and 38 sample answers with their questions.

@@ -5,8 +5,9 @@ import { unit2 } from './units/c2.js';
 import { unit3 } from './units/c3.js';
 import { unit4 } from './units/c4.js';
 import { unit5 } from './units/c5.js';
+import { unit6 } from './units/c6.js';
 
-export const units = [unit1, unit2, unit3, unit4, unit5];
+export const units = [unit1, unit2, unit3, unit4, unit5, unit6];
 
 /** Flat lookup: question id -> { unit, sub, challenge, qid }. Card tests: `subId:c<cardIndex>.<testIndex>`. */
 export const questionIndex = (() => {

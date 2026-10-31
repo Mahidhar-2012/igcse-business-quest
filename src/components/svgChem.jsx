@@ -406,7 +406,301 @@ const BlastFurnace = () => (
   </Svg>
 );
 
+const OrganicFormulae = () => (
+  <Svg w={560} h={320} label="Displayed formulae of methane, ethane, ethene, ethanol and ethanoic acid">
+    <line x1={70} y1={100} x2={70} y2={60} stroke={K} strokeWidth={1.8} />
+    <line x1={70} y1={100} x2={70} y2={140} stroke={K} strokeWidth={1.8} />
+    <line x1={70} y1={100} x2={30} y2={100} stroke={K} strokeWidth={1.8} />
+    <line x1={70} y1={100} x2={110} y2={100} stroke={K} strokeWidth={1.8} />
+    <line x1={200} y1={100} x2={260} y2={100} stroke={K} strokeWidth={1.8} />
+    <line x1={200} y1={100} x2={200} y2={60} stroke={K} strokeWidth={1.8} />
+    <line x1={200} y1={100} x2={200} y2={140} stroke={K} strokeWidth={1.8} />
+    <line x1={200} y1={100} x2={160} y2={100} stroke={K} strokeWidth={1.8} />
+    <line x1={260} y1={100} x2={260} y2={60} stroke={K} strokeWidth={1.8} />
+    <line x1={260} y1={100} x2={260} y2={140} stroke={K} strokeWidth={1.8} />
+    <line x1={260} y1={100} x2={300} y2={100} stroke={K} strokeWidth={1.8} />
+    <line x1={390.0} y1={103.2} x2={450.0} y2={103.2} stroke={K} strokeWidth={1.8} />
+    <line x1={390.0} y1={96.8} x2={450.0} y2={96.8} stroke={K} strokeWidth={1.8} />
+    <line x1={390} y1={100} x2={370} y2={64} stroke={K} strokeWidth={1.8} />
+    <line x1={390} y1={100} x2={370} y2={136} stroke={K} strokeWidth={1.8} />
+    <line x1={450} y1={100} x2={470} y2={64} stroke={K} strokeWidth={1.8} />
+    <line x1={450} y1={100} x2={470} y2={136} stroke={K} strokeWidth={1.8} />
+    <line x1={70} y1={230} x2={130} y2={230} stroke={K} strokeWidth={1.8} />
+    <line x1={70} y1={230} x2={70} y2={190} stroke={K} strokeWidth={1.8} />
+    <line x1={70} y1={230} x2={70} y2={270} stroke={K} strokeWidth={1.8} />
+    <line x1={70} y1={230} x2={30} y2={230} stroke={K} strokeWidth={1.8} />
+    <line x1={130} y1={230} x2={130} y2={190} stroke={K} strokeWidth={1.8} />
+    <line x1={130} y1={230} x2={130} y2={270} stroke={K} strokeWidth={1.8} />
+    <line x1={130} y1={230} x2={190} y2={230} stroke={K} strokeWidth={1.8} />
+    <line x1={190} y1={230} x2={230} y2={230} stroke={K} strokeWidth={1.8} />
+    <line x1={330} y1={230} x2={390} y2={230} stroke={K} strokeWidth={1.8} />
+    <line x1={330} y1={230} x2={330} y2={190} stroke={K} strokeWidth={1.8} />
+    <line x1={330} y1={230} x2={330} y2={270} stroke={K} strokeWidth={1.8} />
+    <line x1={330} y1={230} x2={290} y2={230} stroke={K} strokeWidth={1.8} />
+    <line x1={393.2} y1={230.0} x2={393.2} y2={190.0} stroke={K} strokeWidth={1.8} />
+    <line x1={386.8} y1={230.0} x2={386.8} y2={190.0} stroke={K} strokeWidth={1.8} />
+    <line x1={390} y1={230} x2={450} y2={230} stroke={K} strokeWidth={1.8} />
+    <line x1={450} y1={230} x2={490} y2={230} stroke={K} strokeWidth={1.8} />
+    <circle cx={70} cy={100} r={10} fill="#fff" />
+    <text x={70} y={105} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>C</text>
+    <circle cx={70} cy={60} r={10} fill="#fff" />
+    <text x={70} y={65} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={70} cy={140} r={10} fill="#fff" />
+    <text x={70} y={145} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={30} cy={100} r={10} fill="#fff" />
+    <text x={30} y={105} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={110} cy={100} r={10} fill="#fff" />
+    <text x={110} y={105} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={200} cy={100} r={10} fill="#fff" />
+    <text x={200} y={105} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>C</text>
+    <circle cx={260} cy={100} r={10} fill="#fff" />
+    <text x={260} y={105} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>C</text>
+    <circle cx={200} cy={60} r={10} fill="#fff" />
+    <text x={200} y={65} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={200} cy={140} r={10} fill="#fff" />
+    <text x={200} y={145} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={160} cy={100} r={10} fill="#fff" />
+    <text x={160} y={105} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={260} cy={60} r={10} fill="#fff" />
+    <text x={260} y={65} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={260} cy={140} r={10} fill="#fff" />
+    <text x={260} y={145} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={300} cy={100} r={10} fill="#fff" />
+    <text x={300} y={105} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={390} cy={100} r={10} fill="#fff" />
+    <text x={390} y={105} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>C</text>
+    <circle cx={450} cy={100} r={10} fill="#fff" />
+    <text x={450} y={105} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>C</text>
+    <circle cx={370} cy={64} r={10} fill="#fff" />
+    <text x={370} y={69} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={370} cy={136} r={10} fill="#fff" />
+    <text x={370} y={141} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={470} cy={64} r={10} fill="#fff" />
+    <text x={470} y={69} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={470} cy={136} r={10} fill="#fff" />
+    <text x={470} y={141} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={70} cy={230} r={10} fill="#fff" />
+    <text x={70} y={235} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>C</text>
+    <circle cx={130} cy={230} r={10} fill="#fff" />
+    <text x={130} y={235} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>C</text>
+    <circle cx={70} cy={190} r={10} fill="#fff" />
+    <text x={70} y={195} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={70} cy={270} r={10} fill="#fff" />
+    <text x={70} y={275} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={30} cy={230} r={10} fill="#fff" />
+    <text x={30} y={235} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={130} cy={190} r={10} fill="#fff" />
+    <text x={130} y={195} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={130} cy={270} r={10} fill="#fff" />
+    <text x={130} y={275} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={190} cy={230} r={10} fill="#fff" />
+    <text x={190} y={235} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>O</text>
+    <circle cx={230} cy={230} r={10} fill="#fff" />
+    <text x={230} y={235} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={330} cy={230} r={10} fill="#fff" />
+    <text x={330} y={235} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>C</text>
+    <circle cx={390} cy={230} r={10} fill="#fff" />
+    <text x={390} y={235} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>C</text>
+    <circle cx={330} cy={190} r={10} fill="#fff" />
+    <text x={330} y={195} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={330} cy={270} r={10} fill="#fff" />
+    <text x={330} y={275} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={290} cy={230} r={10} fill="#fff" />
+    <text x={290} y={235} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={390} cy={190} r={10} fill="#fff" />
+    <text x={390} y={195} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>O</text>
+    <circle cx={450} cy={230} r={10} fill="#fff" />
+    <text x={450} y={235} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>O</text>
+    <circle cx={490} cy={230} r={10} fill="#fff" />
+    <text x={490} y={235} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <T x={70} y={172} size={12}>methane CH₄</T>
+    <T x={230} y={172} size={12}>ethane C₂H₆</T>
+    <T x={420} y={172} size={12}>ethene C₂H₄</T>
+    <T x={130} y={300} size={12}>ethanol C₂H₅OH</T>
+    <T x={390} y={300} size={12}>ethanoic acid CH₃COOH</T>
+  </Svg>
+);
+
+const FractionalDistillation = () => (
+  <Svg w={560} h={330} label="Fractionating column for petroleum: heated crude oil enters near the bottom, fractions leave at different heights, from refinery gases at the top to bitumen at the bottom">
+    <rect x={190} y={40} width={110} height={262} rx={14} fill="#f3f4f6" stroke={K} strokeWidth={2.5} />
+    <L x1={190} y1={80} x2={300} y2={80} w={1} />
+    <L x1={190} y1={118} x2={300} y2={118} w={1} />
+    <L x1={190} y1={156} x2={300} y2={156} w={1} />
+    <L x1={190} y1={194} x2={300} y2={194} w={1} />
+    <L x1={190} y1={232} x2={300} y2={232} w={1} />
+    <L x1={190} y1={270} x2={300} y2={270} w={1} />
+        <L x1={300} y1={62} x2={330} y2={62} w={1.4} />
+    <T x={336} y={60} size={12} anchor="start" bold>refinery gases (LPG)</T>
+    <T x={336} y={74} size={11} anchor="start">heating and cooking</T>
+    <L x1={300} y1={100} x2={330} y2={100} w={1.4} />
+    <T x={336} y={98} size={12} anchor="start" bold>petrol</T>
+    <T x={336} y={112} size={11} anchor="start">car fuel</T>
+    <L x1={300} y1={138} x2={330} y2={138} w={1.4} />
+    <T x={336} y={136} size={12} anchor="start" bold>naphtha</T>
+    <T x={336} y={150} size={11} anchor="start">chemicals</T>
+    <L x1={300} y1={176} x2={330} y2={176} w={1.4} />
+    <T x={336} y={174} size={12} anchor="start" bold>kerosene</T>
+    <T x={336} y={188} size={11} anchor="start">jet fuel</T>
+    <L x1={300} y1={214} x2={330} y2={214} w={1.4} />
+    <T x={336} y={212} size={12} anchor="start" bold>diesel oil</T>
+    <T x={336} y={226} size={11} anchor="start">lorries, trains</T>
+    <L x1={300} y1={252} x2={330} y2={252} w={1.4} />
+    <T x={336} y={250} size={12} anchor="start" bold>fuel oil</T>
+    <T x={336} y={264} size={11} anchor="start">ships, heating</T>
+    <L x1={300} y1={288} x2={330} y2={288} w={1.4} />
+    <T x={336} y={286} size={12} anchor="start" bold>bitumen</T>
+    <T x={336} y={300} size={11} anchor="start">road surfaces</T>
+    <L x1={30} y1={200} x2={188} y2={200} arrow w={2.5} />
+    <T x={110} y={188} size={12}>heated crude oil in</T>
+    <T x={95} y={66} size={12}>cooler: shorter chains,</T>
+    <T x={95} y={80} size={12}>lower boiling points</T>
+    <T x={95} y={286} size={12}>hotter: longer chains,</T>
+    <T x={95} y={300} size={12}>higher boiling points</T>
+  </Svg>
+);
+
+const Polymerisation = () => (
+  <Svg w={560} h={210} label="Addition polymerisation: many ethene molecules join to form poly(ethene), shown with a repeat unit in brackets and subscript n">
+    <line x1={80.0} y1={103.2} x2={140.0} y2={103.2} stroke={K} strokeWidth={1.8} />
+    <line x1={80.0} y1={96.8} x2={140.0} y2={96.8} stroke={K} strokeWidth={1.8} />
+    <line x1={80} y1={100} x2={60} y2={64} stroke={K} strokeWidth={1.8} />
+    <line x1={80} y1={100} x2={60} y2={136} stroke={K} strokeWidth={1.8} />
+    <line x1={140} y1={100} x2={160} y2={64} stroke={K} strokeWidth={1.8} />
+    <line x1={140} y1={100} x2={160} y2={136} stroke={K} strokeWidth={1.8} />
+    <line x1={360} y1={100} x2={420} y2={100} stroke={K} strokeWidth={1.8} />
+    <line x1={318} y1={100} x2={360} y2={100} stroke={K} strokeWidth={1.8} />
+    <line x1={420} y1={100} x2={462} y2={100} stroke={K} strokeWidth={1.8} />
+    <line x1={360} y1={100} x2={360} y2={62} stroke={K} strokeWidth={1.8} />
+    <line x1={360} y1={100} x2={360} y2={138} stroke={K} strokeWidth={1.8} />
+    <line x1={420} y1={100} x2={420} y2={62} stroke={K} strokeWidth={1.8} />
+    <line x1={420} y1={100} x2={420} y2={138} stroke={K} strokeWidth={1.8} />
+    <circle cx={80} cy={100} r={10} fill="#fff" />
+    <text x={80} y={105} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>C</text>
+    <circle cx={140} cy={100} r={10} fill="#fff" />
+    <text x={140} y={105} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>C</text>
+    <circle cx={60} cy={64} r={10} fill="#fff" />
+    <text x={60} y={69} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={60} cy={136} r={10} fill="#fff" />
+    <text x={60} y={141} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={160} cy={64} r={10} fill="#fff" />
+    <text x={160} y={69} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={160} cy={136} r={10} fill="#fff" />
+    <text x={160} y={141} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={360} cy={100} r={10} fill="#fff" />
+    <text x={360} y={105} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>C</text>
+    <circle cx={420} cy={100} r={10} fill="#fff" />
+    <text x={420} y={105} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>C</text>
+    <circle cx={360} cy={62} r={10} fill="#fff" />
+    <text x={360} y={67} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={360} cy={138} r={10} fill="#fff" />
+    <text x={360} y={143} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={420} cy={62} r={10} fill="#fff" />
+    <text x={420} y={67} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <circle cx={420} cy={138} r={10} fill="#fff" />
+    <text x={420} y={143} textAnchor="middle" fontSize={14} fontWeight={700} fill={K}>H</text>
+    <path d="M335 52 h-9 v96 h9" fill="none" stroke={K} strokeWidth={2} />
+    <path d="M445 52 h9 v96 h-9" fill="none" stroke={K} strokeWidth={2} />
+    <T x={462} y={160} size={15} bold anchor="start">n</T>
+    <L x1={195} y1={100} x2={285} y2={100} arrow w={2.5} />
+    <T x={240} y={84} size={11}>high pressure,</T>
+
+    <T x={240} y={122} size={11}>catalyst</T>
+    <T x={110} y={180} size={12}>n ethene molecules (monomer)</T>
+    <T x={390} y={190} size={12}>poly(ethene): repeat unit in brackets</T>
+  </Svg>
+);
+
+const Titration = () => (
+  <Svg w={420} h={340} label="Titration apparatus: a burette of acid above a conical flask containing alkali and indicator, standing on a white tile">
+    <rect x={40} y={318} width={150} height={10} fill="#9ca3af" stroke={K} strokeWidth={1.5} />
+    <L x1={65} y1={20} x2={65} y2={318} w={5} stroke="#6b7280" />
+    <L x1={65} y1={70} x2={152} y2={70} w={4} stroke="#6b7280" />
+    <rect x={150} y={20} width={22} height={150} fill="#e0f2fe" stroke={K} strokeWidth={2} />
+    {[30, 50, 70, 90, 110, 130].map((y) => <line key={y} x1={150} y1={y} x2={159} y2={y} stroke={K} strokeWidth={1.2} />)}
+    <rect x={148} y={170} width={26} height={7} fill="#6b7280" stroke={K} strokeWidth={1.2} />
+    <line x1={161} y1={177} x2={161} y2={218} stroke={K} strokeWidth={3} />
+    <polygon points="145,262 177,262 205,300 117,300" fill="#fde2e4" stroke={K} strokeWidth={2} />
+    <rect x={146} y={228} width={30} height={34} fill="#fff" stroke={K} strokeWidth={2} />
+    <rect x={116} y={300} width={90} height={8} fill="#fff" stroke={K} strokeWidth={1.5} />
+    <rect x={95} y={308} width={132} height={10} fill="#fff" stroke={K} strokeWidth={1.8} />
+    <T x={250} y={50} anchor="start" size={13}>burette (acid)</T>
+    <L x1={246} y1={46} x2={176} y2={46} w={1.2} />
+    <T x={250} y={173} anchor="start" size={13}>tap</T>
+    <L x1={246} y1={169} x2={178} y2={173} w={1.2} />
+    <T x={250} y={262} anchor="start" size={13}>conical flask: alkali</T>
+    <T x={250} y={278} anchor="start" size={13}>+ a few drops of indicator</T>
+    <L x1={246} y1={258} x2={196} y2={282} w={1.2} />
+    <T x={250} y={322} anchor="start" size={13}>white tile (to see the colour)</T>
+    <L x1={246} y1={318} x2={232} y2={314} w={1.2} />
+  </Svg>
+);
+
+const Chromatography = () => (
+  <Svg w={560} h={300} label="Paper chromatography: apparatus on the left and a finished chromatogram on the right with the solvent front and baseline marked and Rf calculated">
+    <path d="M45 110 L45 268 L165 268 L165 110" fill="none" stroke={K} strokeWidth={2.5} />
+    <rect x={46} y={222} width={118} height={45} fill="#e6f0fa" />
+    <rect x={92} y={62} width={26} height={196} fill="#fff" stroke={K} strokeWidth={1.6} />
+    <L x1={70} y1={62} x2={140} y2={62} w={4} stroke="#6b7280" />
+    <line x1={92} y1={206} x2={118} y2={206} stroke="#6b7280" strokeWidth={1.8} />
+    {[98, 105, 112].map((x) => <circle key={x} cx={x} cy={206} r={2.6} fill={K} />)}
+    <T x={185} y={206} anchor="start" size={12}>pencil baseline</T>
+    <T x={185} y={246} anchor="start" size={12}>solvent below</T>
+    <T x={185} y={260} anchor="start" size={12}>the baseline</T>
+    <T x={105} y={288} size={12}>apparatus</T>
+    <rect x={330} y={40} width={130} height={190} fill="#fff" stroke={K} strokeWidth={1.8} />
+    <line x1={330} y1={70} x2={460} y2={70} stroke={K} strokeWidth={1.4} strokeDasharray="5 4" />
+    <line x1={330} y1={205} x2={460} y2={205} stroke="#6b7280" strokeWidth={1.6} />
+    <T x={395} y={60} size={11}>solvent front</T>
+    {[[352, 'X'], [395, 'Y'], [438, 'mixture']].map(([x, n]) => <T key={n} x={x} y={222} size={11}>{n === 'mixture' ? 'mix' : n}</T>)}
+    <ellipse cx={352} cy={145} rx={7} ry={5} fill="#ef4444" stroke={K} strokeWidth={1.2} />
+    <ellipse cx={395} cy={105} rx={7} ry={5} fill="#3b82f6" stroke={K} strokeWidth={1.2} />
+    <ellipse cx={438} cy={145} rx={7} ry={5} fill="#ef4444" stroke={K} strokeWidth={1.2} />
+    <ellipse cx={438} cy={105} rx={7} ry={5} fill="#3b82f6" stroke={K} strokeWidth={1.2} />
+    <L x1={480} y1={205} x2={480} y2={146} arrow w={1.6} />
+    <T x={490} y={180} anchor="start" size={12}>a</T>
+    <L x1={520} y1={205} x2={520} y2={72} arrow w={1.6} />
+    <T x={530} y={140} anchor="start" size={12}>b</T>
+    <T x={470} y={252} size={13} bold anchor="middle">Rf = a ÷ b</T>
+    <T x={395} y={288} size={12}>chromatogram</T>
+  </Svg>
+);
+
+const Distillation = () => (
+  <Svg w={580} h={300} label="Simple distillation: salt water boiled in a flask, vapour passes through a condenser with cold water flowing, and pure water collects in a beaker">
+    <circle cx={110} cy={200} r={46} fill="#fff" stroke={K} strokeWidth={2.5} />
+    <path d="M70 218 A46 46 0 0 0 150 218 Z" fill="#e6f0fa" />
+    <rect x={98} y={104} width={24} height={52} fill="#fff" stroke={K} strokeWidth={2.5} />
+    <line x1={110} y1={60} x2={110} y2={150} stroke={K} strokeWidth={3} />
+    <rect x={104} y={60} width={12} height={8} fill={K} />
+    <polygon points="124,112 175,98 180,116 124,128" fill="#fff" stroke={K} strokeWidth={2} />
+    <polygon points="170,96 420,196 412,214 164,116" fill="#e6f0fa" stroke={K} strokeWidth={2.5} />
+    <line x1={172} y1={106} x2={416} y2={205} stroke={K} strokeWidth={2} />
+    <L x1={300} y1={226} x2={336} y2={226} arrow w={2} />
+    <T x={318} y={248} size={12}>cold water in</T>
+    <L x1={238} y1={92} x2={274} y2={92} arrow w={2} />
+    <T x={256} y={80} size={12}>water out</T>
+    <path d="M410 240 L410 290 L470 290 L470 240" fill="none" stroke={K} strokeWidth={2.5} />
+    <rect x={411} y={268} width={58} height={21} fill="#e6f0fa" />
+    <L x1={420} y1={216} x2={430} y2={262} arrow w={1.6} />
+    <T x={476} y={262} anchor="start" size={12}>pure water</T>
+    <T x={476} y={276} anchor="start" size={12}>(distillate)</T>
+    <polygon points="110,262 98,284 122,284" fill="#f59e0b" stroke={K} strokeWidth={1.4} />
+    <T x={110} y={298} size={12}>heat</T>
+    <T x={30} y={250} anchor="start" size={12}>salt water</T>
+    <T x={150} y={56} anchor="start" size={12}>thermometer</T>
+    <T x={320} y={140} size={12} anchor="start">condenser</T>
+
+  </Svg>
+);
+
 export const CHEM_FIGS = {
+  organicFormulae: OrganicFormulae,
+  fractionalDistillation: FractionalDistillation,
+  polymerisation: Polymerisation,
+  titration: Titration,
+  chromatography: Chromatography,
+  distillation: Distillation,
   reactivitySeries: ReactivitySeries,
   blastFurnace: BlastFurnace,
   phScale: PhScale,
