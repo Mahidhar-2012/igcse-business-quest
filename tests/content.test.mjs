@@ -11,6 +11,7 @@ const pub = (p) => path.join(root, 'public', p);
 const physics = await import('../src/physics/data/index.js');
 const business = await import('../src/data/syllabusData.js');
 const chemistry = await import('../src/chemistry/data/index.js');
+const economics = await import('../src/economics/data/index.js');
 const english = await import('../src/english/data/index.js');
 const { SUBJECT_META } = await import('../src/lib/overview.js');
 
@@ -21,11 +22,12 @@ test('lesson totals used by the hub match the real content', () => {
   assert.equal(SUBJECT_META.physics.total, lessonsOf(physics.units).length);
   assert.equal(SUBJECT_META.business.total, lessonsOf(business.units).length);
   assert.equal(SUBJECT_META.chemistry.total, lessonsOf(chemistry.units).length);
+  assert.equal(SUBJECT_META.economics.total, lessonsOf(economics.units).length);
   assert.equal(SUBJECT_META.english.total, english.allLessons.length);
 });
 
 test('every question id is unique and every lesson has content', () => {
-  for (const [name, course] of [['physics', physics], ['business', business], ['chemistry', chemistry]]) {
+  for (const [name, course] of [['physics', physics], ['business', business], ['chemistry', chemistry], ['economics', economics]]) {
     const ids = Object.keys(course.questionIndex);
     assert.equal(new Set(ids).size, ids.length, `${name}: duplicate question ids`);
     for (const sub of lessonsOf(course.units)) assert.ok(sub.cards.length > 0, `${name}: ${sub.id} has no cards`);
@@ -33,7 +35,7 @@ test('every question id is unique and every lesson has content', () => {
 });
 
 test('multiple-choice and scenario questions are well formed', () => {
-  for (const [name, course] of [['physics', physics], ['business', business], ['chemistry', chemistry]]) {
+  for (const [name, course] of [['physics', physics], ['business', business], ['chemistry', chemistry], ['economics', economics]]) {
     for (const { qid, challenge: q } of allQuestions(course)) {
       if (q.type === 'mcq') {
         assert.ok(q.options.length >= 2, `${name} ${qid}: needs 2+ options`);
@@ -74,10 +76,10 @@ test('physics: every past-paper image exists and every answer is A to D', () => 
 
 test('physics: figure references point to existing vector diagrams', async () => {
   const fs = await import('node:fs');
-  const src = ['svgFigs.jsx', 'svgChem.jsx'].map((f) => fs.readFileSync(path.join(root, 'src/components', f), 'utf8')).join('\n');
+  const src = ['svgFigs.jsx', 'svgChem.jsx', 'svgEcon.jsx'].map((f) => fs.readFileSync(path.join(root, 'src/components', f), 'utf8')).join('\n');
   const keys = new Set([...src.matchAll(/^  (\w+): \w+,$/gm)].map((m) => m[1]));
   let checked = 0;
-  for (const course of [physics, chemistry]) {
+  for (const course of [physics, chemistry, economics]) {
     for (const { qid, challenge } of allQuestions(course)) {
       if (challenge.fig?.svg) { checked += 1; assert.ok(keys.has(challenge.fig.svg), `${qid}: unknown diagram ${challenge.fig.svg}`); }
     }

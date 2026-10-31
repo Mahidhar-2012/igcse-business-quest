@@ -27,7 +27,21 @@ export const SUBJECTS_META = [
     storageKey: 'igcse-chemistry-quest:v1',
     total: 48,
     kind: 'progress',
-  },  {
+  },
+  {
+    id: 'economics',
+    hash: '#/economics',
+    title: 'Economics',
+    code: '0455',
+    blurb: 'Knowledge bytes with exam-style supply and demand diagrams and tests for the 2027–2029 syllabus. First pass: all 6 syllabus topics.',
+    tag: 'Lessons + diagrams',
+    color: '#d97706',
+    text: '#b45309',
+    storageKey: 'igcse-economics-quest:v1',
+    total: 36,
+    kind: 'progress',
+  },
+  {
     id: 'business',
     hash: '#/business',
     title: 'Business Studies',

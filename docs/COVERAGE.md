@@ -49,6 +49,17 @@ Known limits:
 - No Core versus Supplement labelling yet.
 - Calculation questions accept numeric answers only (no units in the answer box).
 
+## Economics 0455
+
+**Syllabus:** Cambridge IGCSE Economics 0455, for examination in 2027, 2028 and 2029. Content is original and was written from the published topic structure.
+**Structure:** 6 units (basic economic problem; allocation of resources; microeconomic decision-makers; government and the macroeconomy; economic development; international trade), 36 lessons, about 70 knowledge bytes each with one test, and 17 original exam-style diagrams (PPC and shifts, demand and supply curves and shifts, equilibrium, surplus and shortage, price changes, PED curves, maximum and minimum prices, indirect tax, subsidy, labour market, cost curves, exchange rate, business cycle). Diagram intersections are computed from exact formulae.
+
+Known limits:
+- This is a first pass at byte level (one to a few bytes per syllabus sub-topic). Not every individual learning objective is mapped, and Supplement-only depth is thin.
+- There are no past-paper questions or written exam practice for Economics yet. Test questions are original.
+- Several topics (for example 2.9 market failure, 3.7 market structures, 4.2 to 4.4 policy, 5.x development) have no diagrams and would benefit from worked examples and data-response practice.
+- Diagrams have been checked visually but have not been reviewed by a subject expert.
+
 ## English 0510 / 0511
 
 **Structure:** 11 sections, 42 lessons: exam map, reading, the five writing tasks (email, review, report, essay, article), language boosters, a skills workshop (grammar fixes, sentence upgrades, planning, annotated models, self-check lists, reading practice), listening and speaking, and 38 sample answers with their questions.
