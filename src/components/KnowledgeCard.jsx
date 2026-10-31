@@ -45,7 +45,7 @@ function Rich({ parts }) {
 }
 
 const Header = ({ recap, no, of, pc, example, hasTest, hasPractice }) => (
-  <p className="mb-3 flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-sky-600">
+  <p className="mb-3 flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-sky-800">
     {recap ? <Sparkles className="h-4 w-4" aria-hidden /> : <BookOpen className="h-4 w-4" aria-hidden />}
     {recap
       ? hasPractice ? 'Recap · then a practice round' : 'Recap'

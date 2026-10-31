@@ -15,7 +15,7 @@ export default function PhysicsCard({ card, no, of, recap, hasPractice }) {
   const hasTest = (card.tests?.length || 0) > 0;
   return (
     <div className="pop">
-      <p className="mb-3 flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-sky-600">
+      <p className="mb-3 flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-sky-800">
         {recap ? <Sparkles className="h-4 w-4" aria-hidden /> : <BookOpen className="h-4 w-4" aria-hidden />}
         {recap ? (hasPractice ? 'Recap · then a practice round' : 'Recap') : hasTest ? `Knowledge byte ${no} of ${of} · read it, then you’ll be tested` : `Knowledge byte ${no} of ${of}`}
       </p>

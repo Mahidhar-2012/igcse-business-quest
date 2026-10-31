@@ -10,7 +10,7 @@ export function Rich({ text }) {
   });
 }
 
-const Label = ({ icon: Icon, children, color = 'text-sky-600' }) => (
+const Label = ({ icon: Icon, children, color = 'text-sky-800' }) => (
   <p className={`mb-3 flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest ${color}`}>
     <Icon className="h-4 w-4" aria-hidden /> {children}
   </p>
@@ -82,7 +82,7 @@ function Model({ card }) {
       <section className="rounded-2xl border-2 border-sky-200 bg-sky-50/70 p-4 text-sm font-semibold leading-relaxed text-slate-700" aria-label="Task">
         <p className="mb-1 text-xs font-extrabold uppercase tracking-widest text-sky-700">Task</p>
         {[].concat(card.task).map((t) => <p key={t} className="mb-1.5 last:mb-0"><Rich text={t} /></p>)}
-        {card.words && <p className="mt-2 text-xs font-extrabold text-slate-500">{card.words}</p>}
+        {card.words && <p className="mt-2 text-xs font-extrabold text-slate-700">{card.words}</p>}
       </section>
       <section className="rounded-2xl border-2 border-green-200 bg-green-50 p-4" aria-label="Model answer">
         <p className="mb-2 flex items-center gap-1 text-xs font-extrabold uppercase tracking-widest text-green-700"><PenLine className="h-4 w-4" aria-hidden /> Model answer</p>

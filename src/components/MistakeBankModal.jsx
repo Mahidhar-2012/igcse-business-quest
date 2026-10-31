@@ -30,7 +30,7 @@ export default function MistakeBankModal({ mistakes, onClose, onStartDrill, cour
         <div className="flex items-center gap-3 border-b-2 border-slate-100 p-5">
           <ShieldAlert className="h-6 w-6 text-rose-500" aria-hidden />
           <h2 id="mistake-title" className="flex-1 text-xl font-black">Mistake Bank <span className="text-rose-500">({mistakes.length})</span></h2>
-          <button ref={closeRef} type="button" onClick={onClose} aria-label="Close" className="rounded-xl p-2 text-slate-400 hover:bg-slate-100 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300">
+          <button ref={closeRef} type="button" onClick={onClose} aria-label="Close" className="rounded-xl p-2 text-slate-500 hover:bg-slate-100 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -56,7 +56,7 @@ export default function MistakeBankModal({ mistakes, onClose, onStartDrill, cour
                     const { challenge, sub } = questionIndex[id];
                     return (
                       <li key={id} className="rounded-xl border-2 border-slate-100 p-3 text-sm">
-                        <p className="mb-0.5 text-[11px] font-extrabold uppercase tracking-wider text-slate-400">{sub.title} · {TYPE_LABEL[challenge.type] || 'Past paper'}</p>
+                        <p className="mb-0.5 text-[11px] font-extrabold uppercase tracking-wider text-slate-500">{sub.title} · {TYPE_LABEL[challenge.type] || 'Past paper'}</p>
                         <p className="font-bold">{challenge.q || challenge.src || 'Past-paper question'}</p>
                       </li>
                     );

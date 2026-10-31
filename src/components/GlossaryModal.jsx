@@ -30,13 +30,13 @@ export default function GlossaryModal({ onClose }) {
       >
         <div className="flex items-center gap-3 border-b-2 border-slate-100 p-5">
           <BookText className="h-6 w-6 text-amber-500" aria-hidden />
-          <h2 id="glossary-title" className="flex-1 text-xl font-black">Key terms <span className="text-slate-400">({glossary.length})</span></h2>
-          <button type="button" onClick={onClose} aria-label="Close glossary" className="rounded-xl p-2 text-slate-400 hover:bg-slate-100 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300">
+          <h2 id="glossary-title" className="flex-1 text-xl font-black">Key terms <span className="text-slate-500">({glossary.length})</span></h2>
+          <button type="button" onClick={onClose} aria-label="Close glossary" className="rounded-xl p-2 text-slate-500 hover:bg-slate-100 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300">
             <X className="h-5 w-5" />
           </button>
         </div>
         <label className="flex items-center gap-2 border-b-2 border-slate-100 px-5 py-3">
-          <Search className="h-4 w-4 text-slate-400" aria-hidden />
+          <Search className="h-4 w-4 text-slate-500" aria-hidden />
           <input
             ref={inputRef}
             value={q}
@@ -46,8 +46,8 @@ export default function GlossaryModal({ onClose }) {
             aria-label="Search glossary"
           />
         </label>
-        <dl className="flex-1 space-y-3 overflow-y-auto p-5">
-          {list.length === 0 && <p className="text-center font-bold text-slate-400">No matching terms.</p>}
+        <dl tabIndex={0} aria-label="Key terms and definitions" className="flex-1 space-y-3 overflow-y-auto p-5">
+          {list.length === 0 && <p className="text-center font-bold text-slate-500">No matching terms.</p>}
           {list.map((g) => (
             <div key={g.term}>
               <dt className="font-black">{g.term}</dt>

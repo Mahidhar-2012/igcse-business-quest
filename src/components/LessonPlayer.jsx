@@ -32,6 +32,7 @@ export default function LessonPlayer({ mode = 'lesson', title, badge, items, act
   const [xp, setXp] = useState(0);
   const [toast, setToast] = useState(null);
   const finished = useRef(false);
+  const cardRef = useRef(null);
 
   const current = queue[idx];
   const isCard = current?.kind === 'card';
@@ -111,6 +112,11 @@ export default function LessonPlayer({ mode = 'lesson', title, badge, items, act
     return () => window.removeEventListener('keydown', onKey);
   }, [phase, next]);
 
+  // Move focus to the new card or question so keyboard and screen-reader users land on it.
+  useEffect(() => {
+    cardRef.current?.focus({ preventScroll: true });
+  }, [idx, phase]);
+
   // Esc leaves the lesson.
   useEffect(() => {
     const onKey = (e) => e.key === 'Escape' && onExit();
@@ -176,7 +182,7 @@ export default function LessonPlayer({ mode = 'lesson', title, badge, items, act
           {toast}
         </div>
       )}
-      <div className={`card p-5 sm:p-6 ${isCard ? '!border-sky-200 !bg-sky-50/60' : ''}`} key={`${idx}-${current.qid || current.card?.title}`}>
+      <div ref={cardRef} tabIndex={-1} className={`card p-5 outline-none sm:p-6 ${isCard ? '!border-sky-200 !bg-sky-50/60' : ''}`} key={`${idx}-${current.qid || current.card?.title}`}>
         {inBoss && (
           <p className="mb-3 inline-flex items-center gap-1 rounded-full bg-rose-100 px-3 py-1 text-xs font-extrabold uppercase text-rose-700">
             <Swords className="h-3.5 w-3.5" aria-hidden /> Re-test: you missed this one
@@ -199,9 +205,9 @@ export default function LessonPlayer({ mode = 'lesson', title, badge, items, act
 
 function Shell({ title, badge, pct, xp, streak = 0, onExit, label, boss, children }) {
   return (
-    <div className="mx-auto min-h-screen max-w-2xl px-4 pb-32 pt-4">
+    <main id="main" tabIndex={-1} className="mx-auto min-h-screen max-w-2xl px-4 pb-32 pt-4 outline-none">
       <div className="mb-5 flex items-center gap-3">
-        <button type="button" onClick={onExit} aria-label="Exit lesson (Esc)" className="rounded-xl p-2 text-slate-400 hover:bg-slate-200 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300">
+        <button type="button" onClick={onExit} aria-label="Exit lesson (Esc)" className="icon-btn">
           <X className="h-6 w-6" />
         </button>
         <div
@@ -214,16 +220,16 @@ function Shell({ title, badge, pct, xp, streak = 0, onExit, label, boss, childre
         >
           <div className={`h-full rounded-full transition-all duration-500 ${boss ? 'bg-rose-500' : 'bg-brand'}`} style={{ width: `${Math.max(pct, 3)}%` }} />
         </div>
-        <span className="flex items-center gap-1 text-sm font-extrabold text-amber-500" title="XP this session"><Zap className="h-4 w-4" aria-hidden />{xp}</span>
-        {streak >= 2 && <span className="flex items-center gap-1 text-sm font-extrabold text-orange-500" title="Answers in a row"><Flame className="h-4 w-4" aria-hidden />{streak}</span>}
+        <span className="flex items-center gap-1 text-sm font-extrabold text-amber-700" title="XP this session"><Zap className="h-4 w-4" aria-hidden />{xp}</span>
+        {streak >= 2 && <span className="flex items-center gap-1 text-sm font-extrabold text-orange-700" title="Answers in a row"><Flame className="h-4 w-4" aria-hidden />{streak}</span>}
       </div>
       <div className="mb-4 flex flex-wrap items-center gap-2">
         {badge && <span className="rounded-full bg-slate-200 px-3 py-1 text-xs font-extrabold text-slate-600">{badge}</span>}
         <h1 className="text-sm font-extrabold text-slate-500">{title}</h1>
-        {label && <span className="ml-auto text-sm font-extrabold text-slate-400">{label}</span>}
+        {label && <span className="ml-auto text-sm font-extrabold text-slate-500">{label}</span>}
       </div>
       {children}
-    </div>
+    </main>
   );
 }
 
@@ -235,7 +241,7 @@ const Footer = ({ children }) => (
 
 const Stat = ({ icon, label, value }) => (
   <div className="rounded-2xl border-2 border-slate-200 p-3">
-    <p className="flex items-center gap-1 text-xs font-extrabold uppercase text-slate-400">{icon}{label}</p>
+    <p className="flex items-center gap-1 text-xs font-extrabold uppercase text-slate-500">{icon}{label}</p>
     <p className="text-2xl font-black">{value}</p>
   </div>
 );

@@ -44,7 +44,7 @@ const Stars = ({ n, size = 'h-4 w-4' }) => (
   </span>
 );
 
-export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeUnitId, onSelectUnit, onStartSub, onStartBoss, onStartExam, onStartPaper, units, heading = 'IGCSE Business 0264', gradient = 'from-brand to-emerald-500' }) {
+export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeUnitId, onSelectUnit, onStartSub, onStartBoss, onStartExam, onStartPaper, units, heading = 'IGCSE Business 0264', gradient = 'from-emerald-700 to-emerald-600' }) {
   const unit = units.find((u) => u.id === activeUnitId) || units[0];
   const pathRef = useRef(null);
   const lastUnit = useRef(activeUnitId);
@@ -63,7 +63,7 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
   );
 
   return (
-    <main className="mx-auto max-w-5xl px-4 pb-16 pt-6">
+    <main id="main" tabIndex={-1} className="mx-auto max-w-5xl px-4 pb-16 pt-6 outline-none">
       <section className={`mb-6 rounded-3xl bg-gradient-to-br ${gradient} p-6 text-white`}>
         <h1 className="text-3xl font-black">{heading}</h1>
         <p className="mt-1 font-bold text-white/90">
@@ -74,7 +74,7 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
         </div>
       </section>
 
-      <h2 className="mb-3 text-xs font-extrabold uppercase tracking-widest text-slate-400">Choose a unit</h2>
+      <h2 className="mb-3 text-xs font-extrabold uppercase tracking-widest text-slate-500">Choose a unit</h2>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         {units.map((u) => {
           const st = unitStats[u.id];
@@ -93,7 +93,7 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
               <ProgressRing value={st.mastery} color={UNIT_COLORS[u.color]} size={72}>
                 <span className="text-2xl">{u.emoji}</span>
               </ProgressRing>
-              <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-400">Unit {u.number}</span>
+              <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500">Unit {u.number}</span>
               <span className="text-sm font-black leading-tight">{u.title}</span>
               <span className="flex items-center gap-2 text-xs font-bold text-slate-500">
                 {st.mastery}% · {st.subsDone}/{st.total}
@@ -108,7 +108,7 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
         <div className="mb-6 flex items-center gap-3">
           <span className="text-4xl" aria-hidden>{unit.emoji}</span>
           <div>
-            <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: UNIT_COLORS[unit.color] }}>Unit {unit.number}</p>
+            <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: `color-mix(in srgb, ${UNIT_COLORS[unit.color]} 55%, black)` }}>Unit {unit.number}</p>
             <h2 className="text-2xl font-black">{unit.title}</h2>
           </div>
         </div>
@@ -117,6 +117,7 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
           {unit.submodules.map((sub, i) => {
             const rec = state.subs[sub.id];
             const unlocked = isSubUnlocked(unit, i);
+            const isNext = unlocked && !rec?.done && unit.submodules.findIndex((s) => !state.subs[s.id]?.done) === i;
             const offset = [0, 40, 0, -40][i % 4];
             const color = UNIT_COLORS[unit.color];
             return (
@@ -125,9 +126,10 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
                   type="button"
                   disabled={!unlocked}
                   onClick={() => onStartSub(unit, sub)}
-                  aria-label={`${sub.title}${rec?.done ? `, completed with ${rec.stars} stars` : unlocked ? ', start' : ', locked'}`}
-                  className="grid h-20 w-20 shrink-0 place-items-center rounded-full border-b-8 text-white transition active:translate-y-1 active:border-b-4 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-sky-300"
+                  aria-label={`${sub.title}${rec?.done ? `, completed with ${rec.stars} stars` : isNext ? ', next up' : unlocked ? ', start' : ', locked'}`}
+                  className={`grid h-20 w-20 shrink-0 ${isNext ? 'ring-4 ring-offset-4' : ''} place-items-center rounded-full border-b-8 text-white transition active:translate-y-1 active:border-b-4 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-sky-300`}
                   style={{
+                    '--tw-ring-color': color + '66',
                     background: unlocked ? color : '#cbd5e1',
                     borderColor: unlocked ? color + 'aa' : '#94a3b8',
                     filter: unlocked ? undefined : 'saturate(0.6)',
@@ -136,8 +138,9 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
                   {!unlocked ? <Lock className="h-8 w-8" /> : rec?.done ? <Check className="h-10 w-10" strokeWidth={4} /> : <Play className="h-9 w-9 fill-white" />}
                 </button>
                 <div className="min-w-0">
+                  {isNext && <span className="mb-1 inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-extrabold uppercase tracking-wide text-amber-900">Next up</span>}
                   <p className="font-black leading-tight">{sub.title}</p>
-                  <p className="text-xs font-bold text-slate-400">
+                  <p className="text-xs font-bold text-slate-500">
                     Syllabus {sub.syllabus} · {sub.cards.length} bytes ·{' '}
                     {sub.challenges.length + sub.cards.reduce((n, c) => n + c.tests.length, 0) === 0
                       ? 'notes only, no questions'
@@ -169,7 +172,7 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
                   </button>
                   <div>
                     <p className="font-black">Unit {unit.number} Mega Quiz</p>
-                    <p className="text-xs font-bold text-slate-400">{unit.submodules.length * 5} questions · 5 from every lesson</p>
+                    <p className="text-xs font-bold text-slate-500">{unit.submodules.length * 5} questions · 5 from every lesson</p>
                     {unitStats[unit.id].crown > 0 && <Stars n={unitStats[unit.id].crown} />}
                   </div>
                 </>
@@ -193,7 +196,7 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
                 </button>
                 <div>
                   <p className="font-black">{paper.kind === 'written' ? 'Written exam questions' : 'Past paper practice'}</p>
-                  <p className="text-xs font-bold text-slate-400">{paper.title} · {paper.round ? `${paper.round} random of ${paper.ids.length}` : paper.ids.length} {paper.kind === 'written' ? 'written questions, self-marked' : 'exam questions with diagrams'}</p>
+                  <p className="text-xs font-bold text-slate-500">{paper.title} · {paper.round ? `${paper.round} random of ${paper.ids.length}` : paper.ids.length} {paper.kind === 'written' ? 'written questions, self-marked' : 'exam questions with diagrams'}</p>
                   {best > 0 && <p className="text-xs font-extrabold text-violet-600">Best: {best}%</p>}
                 </div>
               </li>
@@ -218,7 +221,7 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
                 </button>
                 <div>
                   <p className="font-black">{exam.paper === 1 ? 'Paper 1 practice' : 'Paper 2 case study'}</p>
-                  <p className="text-xs font-bold text-slate-400">{exam.title} · {marks} marks · written, self-marked</p>
+                  <p className="text-xs font-bold text-slate-500">{exam.title} · {marks} marks · written, self-marked</p>
                   {best > 0 && <p className="text-xs font-extrabold text-violet-600">Best: {best}%</p>}
                 </div>
               </li>

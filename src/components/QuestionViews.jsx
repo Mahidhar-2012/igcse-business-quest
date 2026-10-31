@@ -20,7 +20,7 @@ const AO_CHIP = {
 
 const Prompt = ({ label, ao, fig, children }) => (
   <div className="mb-5">
-    <p className="mb-2 flex flex-wrap items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-slate-400">
+    <p className="mb-2 flex flex-wrap items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-slate-500">
       {label}
       {ao && AO_CHIP[ao] && <span className={`rounded-full px-2 py-0.5 normal-case tracking-normal ${AO_CHIP[ao][1]}`}>{AO_CHIP[ao][0]}</span>}
     </p>
@@ -88,7 +88,7 @@ export function MultiChoice({ q, onResolve }) {
             <li key={orig}>
               <button type="button" className={`choice ${style}`} disabled={resolved} onClick={() => choose(di)}>
                 <span className="flex items-start gap-3">
-                  <kbd className="mt-0.5 rounded-lg border-2 border-slate-200 px-2 text-xs font-extrabold text-slate-400">
+                  <kbd className="mt-0.5 rounded-lg border-2 border-slate-200 px-2 text-xs font-extrabold text-slate-500">
                     {di + 1}
                   </kbd>
                   <span className="flex-1">{opt.text}</span>
@@ -136,7 +136,7 @@ export function Ordering({ q, onResolve }) {
     <div>
       <Prompt label="Put it in order — tap steps in sequence" ao={q.ao} fig={q.fig}>{q.q}</Prompt>
       <ol className="mb-4 min-h-[3.5rem] space-y-2 rounded-2xl border-2 border-dashed border-slate-300 bg-white p-3" aria-label="Your sequence">
-        {seq.length === 0 && <li className="text-sm font-semibold text-slate-400">Tap the steps below, first step first…</li>}
+        {seq.length === 0 && <li className="text-sm font-semibold text-slate-500">Tap the steps below, first step first…</li>}
         {seq.map((idx, pos) => {
           const correctHere = resolved && items[idx].i === pos;
           const wrongHere = resolved && !correctHere;
@@ -211,7 +211,7 @@ export function Scenario({ q, onResolve }) {
             <li key={orig}>
               <button type="button" className={`choice ${style}`} disabled={resolved} onClick={() => choose(di)}>
                 <span className="flex items-start gap-3">
-                  <kbd className="mt-0.5 rounded-lg border-2 border-slate-200 px-2 text-xs font-extrabold text-slate-400">{di + 1}</kbd>
+                  <kbd className="mt-0.5 rounded-lg border-2 border-slate-200 px-2 text-xs font-extrabold text-slate-500">{di + 1}</kbd>
                   <span className="flex-1">{d.text}</span>
                 </span>
                 {resolved && (
@@ -283,7 +283,7 @@ export function Calculation({ q, onResolve }) {
             resolved ? (result ? 'border-green-400 bg-green-50' : 'border-rose-400 bg-rose-50') : 'border-slate-200 bg-white'
           }`}
         />
-        {q.unit && <span className="grid place-items-center text-sm font-extrabold text-slate-400">{q.unit}</span>}
+        {q.unit && <span className="grid place-items-center text-sm font-extrabold text-slate-500">{q.unit}</span>}
         {!resolved && (
           <button type="button" className="btn btn-green" disabled={parseNumber(val) === null} onClick={check}>Check</button>
         )}
@@ -326,7 +326,7 @@ export function TrueFalse({ q, onResolve }) {
           else if (resolved && o.id === picked) style = '!border-rose-400 !bg-rose-50 shake';
           return (
             <button key={o.id} type="button" disabled={resolved} onClick={() => choose(i)} className={`choice text-center ${style}`}>
-              <kbd className="mr-2 rounded-lg border-2 border-slate-200 px-2 text-xs font-extrabold text-slate-400">{i + 1}</kbd>
+              <kbd className="mr-2 rounded-lg border-2 border-slate-200 px-2 text-xs font-extrabold text-slate-500">{i + 1}</kbd>
               {o.label}
             </button>
           );
@@ -356,7 +356,7 @@ export function PaperMCQ({ q, onResolve }) {
 
   return (
     <div>
-      <p className="mb-2 text-xs font-extrabold uppercase tracking-widest text-slate-400">Past-paper question · {q.src}</p>
+      <p className="mb-2 text-xs font-extrabold uppercase tracking-widest text-slate-500">Past-paper question · {q.src}</p>
       <Figure fig={{ src: q.img, alt: 'Exam question with its diagram and options' }} />
       <p className="mb-2 mt-4 text-sm font-extrabold text-slate-500">Choose your answer</p>
       <ul className="grid grid-cols-4 gap-3">
@@ -394,7 +394,7 @@ export function PaperWritten({ q, onResolve }) {
   };
   return (
     <div>
-      <p className="mb-2 text-xs font-extrabold uppercase tracking-widest text-slate-400">Written question · {q.src}</p>
+      <p className="mb-2 text-xs font-extrabold uppercase tracking-widest text-slate-500">Written question · {q.src}</p>
       <p className="mb-2 text-sm font-bold text-slate-500">Answer it on paper first{q.marks ? ` (${q.marks} marks)` : ''}, then compare with the mark scheme.</p>
       <Figure fig={{ src: q.img, alt: 'Exam question with its diagrams', full: true }} />
       {!shown ? (

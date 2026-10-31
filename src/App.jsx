@@ -17,6 +17,7 @@ const SUBJECTS = [
     tag: 'Lessons + past papers',
     icon: Atom,
     color: '#6366f1',
+    text: '#4f46e5',
   },
   {
     id: 'business',
@@ -27,6 +28,7 @@ const SUBJECTS = [
     tag: 'Lessons + quizzes',
     icon: Briefcase,
     color: '#58cc02',
+    text: '#2f6d02',
   },
   {
     id: 'english',
@@ -37,6 +39,7 @@ const SUBJECTS = [
     tag: 'Notes + model answers',
     icon: PenLine,
     color: '#0ea5e9',
+    text: '#0369a1',
   },
 ];
 
@@ -61,7 +64,7 @@ const Stat = ({ icon: Icon, label, value, tint }) => (
     <span className={`grid h-10 w-10 place-items-center rounded-xl ${tint}`}><Icon className="h-5 w-5" aria-hidden /></span>
     <div>
       <p className="text-xl font-black leading-none">{value}</p>
-      <p className="mt-1 text-xs font-extrabold uppercase tracking-wider text-slate-400">{label}</p>
+      <p className="mt-1 text-xs font-extrabold uppercase tracking-wider text-slate-500">{label}</p>
     </div>
   </div>
 );
@@ -75,7 +78,7 @@ function Hub({ onOpen }) {
   const mistakes = Object.values(ov.subjects).reduce((n, s) => n + s.mistakes, 0);
 
   return (
-    <div className="mx-auto min-h-screen max-w-4xl px-4 pb-16 pt-6 sm:pt-10">
+    <main id="main" tabIndex={-1} className="mx-auto min-h-screen max-w-4xl outline-none px-4 pb-16 pt-6 sm:pt-10">
       <header className="mb-6">
         <h1 className="text-3xl font-black text-brand-dark sm:text-4xl">IGCSE Quest</h1>
         <p className="mt-1 font-semibold text-slate-600">
@@ -118,7 +121,7 @@ function Hub({ onOpen }) {
         </div>
       </section>
 
-      <h2 className="mb-3 text-xs font-extrabold uppercase tracking-widest text-slate-400">Your subjects</h2>
+      <h2 className="mb-3 text-xs font-extrabold uppercase tracking-widest text-slate-500">Your subjects</h2>
       <ul className="grid gap-4 sm:grid-cols-2">
         {SUBJECTS.map((s) => {
           const st = ov.subjects[s.id];
@@ -134,9 +137,9 @@ function Hub({ onOpen }) {
                 </Ring>
                 <span className="min-w-0 flex-1">
                   <span className="block text-lg font-black leading-tight">{s.title}</span>
-                  <span className="block text-xs font-extrabold uppercase tracking-widest text-slate-400">{s.code} · {s.tag}</span>
+                  <span className="block text-xs font-extrabold uppercase tracking-widest text-slate-500">{s.code} · {s.tag}</span>
                   <span className="mt-2 block text-sm font-semibold text-slate-600">{s.blurb}</span>
-                  <span className="mt-3 flex items-center gap-2 text-sm font-black" style={{ color: s.color }}>
+                  <span className="mt-3 flex items-center gap-2 text-sm font-black" style={{ color: s.text }}>
                     {st.started ? `${st.done}/${st.total} lessons · ${st.pct}%` : 'Start'}
                     <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden />
                   </span>
@@ -155,16 +158,16 @@ function Hub({ onOpen }) {
           </div>
         </li>
       </ul>
-      <p className="mt-8 text-center text-xs font-semibold text-slate-400">
+      <p className="mt-8 text-center text-xs font-semibold text-slate-500">
         Your progress is saved on this device only. Independent study tool, not affiliated with or endorsed by Cambridge.
       </p>
-    </div>
+    </main>
   );
 }
 
 const Loading = () => (
   <div className="grid min-h-screen place-items-center" role="status" aria-live="polite">
-    <p className="animate-pulse text-lg font-black text-slate-400">Loading…</p>
+    <p className="animate-pulse text-lg font-black text-slate-500">Loading…</p>
   </div>
 );
 
@@ -183,6 +186,7 @@ export default function App() {
 
   return (
     <Suspense fallback={<Loading />}>
+      <a href="#main" className="skip-link" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>Skip to content</a>
       {subject === 'business' && <BusinessApp onHome={home} />}
       {subject === 'english' && <EnglishApp onHome={home} />}
       {subject === 'physics' && <PhysicsApp onHome={home} />}

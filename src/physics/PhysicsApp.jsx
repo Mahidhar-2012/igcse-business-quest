@@ -138,7 +138,7 @@ export default function PhysicsApp({ onHome }) {
         <UnitDashboard
           units={units}
           heading="IGCSE Physics 0625"
-          gradient="from-sky-500 to-indigo-500"
+          gradient="from-sky-700 to-indigo-700"
           state={state}
           unitStats={unitStats}
           isSubUnlocked={isSubUnlocked}

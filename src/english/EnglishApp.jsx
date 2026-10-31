@@ -18,15 +18,15 @@ function Reader({ section, lesson, done, onFinish, onExit, onNext }) {
   return (
     <div className="mx-auto flex min-h-screen max-w-2xl flex-col px-4 pb-6">
       <div className="flex items-center gap-3 py-4">
-        <button type="button" onClick={onExit} aria-label="Close lesson" className="rounded-xl p-2 text-slate-400 hover:bg-slate-100">
+        <button type="button" onClick={onExit} aria-label="Close lesson" className="rounded-xl p-2 text-slate-500 hover:bg-slate-100">
           <X className="h-6 w-6" />
         </button>
-        <div className="h-3 flex-1 overflow-hidden rounded-full bg-slate-200" role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={i + 1}>
+        <div className="h-3 flex-1 overflow-hidden rounded-full bg-slate-200" role="progressbar" aria-label="Lesson progress" aria-valuemin={0} aria-valuemax={total} aria-valuenow={i + 1}>
           <div className="h-full rounded-full transition-all" style={{ width: `${((i + 1) / total) * 100}%`, background: color }} />
         </div>
         <span className="text-sm font-extrabold text-slate-500">{i + 1}/{total}</span>
       </div>
-      <p className="mb-2 text-xs font-extrabold uppercase tracking-widest text-slate-400">{section.title} · {lesson.title}</p>
+      <p className="mb-2 text-xs font-extrabold uppercase tracking-widest text-slate-500">{section.title} · {lesson.title}</p>
       <main className="flex-1" key={`${lesson.id}-${i}`}>
         <EnglishCard card={lesson.cards[i]} no={i + 1} of={total} />
       </main>
@@ -105,13 +105,13 @@ export default function EnglishApp({ onHome }) {
         </div>
       </header>
 
-      <main className="mx-auto max-w-5xl space-y-8 px-4 py-6">
+      <main id="main" tabIndex={-1} className="mx-auto max-w-5xl space-y-8 px-4 py-6 outline-none">
         <section className="rounded-3xl border-2 border-sky-200 bg-sky-50 p-5">
           <h1 className="text-2xl font-black">English as a Second Language (0510 / 0511)</h1>
           <p className="mt-1 text-sm font-semibold text-slate-600">
             Byte-sized notes for every writing task: email, review, report, essay and article. Read a lesson, then try the task on paper. No quizzes here, only notes and model answers.
           </p>
-          <p className="mt-2 text-xs font-bold text-slate-500">
+          <p className="mt-2 text-xs font-bold text-slate-600">
             The “A* model answers” section holds sample scripts with their exam questions (Cambridge past-paper prompts and student samples, shared for personal study). The other notes are original. Your own past papers and teacher feedback remain the final guide.
           </p>
         </section>
@@ -127,7 +127,7 @@ export default function EnglishApp({ onHome }) {
                   <h2 id={`h-${s.id}`} className="text-xl font-black leading-tight">{s.title}</h2>
                   <p className="text-sm font-semibold text-slate-500">{s.blurb}</p>
                 </div>
-                <span className="text-sm font-extrabold text-slate-400">{doneIn}/{s.lessons.length}</span>
+                <span className="text-sm font-extrabold text-slate-500">{doneIn}/{s.lessons.length}</span>
               </div>
               <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {s.lessons.map((l) => {

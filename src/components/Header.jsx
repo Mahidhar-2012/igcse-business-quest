@@ -22,16 +22,16 @@ export default function Header({ state, unitStats, activeUnitId, onSelectUnit, o
         )}
         <span className="hidden text-lg font-black text-brand-dark sm:block">{title}</span>
         {active && (
-          <span className="hidden whitespace-nowrap rounded-full px-3 py-1 text-xs font-extrabold text-white sm:inline" style={{ background: UNIT_COLORS[active.color] }}>
+          <span className="hidden whitespace-nowrap rounded-full px-3 py-1 text-xs font-extrabold text-white sm:inline" style={{ background: `color-mix(in srgb, ${UNIT_COLORS[active.color]} 68%, black)` }}>
             Unit {active.number}<span className="hidden sm:inline">: {active.short}</span>
           </span>
         )}
         <div className="ml-auto flex items-center gap-1 sm:gap-2">
-          <span className="flex items-center gap-1 rounded-xl px-1.5 py-1 font-extrabold text-orange-500" title="Daily study streak">
+          <span className="flex items-center gap-1 rounded-xl px-1.5 py-1 font-extrabold text-orange-700" title="Daily study streak">
             <Flame className="h-5 w-5 fill-orange-400" aria-hidden />
             <span aria-label={`${state.streak} day streak`}>{state.streak}</span>
           </span>
-          <span className="flex items-center gap-1 rounded-xl px-1.5 py-1 font-extrabold text-amber-500" title={`Today: ${state.todayXp} XP`}>
+          <span className="flex items-center gap-1 rounded-xl px-1.5 py-1 font-extrabold text-amber-700" title={`Today: ${state.todayXp} XP`}>
             <Zap className="h-5 w-5 fill-amber-400" aria-hidden />
             <span aria-label={`${state.xp} total XP`}>{state.xp}</span>
           </span>
@@ -110,10 +110,10 @@ export default function Header({ state, unitStats, activeUnitId, onSelectUnit, o
                   className={`flex min-h-11 items-center gap-2 whitespace-nowrap rounded-full border-2 px-3 py-1 text-sm font-extrabold transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300 ${
                     u.id === activeUnitId ? 'text-white' : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
                   }`}
-                  style={u.id === activeUnitId ? { background: UNIT_COLORS[u.color], borderColor: UNIT_COLORS[u.color] } : undefined}
+                  style={u.id === activeUnitId ? { background: `color-mix(in srgb, ${UNIT_COLORS[u.color]} 68%, black)`, borderColor: `color-mix(in srgb, ${UNIT_COLORS[u.color]} 68%, black)` } : undefined}
                 >
                   <span aria-hidden>{u.emoji}</span> U{u.number}
-                  <span className={`text-xs ${u.id === activeUnitId ? 'text-white/90' : 'text-slate-400'}`}>{unitStats[u.id].mastery}%</span>
+                  <span className={`text-xs ${u.id === activeUnitId ? 'text-white' : 'text-slate-500'}`}>{unitStats[u.id].mastery}%</span>
                 </button>
               </li>
             ))}
