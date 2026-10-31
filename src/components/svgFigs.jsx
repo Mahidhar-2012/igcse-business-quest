@@ -448,7 +448,88 @@ const Solar = () => {
   );
 };
 
+
+const PlaneMirror = () => (
+  <Svg w={520} h={240} label="Plane mirror: the image is the same size, as far behind the mirror as the object is in front, and virtual">
+    <rect x={252} y={30} width={8} height={170} fill="#d1d5db" stroke={K} strokeWidth={2} />
+    {[40, 65, 90, 115, 140, 165, 190].map((y) => <line key={y} x1={260} y1={y} x2={272} y2={y + 12} stroke={K} strokeWidth={1.5} />)}
+    <L x1={130} y1={170} x2={130} y2={105} arrow w={3} />
+    <T x={130} y={190}>object</T>
+    <L x1={390} y1={170} x2={390} y2={105} arrow w={3} stroke="#6b7280" />
+    <line x1={390} y1={170} x2={390} y2={105} stroke="#6b7280" strokeWidth={3} strokeDasharray="5 4" />
+    <T x={390} y={190} fill="#4b5563">image (virtual)</T>
+    <L x1={134} y1={215} x2={256} y2={215} arrow w={1.5} />
+    <L x1={256} y1={215} x2={134} y2={215} arrow w={1.5} />
+    <T x={195} y={230} size={12}>distance d</T>
+    <L x1={264} y1={215} x2={386} y2={215} arrow w={1.5} />
+    <L x1={386} y1={215} x2={264} y2={215} arrow w={1.5} />
+    <T x={325} y={230} size={12}>distance d</T>
+    <L x1={134} y1={105} x2={252} y2={90} w={1.4} />
+    <L x1={252} y1={90} x2={134} y2={77} arrow w={1.4} />
+    <line x1={256} y1={90} x2={386} y2={105} stroke="#6b7280" strokeWidth={1.4} strokeDasharray="5 4" />
+    <T x={260} y={22} size={12}>mirror</T>
+  </Svg>
+);
+
+const LensImage = () => (
+  <Svg w={520} h={270} label="Converging lens forming a real, inverted, diminished image of an object placed beyond twice the focal length">
+    <L x1={20} y1={125} x2={500} y2={125} w={1} />
+    <path d="M260 40 Q290 125 260 210 Q230 125 260 40 Z" fill="#e6f0fa" stroke={K} strokeWidth={2} />
+    {[[190, 'F'], [330, 'F'], [120, '2F'], [400, '2F']].map(([x, n]) => (
+      <g key={x}><circle cx={x} cy={125} r={3} fill={K} /><T x={x} y={152} size={12}>{n}</T></g>
+    ))}
+    <L x1={80} y1={125} x2={80} y2={70} arrow w={3} />
+    <T x={80} y={62} size={12}>object</T>
+    <L x1={375} y1={125} x2={375} y2={160} arrow w={3} stroke="#6b7280" />
+    <T x={400} y={178} size={12} fill="#4b5563">real image</T>
+    <L x1={80} y1={70} x2={260} y2={70} w={1.5} />
+    <L x1={260} y1={70} x2={375} y2={160} w={1.5} />
+    <L x1={80} y1={70} x2={375} y2={160} w={1.5} />
+    <T x={260} y={30} size={12}>converging lens</T>
+    <T x={260} y={250} size={12}>object beyond 2F: image is between F and 2F, diminished, inverted and real</T>
+  </Svg>
+);
+
+const AcGraph = () => (
+  <Svg w={520} h={260} label="E.m.f. against time for a simple a.c. generator, a sine curve with peaks and zeros">
+    <L x1={50} y1={130} x2={500} y2={130} arrow />
+    <L x1={70} y1={230} x2={70} y2={25} arrow />
+    <T x={500} y={150} anchor="end" size={12}>time</T>
+    <T x={78} y={30} anchor="start" size={12}>e.m.f.</T>
+    <path d="M70.0 130.0 L76.6 122.7 L83.2 115.4 L89.8 108.4 L96.4 101.5 L103.0 95.0 L109.6 88.9 L116.2 83.2 L122.8 78.0 L129.4 73.4 L136.0 69.4 L142.6 66.1 L149.2 63.4 L155.8 61.5 L162.4 60.4 L169.0 60.0 L175.6 60.4 L182.2 61.5 L188.8 63.4 L195.4 66.1 L202.0 69.4 L208.6 73.4 L215.2 78.0 L221.8 83.2 L228.4 88.9 L235.0 95.0 L241.6 101.5 L248.2 108.4 L254.8 115.4 L261.4 122.7 L268.0 130.0 L274.6 137.3 L281.2 144.6 L287.8 151.6 L294.4 158.5 L301.0 165.0 L307.6 171.1 L314.2 176.8 L320.8 182.0 L327.4 186.6 L334.0 190.6 L340.6 193.9 L347.2 196.6 L353.8 198.5 L360.4 199.6 L367.0 200.0 L373.6 199.6 L380.2 198.5 L386.8 196.6 L393.4 193.9 L400.0 190.6 L406.6 186.6 L413.2 182.0 L419.8 176.8 L426.4 171.1 L433.0 165.0 L439.6 158.5 L446.2 151.6 L452.8 144.6 L459.4 137.3 L466.0 130.0" fill="none" stroke={K} strokeWidth={2.5} />
+    <circle cx={169} cy={60} r={4} fill={K} /><T x={169} y={46} size={12}>peak</T>
+    <circle cx={267.5} cy={130} r={4} fill={K} /><T x={290} y={118} size={12} anchor="start">zero</T>
+    <circle cx={367} cy={200} r={4} fill={K} /><T x={367} y={222} size={12}>trough</T>
+    <T x={262} y={250} size={11}>zero: coil flat on to the field, not cutting field lines · peak and trough: coil edge-on, cutting lines fastest</T>
+  </Svg>
+);
+
+const ElectricFields = () => (
+  <Svg w={560} h={230} label="Electric field patterns around a positive point charge, around a negative point charge and between parallel plates">
+    <g transform="translate(20,0)">
+      <circle cx={80} cy={105} r={11} fill="#fca5a5" stroke={K} strokeWidth={2} /><T x={80} y={110} bold>+</T>
+      {Array.from({ length: 8 }, (_, i) => { const a = (i * Math.PI) / 4; return <L key={i} x1={80 + 14 * Math.cos(a)} y1={105 + 14 * Math.sin(a)} x2={80 + 62 * Math.cos(a)} y2={105 + 62 * Math.sin(a)} arrow w={1.6} />; })}
+      <T x={80} y={200} size={12}>positive point charge:</T><T x={80} y={215} size={12}>lines point outwards</T>
+    </g>
+    <g transform="translate(200,0)">
+      <circle cx={80} cy={105} r={11} fill="#93c5fd" stroke={K} strokeWidth={2} /><T x={80} y={110} bold>−</T>
+      {Array.from({ length: 8 }, (_, i) => { const a = (i * Math.PI) / 4; return <L key={i} x1={80 + 62 * Math.cos(a)} y1={105 + 62 * Math.sin(a)} x2={80 + 15 * Math.cos(a)} y2={105 + 15 * Math.sin(a)} arrow w={1.6} />; })}
+      <T x={80} y={200} size={12}>negative point charge:</T><T x={80} y={215} size={12}>lines point inwards</T>
+    </g>
+    <g transform="translate(375,0)">
+      <rect x={10} y={35} width={150} height={8} fill="#fca5a5" stroke={K} strokeWidth={1.5} /><T x={85} y={28} size={12}>+ + + + + +</T>
+      <rect x={10} y={160} width={150} height={8} fill="#93c5fd" stroke={K} strokeWidth={1.5} /><T x={85} y={188} size={12}>− − − − − −</T>
+      {[30, 55, 80, 105, 130].map((x) => <L key={x} x1={x + 10} y1={46} x2={x + 10} y2={156} arrow w={1.6} />)}
+      <T x={85} y={215} size={12}>uniform field between plates</T>
+    </g>
+  </Svg>
+);
+
 export const SVG_FIGS = {
+  planeMirror: PlaneMirror,
+  lensImage: LensImage,
+  acGraph: AcGraph,
+  electricFields: ElectricFields,
   distanceTime: DistanceTime,
   speedTime: SpeedTime,
   terminal: FallingTerminal,

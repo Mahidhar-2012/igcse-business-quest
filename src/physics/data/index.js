@@ -21,6 +21,9 @@ import { circuitsPaper } from './papers/circuits.js';
 import { radioPaper } from './papers/radio.js';
 import { extendedSets } from './extended.js';
 import { writtenSets } from './written.js';
+import { extrasA } from './units/extras_a.js';
+import { extrasB } from './units/extras_b.js';
+import { extrasC } from './units/extras_c.js';
 
 const paper = (id, title, questions) => ({ id, title, questions });
 
@@ -74,6 +77,17 @@ export const units = [
 ];
 
 
+
+// Extra bytes from the syllabus gap audit are appended to the lessons they belong to.
+const extras = { ...extrasA, ...extrasB, ...extrasC };
+for (const unit of units) {
+  for (const sub of unit.submodules) {
+    if (extras[sub.id]) sub.cards = [...sub.cards, ...extras[sub.id]];
+  }
+}
+for (const id of Object.keys(extras)) {
+  if (!units.some((u) => u.submodules.some((s) => s.id === id))) throw new Error(`extras: unknown lesson ${id}`);
+}
 /** Extended (Paper 2) multiple-choice questions 2020-2025, one random-round set per topic group. */
 const SESSION = { m: 'Feb/Mar', s: 'May/Jun', w: 'Oct/Nov' };
 const extQuestions = (rows) =>
