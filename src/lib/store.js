@@ -1,10 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { units, questionIndex } from '../data/syllabusData.js';
 import { SoundController } from './SoundController.js';
 
-// v2: questions were rewritten as critical-thinking questions, so saved mistake ids from v1 no longer match.
-const KEY = 'igcse-business-quest:v2';
-const OLD_KEY = 'igcse-business-quest:v1';
+
 
 const defaults = {
   xp: 0,
@@ -48,7 +45,8 @@ const load = (course) => {
   }
 };
 
-export function useProgress(course = { units, questionIndex, key: KEY, oldKey: OLD_KEY }) {
+/** course = { units, questionIndex, key, oldKey }: each subject passes its own content and storage key. */
+export function useProgress(course) {
   const [state, setState] = useState(() => load(course));
 
   useEffect(() => {

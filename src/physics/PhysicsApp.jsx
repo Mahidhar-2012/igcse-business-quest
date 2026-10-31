@@ -6,8 +6,10 @@ import MistakeBankModal from '../components/MistakeBankModal.jsx';
 import PhysicsCard from './PhysicsCard.jsx';
 import { units, questionIndex, subQuestionIds } from './data/index.js';
 import { useProgress } from '../lib/store.js';
+import { checkTotal } from '../lib/overview.js';
 
 const course = { units, questionIndex, key: 'igcse-physics-quest:v1', oldKey: null };
+checkTotal('physics', units.reduce((n, u) => n + u.submodules.length, 0));
 const MEGA_PER_LESSON = 5;
 const pickRandom = (arr, n) => [...arr].sort(() => Math.random() - 0.5).slice(0, n);
 const qItem = (qid) => ({ kind: 'q', qid, challenge: questionIndex[qid].challenge });

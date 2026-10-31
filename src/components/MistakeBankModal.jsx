@@ -1,12 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { X, ShieldAlert, Swords, PartyPopper } from 'lucide-react';
-import { units as businessUnits, questionIndex as businessIndex } from '../data/syllabusData.js';
 
 const TYPE_LABEL = { mcq: 'Multiple choice', order: 'Ordering', scenario: 'Scenario', calc: 'Calculation', tfd: 'True/False' };
 
 export default function MistakeBankModal({ mistakes, onClose, onStartDrill, course }) {
-  const units = course ? course.units : businessUnits;
-  const questionIndex = course ? course.questionIndex : businessIndex;
+  const { units, questionIndex } = course;
   const closeRef = useRef(null);
 
   useEffect(() => {

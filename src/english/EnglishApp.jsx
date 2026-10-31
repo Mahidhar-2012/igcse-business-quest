@@ -3,6 +3,7 @@ import { LayoutGrid, X, ChevronLeft, ChevronRight, Check, CheckCircle2, Trash2 }
 import { sections, allLessons, SECTION_COLORS } from './data/index.js';
 import { useEnglishProgress } from './useEnglishProgress.js';
 import EnglishCard from './EnglishCard.jsx';
+import { checkTotal } from '../lib/overview.js';
 
 function Reader({ section, lesson, done, onFinish, onExit, onNext }) {
   const [i, setI] = useState(0);
@@ -54,6 +55,8 @@ function Reader({ section, lesson, done, onFinish, onExit, onNext }) {
   );
 }
 
+checkTotal('english', allLessons.length);
+
 export default function EnglishApp({ onHome }) {
   const { done, markDone, reset } = useEnglishProgress();
   const [open, setOpen] = useState(null); // { section, lesson }
@@ -85,7 +88,7 @@ export default function EnglishApp({ onHome }) {
     <div className="min-h-screen">
       <header className="sticky top-0 z-30 border-b-2 border-slate-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center gap-2 px-4 py-2.5">
-          <button type="button" onClick={onHome} aria-label="Back to all subjects" title="All subjects" className="rounded-xl p-2 text-slate-500 hover:bg-slate-100">
+          <button type="button" onClick={onHome} aria-label="Back to all subjects" title="All subjects" className="icon-btn">
             <LayoutGrid className="h-5 w-5" />
           </button>
           <span className="text-lg font-black text-sky-700">English ESL Notes</span>
@@ -95,7 +98,7 @@ export default function EnglishApp({ onHome }) {
             aria-label="Reset reading progress"
             title="Reset progress"
             onClick={() => { if (window.confirm('Reset your English reading progress?')) reset(); }}
-            className="rounded-xl p-2 text-slate-400 hover:bg-rose-50 hover:text-rose-500"
+            className="icon-btn hover:!bg-rose-50 hover:!text-rose-500"
           >
             <Trash2 className="h-5 w-5" />
           </button>

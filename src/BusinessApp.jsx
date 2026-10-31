@@ -6,7 +6,11 @@ import MistakeBankModal from './components/MistakeBankModal.jsx';
 import ExamPlayer from './components/ExamPlayer.jsx';
 import GlossaryModal from './components/GlossaryModal.jsx';import { units, questionIndex, subQuestionIds } from './data/syllabusData.js';
 import { useProgress } from './lib/store.js';
+import { checkTotal } from './lib/overview.js';
 
+// v2: questions were rewritten as critical-thinking questions, so saved mistake ids from v1 no longer match.
+const course = { units, questionIndex, key: 'igcse-business-quest:v2', oldKey: 'igcse-business-quest:v1' };
+checkTotal('business', units.reduce((n, u) => n + u.submodules.length, 0));
 const MEGA_PER_LESSON = 5; // mega quiz draws this many questions from EVERY lesson in the unit
 const PRACTICE_SIZE = 6; // random practice questions at the end of each lesson
 const pickRandom = (arr, n) => [...arr].sort(() => Math.random() - 0.5).slice(0, n);
@@ -27,7 +31,7 @@ const buildLessonItems = (sub) => {
 };
 
 export default function BusinessApp({ onHome }) {
-  const progress = useProgress();
+  const progress = useProgress(course);
   const { state, unitStats, isSubUnlocked, addXp, addMistake, clearMistake, completeSub, completeBoss, recordExam, toggle, reset } = progress;
 
   // Start on the first unit that isn't fully done.
@@ -117,6 +121,7 @@ export default function BusinessApp({ onHome }) {
     body = (
       <>
         <Header
+          courseUnits={units}
           state={state}
           unitStats={unitStats}
           activeUnitId={activeUnitId}
@@ -129,6 +134,7 @@ export default function BusinessApp({ onHome }) {
           showUnits
         />
         <UnitDashboard
+          units={units}
           state={state}
           unitStats={unitStats}
           isSubUnlocked={isSubUnlocked}
@@ -146,7 +152,7 @@ export default function BusinessApp({ onHome }) {
     <>
       {body}
       {glossaryOpen && <GlossaryModal onClose={() => setGlossaryOpen(false)} />}      {mistakesOpen && (
-        <MistakeBankModal mistakes={state.mistakes} onClose={() => setMistakesOpen(false)} onStartDrill={startDrill} />
+        <MistakeBankModal mistakes={state.mistakes} onClose={() => setMistakesOpen(false)} onStartDrill={startDrill} course={course} />
       )}
     </>
   );

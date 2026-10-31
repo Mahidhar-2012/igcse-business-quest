@@ -5,9 +5,9 @@ const KEY = 'igcse-english:v1';
 const load = () => {
   try {
     const parsed = JSON.parse(localStorage.getItem(KEY));
-    return { done: Array.isArray(parsed?.done) ? parsed.done : [] };
+    return { done: Array.isArray(parsed?.done) ? parsed.done : [], lastDay: parsed?.lastDay || null };
   } catch {
-    return { done: [] };
+    return { done: [], lastDay: null };
   }
 };
 
@@ -25,14 +25,16 @@ export function useEnglishProgress() {
   const markDone = useCallback((id) => {
     setState((s) => {
       if (s.done.includes(id)) return s;
-      const next = { done: [...s.done, id] };
+      const d = new Date();
+      const lastDay = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      const next = { done: [...s.done, id], lastDay };
       save(next);
       return next;
     });
   }, []);
 
   const reset = useCallback(() => {
-    const next = { done: [] };
+    const next = { done: [], lastDay: null };
     save(next);
     setState(next);
   }, []);

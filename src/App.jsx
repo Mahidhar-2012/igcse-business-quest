@@ -1,28 +1,19 @@
-import { useEffect, useState } from 'react';
-import { Briefcase, PenLine, Atom, FlaskConical, ArrowRight } from 'lucide-react';
-import BusinessApp from './BusinessApp.jsx';
-import EnglishApp from './english/EnglishApp.jsx';
-import PhysicsApp from './physics/PhysicsApp.jsx';
-import { countEnglishDone } from './english/useEnglishProgress.js';
-import { allLessons } from './english/data/index.js';
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
+import { Briefcase, PenLine, Atom, FlaskConical, ArrowRight, Flame, Zap, Target, Play, ShieldAlert } from 'lucide-react';
+import { loadOverview } from './lib/overview.js';
+
+// Each subject is its own chunk, so the hub opens quickly and a subject downloads only when it is chosen.
+const BusinessApp = lazy(() => import('./BusinessApp.jsx'));
+const EnglishApp = lazy(() => import('./english/EnglishApp.jsx'));
+const PhysicsApp = lazy(() => import('./physics/PhysicsApp.jsx'));
 
 const SUBJECTS = [
-  {
-    id: 'english',
-    hash: '#/english',
-    title: 'English as a Second Language',
-    code: '0510 / 0511',
-    blurb: 'Byte-sized notes and model answers for every writing task: email, review, report, essay and article.',
-    tag: 'Notes only',
-    icon: PenLine,
-    color: '#0ea5e9',
-  },
   {
     id: 'physics',
     hash: '#/physics',
     title: 'Physics',
     code: '0625',
-    blurb: 'Knowledge bytes with diagrams, tests, and past-paper questions exactly as they appear in the exam.',
+    blurb: 'Knowledge bytes with diagrams, tests and Extended exam questions 2020–2025.',
     tag: 'Lessons + past papers',
     icon: Atom,
     color: '#6366f1',
@@ -32,57 +23,150 @@ const SUBJECTS = [
     hash: '#/business',
     title: 'Business Studies',
     code: '0264',
-    blurb: 'Knowledge bytes, tests, mega quizzes, exam-style questions and an exam technique unit.',
+    blurb: 'Knowledge bytes, tests, mega quizzes, exam-style questions and exam technique.',
     tag: 'Lessons + quizzes',
     icon: Briefcase,
     color: '#58cc02',
+  },
+  {
+    id: 'english',
+    hash: '#/english',
+    title: 'English as a Second Language',
+    code: '0510 / 0511',
+    blurb: 'Byte-sized notes and A* model answers for email, review, report, essay and article.',
+    tag: 'Notes + model answers',
+    icon: PenLine,
+    color: '#0ea5e9',
   },
 ];
 
 const routeFromHash = () => SUBJECTS.find((s) => s.hash === window.location.hash)?.id ?? null;
 
-function Hub({ onOpen }) {
-  const englishDone = countEnglishDone();
+function Ring({ pct, color, size = 56, stroke = 6, children }) {
+  const r = (size - stroke) / 2;
+  const c = 2 * Math.PI * r;
   return (
-    <div className="mx-auto min-h-screen max-w-3xl px-4 py-10">
-      <header className="mb-8 text-center">
-        <h1 className="text-4xl font-black text-brand-dark">IGCSE Quest</h1>
-        <p className="mt-2 font-semibold text-slate-600">Pick a subject to start studying.</p>
-      </header>
-      <ul className="grid gap-4 sm:grid-cols-2">
-        {SUBJECTS.map((s) => (
-          <li key={s.id}>
-            <button
-              type="button"
-              onClick={() => onOpen(s)}
-              className="card group flex h-full w-full flex-col p-5 text-left transition hover:-translate-y-0.5 hover:bg-slate-50 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300"
-            >
-              <span className="mb-3 grid h-14 w-14 place-items-center rounded-2xl text-white" style={{ background: s.color }}>
-                <s.icon className="h-7 w-7" aria-hidden />
-              </span>
-              <span className="text-xl font-black leading-tight">{s.title}</span>
-              <span className="text-xs font-extrabold uppercase tracking-widest text-slate-400">{s.code} · {s.tag}</span>
-              <span className="mt-2 flex-1 text-sm font-semibold text-slate-600">{s.blurb}</span>
-              {s.id === 'english' && englishDone > 0 && (
-                <span className="mt-2 text-xs font-extrabold text-sky-700">{englishDone}/{allLessons.length} lessons read</span>
-              )}
-              <span className="mt-3 flex items-center gap-1 text-sm font-black" style={{ color: s.color }}>
-                Open <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden />
-              </span>
-            </button>
-          </li>
-        ))}
-        <li>
-          <div className="flex h-full flex-col rounded-3xl border-2 border-dashed border-slate-300 p-5 text-slate-400">
-            <span className="mb-3 grid h-14 w-14 place-items-center rounded-2xl bg-slate-200"><FlaskConical className="h-7 w-7" aria-hidden /></span>
-            <span className="text-xl font-black leading-tight">More subjects</span>
-            <span className="mt-2 text-sm font-semibold">Coming soon.</span>
-          </div>
-        </li>
-      </ul>
+    <div className="relative grid shrink-0 place-items-center" style={{ width: size, height: size }}>
+      <svg width={size} height={size} className="-rotate-90" aria-hidden>
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#e5e7eb" strokeWidth={stroke} />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth={stroke} strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c - (c * pct) / 100} style={{ transition: 'stroke-dashoffset .6s ease' }} />
+      </svg>
+      <div className="absolute inset-0 grid place-items-center">{children}</div>
     </div>
   );
 }
+
+const Stat = ({ icon: Icon, label, value, tint }) => (
+  <div className="flex items-center gap-3 rounded-2xl border-2 border-slate-200 bg-white px-4 py-3">
+    <span className={`grid h-10 w-10 place-items-center rounded-xl ${tint}`}><Icon className="h-5 w-5" aria-hidden /></span>
+    <div>
+      <p className="text-xl font-black leading-none">{value}</p>
+      <p className="mt-1 text-xs font-extrabold uppercase tracking-wider text-slate-400">{label}</p>
+    </div>
+  </div>
+);
+
+function Hub({ onOpen }) {
+  const ov = useMemo(loadOverview, []);
+  const goalPct = Math.min(100, Math.round((ov.todayXp / ov.goal) * 100));
+  const resume = SUBJECTS.find((s) => s.id === ov.lastSubject);
+  const totalDone = Object.values(ov.subjects).reduce((n, s) => n + s.done, 0);
+  const totalLessons = Object.values(ov.subjects).reduce((n, s) => n + s.total, 0);
+  const mistakes = Object.values(ov.subjects).reduce((n, s) => n + s.mistakes, 0);
+
+  return (
+    <div className="mx-auto min-h-screen max-w-4xl px-4 pb-16 pt-6 sm:pt-10">
+      <header className="mb-6">
+        <h1 className="text-3xl font-black text-brand-dark sm:text-4xl">IGCSE Quest</h1>
+        <p className="mt-1 font-semibold text-slate-600">
+          {resume ? 'Welcome back. Pick up where you left off.' : 'Pick a subject and start with your first lesson.'}
+        </p>
+      </header>
+
+      {resume && (
+        <section aria-label="Continue learning" className="mb-6">
+          <button
+            type="button"
+            onClick={() => onOpen(resume)}
+            className="group flex w-full items-center gap-4 rounded-3xl p-5 text-left text-white transition hover:brightness-105 focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-sky-300"
+            style={{ background: `linear-gradient(135deg, ${resume.color}, #1e293b)` }}
+          >
+            <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white/20"><Play className="h-7 w-7 fill-white" aria-hidden /></span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-xs font-extrabold uppercase tracking-widest text-white/80">Continue learning</span>
+              <span className="block truncate text-xl font-black">{resume.title}</span>
+              <span className="block text-sm font-bold text-white/85">{ov.subjects[resume.id].done}/{ov.subjects[resume.id].total} lessons · {ov.subjects[resume.id].pct}%</span>
+            </span>
+            <ArrowRight className="h-6 w-6 shrink-0 transition group-hover:translate-x-1" aria-hidden />
+          </button>
+        </section>
+      )}
+
+      <section aria-label="Your progress" className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <Stat icon={Flame} label="Day streak" value={ov.streak} tint="bg-orange-100 text-orange-500" />
+        <Stat icon={Zap} label="Total XP" value={ov.xp} tint="bg-amber-100 text-amber-500" />
+        <Stat icon={Target} label={`Goal ${ov.todayXp}/${ov.goal} XP`} value={`${goalPct}%`} tint="bg-emerald-100 text-emerald-600" />
+        <Stat icon={ShieldAlert} label="To review" value={mistakes} tint="bg-rose-100 text-rose-500" />
+        <div className="col-span-2 sm:col-span-4" aria-hidden={false}>
+          <div className="h-3 overflow-hidden rounded-full bg-slate-200" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={goalPct} aria-label="Daily XP goal">
+            <div className="h-full rounded-full bg-brand transition-all duration-700" style={{ width: `${goalPct}%` }} />
+          </div>
+          <p className="mt-1 text-xs font-bold text-slate-500">
+            {goalPct >= 100 ? 'Daily goal reached. Great work!' : `${ov.goal - ov.todayXp} XP to today’s goal. Answer questions in any subject to earn XP.`}
+            {' '}{totalDone} of {totalLessons} lessons finished overall.
+          </p>
+        </div>
+      </section>
+
+      <h2 className="mb-3 text-xs font-extrabold uppercase tracking-widest text-slate-400">Your subjects</h2>
+      <ul className="grid gap-4 sm:grid-cols-2">
+        {SUBJECTS.map((s) => {
+          const st = ov.subjects[s.id];
+          return (
+            <li key={s.id}>
+              <button
+                type="button"
+                onClick={() => onOpen(s)}
+                className="card group flex h-full w-full items-start gap-4 p-5 text-left transition hover:-translate-y-0.5 hover:bg-slate-50 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300"
+              >
+                <Ring pct={st.pct} color={s.color} size={64}>
+                  <span className="grid h-9 w-9 place-items-center rounded-full text-white" style={{ background: s.color }}><s.icon className="h-5 w-5" aria-hidden /></span>
+                </Ring>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-lg font-black leading-tight">{s.title}</span>
+                  <span className="block text-xs font-extrabold uppercase tracking-widest text-slate-400">{s.code} · {s.tag}</span>
+                  <span className="mt-2 block text-sm font-semibold text-slate-600">{s.blurb}</span>
+                  <span className="mt-3 flex items-center gap-2 text-sm font-black" style={{ color: s.color }}>
+                    {st.started ? `${st.done}/${st.total} lessons · ${st.pct}%` : 'Start'}
+                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden />
+                  </span>
+                </span>
+              </button>
+            </li>
+          );
+        })}
+        <li>
+          <div className="flex h-full items-start gap-4 rounded-3xl border-2 border-dashed border-slate-300 p-5 text-slate-500">
+            <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-slate-200"><FlaskConical className="h-6 w-6" aria-hidden /></span>
+            <span>
+              <span className="block text-lg font-black leading-tight">More subjects</span>
+              <span className="mt-1 block text-sm font-semibold">Chemistry, Biology, Maths and more are planned.</span>
+            </span>
+          </div>
+        </li>
+      </ul>
+      <p className="mt-8 text-center text-xs font-semibold text-slate-400">
+        Your progress is saved on this device only. Independent study tool, not affiliated with or endorsed by Cambridge.
+      </p>
+    </div>
+  );
+}
+
+const Loading = () => (
+  <div className="grid min-h-screen place-items-center" role="status" aria-live="polite">
+    <p className="animate-pulse text-lg font-black text-slate-400">Loading…</p>
+  </div>
+);
 
 export default function App() {
   const [subject, setSubject] = useState(routeFromHash);
@@ -97,8 +181,12 @@ export default function App() {
   const open = (s) => { window.location.hash = s.hash; };
   const home = () => { window.location.hash = ''; setSubject(null); window.scrollTo(0, 0); };
 
-  if (subject === 'business') return <BusinessApp onHome={home} />;
-  if (subject === 'english') return <EnglishApp onHome={home} />;
-  if (subject === 'physics') return <PhysicsApp onHome={home} />;
-  return <Hub onOpen={open} />;
+  return (
+    <Suspense fallback={<Loading />}>
+      {subject === 'business' && <BusinessApp onHome={home} />}
+      {subject === 'english' && <EnglishApp onHome={home} />}
+      {subject === 'physics' && <PhysicsApp onHome={home} />}
+      {!subject && <Hub onOpen={open} />}
+    </Suspense>
+  );
 }

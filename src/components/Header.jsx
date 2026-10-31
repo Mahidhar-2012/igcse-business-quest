@@ -1,38 +1,37 @@
 import { useState } from 'react';
 import { Zap, Flame, Volume2, VolumeX, ShieldAlert, Settings, Unlock, Trash2, BookText, LayoutGrid } from 'lucide-react';
-import { units } from '../data/syllabusData.js';
 import { UNIT_COLORS, ProgressRing } from './UnitDashboard.jsx';
 
-export default function Header({ state, unitStats, activeUnitId, onSelectUnit, onOpenMistakes, onOpenGlossary, onHome, onToggle, onReset, showUnits, courseUnits = units, title = 'Business Quest' }) {
+export default function Header({ state, unitStats, activeUnitId, onSelectUnit, onOpenMistakes, onOpenGlossary, onHome, onToggle, onReset, showUnits, courseUnits, title = 'Business Quest' }) {
   const [menu, setMenu] = useState(false);
   const active = courseUnits.find((u) => u.id === activeUnitId);
 
   return (
     <header className="sticky top-0 z-30 border-b-2 border-slate-200 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center gap-2 px-4 py-2.5">
+      <div className="mx-auto flex max-w-5xl items-center gap-1 px-3 py-1.5 sm:gap-2 sm:px-4">
         {onHome && (
           <button
             type="button"
             onClick={onHome}
             aria-label="Back to all subjects"
             title="All subjects"
-            className="rounded-xl p-2 text-slate-500 hover:bg-slate-100 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300"
+            className="icon-btn"
           >
             <LayoutGrid className="h-5 w-5" />
           </button>
         )}
         <span className="hidden text-lg font-black text-brand-dark sm:block">{title}</span>
         {active && (
-          <span className="whitespace-nowrap rounded-full px-3 py-1 text-xs font-extrabold text-white" style={{ background: UNIT_COLORS[active.color] }}>
+          <span className="hidden whitespace-nowrap rounded-full px-3 py-1 text-xs font-extrabold text-white sm:inline" style={{ background: UNIT_COLORS[active.color] }}>
             Unit {active.number}<span className="hidden sm:inline">: {active.short}</span>
           </span>
         )}
         <div className="ml-auto flex items-center gap-1 sm:gap-2">
-          <span className="flex items-center gap-1 rounded-xl px-2 py-1 font-extrabold text-orange-500" title="Daily study streak">
+          <span className="flex items-center gap-1 rounded-xl px-1.5 py-1 font-extrabold text-orange-500" title="Daily study streak">
             <Flame className="h-5 w-5 fill-orange-400" aria-hidden />
             <span aria-label={`${state.streak} day streak`}>{state.streak}</span>
           </span>
-          <span className="flex items-center gap-1 rounded-xl px-2 py-1 font-extrabold text-amber-500" title={`Today: ${state.todayXp} XP`}>
+          <span className="flex items-center gap-1 rounded-xl px-1.5 py-1 font-extrabold text-amber-500" title={`Today: ${state.todayXp} XP`}>
             <Zap className="h-5 w-5 fill-amber-400" aria-hidden />
             <span aria-label={`${state.xp} total XP`}>{state.xp}</span>
           </span>
@@ -40,7 +39,7 @@ export default function Header({ state, unitStats, activeUnitId, onSelectUnit, o
             type="button"
             onClick={onOpenMistakes}
             aria-label={`Mistake bank, ${state.mistakes.length} questions`}
-            className="relative rounded-xl p-2 text-rose-500 hover:bg-rose-50 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300"
+            className="icon-btn relative !text-rose-500 hover:!bg-rose-50"
           >
             <ShieldAlert className="h-5 w-5" />
             {state.mistakes.length > 0 && (
@@ -53,7 +52,7 @@ export default function Header({ state, unitStats, activeUnitId, onSelectUnit, o
             type="button"
             onClick={onOpenGlossary}
             aria-label="Open glossary of key terms"
-            className="rounded-xl p-2 text-amber-500 hover:bg-amber-50 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300"
+            className="icon-btn !text-amber-500 hover:!bg-amber-50"
           >
             <BookText className="h-5 w-5" />
           </button>}
@@ -62,7 +61,7 @@ export default function Header({ state, unitStats, activeUnitId, onSelectUnit, o
             onClick={() => onToggle('sound')}
             aria-pressed={state.sound}
             aria-label={state.sound ? 'Mute sounds' : 'Unmute sounds'}
-            className="rounded-xl p-2 text-slate-500 hover:bg-slate-100 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300"
+            className="icon-btn"
           >
             {state.sound ? <Volume2 className="h-5 w-5" /> : <VolumeX className="h-5 w-5" />}
           </button>
@@ -72,7 +71,7 @@ export default function Header({ state, unitStats, activeUnitId, onSelectUnit, o
               onClick={() => setMenu((m) => !m)}
               aria-expanded={menu}
               aria-label="Settings"
-              className="rounded-xl p-2 text-slate-500 hover:bg-slate-100 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300"
+              className="icon-btn"
             >
               <Settings className="h-5 w-5" />
             </button>
@@ -108,7 +107,7 @@ export default function Header({ state, unitStats, activeUnitId, onSelectUnit, o
                   type="button"
                   onClick={() => onSelectUnit(u.id)}
                   aria-current={u.id === activeUnitId ? 'true' : undefined}
-                  className={`flex items-center gap-2 whitespace-nowrap rounded-full border-2 px-3 py-1 text-sm font-extrabold transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300 ${
+                  className={`flex min-h-11 items-center gap-2 whitespace-nowrap rounded-full border-2 px-3 py-1 text-sm font-extrabold transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300 ${
                     u.id === activeUnitId ? 'text-white' : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
                   }`}
                   style={u.id === activeUnitId ? { background: UNIT_COLORS[u.color], borderColor: UNIT_COLORS[u.color] } : undefined}

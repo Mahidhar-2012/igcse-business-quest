@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { Lock, Check, Star, Crown, Swords, Play, FileText } from 'lucide-react';
-import { units as businessUnits } from '../data/syllabusData.js';
 
 export const UNIT_COLORS = {
   emerald: '#10b981',
@@ -45,7 +44,7 @@ const Stars = ({ n, size = 'h-4 w-4' }) => (
   </span>
 );
 
-export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeUnitId, onSelectUnit, onStartSub, onStartBoss, onStartExam, onStartPaper, units = businessUnits, heading = 'IGCSE Business 0264', gradient = 'from-brand to-emerald-500' }) {
+export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeUnitId, onSelectUnit, onStartSub, onStartBoss, onStartExam, onStartPaper, units, heading = 'IGCSE Business 0264', gradient = 'from-brand to-emerald-500' }) {
   const unit = units.find((u) => u.id === activeUnitId) || units[0];
   const pathRef = useRef(null);
   const lastUnit = useRef(activeUnitId);
@@ -121,7 +120,7 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
             const offset = [0, 40, 0, -40][i % 4];
             const color = UNIT_COLORS[unit.color];
             return (
-              <li key={sub.id} className="flex items-center gap-4" style={{ transform: `translateX(${offset}px)` }}>
+              <li key={sub.id} className="flex items-center gap-4 sm:[transform:translateX(var(--x))]" style={{ '--x': `${offset}px` }}>
                 <button
                   type="button"
                   disabled={!unlocked}
@@ -151,8 +150,8 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
           })}
           {unit.submodules.some((s) => s.challenges.length || s.cards.some((c) => c.tests.length)) && (
           <li
-            className="flex items-center gap-4"
-            style={{ transform: `translateX(${[0, 40, 0, -40][unit.submodules.length % 4]}px)` }}
+            className="flex items-center gap-4 sm:[transform:translateX(var(--x))]"
+            style={{ '--x': `${[0, 40, 0, -40][unit.submodules.length % 4]}px` }}
           >
             {(() => {
               const open = state.openAll || unitStats[unit.id].allDone;
@@ -182,7 +181,7 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
             const best = state.exams?.[paper.id];
             const offset = [0, 40, 0, -40][(unit.submodules.length + 1 + pi) % 4];
             return (
-              <li key={paper.id} className="flex items-center gap-4" style={{ transform: `translateX(${offset}px)` }}>
+              <li key={paper.id} className="flex items-center gap-4 sm:[transform:translateX(var(--x))]" style={{ '--x': `${offset}px` }}>
                 <button
                   type="button"
                   onClick={() => onStartPaper(unit, paper)}
@@ -206,7 +205,7 @@ export default function UnitDashboard({ state, unitStats, isSubUnlocked, activeU
             const offset = [0, 40, 0, -40][(unit.submodules.length + 1 + ei) % 4];
             const marks = exam.questions.reduce((n, q) => n + q.parts.reduce((m, p) => m + p.marks, 0), 0);
             return (
-              <li key={exam.id} className="flex items-center gap-4" style={{ transform: `translateX(${offset}px)` }}>
+              <li key={exam.id} className="flex items-center gap-4 sm:[transform:translateX(var(--x))]" style={{ '--x': `${offset}px` }}>
                 <button
                   type="button"
                   disabled={!open}
