@@ -241,7 +241,102 @@ const DiffusionTube = () => {
   );
 };
 
+
+const Electrolysis = () => (
+  <Svg w={520} h={300} label="Electrolysis cell: molten lead(II) bromide between two inert electrodes connected to a power supply, lead forming at the cathode and bromine at the anode">
+    <rect x={130} y={118} width={260} height={150} fill="#e6f0fa" stroke="none" />
+    <path d="M130 100 L130 268 L390 268 L390 100" fill="none" stroke={K} strokeWidth={2.5} />
+    <rect x={188} y={62} width={14} height={170} fill="#6b7280" stroke={K} strokeWidth={1.8} />
+    <rect x={318} y={62} width={14} height={170} fill="#6b7280" stroke={K} strokeWidth={1.8} />
+    <polyline points="195,62 195,36 244,36" fill="none" stroke={K} strokeWidth={2} />
+    <polyline points="325,62 325,36 276,36" fill="none" stroke={K} strokeWidth={2} />
+    <L x1={246} y1={22} x2={246} y2={50} w={5} />
+    <L x1={274} y1={14} x2={274} y2={58} w={1.8} />
+    <T x={160} y={24} size={12}>cathode (−)</T>
+    <T x={360} y={24} size={12}>anode (+)</T>
+    <ellipse cx={195} cy={246} rx={12} ry={5} fill="#9ca3af" stroke={K} strokeWidth={1.4} />
+    <T x={122} y={250} size={12} anchor="end">molten lead</T>
+    {[[340, 190, 5], [350, 165, 4], [338, 140, 6], [352, 210, 3.5]].map(([x, y, r]) => <circle key={`${x}${y}`} cx={x} cy={y} r={r} fill="#fff" stroke={K} strokeWidth={1.4} />)}
+    <T x={420} y={185} size={12} anchor="start">bromine</T><T x={420} y={199} size={12} anchor="start">gas (Br₂)</T>
+    <L x1={262} y1={170} x2={214} y2={170} arrow w={1.6} />
+    <T x={245} y={162} size={12}>Pb²⁺</T>
+    <L x1={262} y1={205} x2={310} y2={205} arrow w={1.6} />
+    <T x={285} y={197} size={12}>Br⁻</T>
+    <T x={260} y={288} size={12}>molten lead(II) bromide (the electrolyte)</T>
+  </Svg>
+);
+
+const FuelCell = () => (
+  <Svg w={520} h={290} label="Hydrogen-oxygen fuel cell: hydrogen enters at one electrode, oxygen at the other, electrons flow through an external circuit to a load and water is produced">
+    <rect x={150} y={90} width={220} height={150} fill="#e6f0fa" stroke={K} strokeWidth={2.5} />
+    <rect x={150} y={90} width={22} height={150} fill="#6b7280" stroke={K} strokeWidth={2} />
+    <rect x={348} y={90} width={22} height={150} fill="#6b7280" stroke={K} strokeWidth={2} />
+    <T x={260} y={168} size={12}>electrolyte</T>
+    <L x1={40} y1={130} x2={146} y2={130} arrow w={2.5} />
+    <T x={90} y={118} size={13} bold>H₂ in</T>
+    <L x1={480} y1={130} x2={374} y2={130} arrow w={2.5} />
+    <T x={430} y={118} size={13} bold>O₂ in</T>
+    <L x1={374} y1={215} x2={470} y2={215} arrow w={2.5} />
+    <T x={425} y={235} size={13} bold>water out</T>
+    <polyline points="161,90 161,40 232,40" fill="none" stroke={K} strokeWidth={2} />
+    <polyline points="359,90 359,40 288,40" fill="none" stroke={K} strokeWidth={2} />
+    <circle cx={260} cy={40} r={16} fill="#fff" stroke={K} strokeWidth={2} />
+    <L x1={249} y1={29} x2={271} y2={51} w={1.8} /><L x1={271} y1={29} x2={249} y2={51} w={1.8} />
+    <T x={260} y={14} size={12}>lamp (load)</T>
+    <L x1={190} y1={62} x2={226} y2={62} arrow w={1.8} />
+    <T x={205} y={78} size={12}>e⁻ flow</T>
+    <T x={161} y={262} size={12}>hydrogen</T><T x={161} y={276} size={12}>electrode (−)</T>
+    <T x={359} y={262} size={12}>oxygen</T><T x={359} y={276} size={12}>electrode (+)</T>
+  </Svg>
+);
+
+
+const Panel = ({ ox, yR, yP, title, line1, line2 }) => (
+  <g transform={`translate(${ox},0)`}>
+    <L x1={30} y1={210} x2={30} y2={30} arrow />
+    <L x1={30} y1={210} x2={300} y2={210} arrow />
+    <T x={30} y={22} size={12}>energy</T>
+    <T x={296} y={230} size={12} anchor="end">progress of reaction</T>
+    <T x={165} y={12} bold>{title}</T>
+    <path d={`M30 ${yR} L70 ${yR} C95 ${yR} 100 48 125 48 C150 48 155 ${yP} 180 ${yP} L225 ${yP}`} fill="none" stroke={K} strokeWidth={2.5} />
+    <T x={36} y={yR + 18} size={12} anchor="start">reactants</T>
+    <T x={205} y={yP + 18} size={12}>products</T>
+    <L x1={100} y1={yR} x2={100} y2={50} arrow w={1.5} />
+    <T x={94} y={34} size={11} anchor="end">activation</T>
+    <T x={94} y={47} size={11} anchor="end">energy</T>
+    <L x1={238} y1={yR} x2={238} y2={yP} arrow w={1.8} />
+    <T x={246} y={(yR + yP) / 2 - 2} size={11} anchor="start">{line1}</T>
+    <T x={246} y={(yR + yP) / 2 + 11} size={11} anchor="start">{line2}</T>
+  </g>
+);
+
+const ReactionProfile = () => (
+  <Svg w={700} h={240} label="Reaction profile diagrams: in an exothermic reaction the products are at lower energy than the reactants; in an endothermic reaction they are at higher energy">
+    <Panel ox={0} yR={110} yP={165} title="exothermic" line1="energy" line2="released" />
+    <Panel ox={360} yR={165} yP={110} title="endothermic" line1="energy" line2="absorbed" />
+  </Svg>
+);
+
+const RateGraph = () => (
+  <Svg w={520} h={260} label="Volume of gas against time for two reactions: curve X is steeper, so faster, and both reach the same final volume">
+    <L x1={70} y1={210} x2={70} y2={25} arrow />
+    <L x1={70} y1={210} x2={500} y2={210} arrow />
+    <T x={78} y={26} size={12} anchor="start">volume of gas</T>
+    <T x={496} y={230} size={12} anchor="end">time</T>
+    <path d="M70.0 210.0 L78.4 187.0 L86.8 167.5 L95.2 151.0 L103.6 137.0 L112.0 125.2 L120.4 115.2 L128.8 106.7 L137.2 99.5 L145.6 93.5 L154.0 88.3 L162.4 84.0 L170.8 80.3 L179.2 77.2 L187.6 74.5 L196.0 72.3 L204.4 70.4 L212.8 68.8 L221.2 67.5 L229.6 66.3 L238.0 65.4 L246.4 64.5 L254.8 63.8 L263.2 63.2 L271.6 62.7 L280.0 62.3 L288.4 62.0 L296.8 61.7 L305.2 61.4 L313.6 61.2 L322.0 61.0 L330.4 60.9 L338.8 60.7 L347.2 60.6 L355.6 60.5 L364.0 60.4 L372.4 60.4 L380.8 60.3 L389.2 60.3 L397.6 60.2 L406.0 60.2 L414.4 60.2 L422.8 60.1 L431.2 60.1 L439.6 60.1 L448.0 60.1 L456.4 60.1 L464.8 60.1 L473.2 60.1 L481.6 60.0 L490.0 60.0" fill="none" stroke={K} strokeWidth={2.5} />
+    <path d="M70.0 210.0 L78.4 200.3 L86.8 191.3 L95.2 182.8 L103.6 174.9 L112.0 167.5 L120.4 160.5 L128.8 154.1 L137.2 148.0 L145.6 142.3 L154.0 137.0 L162.4 132.0 L170.8 127.4 L179.2 123.1 L187.6 119.0 L196.0 115.2 L204.4 111.6 L212.8 108.3 L221.2 105.2 L229.6 102.3 L238.0 99.5 L246.4 97.0 L254.8 94.6 L263.2 92.4 L271.6 90.3 L280.0 88.3 L288.4 86.5 L296.8 84.8 L305.2 83.2 L313.6 81.7 L322.0 80.3 L330.4 79.0 L338.8 77.8 L347.2 76.6 L355.6 75.5 L364.0 74.5 L372.4 73.6 L380.8 72.7 L389.2 71.9 L397.6 71.1 L406.0 70.4 L414.4 69.8 L422.8 69.1 L431.2 68.5 L439.6 68.0 L448.0 67.5 L456.4 67.0 L464.8 66.5 L473.2 66.1 L481.6 65.7 L490.0 65.4" fill="none" stroke="#6b7280" strokeWidth={2.5} strokeDasharray="8 4" />
+    <L x1={70} y1={60} x2={490} y2={60} dash="3 4" w={1} />
+    <T x={100} y={104} size={13} bold anchor="start">X (faster)</T>
+    <T x={330} y={118} size={13} fill="#4b5563" bold>Y (slower)</T>
+    <T x={290} y={252} size={11}>same final volume: the same amount of limiting reactant</T>
+  </Svg>
+);
+
 export const CHEM_FIGS = {
+  reactionProfile: ReactionProfile,
+  rateGraph: RateGraph,
+  electrolysis: Electrolysis,
+  fuelCell: FuelCell,
   bohrModels: BohrModels,
   dotCrossIonic: DotCrossIonic,
   dotCrossCovalent: DotCrossCovalent,

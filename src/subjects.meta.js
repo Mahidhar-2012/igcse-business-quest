@@ -25,7 +25,7 @@ export const SUBJECTS_META = [
     color: '#0d9488',
     text: '#0f766e',
     storageKey: 'igcse-chemistry-quest:v1',
-    total: 9,
+    total: 19,
     kind: 'progress',
   },  {
     id: 'business',

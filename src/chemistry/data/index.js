@@ -1,8 +1,10 @@
-﻿// Cambridge IGCSE Chemistry 0620 — content map (syllabus for 2026–2028, verified on the Cambridge International website).
+// Cambridge IGCSE Chemistry 0620 — content map (syllabus for 2026–2028, verified on the Cambridge International website).
 // Each unit has lessons made of knowledge bytes (notes, optional diagram, then one test).
 import { unit1 } from './units/c1.js';
+import { unit2 } from './units/c2.js';
+import { unit3 } from './units/c3.js';
 
-export const units = [unit1];
+export const units = [unit1, unit2, unit3];
 
 /** Flat lookup: question id -> { unit, sub, challenge, qid }. Card tests: `subId:c<cardIndex>.<testIndex>`. */
 export const questionIndex = (() => {
