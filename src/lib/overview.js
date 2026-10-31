@@ -2,11 +2,9 @@
 // (no subject content is loaded, so the hub stays light). Everything here belongs to this browser only.
 
 /** Lesson totals are kept here so the hub never has to load the subject data. Each subject app warns in the console if its data disagrees. */
-export const SUBJECT_META = {
-  english: { key: 'igcse-english:v1', total: 42, lessonsLabel: 'lessons read' },
-  physics: { key: 'igcse-physics-quest:v1', total: 26, lessonsLabel: 'lessons done' },
-  business: { key: 'igcse-business-quest:v2', total: 38, lessonsLabel: 'lessons done' },
-};
+import { SUBJECTS_META } from '../subjects.meta.js';
+
+export const SUBJECT_META = Object.fromEntries(SUBJECTS_META.map((s) => [s.id, { key: s.storageKey, total: s.total, kind: s.kind }]));
 
 export const DAILY_GOAL_XP = 50;
 
@@ -45,7 +43,7 @@ export function loadOverview() {
     const s = read(meta.key);
     let done = 0;
     let stars = 0;
-    if (id === 'english') {
+    if (meta.kind === 'notes') {
       done = Array.isArray(s?.done) ? s.done.length : 0;
     } else if (s?.subs) {
       const recs = Object.values(s.subs);
@@ -55,7 +53,7 @@ export function loadOverview() {
     const pct = Math.min(100, Math.round((done / meta.total) * 100));
     const active = s?.lastDay || null;
     subjects[id] = { done, total: meta.total, pct, stars, mistakes: s?.mistakes?.length || 0, lastDay: active, started: done > 0 || (s?.xp || 0) > 0 };
-    if (s && id !== 'english') {
+    if (s && meta.kind !== 'notes') {
       xp += s.xp || 0;
       if (s.lastDay === today) todayXp += s.todayXp || 0;
       if ((s.lastDay === today || s.lastDay === yesterday) && (s.streak || 0) > streak) streak = s.streak;

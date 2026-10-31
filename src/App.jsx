@@ -1,48 +1,17 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { Briefcase, PenLine, Atom, FlaskConical, ArrowRight, Flame, Zap, Target, Play, ShieldAlert } from 'lucide-react';
 import { loadOverview } from './lib/overview.js';
+import { SUBJECTS_META } from './subjects.meta.js';
 
 // Each subject is its own chunk, so the hub opens quickly and a subject downloads only when it is chosen.
-const BusinessApp = lazy(() => import('./BusinessApp.jsx'));
-const EnglishApp = lazy(() => import('./english/EnglishApp.jsx'));
-const PhysicsApp = lazy(() => import('./physics/PhysicsApp.jsx'));
-
-const SUBJECTS = [
-  {
-    id: 'physics',
-    hash: '#/physics',
-    title: 'Physics',
-    code: '0625',
-    blurb: 'Knowledge bytes with diagrams, tests and Extended exam questions 2020–2025.',
-    tag: 'Lessons + past papers',
-    icon: Atom,
-    color: '#6366f1',
-    text: '#4f46e5',
-  },
-  {
-    id: 'business',
-    hash: '#/business',
-    title: 'Business Studies',
-    code: '0264',
-    blurb: 'Knowledge bytes, tests, mega quizzes, exam-style questions and exam technique.',
-    tag: 'Lessons + quizzes',
-    icon: Briefcase,
-    color: '#58cc02',
-    text: '#2f6d02',
-  },
-  {
-    id: 'english',
-    hash: '#/english',
-    title: 'English as a Second Language',
-    code: '0510 / 0511',
-    blurb: 'Byte-sized notes and A* model answers for email, review, report, essay and article.',
-    tag: 'Notes + model answers',
-    icon: PenLine,
-    color: '#0ea5e9',
-    text: '#0369a1',
-  },
-];
-
+// To add a subject: add it to src/subjects.meta.js, then register its icon and loader here.
+const ICONS = { physics: Atom, business: Briefcase, english: PenLine, chemistry: FlaskConical };
+const LOADERS = {
+  business: lazy(() => import('./BusinessApp.jsx')),
+  english: lazy(() => import('./english/EnglishApp.jsx')),
+  physics: lazy(() => import('./physics/PhysicsApp.jsx')),
+};
+const SUBJECTS = SUBJECTS_META.filter((s) => LOADERS[s.id]).map((s) => ({ ...s, icon: ICONS[s.id] }));
 const routeFromHash = () => SUBJECTS.find((s) => s.hash === window.location.hash)?.id ?? null;
 
 function Ring({ pct, color, size = 56, stroke = 6, children }) {
@@ -184,12 +153,12 @@ export default function App() {
   const open = (s) => { window.location.hash = s.hash; };
   const home = () => { window.location.hash = ''; setSubject(null); window.scrollTo(0, 0); };
 
+  const Active = subject ? LOADERS[subject] : null;
+
   return (
     <Suspense fallback={<Loading />}>
       <a href="#main" className="skip-link" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>Skip to content</a>
-      {subject === 'business' && <BusinessApp onHome={home} />}
-      {subject === 'english' && <EnglishApp onHome={home} />}
-      {subject === 'physics' && <PhysicsApp onHome={home} />}
+      {Active && <Active onHome={home} />}
       {!subject && <Hub onOpen={open} />}
     </Suspense>
   );
