@@ -332,7 +332,84 @@ const RateGraph = () => (
   </Svg>
 );
 
+
+const PH_COLOURS = ['#c1121f', '#d62828', '#e85d04', '#f48c06', '#faa307', '#f9c74f', '#d4e157', '#66bb6a', '#2a9d8f', '#2b8ac6', '#3a6bc9', '#4a52c4', '#5f3fbf', '#6b2fb0', '#7b2f98'];
+const PhScale = () => (
+  <Svg w={560} h={170} label="The pH scale from 0 (strong acid) to 14 (strong alkali) with universal indicator colours, neutral at pH 7">
+    {PH_COLOURS.map((c, i) => (
+      <g key={i}>
+        <rect x={35 + i * 33} y={50} width={33} height={46} fill={c} stroke={K} strokeWidth={1} />
+        <T x={51.5 + i * 33} y={116} size={12}>{i}</T>
+      </g>
+    ))}
+    <L x1={284} y1={44} x2={36} y2={44} arrow w={1.6} />
+    <L x1={284} y1={44} x2={532} y2={44} arrow w={1.6} />
+    <T x={160} y={36} size={13} bold>acidic</T>
+    <T x={410} y={36} size={13} bold>alkaline</T>
+    <T x={268} y={140} size={12}>7 = neutral (pure water)</T>
+    <T x={70} y={140} size={11}>strong acid</T>
+    <T x={500} y={140} size={11}>strong alkali</T>
+    <T x={280} y={20} size={12}>universal indicator colours</T>
+  </Svg>
+);
+
+
+const REACT = [['K', 'potassium'], ['Na', 'sodium'], ['Ca', 'calcium'], ['Mg', 'magnesium'], ['Al', 'aluminium'], ['C', 'carbon'], ['Zn', 'zinc'], ['Fe', 'iron'], ['H', 'hydrogen'], ['Cu', 'copper'], ['Ag', 'silver'], ['Au', 'gold']];
+const ReactivitySeries = () => (
+  <Svg w={560} h={330} label="The reactivity series from potassium (most reactive) to gold (least reactive), with carbon and hydrogen shown for comparison">
+    <L x1={40} y1={300} x2={40} y2={30} arrow w={2.5} />
+    <T x={40} y={20} size={12}>most reactive</T>
+    <T x={40} y={316} size={12}>least reactive</T>
+    {REACT.map(([s, n], i) => {
+      const y = 36 + i * 22;
+      const ref = s === 'C' || s === 'H';
+      return (
+        <g key={s}>
+          <rect x={70} y={y} width={170} height={19} fill={ref ? '#fef3c7' : '#e0f2fe'} stroke={K} strokeWidth={1.4} strokeDasharray={ref ? '4 3' : undefined} />
+          <text x={80} y={y + 14} fontSize={13} fontWeight={700} fill={K}>{s}</text>
+          <text x={120} y={y + 14} fontSize={13} fill={K}>{n}</text>
+        </g>
+      );
+    })}
+    <path d="M250 36 V151" fill="none" stroke={K} strokeWidth={2} />
+    <T x={262} y={90} size={12} anchor="start">extracted by electrolysis</T>
+    <T x={262} y={104} size={12} anchor="start">of the molten compound</T>
+    <path d="M250 168 V256" fill="none" stroke={K} strokeWidth={2} />
+    <T x={262} y={206} size={12} anchor="start">can be reduced by heating</T>
+    <T x={262} y={220} size={12} anchor="start">with carbon (Zn, Fe, Cu)</T>
+    <T x={262} y={290} size={12} anchor="start">Ag and Au are often found native</T>
+    <T x={262} y={306} size={11} anchor="start">metals above H react with dilute acids</T>
+    <T x={262} y={320} size={11} anchor="start">dashed boxes: non-metals shown for comparison</T>
+  </Svg>
+);
+
+const BlastFurnace = () => (
+  <Svg w={560} h={330} label="Blast furnace: iron ore, coke and limestone enter at the top, hot air near the bottom, molten iron and slag leave at the bottom and waste gases leave at the top">
+    <path d="M200 50 L180 170 L215 270 L345 270 L380 170 L360 50 Z" fill="#fde2c4" stroke={K} strokeWidth={2.5} />
+    <L x1={280} y1={8} x2={280} y2={52} arrow w={2.5} />
+    <T x={266} y={24} size={12} anchor="end">iron ore, coke and limestone in</T>
+    <L x1={330} y1={30} x2={455} y2={30} arrow w={2} />
+    <T x={455} y={50} size={12} anchor="end">waste gases out</T>
+    <L x1={70} y1={225} x2={198} y2={225} arrow w={2.5} />
+    <T x={70} y={212} size={12} anchor="start">hot air blown in</T>
+    <L x1={470} y1={225} x2={362} y2={225} arrow w={2.5} />
+    <T x={470} y={212} size={12} anchor="end">hot air blown in</T>
+    <L x1={250} y1={270} x2={250} y2={310} arrow w={2.5} />
+    <T x={250} y={324} size={12}>molten iron</T>
+    <L x1={310} y1={270} x2={310} y2={310} arrow w={2.5} />
+    <T x={335} y={324} size={12} anchor="start">molten slag</T>
+    <T x={280} y={95} size={12}>Fe₂O₃ + 3CO → 2Fe + 3CO₂</T>
+    <T x={280} y={120} size={11}>(carbon monoxide reduces the ore)</T>
+    <T x={280} y={165} size={12}>CaCO₃ → CaO + CO₂</T>
+    <T x={280} y={185} size={12}>CaO + SiO₂ → CaSiO₃ (slag)</T>
+    <T x={280} y={245} size={12}>C + O₂ → CO₂ (heat)</T>
+  </Svg>
+);
+
 export const CHEM_FIGS = {
+  reactivitySeries: ReactivitySeries,
+  blastFurnace: BlastFurnace,
+  phScale: PhScale,
   reactionProfile: ReactionProfile,
   rateGraph: RateGraph,
   electrolysis: Electrolysis,
