@@ -1,4 +1,7 @@
 import { SVG_FIGS } from './svgFigs.jsx';
+import { CHEM_FIGS } from './svgChem.jsx';
+
+const ALL_FIGS = { ...SVG_FIGS, ...CHEM_FIGS };
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -8,7 +11,7 @@ const BASE = import.meta.env.BASE_URL;
  */
 export default function Figure({ fig, className = '' }) {
   const f = typeof fig === 'string' ? { src: fig } : fig;
-  const Svg = f.svg ? SVG_FIGS[f.svg] : null;
+  const Svg = f.svg ? ALL_FIGS[f.svg] : null;
   return (
     <figure className={`my-3 ${className}`}>
       <div className="overflow-hidden rounded-xl border-2 border-slate-200 bg-white p-2">

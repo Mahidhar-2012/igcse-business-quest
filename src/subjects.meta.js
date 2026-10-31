@@ -1,4 +1,4 @@
-﻿// Plain data describing each subject on the hub (no React, so tests and the hub can read it cheaply).
+// Plain data describing each subject on the hub (no React, so tests and the hub can read it cheaply).
 // To add a subject: add an entry here, add its content and a thin wrapper like src/physics/PhysicsApp.jsx,
 // and register its icon and loader in src/App.jsx.
 export const SUBJECTS_META = [
@@ -16,6 +16,18 @@ export const SUBJECTS_META = [
     kind: 'progress',
   },
   {
+    id: 'chemistry',
+    hash: '#/chemistry',
+    title: 'Chemistry',
+    code: '0620',
+    blurb: 'Knowledge bytes with original diagrams and tests for the 2026–2028 syllabus. Being built unit by unit.',
+    tag: 'Lessons (in progress)',
+    color: '#0d9488',
+    text: '#0f766e',
+    storageKey: 'igcse-chemistry-quest:v1',
+    total: 9,
+    kind: 'progress',
+  },  {
     id: 'business',
     hash: '#/business',
     title: 'Business Studies',

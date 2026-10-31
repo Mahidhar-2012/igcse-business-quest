@@ -10,6 +10,7 @@ const LOADERS = {
   business: lazy(() => import('./BusinessApp.jsx')),
   english: lazy(() => import('./english/EnglishApp.jsx')),
   physics: lazy(() => import('./physics/PhysicsApp.jsx')),
+  chemistry: lazy(() => import('./chemistry/ChemistryApp.jsx')),
 };
 const SUBJECTS = SUBJECTS_META.filter((s) => LOADERS[s.id]).map((s) => ({ ...s, icon: ICONS[s.id] }));
 const routeFromHash = () => SUBJECTS.find((s) => s.hash === window.location.hash)?.id ?? null;
@@ -122,7 +123,7 @@ function Hub({ onOpen }) {
             <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-slate-200"><FlaskConical className="h-6 w-6" aria-hidden /></span>
             <span>
               <span className="block text-lg font-black leading-tight">More subjects</span>
-              <span className="mt-1 block text-sm font-semibold">Chemistry, Biology, Maths and more are planned.</span>
+              <span className="mt-1 block text-sm font-semibold">Biology, Maths and more are planned.</span>
             </span>
           </div>
         </li>

@@ -525,6 +525,8 @@ const ElectricFields = () => (
   </Svg>
 );
 
+export { Svg, T, L, Axes, K };
+
 export const SVG_FIGS = {
   planeMirror: PlaneMirror,
   lensImage: LensImage,
