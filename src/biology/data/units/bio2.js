@@ -48,9 +48,9 @@ export const b41 = withPractice(lesson('b4-molecules', 'Biological molecules', '
   short('Describe how to test a food sample for starch.', { kind: 'Exam question', command: 'Describe', points: ['Add iodine solution to the sample', 'A blue-black colour shows starch is present (it stays orange-brown if there is none)'], model: 'Add iodine solution to the food sample. If starch is present, the colour changes from orange-brown to blue-black.' }),
   mc('A student heats a sample with Benedict’s solution and it stays blue. Which conclusion is correct?', [
     ['It contains no reducing sugar, although it could still contain sucrose', 'Correct.'],
-    ['It contains no sugar of any kind', 'Sucrose is a non-reducing sugar and does not react.'],
-    ['It contains starch, because blue shows starch', 'Starch is tested with iodine.'],
-    ['It contains protein, because blue is the starting colour', 'Protein is tested with biuret.'],
+    ['It contains no sugar of any kind, so it cannot contain sucrose either', 'Sucrose is a non-reducing sugar and does not react.'],
+    ['It contains starch, because blue is the colour that shows starch', 'Starch is tested with iodine.'],
+    ['It contains protein, because blue is the starting colour of the test', 'Protein is tested with biuret.'],
   ], 0),
   short('State the base pairing rule in DNA.', { kind: 'Definition', points: ['A pairs with T', 'C pairs with G'], model: 'Adenine (A) pairs with thymine (T), and cytosine (C) pairs with guanine (G).' }),
 );
