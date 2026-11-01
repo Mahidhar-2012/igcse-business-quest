@@ -121,3 +121,12 @@ body { @apply bg-slate-50 text-ink antialiased; }
 .notes-sheet .nqs { list-style: none; padding-left: 0; }
 .notes-sheet .nqs .qn { margin-right: 2px; }
 .notes-sheet .nans li { font-size: 0.93em; }
+.notes-sheet .nsteps { list-style: decimal; padding-left: 15px; }
+.notes-sheet .nchip { display: inline-block; margin: 0 4px 1px 0; padding: 0 4px; border: 1px solid #cbd5e1; border-radius: 3px; background: #f8fafc; }
+.notes-sheet .nmodel { border-left: 2px solid #94a3b8; padding-left: 5px; margin: 2px 0; }
+.notes-sheet .nparts { padding-left: 13px; }
+.notes-sheet.mono .nchip { background: #fff; border-color: #888; }
+.notes-sheet .ntip { background: #ecfdf5; border: 1px solid #6ee7b7; border-left: 3px solid #059669; border-radius: 3px; padding: 2px 6px; }
+.notes-sheet .ntip .nmis { color: #9a3412; margin-top: 1px; }
+.notes-sheet.mono .ntip { background: #fff; border-color: #666; border-left-color: #111; }
+.notes-sheet.mono .ntip .nmis { color: #111; }

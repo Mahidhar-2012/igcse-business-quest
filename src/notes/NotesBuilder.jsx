@@ -1,6 +1,7 @@
 import { Fragment, useMemo, useState } from 'react';
 import { ArrowLeft, Printer, FileText, CheckSquare, Square } from 'lucide-react';
 import Figure from '../components/Figure.jsx';
+import { TIPS } from './tips.js';
 
 /** **bold** key terms are highlighted; {{phrase}} is emphasised; *text* is italic. */
 function Rich({ text }) {
@@ -74,14 +75,61 @@ const COMMAND_WORDS = [
 
 const countBytes = (units, ids) => units.flatMap((u) => u.submodules).filter((s) => ids.has(s.id)).reduce((n, s) => n + s.cards.length, 0);
 
+const hasBody = (c) => !!(c.points || c.options || c.example || c.items || c.doList || c.groups || c.task || c.parts);
+const asList = (v) => (Array.isArray(v) ? v : v ? [v] : []);
+
+/** English card types (steps, do/avoid, phrase banks, model answers, try-it and annotated examples). */
+function EnglishBody({ card, opts }) {
+  switch (card.type) {
+    case 'steps':
+      return <ol className="nsteps">{card.items.map((i) => <li key={i}><Rich text={i} /></li>)}</ol>;
+    case 'dont':
+      return (
+        <div className="npc">
+          <div><b>Do</b>{card.doList.map((x) => <p key={x} className="pro">+ <Rich text={x} /></p>)}</div>
+          <div><b>Avoid</b>{card.avoidList.map((x) => <p key={x} className="con">− <Rich text={x} /></p>)}</div>
+        </div>
+      );
+    case 'bank':
+      return <div>{card.groups.map((g) => <p key={g.label}><b>{g.label}:</b> {g.items.map((x, i) => <span key={i} className="nchip"><Rich text={x} /></span>)}</p>)}</div>;
+    case 'model':
+      return (
+        <div>
+          <p className="nex"><b>Task:</b> {asList(card.task).filter((x) => !String(x).startsWith('[Pictures')).slice(0, 4).map((x) => stripMarks(x)).join(' ')}{card.words ? ` (${card.words} words)` : ''}</p>
+          {asList(card.why).length > 0 && <ul>{asList(card.why).map((w) => <li key={w}><Rich text={w} /></li>)}</ul>}
+          {opts.models && asList(card.paras).map((p, i) => <p key={i} className="nmodel"><Rich text={p} /></p>)}
+        </div>
+      );
+    case 'try':
+      return (
+        <div>
+          <p><b>Try:</b> {asList(card.task).map((x) => stripMarks(x)).join(' ')}</p>
+          {card.hint && <p className="nhint">Hint: {card.hint}</p>}
+          <p><b>Answer:</b> <Rich text={asList(card.answer).join(' ')} /></p>
+        </div>
+      );
+    case 'annotated':
+      return (
+        <div>
+          <p className="nex">{stripMarks(card.task)}</p>
+          {asList(card.summary).length > 0 && <ul>{asList(card.summary).map((s) => <li key={s}><Rich text={s} /></li>)}</ul>}
+          {opts.models && <ul className="nparts">{asList(card.parts).map(([text, why], i) => <li key={i}><i>{stripMarks(text)}</i> — <Rich text={why} /></li>)}</ul>}
+        </div>
+      );
+    default:
+      return null;
+  }
+}
+
 function ByteBlock({ card, opts }) {
-  const hasContent = card.points || card.options || card.example;
-  if (!hasContent) return null;
+  if (!hasBody(card)) return null;
+  const english = ['steps', 'dont', 'bank', 'model', 'try', 'annotated'].includes(card.type);
   return (
     <section className="nb">
       <h4>{card.title}</h4>
       {opts.figures && card.fig && !card.figAfter && <><Figure fig={card.fig} className="nfig" />{opts.recall && <p className="nhint">Test yourself: cover the labels and redraw this from memory.</p>}</>}
-      {card.points && (
+      {english && <EnglishBody card={card} opts={opts} />}
+      {!english && card.points && (
         <ul>
           {card.points.map((p) => <li key={p}><Rich text={p} /></li>)}
         </ul>
@@ -107,7 +155,6 @@ function ByteBlock({ card, opts }) {
     </section>
   );
 }
-
 function Sheet({ title, code, units, ids, opts, findGlossary }) {
   const chosen = units.map((u) => ({ ...u, subs: u.submodules.filter((s) => ids.has(s.id)) })).filter((u) => u.subs.length);
   const notes = useMemo(() => {
@@ -168,6 +215,12 @@ function Sheet({ title, code, units, ids, opts, findGlossary }) {
                   </p>
                 )}
                 {sub.cards.map((c, i) => <ByteBlock key={`${c.title}-${i}`} card={c} opts={opts} />)}
+                {opts.tips && TIPS[sub.id] && (
+                  <section className="nb ntip">
+                    <p><b>Examiner tip:</b> {TIPS[sub.id][0]}</p>
+                    <p className="nmis"><b>Common mistake:</b> {TIPS[sub.id][1]}</p>
+                  </section>
+                )}
                 {opts.definitions && defs.length > 0 && (
                   <section className="nb ndef">
                     <h4>Key definitions</h4>
@@ -181,7 +234,7 @@ function Sheet({ title, code, units, ids, opts, findGlossary }) {
                   </section>
                 )}
                 {opts.checklist && (
-                  <p className="ncheck"><b>Tick when you can explain:</b> {sub.cards.filter((c) => c.points || c.options || c.example).map((c) => <span key={c.title}>☐ {c.title}</span>)}</p>
+                  <p className="ncheck"><b>Tick when you can explain:</b> {sub.cards.filter(hasBody).map((c) => <span key={c.title}>☐ {c.title}</span>)}</p>
                 )}
               </div>
             );
@@ -216,12 +269,14 @@ function Sheet({ title, code, units, ids, opts, findGlossary }) {
 
 const OPTIONS = [
   ['figures', 'Diagrams'],
+  ['tips', 'Examiner tips and common mistakes'],
   ['definitions', 'Key definitions and terms'],
   ['equations', 'Formulae box'],
   ['commandWords', 'Command words'],
   ['checklist', 'Tick-box checklists'],
   ['recall', 'Redraw-from-memory prompts'],
   ['examQs', 'Test yourself + answers'],
+  ['models', 'Full model answers (English, long)'],
   ['twoCol', 'Two columns'],
   ['large', 'Larger text'],
   ['mono', 'Black and white (saves ink)'],
@@ -235,7 +290,7 @@ const OPTIONS = [
 export default function NotesBuilder({ title, code, units, onBack, findGlossary }) {
   const allIds = useMemo(() => units.flatMap((u) => u.submodules.map((s) => s.id)), [units]);
   const [ids, setIds] = useState(() => new Set());
-  const [opts, setOpts] = useState({ figures: true, definitions: true, equations: true, commandWords: true, checklist: true, recall: true, examQs: true, twoCol: true, large: false, mono: false });
+  const [opts, setOpts] = useState({ figures: true, tips: true, definitions: true, equations: true, commandWords: true, checklist: true, recall: true, examQs: true, models: false, twoCol: true, large: false, mono: false });
   const [preview, setPreview] = useState(false);
 
   const toggle = (id) => setIds((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });

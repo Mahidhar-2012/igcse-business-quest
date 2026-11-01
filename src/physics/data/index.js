@@ -26,6 +26,7 @@ import { extrasB } from './units/extras_b.js';
 import { extrasC } from './units/extras_c.js';
 import { applyOverlay, dropPractical } from '../../data/overlay.js';
 import { hard } from './hard.js';
+import { FIGURES } from './figures.js';
 
 const paper = (id, title, questions) => ({ id, title, questions });
 
@@ -92,6 +93,18 @@ for (const id of Object.keys(extras)) {
 }
 // Harder replacements and extra question types, keyed by question id.
 applyOverlay(units, hard);
+
+// Diagrams for bytes that did not have one.
+const figsLeft = new Set(Object.keys(FIGURES));
+for (const unit of units) {
+  for (const sub of unit.submodules) {
+    for (const card of sub.cards) {
+      const key = `${sub.id}|${card.title}`;
+      if (FIGURES[key] && !card.fig) { card.fig = FIGURES[key]; figsLeft.delete(key); }
+    }
+  }
+}
+if (figsLeft.size) throw new Error(`figures: not found: ${[...figsLeft].join(', ')}`);
 
 // Experiment and practical bytes are not taught here.
 dropPractical(units, {

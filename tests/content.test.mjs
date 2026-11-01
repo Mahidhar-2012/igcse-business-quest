@@ -116,7 +116,7 @@ test('physics: every past-paper image exists and every answer is A to D', () => 
 
 test('physics: figure references point to existing vector diagrams', async () => {
   const fs = await import('node:fs');
-  const src = ['svgFigs.jsx', 'svgChem.jsx', 'svgEcon.jsx', 'svgBio.jsx', 'svgBiz.jsx'].map((f) => fs.readFileSync(path.join(root, 'src/components', f), 'utf8')).join('\n');
+  const src = ['svgFigs.jsx', 'svgChem.jsx', 'svgEcon.jsx', 'svgBio.jsx', 'svgBiz.jsx', 'svgPhys2.jsx'].map((f) => fs.readFileSync(path.join(root, 'src/components', f), 'utf8')).join('\n');
   const keys = new Set([...src.matchAll(/^  (\w+): \w+,$/gm)].map((m) => m[1]));
   let checked = 0;
   for (const course of [physics, chemistry, economics, biology, business]) {
@@ -141,4 +141,17 @@ test('english: lessons have unique ids and valid card types', () => {
       assert.ok(card.title, `${lesson.id}: card without title`);
     }
   }
+});
+
+test('notes: every lesson of the five tipped courses has an examiner tip and common mistake', async () => {
+  const { TIPS } = await import('../src/notes/tips.js');
+  const all = new Set();
+  for (const course of [physics, chemistry, economics, biology, business]) {
+    for (const sub of lessonsOf(course.units)) {
+      all.add(sub.id);
+      assert.ok(TIPS[sub.id] && TIPS[sub.id][0] && TIPS[sub.id][1], `${sub.id}: missing tip or mistake`);
+    }
+  }
+  for (const l of english.allLessons) { all.add(l.id); assert.ok(TIPS[l.id] && TIPS[l.id][0] && TIPS[l.id][1], `: missing tip or mistake`); }
+  for (const id of Object.keys(TIPS)) assert.ok(all.has(id), `tips for unknown lesson ${id}`);
 });

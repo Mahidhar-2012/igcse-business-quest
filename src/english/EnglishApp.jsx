@@ -1,9 +1,16 @@
 import { useState } from 'react';
-import { LayoutGrid, X, ChevronLeft, ChevronRight, Check, CheckCircle2, Trash2 } from 'lucide-react';
+import { LayoutGrid, X, ChevronLeft, ChevronRight, Check, CheckCircle2, Trash2, FileText } from 'lucide-react';
 import { sections, allLessons, SECTION_COLORS } from './data/index.js';
 import { useEnglishProgress } from './useEnglishProgress.js';
 import EnglishCard from './EnglishCard.jsx';
 import { checkTotal } from '../lib/overview.js';
+import NotesBuilder from '../notes/NotesBuilder.jsx';
+
+/** English sections as units, so the shared notes builder can print them. */
+const notesUnits = sections.map((s, i) => ({
+  id: s.id, number: i + 1, title: s.title, emoji: s.emoji,
+  submodules: s.lessons.map((l) => ({ id: l.id, title: l.title, syllabus: null, microConcept: null, cards: l.cards, challenges: [] })),
+}));
 
 function Reader({ section, lesson, done, onFinish, onExit, onNext }) {
   const [i, setI] = useState(0);
@@ -60,8 +67,13 @@ checkTotal('english', allLessons.length);
 export default function EnglishApp({ onHome }) {
   const { done, markDone, reset } = useEnglishProgress();
   const [open, setOpen] = useState(null); // { section, lesson }
+  const [notesOpen, setNotesOpen] = useState(false);
   const total = allLessons.length;
   const pct = Math.round((done.length / total) * 100);
+
+  if (notesOpen) {
+    return <NotesBuilder title="English as a Second Language" code="0510 / 0511" units={notesUnits} onBack={() => setNotesOpen(false)} />;
+  }
 
   if (open) {
     const sIdx = sections.indexOf(open.section);
@@ -93,6 +105,9 @@ export default function EnglishApp({ onHome }) {
           </button>
           <span className="text-lg font-black text-sky-700">English ESL Notes</span>
           <span className="ml-auto text-sm font-extrabold text-slate-500">{done.length}/{total} lessons read · {pct}%</span>
+          <button type="button" aria-label="Printable notes and cheat sheets" title="Printable notes" onClick={() => setNotesOpen(true)} className="icon-btn !text-sky-600 hover:!bg-sky-50">
+            <FileText className="h-5 w-5" />
+          </button>
           <button
             type="button"
             aria-label="Reset reading progress"

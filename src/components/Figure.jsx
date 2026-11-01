@@ -3,8 +3,9 @@ import { CHEM_FIGS } from './svgChem.jsx';
 import { ECON_FIGS } from './svgEcon.jsx';
 import { BIO_FIGS } from './svgBio.jsx';
 import { BIZ_FIGS } from './svgBiz.jsx';
+import { PHYS2_FIGS } from './svgPhys2.jsx';
 
-const ALL_FIGS = { ...SVG_FIGS, ...CHEM_FIGS, ...ECON_FIGS, ...BIO_FIGS, ...BIZ_FIGS };
+const ALL_FIGS = { ...SVG_FIGS, ...CHEM_FIGS, ...ECON_FIGS, ...BIO_FIGS, ...BIZ_FIGS, ...PHYS2_FIGS };
 
 const BASE = import.meta.env.BASE_URL;
 
