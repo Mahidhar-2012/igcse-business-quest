@@ -332,7 +332,74 @@ const Eye = () => (
   </Svg>
 );
 
+/* ---------- Flower ---------- */
+const Flower = () => (
+  <Svg w={560} h={310} label="Section through an insect-pollinated flower showing the stigma, style, ovary, ovules, anthers, filaments, petals and sepals">
+    <rect x={195} y={250} width={10} height={55} fill={GREEN} stroke={K} strokeWidth={1.6} />
+    <ellipse cx={200} cy={246} rx={24} ry={9} fill={GREEN} stroke={K} strokeWidth={1.6} />
+    <ellipse cx={135} cy={165} rx={30} ry={78} transform="rotate(-14 135 165)" fill="#fbcfe8" stroke={K} strokeWidth={1.8} />
+    <ellipse cx={265} cy={165} rx={30} ry={78} transform="rotate(14 265 165)" fill="#fbcfe8" stroke={K} strokeWidth={1.8} />
+    <ellipse cx={168} cy={238} rx={26} ry={8} transform="rotate(-20 168 238)" fill="#86efac" stroke={K} strokeWidth={1.6} />
+    <ellipse cx={232} cy={238} rx={26} ry={8} transform="rotate(20 232 238)" fill="#86efac" stroke={K} strokeWidth={1.6} />
+    <line x1={182} y1={228} x2={167} y2={128} stroke={K} strokeWidth={2.4} />
+    <line x1={218} y1={228} x2={233} y2={128} stroke={K} strokeWidth={2.4} />
+    <ellipse cx={166} cy={116} rx={8} ry={15} fill="#fde047" stroke={K} strokeWidth={1.6} />
+    <ellipse cx={234} cy={116} rx={8} ry={15} fill="#fde047" stroke={K} strokeWidth={1.6} />
+    <rect x={196} y={100} width={8} height={80} fill={GREEN} stroke={K} strokeWidth={1.6} />
+    <ellipse cx={200} cy={94} rx={15} ry={9} fill="#fda4af" stroke={K} strokeWidth={1.6} />
+    <ellipse cx={200} cy={208} rx={27} ry={36} fill={GREEN} stroke={K} strokeWidth={2} />
+    {[[191, 196], [209, 196], [200, 218]].map(([x, y], i) => <circle key={i} cx={x} cy={y} r={5.5} fill="#fde68a" stroke={K} strokeWidth={1.3} />)}
+    <Lab px={214} py={92} tx={340} ty={32}>stigma</Lab>
+    <Lab px={242} py={106} tx={340} ty={68}>anther</Lab>
+    <Lab px={204} py={140} tx={340} ty={104}>style</Lab>
+    <Lab px={290} py={140} tx={340} ty={140}>petal</Lab>
+    <Lab px={226} py={180} tx={340} ty={176}>filament</Lab>
+    <Lab px={225} py={208} tx={340} ty={212}>ovary</Lab>
+    <Lab px={209} py={198} tx={340} ty={246}>ovule</Lab>
+    <Lab px={252} py={240} tx={340} ty={282}>sepal</Lab>
+  </Svg>
+);
+
+/* ---------- Pyramid of energy ---------- */
+const EnergyPyramid = () => (
+  <Svg w={560} h={270} label="Pyramid of energy with four trophic levels: producers at the base with 10 000 kilojoules, primary consumers 1 000, secondary consumers 100 and tertiary consumers 10">
+    {[
+      { w: 360, y: 190, name: 'producers', e: '10 000 kJ' },
+      { w: 240, y: 140, name: 'primary consumers', e: '1 000 kJ' },
+      { w: 130, y: 90, name: 'secondary consumers', e: '100 kJ' },
+      { w: 50, y: 40, name: 'tertiary consumers', e: '10 kJ' },
+    ].map((l) => (
+      <g key={l.name}>
+        <rect x={190 - l.w / 2 + 20} y={l.y} width={l.w} height={46} fill={GREEN} stroke={K} strokeWidth={2} />
+        <T x={400} y={l.y + 20} anchor="start" size={12} bold>{l.name}</T>
+        <T x={400} y={l.y + 36} anchor="start" size={12}>{l.e}</T>
+        <L x1={190 + l.w / 2 + 22} y1={l.y + 23} x2={396} y2={l.y + 23} w={1.2} dash="3 3" />
+      </g>
+    ))}
+    <T x={210} y={256} size={12}>Only about 10% of the energy passes to the next level</T>
+  </Svg>
+);
+
+/* ---------- Population growth curve ---------- */
+const PopulationCurve = () => (
+  <Svg w={560} h={280} label="Sigmoid population growth curve showing the lag phase, exponential phase, stationary phase and death phase">
+    <L x1={70} y1={230} x2={500} y2={230} arrow />
+    <L x1={70} y1={230} x2={70} y2={25} arrow />
+    <T x={285} y={262} size={13}>time</T>
+    <text x={22} y={130} transform="rotate(-90 22 130)" textAnchor="middle" fontSize={13} fill={K}>population size</text>
+    <path d="M72 218 C110 216 150 212 180 192 C220 160 250 90 300 66 C340 56 380 56 410 64 C440 76 462 118 482 168" fill="none" stroke="#2563eb" strokeWidth={3.5} />
+    {[175, 300, 410].map((x) => <line key={x} x1={x} y1={40} x2={x} y2={230} stroke={K} strokeWidth={1.2} strokeDasharray="5 4" />)}
+    <T x={122} y={52} size={12} bold>lag</T><T x={122} y={67} size={11}>phase</T>
+    <T x={238} y={52} size={12} bold>exponential</T><T x={238} y={67} size={11}>(log) phase</T>
+    <T x={355} y={38} size={12} bold>stationary</T><T x={355} y={53} size={11}>phase</T>
+    <T x={455} y={52} size={12} bold>death</T><T x={455} y={67} size={11}>phase</T>
+  </Svg>
+);
+
 export const BIO_FIGS = {
+  flower: Flower,
+  energyPyramid: EnergyPyramid,
+  populationCurve: PopulationCurve,
   digestiveSystem: DigestiveSystem,
   villus: Villus,
   heart: Heart,

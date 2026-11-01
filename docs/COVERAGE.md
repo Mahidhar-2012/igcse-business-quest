@@ -37,6 +37,9 @@ Syllabus sections 2.1 to 6.2 were compared against the lessons and the following
 - Explanations for the 1,885 multiple-choice past-paper questions are not yet written; learners see the official correct letter only.
 - Diagrams are original code; none has been reviewed by a subject expert. Treat them as needing expert review before being relied on for teaching.
 
+## Experiment content removed from the sciences
+
+On request, practical and experiment content was removed from Physics (measuring length, volume and time; measuring density; measuring specific heat capacity; thermal energy transfer experiments; measuring the speed of sound; plotting magnetic field lines), Chemistry (the whole of syllabus topic 12, experimental techniques and chemical analysis, and the bytes on measuring and evaluating methods of following a reaction) and Biology (investigating photosynthesis and the aquatic plant gas exchange experiment). The removal is done when the course loads (dropPractical in src/data/overlay.js), so the source files still contain the removed text. Some questions in other lessons may still mention experiments, and the alpha-particle scattering experiment was kept because it is theory evidence for the nuclear atom.
 ## Chemistry 0620
 
 **Syllabus:** Cambridge IGCSE Chemistry 0620, version for examination in 2026, 2027 and 2028 (verified on the Cambridge International website). Content is original and was written from the published topic structure.
@@ -60,18 +63,16 @@ Known limits:
 - Several topics (for example 2.9 market failure, 3.7 market structures, 4.2 to 4.4 policy, 5.x development) have no diagrams and would benefit from worked examples and data-response practice.
 - Diagrams have been checked visually but have not been reviewed by a subject expert.
 
-## Biology 0610 (Part 1 of 2: topics 1 to 6)
+## Biology 0610
 
 **Syllabus:** Cambridge IGCSE Biology 0610, version 3 (published August 2026) for examination in 2026, 2027 and 2028, downloaded from the Cambridge International website. Content is original and was written from the published objective list.
-**Structure so far:** 4 units, 12 lessons covering syllabus topics 1 to 6 (characteristics and classification; cell structure and magnification; diffusion, osmosis and active transport; biological molecules and enzymes; photosynthesis and leaf structure), with 6 original diagrams (animal, plant and bacterial cells, leaf section, osmosis in plant cells, enzyme action). Questions follow the hard-question standard: same-length options, misconception distractors, and select-all, matching, gap-fill, definition and exam-style questions.
-
-**Not yet built (topics 7 to 20):** human nutrition and digestion, transport in plants and animals, diseases and immunity, gas exchange, respiration, excretion, coordination, drugs, reproduction, inheritance, variation and selection, organisms and the environment, human influences on the ecosystem, biotechnology and genetic modification.
+**Structure:** 21 units (one per syllabus topic), 55 lessons, 146 knowledge bytes covering all 21 syllabus topics, 253 questions, and 14 original diagrams (animal, plant and bacterial cells, leaf section, osmosis in plant cells, enzyme action, digestive system, villus, heart, reflex arc, eye, flower, pyramid of energy, population growth curve). Questions follow the hard-question standard: same-length options, misconception distractors, and select-all, matching, gap-fill, definition and exam-style questions.
 
 Known limits:
-- Core and Supplement objectives are mixed; there is no labelling of which is which yet.
-- This is a first pass: each objective has some coverage but a syllabus audit (as done for Chemistry and Economics) has not been run yet for Biology.
-- No past-paper questions or written practice yet. Diagrams have not been reviewed by a subject expert.
-
+- First pass: each syllabus objective has some coverage, but a syllabus audit (as done for Chemistry and Economics) has not been run yet for Biology, so some Supplement detail is probably thin (for example mRNA and protein synthesis, kidney detail, the full menstrual cycle hormones, and nitrogen cycle stages are covered briefly).
+- Experiments and practical investigations were removed on request (for example the photosynthesis investigation and the aquatic plant indicator experiment). Food tests, enzyme and pH effects, and other theory remain.
+- By strict length, the correct answer is the longest option in about half of the Biology multiple-choice questions; many of those are short one-word answers.
+- No past-paper questions. Diagrams have not been reviewed by a subject expert.
 ## English 0510 / 0511
 
 **Structure:** 11 sections, 42 lessons: exam map, reading, the five writing tasks (email, review, report, essay, article), language boosters, a skills workshop (grammar fixes, sentence upgrades, planning, annotated models, self-check lists, reading practice), listening and speaking, and 38 sample answers with their questions.

@@ -4,9 +4,11 @@ import { unit1, unit2, unit3 } from './units/bio1.js';
 import { unit4, unit5, unit6 } from './units/bio2.js';
 import { unit7, unit8, unit9 } from './units/bio3.js';
 import { unit10, unit11, unit12, unit13, unit14, unit15 } from './units/bio4.js';
+import { unit16, unit17, unit18 } from './units/bio5.js';
+import { unit19, unit20, unit21 } from './units/bio6.js';
 import { dropPractical } from '../../data/overlay.js';
 
-export const units = [unit1, unit2, unit3, unit4, unit5, unit6, unit7, unit8, unit9, unit10, unit11, unit12, unit13, unit14, unit15];
+export const units = [unit1, unit2, unit3, unit4, unit5, unit6, unit7, unit8, unit9, unit10, unit11, unit12, unit13, unit14, unit15, unit16, unit17, unit18, unit19, unit20, unit21];
 
 // Experiment and practical bytes are not taught here.
 dropPractical(units, { cards: { 'b6-photosynthesis': ['Investigating photosynthesis', 'Gas exchange in an aquatic plant'] } });
