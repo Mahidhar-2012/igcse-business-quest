@@ -19,7 +19,7 @@ const starsFor = (firstTry, total) => {
  * Generic question engine used for lessons, unit boss fights and mistake-bank drills.
  * mode: 'lesson' (shows micro-concept first) | 'boss' | 'drill'
  */
-export default function LessonPlayer({ mode = 'lesson', title, badge, items, actions, onExit, onNextSub, CardView = KnowledgeCard }) {
+export default function LessonPlayer({ mode = 'lesson', title, badge, doneTitle, items, actions, onExit, onNextSub, CardView = KnowledgeCard }) {
   // items: { kind: 'card', card, no, of, recap } (read) or { kind: 'q', qid, challenge } (tested)
   const total = items.filter((it) => it.kind === 'q').length;
   const [phase, setPhase] = useState('quiz');
@@ -32,6 +32,7 @@ export default function LessonPlayer({ mode = 'lesson', title, badge, items, act
   const [xp, setXp] = useState(0);
   const [toast, setToast] = useState(null);
   const finished = useRef(false);
+  const attempted = useRef(new Set()); // questions already answered once in this session: only the first attempt is scheduled
   const cardRef = useRef(null);
 
   const current = queue[idx];
@@ -52,6 +53,10 @@ export default function LessonPlayer({ mode = 'lesson', title, badge, items, act
     (correct) => {
       setVerdict(correct);
       const { qid, retest } = current;
+      if (!attempted.current.has(qid)) {
+        attempted.current.add(qid);
+        actions.record?.(qid, correct);
+      }
       if (correct) {
         SoundController.success();
         actions.clearMistake(qid);
@@ -143,7 +148,7 @@ export default function LessonPlayer({ mode = 'lesson', title, badge, items, act
         <div className="card pop p-8 text-center">
           <Trophy className="mx-auto mb-3 h-14 w-14 text-amber-400" aria-hidden />
           <h2 className="text-3xl font-black">
-            {mode === 'drill' ? 'Mistakes cleared!' : mode === 'boss' ? 'Mega Quiz complete!' : mode === 'paper' ? 'Past-paper set complete!' : 'Lesson complete!'}
+            {mode === 'drill' ? doneTitle || 'Mistakes cleared!' : mode === 'boss' ? 'Mega Quiz complete!' : mode === 'paper' ? 'Past-paper set complete!' : 'Lesson complete!'}
           </h2>
           {mode !== 'drill' && (
             <div className="my-4 flex justify-center gap-1" aria-label={`${stars} of 3 stars`}>

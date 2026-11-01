@@ -4,7 +4,9 @@ import UnitDashboard from '../components/UnitDashboard.jsx';
 import LessonPlayer from '../components/LessonPlayer.jsx';
 import MistakeBankModal from '../components/MistakeBankModal.jsx';
 import NotesBuilder from '../notes/NotesBuilder.jsx';
+import ReviewBanner from '../components/ReviewBanner.jsx';
 import { useProgress } from '../lib/store.js';
+import { dueIds, SESSION_SIZE } from '../lib/srs.js';
 import { checkTotal } from '../lib/overview.js';
 
 const MEGA_PER_LESSON = 5;
@@ -36,14 +38,19 @@ export default function CourseApp({ onHome, config, deep }) {
   const qItem = useCallback((qid) => ({ kind: 'q', qid, challenge: questionIndex[qid].challenge }), [questionIndex]);
   useMemo(() => checkTotal(id, units.reduce((n, u) => n + u.submodules.length, 0)), [id, units]);
   const progress = useProgress(course);
-  const { state, unitStats, isSubUnlocked, addXp, addMistake, clearMistake, completeSub, completeBoss, recordExam, toggle, reset } = progress;
+  const { state, unitStats, isSubUnlocked, addXp, addMistake, clearMistake, record, completeSub, completeBoss, recordExam, toggle, reset } = progress;
 
+  const due = dueIds(state.srs);
   const [activeUnitId, setActiveUnitId] = useState(() => (units.find((u) => !unitStats[u.id].allDone) || units[0]).id);
-  const [view, setView] = useState(() => (deep === 'notes' ? { name: 'notes' } : { name: 'dashboard' }));
+  const [view, setView] = useState(() => {
+    if (deep === 'notes') return { name: 'notes' };
+    if (deep === 'review' && due.length) return { name: 'review', ids: due.slice(0, SESSION_SIZE) };
+    return { name: 'dashboard' };
+  });
   const [mistakesOpen, setMistakesOpen] = useState(deep === 'mistakes');
   const baseActions = useMemo(
-    () => ({ addXp, addMistake, clearMistake, completeSub, completeBoss }),
-    [addXp, addMistake, clearMistake, completeSub, completeBoss],
+    () => ({ addXp, addMistake, clearMistake, record, completeSub, completeBoss }),
+    [addXp, addMistake, clearMistake, record, completeSub, completeBoss],
   );
 
   const exit = useCallback(() => setView({ name: 'dashboard' }), []);
@@ -117,6 +124,20 @@ export default function CourseApp({ onHome, config, deep }) {
     );
   } else if (view.name === 'notes') {
     body = <NotesBuilder title={heading.replace(/^IGCSE /, '').replace(/\s*\d{4}$/, '')} code={heading.match(/\d{4}/)?.[0] ?? null} units={units} onBack={exit} />;
+  } else if (view.name === 'review') {
+    body = (
+      <LessonPlayer
+        key={`review-${view.ids.join()}`}
+        mode="drill"
+        title="Daily review"
+        badge="Spaced review"
+        doneTitle="Review done!"
+        items={view.ids.map(qItem)}
+        actions={baseActions}
+        onExit={exit}
+        CardView={CardView}
+      />
+    );
   } else if (view.name === 'drill') {
     body = (
       <LessonPlayer
@@ -147,6 +168,7 @@ export default function CourseApp({ onHome, config, deep }) {
           onReset={reset}
           showUnits
         />
+        <ReviewBanner count={due.length} onStart={() => setView({ name: 'review', ids: due.slice(0, SESSION_SIZE) })} />
         <UnitDashboard
           units={units}
           heading={heading}

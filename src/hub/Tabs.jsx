@@ -1,4 +1,4 @@
-import { ArrowRight, Flame, Zap, Target, Play, ShieldAlert, FileText, ChevronRight, Check, Trash2, BookOpen, Star } from 'lucide-react';
+import { ArrowRight, Flame, Zap, Target, Play, ShieldAlert, FileText, ChevronRight, Check, Trash2, BookOpen, Star, RotateCcw } from 'lucide-react';
 import { Ring, SubjectBadge, ThemePicker } from './parts.jsx';
 
 const Chip = ({ icon: Icon, tint, value, label }) => (
@@ -40,6 +40,7 @@ export function Learn({ subjects, ov, current, setCurrent }) {
   const last = subjects.find((s) => s.id === ov.lastSubject) || cur;
   const lastSt = ov.subjects[last.id];
   const worst = [...subjects].filter((s) => ov.subjects[s.id].mistakes > 0).sort((a, b) => ov.subjects[b.id].mistakes - ov.subjects[a.id].mistakes)[0];
+  const dueSubject = [...subjects].filter((s) => ov.subjects[s.id].due > 0).sort((a, b) => ov.subjects[b.id].due - ov.subjects[a.id].due)[0];
   const goalPct = Math.min(100, Math.round((ov.todayXp / ov.goal) * 100));
   const anyStarted = subjects.some((s) => ov.subjects[s.id].started);
 
@@ -50,6 +51,9 @@ export function Learn({ subjects, ov, current, setCurrent }) {
     worst
       ? { icon: ShieldAlert, title: 'Fix your mistakes', sub: `${ov.subjects[worst.id].mistakes} to review in ${worst.title}`, href: `${worst.hash}/mistakes`, done: false }
       : { icon: ShieldAlert, title: 'Mistake bank is clear', sub: 'Wrong answers collect here so you can retry them', href: '#/recall', done: anyStarted },
+    dueSubject
+      ? { icon: RotateCcw, title: 'Daily review', sub: `${ov.subjects[dueSubject.id].due} due in ${dueSubject.title}`, href: `${dueSubject.hash}/review`, done: false }
+      : { icon: RotateCcw, title: 'Daily review is clear', sub: 'Answered questions come back when they are due', href: '#/recall', done: anyStarted },
     { icon: Target, title: 'Daily goal', sub: `${ov.todayXp} of ${ov.goal} XP today`, href: (anyStarted ? last : cur).hash, done: goalPct >= 100 },
     { icon: FileText, title: 'Revise with notes', sub: `Print or save a cheat sheet for ${cur.title}`, href: `${cur.hash}/notes`, done: false },
   ];
@@ -130,10 +134,58 @@ export function Learn({ subjects, ov, current, setCurrent }) {
 export function Recall({ subjects, ov }) {
   const list = subjects.filter((s) => ov.subjects[s.id].mistakes > 0).sort((a, b) => ov.subjects[b.id].mistakes - ov.subjects[a.id].mistakes);
   const total = list.reduce((n, s) => n + ov.subjects[s.id].mistakes, 0);
+  const dueList = subjects.filter((s) => ov.subjects[s.id].due > 0).sort((a, b) => ov.subjects[b.id].due - ov.subjects[a.id].due);
+  const dueTotal = dueList.reduce((n, s) => n + ov.subjects[s.id].due, 0);
+  const weak = subjects.flatMap((s) => ov.subjects[s.id].weak.map((l) => ({ ...l, subject: s }))).sort((a, b) => a.pct - b.pct).slice(0, 6);
   return (
     <>
       <h2 className="mt-4 font-display text-2xl font-black">Recall</h2>
       <p className="text-sm font-semibold text-slate-500">Retrying questions you got wrong is one of the quickest ways to improve. Your mistake bank collects them.</p>
+      <section className="card mt-4 p-4" aria-label="Daily review">
+        <h3 className="font-display text-lg font-black"><RotateCcw className="mr-1 inline h-5 w-5 text-brand-dark" aria-hidden />Daily review</h3>
+        {dueList.length === 0 ? (
+          <p className="mt-1 text-sm font-semibold text-slate-500">Nothing is due. Every question you answer comes back at the right moment: a day later if you missed it, then 3, 7, 14, 30 and 60 days when you get it right.</p>
+        ) : (
+          <>
+            <p className="mt-1 text-sm font-semibold text-slate-500">{dueTotal} question{dueTotal === 1 ? '' : 's'} due. Ten at a time keeps it quick.</p>
+            <ul className="mt-2 space-y-2">
+              {dueList.map((s) => (
+                <li key={s.id}>
+                  <a href={`${s.hash}/review`} className="flex items-center gap-3 rounded-2xl border-2 border-slate-200 p-2 transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300">
+                    <SubjectBadge subject={s} size={36} />
+                    <span className="min-w-0 flex-1">
+                      <span className="block font-extrabold leading-tight">{s.title}</span>
+                      <span className="block text-sm font-semibold text-slate-500">{ov.subjects[s.id].due} due</span>
+                    </span>
+                    <span className="btn btn-green !px-3 !py-1.5 text-xs">Review</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </section>
+      <section className="card mt-3 p-4" aria-label="Weakest lessons">
+        <h3 className="font-display text-lg font-black"><Target className="mr-1 inline h-5 w-5 text-brand-dark" aria-hidden />Weakest lessons</h3>
+        {weak.length === 0 ? (
+          <p className="mt-1 text-sm font-semibold text-slate-500">Once you have answered a few questions in a lesson, the ones you find hardest are listed here so you know what to revise first.</p>
+        ) : (
+          <ul className="mt-2 space-y-2">
+            {weak.map((l) => (
+              <li key={`${l.subject.id}-${l.id}`}>
+                <a href={l.subject.hash} className="flex items-center gap-3 rounded-2xl p-1 transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300">
+                  <SubjectBadge subject={l.subject} size={32} />
+                  <span className="min-w-0 flex-1">
+                    <span className="flex items-baseline justify-between gap-2"><span className="truncate text-sm font-extrabold">{l.title}</span><span className="shrink-0 text-xs font-bold text-rose-600">{l.pct}% right</span></span>
+                    <span className="mt-1 block h-2 overflow-hidden rounded-full bg-slate-200"><span className="block h-full rounded-full bg-rose-500" style={{ width: `${l.pct}%` }} /></span>
+                    <span className="block text-xs font-semibold text-slate-500">{l.subject.title} · {l.right} of {l.attempts} first tries</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
       {list.length === 0 ? (
         <div className="card mt-4 p-6 text-center">
           <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-emerald-100 text-emerald-600"><Check className="h-7 w-7" aria-hidden /></span>

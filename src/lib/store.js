@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { SoundController } from './SoundController.js';
-
-
+import { schedule, dayKey as srsDay } from './srs.js';
 
 const defaults = {
   xp: 0,
@@ -12,6 +11,8 @@ const defaults = {
   bosses: {}, // unitId -> stars
   exams: {}, // examId -> best score percent (written exam practice)
   mistakes: [], // question ids missed and not yet answered correctly
+  srs: {}, // qid -> { box, due }: spaced-repetition schedule (see lib/srs.js)
+  acc: {}, // subId -> { r, w, t }: first-attempt results per lesson, for the weakness finder
   sound: true,
   openAll: false,
 };
@@ -35,6 +36,8 @@ const load = (course) => {
     }
     const s = { ...defaults, ...(raw || {}) };
     s.mistakes = (s.mistakes || []).filter((id) => course.questionIndex[id]);
+    s.srs = Object.fromEntries(Object.entries(s.srs || {}).filter(([id]) => course.questionIndex[id]));
+    s.acc = s.acc || {};
     // reset today's XP and break the streak if a day was missed
     const today = dayKey();
     if (s.lastDay !== today) s.todayXp = 0;
@@ -79,6 +82,20 @@ export function useProgress(course) {
   const addMistake = useCallback((qid) => {
     setState((s) => (s.mistakes.includes(qid) ? s : { ...s, mistakes: [...s.mistakes, qid] }));
   }, []);
+
+  /** First attempt at a question in a session: schedules its next review and updates the lesson's accuracy. */
+  const record = useCallback((qid, correct) => {
+    const info = course.questionIndex[qid];
+    if (!info) return;
+    setState((s) => {
+      const a = s.acc?.[info.sub.id] || { r: 0, w: 0, t: info.sub.title };
+      return {
+        ...s,
+        srs: { ...(s.srs || {}), [qid]: schedule((s.srs || {})[qid], correct, srsDay()) },
+        acc: { ...(s.acc || {}), [info.sub.id]: { r: a.r + (correct ? 1 : 0), w: a.w + (correct ? 0 : 1), t: info.sub.title } },
+      };
+    });
+  }, [course.questionIndex]);
 
   const clearMistake = useCallback((qid) => {
     setState((s) => ({ ...s, mistakes: s.mistakes.filter((id) => id !== qid) }));
@@ -132,6 +149,7 @@ export function useProgress(course) {
     addXp,
     addMistake,
     clearMistake,
+    record,
     completeSub,
     completeBoss,
     recordExam,

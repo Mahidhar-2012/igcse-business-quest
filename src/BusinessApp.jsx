@@ -7,7 +7,9 @@ import ExamPlayer from './components/ExamPlayer.jsx';
 import NotesBuilder from './notes/NotesBuilder.jsx';
 import { findTerms } from './data/glossary.js';
 import GlossaryModal from './components/GlossaryModal.jsx';import { units, questionIndex, subQuestionIds } from './data/syllabusData.js';
+import ReviewBanner from './components/ReviewBanner.jsx';
 import { useProgress } from './lib/store.js';
+import { dueIds, SESSION_SIZE } from './lib/srs.js';
 import { checkTotal } from './lib/overview.js';
 
 // v2: questions were rewritten as critical-thinking questions, so saved mistake ids from v1 no longer match.
@@ -34,16 +36,21 @@ const buildLessonItems = (sub) => {
 
 export default function BusinessApp({ onHome, deep }) {
   const progress = useProgress(course);
-  const { state, unitStats, isSubUnlocked, addXp, addMistake, clearMistake, completeSub, completeBoss, recordExam, toggle, reset } = progress;
+  const { state, unitStats, isSubUnlocked, addXp, addMistake, clearMistake, record, completeSub, completeBoss, recordExam, toggle, reset } = progress;
 
+  const due = dueIds(state.srs);
   // Start on the first unit that isn't fully done.
   const [activeUnitId, setActiveUnitId] = useState(() => (units.find((u) => !unitStats[u.id].allDone) || units[0]).id);
-  const [view, setView] = useState(() => (deep === 'notes' ? { name: 'notes' } : { name: 'dashboard' }));
+  const [view, setView] = useState(() => {
+    if (deep === 'notes') return { name: 'notes' };
+    if (deep === 'review' && due.length) return { name: 'review', ids: due.slice(0, SESSION_SIZE) };
+    return { name: 'dashboard' };
+  });
   const [mistakesOpen, setMistakesOpen] = useState(deep === 'mistakes');
   const [glossaryOpen, setGlossaryOpen] = useState(false);
   const baseActions = useMemo(
-    () => ({ addXp, addMistake, clearMistake, completeSub, completeBoss }),
-    [addXp, addMistake, clearMistake, completeSub, completeBoss],
+    () => ({ addXp, addMistake, clearMistake, record, completeSub, completeBoss }),
+    [addXp, addMistake, clearMistake, record, completeSub, completeBoss],
   );
 
   const exit = useCallback(() => setView({ name: 'dashboard' }), []);
@@ -109,6 +116,19 @@ export default function BusinessApp({ onHome, deep }) {
     );
   } else if (view.name === 'notes') {
     body = <NotesBuilder title="Business Studies" code="0264" units={units} onBack={exit} findGlossary={findTerms} />;
+  } else if (view.name === 'review') {
+    body = (
+      <LessonPlayer
+        key={`review-${view.ids.join()}`}
+        mode="drill"
+        title="Daily review"
+        badge="Spaced review"
+        doneTitle="Review done!"
+        items={view.ids.map(qItem)}
+        actions={baseActions}
+        onExit={exit}
+      />
+    );
   } else if (view.name === 'drill') {
     body = (
       <LessonPlayer
@@ -138,6 +158,7 @@ export default function BusinessApp({ onHome, deep }) {
           onReset={reset}
           showUnits
         />
+        <ReviewBanner count={due.length} onStart={() => setView({ name: 'review', ids: due.slice(0, SESSION_SIZE) })} />
         <UnitDashboard
           units={units}
           state={state}

@@ -3,6 +3,7 @@
 
 /** Lesson totals are kept here so the hub never has to load the subject data. Each subject app warns in the console if its data disagrees. */
 import { SUBJECTS_META } from '../subjects.meta.js';
+import { dueCount, weakLessons } from './srs.js';
 
 export const SUBJECT_META = Object.fromEntries(SUBJECTS_META.map((s) => [s.id, { key: s.storageKey, total: s.total, kind: s.kind }]));
 
@@ -52,7 +53,10 @@ export function loadOverview() {
     }
     const pct = Math.min(100, Math.round((done / meta.total) * 100));
     const active = s?.lastDay || null;
-    subjects[id] = { done, total: meta.total, pct, stars, mistakes: s?.mistakes?.length || 0, lastDay: active, started: done > 0 || (s?.xp || 0) > 0 };
+    subjects[id] = {
+      done, total: meta.total, pct, stars, mistakes: s?.mistakes?.length || 0, lastDay: active, started: done > 0 || (s?.xp || 0) > 0,
+      due: dueCount(s?.srs, today), weak: weakLessons(s?.acc),
+    };
     if (s && meta.kind !== 'notes') {
       xp += s.xp || 0;
       if (s.lastDay === today) todayXp += s.todayXp || 0;
