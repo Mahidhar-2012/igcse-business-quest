@@ -3,10 +3,23 @@
 import { unit1, unit2 } from './units/ec1.js';
 import { unit3, unit4 } from './units/ec2.js';
 import { unit5, unit6 } from './units/ec3.js';
+import { extrasA } from './units/ec_extras_a.js';
+import { extrasB } from './units/ec_extras_b.js';
 import { applyOverlay } from '../../data/overlay.js';
 import { hard } from './hard.js';
 
 export const units = [unit1, unit2, unit3, unit4, unit5, unit6];
+
+// Bytes added by the syllabus audit are appended to the lessons they belong to.
+const extras = { ...extrasA, ...extrasB };
+for (const id of Object.keys(extras)) {
+  if (!units.some((u) => u.submodules.some((s) => s.id === id))) throw new Error(`extras: unknown lesson ${id}`);
+}
+for (const unit of units) {
+  for (const sub of unit.submodules) {
+    if (extras[sub.id]) sub.cards = [...sub.cards, ...extras[sub.id]];
+  }
+}
 
 // Harder replacements and extra question types, keyed by question id.
 applyOverlay(units, hard);
