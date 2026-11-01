@@ -42,6 +42,18 @@ export const SUBJECTS_META = [
     kind: 'progress',
   },
   {
+    id: 'biology',
+    hash: '#/biology',
+    title: 'Biology',
+    code: '0610',
+    blurb: 'Knowledge bytes with original diagrams and tests for the 2026–2028 syllabus. Part 1 of the syllabus: topics 1 to 6.',
+    tag: 'Lessons + diagrams',
+    color: '#65a30d',
+    text: '#4d7c0f',
+    storageKey: 'igcse-biology-quest:v1',
+    total: 12,
+    kind: 'progress',
+  },  {
     id: 'business',
     hash: '#/business',
     title: 'Business Studies',

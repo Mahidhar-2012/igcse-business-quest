@@ -1,17 +1,18 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
-import { Briefcase, PenLine, Atom, FlaskConical, TrendingUp, ArrowRight, Flame, Zap, Target, Play, ShieldAlert } from 'lucide-react';
+import { Briefcase, PenLine, Atom, FlaskConical, TrendingUp, Leaf, ArrowRight, Flame, Zap, Target, Play, ShieldAlert } from 'lucide-react';
 import { loadOverview } from './lib/overview.js';
 import { SUBJECTS_META } from './subjects.meta.js';
 
 // Each subject is its own chunk, so the hub opens quickly and a subject downloads only when it is chosen.
 // To add a subject: add it to src/subjects.meta.js, then register its icon and loader here.
-const ICONS = { physics: Atom, business: Briefcase, english: PenLine, chemistry: FlaskConical, economics: TrendingUp };
+const ICONS = { physics: Atom, business: Briefcase, english: PenLine, chemistry: FlaskConical, economics: TrendingUp, biology: Leaf };
 const LOADERS = {
   business: lazy(() => import('./BusinessApp.jsx')),
   english: lazy(() => import('./english/EnglishApp.jsx')),
   physics: lazy(() => import('./physics/PhysicsApp.jsx')),
   chemistry: lazy(() => import('./chemistry/ChemistryApp.jsx')),
   economics: lazy(() => import('./economics/EconomicsApp.jsx')),
+  biology: lazy(() => import('./biology/BiologyApp.jsx')),
 };
 const SUBJECTS = SUBJECTS_META.filter((s) => LOADERS[s.id]).map((s) => ({ ...s, icon: ICONS[s.id] }));
 const routeFromHash = () => SUBJECTS.find((s) => s.hash === window.location.hash)?.id ?? null;

@@ -1,8 +1,9 @@
 import { SVG_FIGS } from './svgFigs.jsx';
 import { CHEM_FIGS } from './svgChem.jsx';
 import { ECON_FIGS } from './svgEcon.jsx';
+import { BIO_FIGS } from './svgBio.jsx';
 
-const ALL_FIGS = { ...SVG_FIGS, ...CHEM_FIGS, ...ECON_FIGS };
+const ALL_FIGS = { ...SVG_FIGS, ...CHEM_FIGS, ...ECON_FIGS, ...BIO_FIGS };
 
 const BASE = import.meta.env.BASE_URL;
 

@@ -60,6 +60,18 @@ Known limits:
 - Several topics (for example 2.9 market failure, 3.7 market structures, 4.2 to 4.4 policy, 5.x development) have no diagrams and would benefit from worked examples and data-response practice.
 - Diagrams have been checked visually but have not been reviewed by a subject expert.
 
+## Biology 0610 (Part 1 of 2: topics 1 to 6)
+
+**Syllabus:** Cambridge IGCSE Biology 0610, version 3 (published August 2026) for examination in 2026, 2027 and 2028, downloaded from the Cambridge International website. Content is original and was written from the published objective list.
+**Structure so far:** 4 units, 12 lessons covering syllabus topics 1 to 6 (characteristics and classification; cell structure and magnification; diffusion, osmosis and active transport; biological molecules and enzymes; photosynthesis and leaf structure), with 6 original diagrams (animal, plant and bacterial cells, leaf section, osmosis in plant cells, enzyme action). Questions follow the hard-question standard: same-length options, misconception distractors, and select-all, matching, gap-fill, definition and exam-style questions.
+
+**Not yet built (topics 7 to 20):** human nutrition and digestion, transport in plants and animals, diseases and immunity, gas exchange, respiration, excretion, coordination, drugs, reproduction, inheritance, variation and selection, organisms and the environment, human influences on the ecosystem, biotechnology and genetic modification.
+
+Known limits:
+- Core and Supplement objectives are mixed; there is no labelling of which is which yet.
+- This is a first pass: each objective has some coverage but a syllabus audit (as done for Chemistry and Economics) has not been run yet for Biology.
+- No past-paper questions or written practice yet. Diagrams have not been reviewed by a subject expert.
+
 ## English 0510 / 0511
 
 **Structure:** 11 sections, 42 lessons: exam map, reading, the five writing tasks (email, review, report, essay, article), language boosters, a skills workshop (grammar fixes, sentence upgrades, planning, annotated models, self-check lists, reading practice), listening and speaking, and 38 sample answers with their questions.
