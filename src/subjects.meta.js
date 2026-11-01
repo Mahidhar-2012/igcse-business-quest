@@ -53,7 +53,21 @@ export const SUBJECTS_META = [
     storageKey: 'igcse-biology-quest:v1',
     total: 55,
     kind: 'progress',
-  },  {
+  },
+  {
+    id: 'maths',
+    hash: '#/maths',
+    title: 'Mathematics',
+    code: '0580',
+    blurb: 'Core and Extended: 30 lessons with worked tests, hard questions and 38 diagrams. Number, algebra, graphs, geometry, trigonometry, vectors, probability and statistics.',
+    tag: 'Lessons + diagrams',
+    color: '#e11d48',
+    text: '#be123c',
+    storageKey: 'igcse-maths-quest:v1',
+    total: 30,
+    kind: 'progress',
+  },
+  {
     id: 'business',
     hash: '#/business',
     title: 'Business Studies',

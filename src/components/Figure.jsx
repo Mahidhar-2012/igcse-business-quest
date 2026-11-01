@@ -6,8 +6,10 @@ import { BIZ_FIGS } from './svgBiz.jsx';
 import { PHYS2_FIGS } from './svgPhys2.jsx';
 import { CHEM2_FIGS } from './svgChem2.jsx';
 import { ECON2_FIGS } from './svgEcon2.jsx';
+import { MATHS_FIGS } from './svgMaths.jsx';
+import { MATHS2_FIGS } from './svgMaths2.jsx';
 
-const ALL_FIGS = { ...SVG_FIGS, ...CHEM_FIGS, ...ECON_FIGS, ...BIO_FIGS, ...BIZ_FIGS, ...PHYS2_FIGS, ...CHEM2_FIGS, ...ECON2_FIGS };
+const ALL_FIGS = { ...SVG_FIGS, ...CHEM_FIGS, ...ECON_FIGS, ...BIO_FIGS, ...BIZ_FIGS, ...PHYS2_FIGS, ...CHEM2_FIGS, ...ECON2_FIGS, ...MATHS_FIGS, ...MATHS2_FIGS };
 
 const BASE = import.meta.env.BASE_URL;
 

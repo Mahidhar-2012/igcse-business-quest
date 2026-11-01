@@ -80,6 +80,18 @@ Known limits:
 - Experiments and practical investigations were removed on request (for example the photosynthesis investigation and the aquatic plant indicator experiment). Food tests, enzyme and pH effects, and other theory remain.
 - By strict length, the correct answer is the longest option in about half of the Biology multiple-choice questions; many of those are short one-word answers.
 - No past-paper questions. Diagrams have not been reviewed by a subject expert.
+## Mathematics 0580
+
+**Structure:** 9 units, 30 lessons, about 85 knowledge bytes with a test each, plus a practice pool of 5 questions per lesson (about 245 questions in all: 142 calculations, 31 multiple choice, 26 select-all, 44 written, 2 matching). 38 original diagrams in `svgMaths.jsx` and `svgMaths2.jsx`.
+
+**Coverage:** Core and Extended content in one course: number (types, indices, surds, percentages, ratio, bounds), algebra (expanding, factorising, equations, inequalities, quadratics, simultaneous equations, sequences), graphs and calculus (lines, graph shapes, motion graphs, functions, differentiation), geometry (angles, similarity, circle theorems, loci), mensuration, trigonometry (including sine and cosine rules and bearings), transformations and vectors, probability (tree and Venn diagrams) and statistics (histograms, cumulative frequency, box plots).
+
+**Limits:**
+- Questions and numbers were written by the app's author and the calculation answers were hand-checked, not independently verified. Numbers should be checked by a maths teacher before being relied on.
+- No past-paper questions.
+- Topics not covered: matrices, inequalities with linear programming beyond regions, Venn diagrams with three sets, area under a curve by integration (not in 0580), and long worked-solution pages.
+- Answers are typed as numbers, so the learner cannot enter fractions, surds or algebra; algebra topics lean on multiple choice and written self-marked answers.
+
 ## English 0510 / 0511
 
 **Structure:** 11 sections, 42 lessons: exam map, reading, the five writing tasks (email, review, report, essay, article), language boosters, a skills workshop (grammar fixes, sentence upgrades, planning, annotated models, self-check lists, reading practice), listening and speaking, and 38 sample answers with their questions.
