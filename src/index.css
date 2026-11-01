@@ -2,37 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design tokens: change a colour here and every screen follows. */
+/* Design tokens: change a colour here and every screen follows. Warm orange theme with a matching dark mode. */
 :root {
-  --brand: #58cc02;
-  --brand-dark: #367d02; /* dark enough for text on white (contrast 4.6:1) */
-  --brand-soft: #e5f8cf;
-  --accent: #1cb0f6;
-  --accent-dark: #1899d6;
-  --brand-deep: #2f6d02;
-  --accent-btn: #0969a3; /* white text on this passes 4.5:1 */
-  --accent-btn-deep: #08609a;
-  --ink: #1f2937;
+  --brand: #e8590c;
+  --brand-dark: #a8400a; /* text colour on the page background (contrast 5.9:1 on white) */
+  --brand-soft: #fdebdd;
+  --brand-deep: #8f3608;
+  --btn: #c2410c; /* button fill: white text passes 5:1 */
+  --btn-edge: #8f3608;
+  --accent: #2f74d0;
+  --accent-dark: #2563b8;
+  --accent-btn: #1d5fb4; /* white text on this passes 4.5:1 */
+  --accent-btn-deep: #174a8c;
+  --ink: #24180f;
   --surface: #ffffff;
-  --page: #f8fafc;
-  --line: #e2e8f0;
+  --page: #fbf7f3;
+  --line: #ede3d9;
   --radius-card: 1.5rem;
   --focus: #7dd3fc;
+  --f-display: 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-body: 'Lexend', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --sl-50: #fbf7f3; --sl-100: #f5eee7; --sl-200: #ede3d9; --sl-300: #dccdbf; --sl-400: #a89a8c;
+  --sl-500: #6e6258; --sl-600: #5a4f46; --sl-700: #43382f; --sl-800: #2e241c; --sl-900: #24180f;
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  --brand: #f06a22;
+  --brand-dark: #ffb088;
+  --brand-soft: #40220f;
+  --brand-deep: #8f3608;
+  --btn: #c2410c;
+  --btn-edge: #7a2e07;
+  --accent: #6aa5f2;
+  --accent-dark: #6aa5f2;
+  --accent-btn: #1d5fb4;
+  --accent-btn-deep: #174a8c;
+  --ink: #f4ece4;
+  --surface: #221a14;
+  --page: #17120e;
+  --line: #3a2e25;
+  --focus: #9cc4fb;
+  --sl-50: #1c1611; --sl-100: #261d16; --sl-200: #3a2e25; --sl-300: #4a3b30; --sl-400: #8a7b6e;
+  --sl-500: #b0a193; --sl-600: #c9bcae; --sl-700: #ddd2c6; --sl-800: #ede4da; --sl-900: #f4ece4;
+  color-scheme: dark;
 }
 
 html { scroll-behavior: smooth; }
-body { @apply bg-slate-50 text-ink antialiased; }
+body { @apply bg-slate-50 text-ink antialiased; font-family: var(--f-body); }
+h1, h2, .font-display { font-family: var(--f-display); }
+
+/* Dark mode: white surfaces, and the diagrams (drawn in black on white) stay on a paper panel. */
+:root[data-theme='dark'] .bg-white { background-color: var(--surface); }
+:root[data-theme='dark'] .bg-white\/95 { background-color: color-mix(in srgb, var(--surface) 95%, transparent); }
+:root[data-theme='dark'] .text-white\/80, :root[data-theme='dark'] .text-white\/85 { color: rgb(255 255 255 / .85); }
+:root[data-theme='dark'] .hover\:bg-slate-50:hover { background-color: var(--sl-100); }
+:root[data-theme='dark'] .card, :root[data-theme='dark'] .choice, :root[data-theme='dark'] .btn-ghost { background-color: var(--surface); }
+.paper { background: #fff; color: #111; border-radius: 1rem; }
 
 /* Visible keyboard focus everywhere */
 :where(a, button, input, select, textarea, [tabindex]):focus-visible { outline: 4px solid var(--focus); outline-offset: 2px; }
 
 /* Skip link for keyboard and screen-reader users */
-.skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 100; padding: .75rem 1rem; border-radius: .75rem; background: var(--ink); color: #fff; font-weight: 800; transition: top .15s; }
+.skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 100; padding: .75rem 1rem; border-radius: .75rem; background: var(--ink); color: var(--page); font-weight: 800; transition: top .15s; }
 .skip-link:focus { top: 1rem; }
 @layer components {
   .icon-btn { @apply grid h-11 w-11 shrink-0 place-items-center rounded-xl text-slate-500 hover:bg-slate-100 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300; }
   .btn { @apply inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-extrabold uppercase tracking-wide text-white border-b-4 transition active:translate-y-[2px] active:border-b-2 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-sky-300; }
-  .btn-green { background: var(--brand-dark); border-color: var(--brand-deep); @apply hover:brightness-110; }
+  .btn-green { background: var(--btn); border-color: var(--btn-edge); @apply hover:brightness-110; }
   .btn-blue { background: var(--accent-btn); border-color: var(--accent-btn-deep); @apply hover:brightness-110; }
   .btn-red { background: #be123c; border-color: #881337; @apply hover:brightness-110; }
   .btn-ghost { @apply bg-white text-slate-500 border-slate-200 border-2 border-b-4 hover:bg-slate-50; }

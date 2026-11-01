@@ -64,10 +64,10 @@ function Reader({ section, lesson, done, onFinish, onExit, onNext }) {
 
 checkTotal('english', allLessons.length);
 
-export default function EnglishApp({ onHome }) {
+export default function EnglishApp({ onHome, deep }) {
   const { done, markDone, reset } = useEnglishProgress();
   const [open, setOpen] = useState(null); // { section, lesson }
-  const [notesOpen, setNotesOpen] = useState(false);
+  const [notesOpen, setNotesOpen] = useState(deep === 'notes');
   const total = allLessons.length;
   const pct = Math.round((done.length / total) * 100);
 

@@ -14,6 +14,6 @@ const config = {
   CardView: PhysicsCard,
 };
 
-export default function AddMathsApp({ onHome }) {
-  return <CourseApp onHome={onHome} config={config} />;
+export default function AddMathsApp({ onHome, deep }) {
+  return <CourseApp onHome={onHome} config={config} deep={deep} />;
 }

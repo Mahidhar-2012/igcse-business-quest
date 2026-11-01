@@ -32,14 +32,14 @@ const buildLessonItems = (sub) => {
   return items;
 };
 
-export default function BusinessApp({ onHome }) {
+export default function BusinessApp({ onHome, deep }) {
   const progress = useProgress(course);
   const { state, unitStats, isSubUnlocked, addXp, addMistake, clearMistake, completeSub, completeBoss, recordExam, toggle, reset } = progress;
 
   // Start on the first unit that isn't fully done.
   const [activeUnitId, setActiveUnitId] = useState(() => (units.find((u) => !unitStats[u.id].allDone) || units[0]).id);
-  const [view, setView] = useState({ name: 'dashboard' });
-  const [mistakesOpen, setMistakesOpen] = useState(false);
+  const [view, setView] = useState(() => (deep === 'notes' ? { name: 'notes' } : { name: 'dashboard' }));
+  const [mistakesOpen, setMistakesOpen] = useState(deep === 'mistakes');
   const [glossaryOpen, setGlossaryOpen] = useState(false);
   const baseActions = useMemo(
     () => ({ addXp, addMistake, clearMistake, completeSub, completeBoss }),

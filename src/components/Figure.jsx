@@ -23,7 +23,7 @@ export default function Figure({ fig, className = '' }) {
   const Svg = f.svg ? ALL_FIGS[f.svg] : null;
   return (
     <figure className={`my-3 ${className}`}>
-      <div className="overflow-hidden rounded-xl border-2 border-slate-200 bg-white p-2">
+      <div className="overflow-hidden rounded-xl border-2 border-slate-200 paper p-2">
         {Svg ? (
           <Svg />
         ) : (

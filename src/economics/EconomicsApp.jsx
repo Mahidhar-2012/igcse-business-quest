@@ -14,6 +14,6 @@ const config = {
   CardView: PhysicsCard,
 };
 
-export default function EconomicsApp({ onHome }) {
-  return <CourseApp onHome={onHome} config={config} />;
+export default function EconomicsApp({ onHome, deep }) {
+  return <CourseApp onHome={onHome} config={config} deep={deep} />;
 }

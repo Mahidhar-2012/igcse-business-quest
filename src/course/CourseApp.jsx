@@ -30,7 +30,7 @@ const buildLessonItems = (sub, qItem) => {
  * Generic course screen used by every subject that follows the byte-card format.
  * config = { id, appTitle, heading, gradient, storageKey, units, questionIndex, subQuestionIds, CardView }
  */
-export default function CourseApp({ onHome, config }) {
+export default function CourseApp({ onHome, config, deep }) {
   const { id, appTitle, heading, gradient, storageKey, units, questionIndex, subQuestionIds, CardView } = config;
   const course = useMemo(() => ({ units, questionIndex, key: storageKey, oldKey: null }), [units, questionIndex, storageKey]);
   const qItem = useCallback((qid) => ({ kind: 'q', qid, challenge: questionIndex[qid].challenge }), [questionIndex]);
@@ -39,8 +39,8 @@ export default function CourseApp({ onHome, config }) {
   const { state, unitStats, isSubUnlocked, addXp, addMistake, clearMistake, completeSub, completeBoss, recordExam, toggle, reset } = progress;
 
   const [activeUnitId, setActiveUnitId] = useState(() => (units.find((u) => !unitStats[u.id].allDone) || units[0]).id);
-  const [view, setView] = useState({ name: 'dashboard' });
-  const [mistakesOpen, setMistakesOpen] = useState(false);
+  const [view, setView] = useState(() => (deep === 'notes' ? { name: 'notes' } : { name: 'dashboard' }));
+  const [mistakesOpen, setMistakesOpen] = useState(deep === 'mistakes');
   const baseActions = useMemo(
     () => ({ addXp, addMistake, clearMistake, completeSub, completeBoss }),
     [addXp, addMistake, clearMistake, completeSub, completeBoss],

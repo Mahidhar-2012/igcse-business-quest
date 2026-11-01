@@ -1,4 +1,4 @@
-﻿import CourseApp from '../course/CourseApp.jsx';
+import CourseApp from '../course/CourseApp.jsx';
 import PhysicsCard from './PhysicsCard.jsx';
 import { units, questionIndex, subQuestionIds } from './data/index.js';
 
@@ -14,6 +14,6 @@ const config = {
   CardView: PhysicsCard,
 };
 
-export default function PhysicsApp({ onHome }) {
-  return <CourseApp onHome={onHome} config={config} />;
+export default function PhysicsApp({ onHome, deep }) {
+  return <CourseApp onHome={onHome} config={config} deep={deep} />;
 }
