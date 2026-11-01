@@ -7,6 +7,7 @@ import { extrasA } from './units/ec_extras_a.js';
 import { extrasB } from './units/ec_extras_b.js';
 import { applyOverlay } from '../../data/overlay.js';
 import { hard } from './hard.js';
+import { FIGURES } from './figures.js';
 
 export const units = [unit1, unit2, unit3, unit4, unit5, unit6];
 
@@ -23,6 +24,18 @@ for (const unit of units) {
 
 // Harder replacements and extra question types, keyed by question id.
 applyOverlay(units, hard);
+
+// Diagrams for bytes that did not have one.
+const figsLeft = new Set(Object.keys(FIGURES));
+for (const unit of units) {
+  for (const sub of unit.submodules) {
+    for (const card of sub.cards) {
+      const key = `${sub.id}|${card.title}`;
+      if (FIGURES[key] && !card.fig) { card.fig = FIGURES[key]; figsLeft.delete(key); }
+    }
+  }
+}
+if (figsLeft.size) throw new Error(`figures: not found: ${[...figsLeft].join(', ')}`);
 
 /** Flat lookup: question id -> { unit, sub, challenge, qid }. Card tests: `subId:c<cardIndex>.<testIndex>`. */
 export const questionIndex = (() => {

@@ -9,6 +9,7 @@ import { unit6 } from './units/c6.js';
 import { extras } from './units/extras.js';
 import { applyOverlay, dropPractical } from '../../data/overlay.js';
 import { hard } from './hard.js';
+import { FIGURES } from './figures.js';
 
 export const units = [unit1, unit2, unit3, unit4, unit5, unit6];
 
@@ -24,6 +25,18 @@ for (const unit of units) {
 
 // Harder replacements and extra question types, keyed by question id.
 applyOverlay(units, hard);
+
+// Diagrams for bytes that did not have one.
+const figsLeft = new Set(Object.keys(FIGURES));
+for (const unit of units) {
+  for (const sub of unit.submodules) {
+    for (const card of sub.cards) {
+      const key = `${sub.id}|${card.title}`;
+      if (FIGURES[key] && !card.fig) { card.fig = FIGURES[key]; figsLeft.delete(key); }
+    }
+  }
+}
+if (figsLeft.size) throw new Error(`figures: not found: ${[...figsLeft].join(', ')}`);
 
 // Experiment and practical content is not taught here: topic 12 and the experimental-method bytes are removed.
 dropPractical(units, {

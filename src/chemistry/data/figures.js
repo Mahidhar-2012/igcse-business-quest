@@ -1,0 +1,23 @@
+// Diagrams for bytes that did not have one, keyed by 'lessonId|byte title'.
+export const FIGURES = {
+  'c2-atoms|Inside the atom': { svg: 'atomStructure', caption: 'The atom: nucleus, shells and the three particles' },
+  'c2-ionic|Properties of ionic compounds': { svg: 'ionicLattice', caption: 'Giant ionic lattice of sodium chloride' },
+  'c2-covalent|Common simple molecules': { svg: 'simpleMolecules', caption: 'Displayed formulae of common simple molecules' },
+  'c2-giant|Graphite': { svg: 'graphiteStructure', caption: 'Graphite: layers with delocalised electrons' },
+  'c4-electrolysis|Electroplating and purifying copper': { svg: 'platingCell', caption: 'Electroplating a key with copper' },
+  'c6-rate|Collision theory': { svg: 'collisionTheory', caption: 'Successful and unsuccessful collisions' },
+  'c6-equilibrium|Dynamic equilibrium': { svg: 'equilibriumRates', caption: 'Forward and reverse rates become equal' },
+  'c6-equilibrium|The Haber process': { svg: 'haberProcess', caption: 'The Haber process' },
+  'c6-equilibrium|The Contact process': { svg: 'contactProcess', caption: 'The Contact process' },
+  'c8-table|Layout and trends across a period': { svg: 'periodicLayout', caption: 'Groups, periods and regions of the Periodic Table' },
+  'c8-group1|Properties of the alkali metals': { svg: 'group1Trends', caption: 'Group I trends' },
+  'c8-group7|Properties of the halogens': { svg: 'halogens', caption: 'The halogens and displacement' },
+  'c9-corrosion|Rusting': { svg: 'rustingVenn', caption: 'Rust needs both water and oxygen' },
+  'c9-extraction|Extracting aluminium by electrolysis': { svg: 'aluminiumCell', caption: 'Electrolysis cell for aluminium' },
+  'c10-water|Treating the domestic water supply': { svg: 'waterTreatment', caption: 'Stages of water treatment' },
+  'c10-air|The composition of clean dry air': { svg: 'airPie', caption: 'Composition of clean dry air' },
+  'c10-air|Greenhouse gases and climate change': { svg: 'greenhouseEffect', caption: 'The enhanced greenhouse effect' },
+  'c11-alkenes|Cracking': { svg: 'cracking', caption: 'Cracking a long alkane' },
+  'c11-alkenes|Addition reactions of alkenes': { svg: 'additionBromine', caption: 'Ethene adds bromine across the double bond' },
+  'c11-polymers|Condensation polymers': { svg: 'condensationPolymers', caption: 'Nylon and PET: alternating monomers' },
+};

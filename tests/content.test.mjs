@@ -116,7 +116,7 @@ test('physics: every past-paper image exists and every answer is A to D', () => 
 
 test('physics: figure references point to existing vector diagrams', async () => {
   const fs = await import('node:fs');
-  const src = ['svgFigs.jsx', 'svgChem.jsx', 'svgEcon.jsx', 'svgBio.jsx', 'svgBiz.jsx', 'svgPhys2.jsx'].map((f) => fs.readFileSync(path.join(root, 'src/components', f), 'utf8')).join('\n');
+  const src = ['svgFigs.jsx', 'svgChem.jsx', 'svgEcon.jsx', 'svgBio.jsx', 'svgBiz.jsx', 'svgPhys2.jsx', 'svgChem2.jsx', 'svgEcon2.jsx'].map((f) => fs.readFileSync(path.join(root, 'src/components', f), 'utf8')).join('\n');
   const keys = new Set([...src.matchAll(/^  (\w+): \w+,$/gm)].map((m) => m[1]));
   let checked = 0;
   for (const course of [physics, chemistry, economics, biology, business]) {
