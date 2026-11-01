@@ -100,6 +100,14 @@ Known limits:
 
 **Limits:** the syllabus topics were written from the author's knowledge of the 0606 specification and not checked line by line against the current official syllabus, so verify against the Cambridge document. Numbers have been hand-checked only. No past-paper questions. Calculation answers are numeric only. Coordinate geometry of the circle is not included.
 
+## Computer Science 0478
+
+**Structure:** 6 units, 17 lessons, about 45 knowledge bytes with a test each, and 7 to 8 practice questions per lesson (183 questions in all: calculations and trace tables, multiple choice, select-all, matching, gap-fill, ordering, true or false, definitions and exam-style written questions). 9 original diagrams in `svgCS.jsx`.
+
+**Coverage:** binary, denary and hexadecimal, binary addition, overflow, shifts and two's complement, text, image and sound storage and file sizes, compression, packets and packet switching, serial, parallel and duplex, error detection and ARQ, the CPU and fetch-decode-execute, memory and storage, input, output and sensors, operating systems, interrupts and translators, networks, IP and DNS, security and encryption, automation, AI and ethics, algorithms, trace tables, searching and sorting, programming constructs, validation and test data, logic gates and truth tables, databases and SQL.
+
+**Limits:** written from the author's knowledge of the 0478 specification and not checked line by line against the current official syllabus. Calculation answers are numeric only, so pseudocode writing questions are self-marked written questions. No past-paper questions, no program-writing editor, no Paper 2 scenario booklet.
+
 ## English 0510 / 0511
 
 **Structure:** 11 sections, 42 lessons: exam map, reading, the five writing tasks (email, review, report, essay, article), language boosters, a skills workshop (grammar fixes, sentence upgrades, planning, annotated models, self-check lists, reading practice), listening and speaking, and 38 sample answers with their questions.

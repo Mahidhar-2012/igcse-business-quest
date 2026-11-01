@@ -9,8 +9,9 @@ import { ECON2_FIGS } from './svgEcon2.jsx';
 import { MATHS_FIGS } from './svgMaths.jsx';
 import { MATHS2_FIGS } from './svgMaths2.jsx';
 import { ADDM_FIGS } from './svgAddm.jsx';
+import { CS_FIGS } from './svgCS.jsx';
 
-const ALL_FIGS = { ...SVG_FIGS, ...CHEM_FIGS, ...ECON_FIGS, ...BIO_FIGS, ...BIZ_FIGS, ...PHYS2_FIGS, ...CHEM2_FIGS, ...ECON2_FIGS, ...MATHS_FIGS, ...MATHS2_FIGS, ...ADDM_FIGS };
+const ALL_FIGS = { ...SVG_FIGS, ...CHEM_FIGS, ...ECON_FIGS, ...BIO_FIGS, ...BIZ_FIGS, ...PHYS2_FIGS, ...CHEM2_FIGS, ...ECON2_FIGS, ...MATHS_FIGS, ...MATHS2_FIGS, ...ADDM_FIGS, ...CS_FIGS };
 
 const BASE = import.meta.env.BASE_URL;
 

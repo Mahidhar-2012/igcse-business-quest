@@ -15,6 +15,7 @@ const LOADERS = {
   biology: lazy(() => import('./biology/BiologyApp.jsx')),
   maths: lazy(() => import('./maths/MathsApp.jsx')),
   addmaths: lazy(() => import('./addmaths/AddMathsApp.jsx')),
+  cs: lazy(() => import('./cs/CSApp.jsx')),
 };
 const SUBJECTS = SUBJECTS_META.filter((s) => LOADERS[s.id] && ICONS[s.id]);
 const TABS = ['learn', 'recall', 'notes', 'progress'];

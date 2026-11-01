@@ -15,6 +15,7 @@ const economics = await import('../src/economics/data/index.js');
 const biology = await import('../src/biology/data/index.js');
 const maths = await import('../src/maths/data/index.js');
 const addmaths = await import('../src/addmaths/data/index.js');
+const cs = await import('../src/cs/data/index.js');
 const english = await import('../src/english/data/index.js');
 const { SUBJECT_META } = await import('../src/lib/overview.js');
 
@@ -29,11 +30,12 @@ test('lesson totals used by the hub match the real content', () => {
   assert.equal(SUBJECT_META.biology.total, lessonsOf(biology.units).length);
   assert.equal(SUBJECT_META.maths.total, lessonsOf(maths.units).length);
   assert.equal(SUBJECT_META.addmaths.total, lessonsOf(addmaths.units).length);
+  assert.equal(SUBJECT_META.cs.total, lessonsOf(cs.units).length);
   assert.equal(SUBJECT_META.english.total, english.allLessons.length);
 });
 
 test('every question id is unique and every lesson has content', () => {
-  for (const [name, course] of [['physics', physics], ['business', business], ['chemistry', chemistry], ['economics', economics], ['biology', biology], ['maths', maths], ['addmaths', addmaths]]) {
+  for (const [name, course] of [['physics', physics], ['business', business], ['chemistry', chemistry], ['economics', economics], ['biology', biology], ['maths', maths], ['addmaths', addmaths], ['cs', cs]]) {
     const ids = Object.keys(course.questionIndex);
     assert.equal(new Set(ids).size, ids.length, `${name}: duplicate question ids`);
     for (const sub of lessonsOf(course.units)) assert.ok(sub.cards.length > 0, `${name}: ${sub.id} has no cards`);
@@ -41,7 +43,7 @@ test('every question id is unique and every lesson has content', () => {
 });
 
 test('multiple-choice and scenario questions are well formed', () => {
-  for (const [name, course] of [['physics', physics], ['business', business], ['chemistry', chemistry], ['economics', economics], ['biology', biology], ['maths', maths], ['addmaths', addmaths]]) {
+  for (const [name, course] of [['physics', physics], ['business', business], ['chemistry', chemistry], ['economics', economics], ['biology', biology], ['maths', maths], ['addmaths', addmaths], ['cs', cs]]) {
     for (const { qid, challenge: q } of allQuestions(course)) {
       if (q.type === 'mcq') {
         assert.ok(q.options.length >= 2, `${name} ${qid}: needs 2+ options`);
@@ -61,7 +63,7 @@ test('multiple-choice and scenario questions are well formed', () => {
 
 test('new question types (select-all, matching, gap-fill, written) are well formed', () => {
   let seen = { multi: 0, match: 0, cloze: 0, short: 0 };
-  for (const [name, course] of [['physics', physics], ['business', business], ['chemistry', chemistry], ['economics', economics], ['biology', biology], ['maths', maths], ['addmaths', addmaths]]) {
+  for (const [name, course] of [['physics', physics], ['business', business], ['chemistry', chemistry], ['economics', economics], ['biology', biology], ['maths', maths], ['addmaths', addmaths], ['cs', cs]]) {
     for (const { qid, challenge: q } of allQuestions(course)) {
       if (q.type === 'multi') {
         seen.multi += 1;
@@ -97,6 +99,17 @@ test('business: multiple-choice answers cannot be guessed from their length', ()
   assert.ok(longest / n < 0.6, `the correct answer is the longest option in ${longest} of ${n} questions`);
 });
 
+test('computer science: the correct answer is rarely the strictly longest option', () => {
+  let n = 0, longest = 0;
+  for (const { challenge: q } of allQuestions(cs)) {
+    if (q.type !== 'mcq' || q.options.every((o) => o.text.length <= 12)) continue;
+    n += 1;
+    const lens = q.options.map((o) => o.text.length);
+    if (lens[q.answer] === Math.max(...lens) && lens.filter((l) => l === lens[q.answer]).length === 1) longest += 1;
+  }
+  assert.ok(longest / n < 0.4, `the correct answer is strictly the longest in ${longest} of ${n} questions`);
+});
+
 test('physics: every past-paper image exists and every answer is A to D', () => {
   let count = 0;
   for (const unit of physics.units) {
@@ -120,10 +133,10 @@ test('physics: every past-paper image exists and every answer is A to D', () => 
 
 test('physics: figure references point to existing vector diagrams', async () => {
   const fs = await import('node:fs');
-  const src = ['svgFigs.jsx', 'svgChem.jsx', 'svgEcon.jsx', 'svgBio.jsx', 'svgBiz.jsx', 'svgPhys2.jsx', 'svgChem2.jsx', 'svgEcon2.jsx', 'svgMaths.jsx', 'svgMaths2.jsx', 'svgAddm.jsx'].map((f) => fs.readFileSync(path.join(root, 'src/components', f), 'utf8')).join('\n');
+  const src = ['svgFigs.jsx', 'svgChem.jsx', 'svgEcon.jsx', 'svgBio.jsx', 'svgBiz.jsx', 'svgPhys2.jsx', 'svgChem2.jsx', 'svgEcon2.jsx', 'svgMaths.jsx', 'svgMaths2.jsx', 'svgAddm.jsx', 'svgCS.jsx'].map((f) => fs.readFileSync(path.join(root, 'src/components', f), 'utf8')).join('\n');
   const keys = new Set([...src.matchAll(/^  (\w+): \w+,$/gm)].map((m) => m[1]));
   let checked = 0;
-  for (const course of [physics, chemistry, economics, biology, business, maths, addmaths]) {
+  for (const course of [physics, chemistry, economics, biology, business, maths, addmaths, cs]) {
     for (const { qid, challenge } of allQuestions(course)) {
       if (challenge.fig?.svg) { checked += 1; assert.ok(keys.has(challenge.fig.svg), `${qid}: unknown diagram ${challenge.fig.svg}`); }
     }
@@ -150,7 +163,7 @@ test('english: lessons have unique ids and valid card types', () => {
 test('notes: every lesson of the five tipped courses has an examiner tip and common mistake', async () => {
   const { TIPS } = await import('../src/notes/tips.js');
   const all = new Set();
-  for (const course of [physics, chemistry, economics, biology, business, maths, addmaths]) {
+  for (const course of [physics, chemistry, economics, biology, business, maths, addmaths, cs]) {
     for (const sub of lessonsOf(course.units)) {
       all.add(sub.id);
       assert.ok(TIPS[sub.id] && TIPS[sub.id][0] && TIPS[sub.id][1], `${sub.id}: missing tip or mistake`);
