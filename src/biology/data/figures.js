@@ -1,0 +1,25 @@
+// Diagrams attached to bytes after the course is built: 'lessonId|byte title' -> figure.
+// Keys are checked when the course loads, so a renamed byte cannot silently lose its diagram.
+export const FIGURES = {
+  'b2-cells|Specialised cells': { svg: 'specialisedCells', caption: 'Specialised cells' },
+  'b4-molecules|The structure of DNA': { svg: 'dna', caption: 'The DNA double helix' },
+  'b5-enzymes|Temperature and enzyme activity': { svg: 'enzymeGraph', caption: 'Enzyme activity and temperature' },
+  'b7-physical|Teeth and physical digestion': { svg: 'tooth', caption: 'A human tooth' },
+  'b8-vessels|Functions of xylem and phloem': { svg: 'vascularPositions', caption: 'Xylem and phloem in a root, stem and leaf' },
+  'b8-transpiration|The transpiration pull': { svg: 'transpirationPath', caption: 'The pathway of water through a plant' },
+  'b9-circulation|Circulatory systems': { svg: 'circulationTypes', caption: 'Single and double circulation' },
+  'b9-vessels|Arteries, veins and capillaries': { svg: 'bloodVessels', caption: 'Blood vessels in cross-section' },
+  'b9-blood|Components of blood': { svg: 'bloodCells', caption: 'Blood cells' },
+  'b11-gas|Features of a gas exchange surface': { svg: 'alveolus', caption: 'Gas exchange in an alveolus' },
+  'b11-gas|Ventilating the lungs': { svg: 'breathingSystem', caption: 'The human breathing system' },
+  'b13-excretion|The nephron': { svg: 'nephron', caption: 'A nephron' },
+  'b14-nervous|Synapses': { svg: 'synapse', caption: 'A synapse' },
+  'b14-homeostasis|Temperature control in mammals': { svg: 'skinSection', caption: 'Section through the skin' },
+  'b16-humans|The reproductive systems': { svg: 'reproSystems', caption: 'The human reproductive systems' },
+  'b16-hormones|The menstrual cycle': { svg: 'menstrualCycle', caption: 'The menstrual cycle' },
+  'b17-division|Mitosis': { svg: 'mitosisMeiosis', caption: 'Mitosis and meiosis compared' },
+  'b17-monohybrid|Predicting monohybrid crosses': { svg: 'punnett', caption: 'A Punnett square' },
+  'b19-energy|Food webs and human impact': { svg: 'foodWeb', caption: 'A food web' },
+  'b19-cycles|The carbon cycle': { svg: 'carbonCycle', caption: 'The carbon cycle' },
+  'b19-cycles|The nitrogen cycle': { svg: 'nitrogenCycle', caption: 'The nitrogen cycle' },
+};

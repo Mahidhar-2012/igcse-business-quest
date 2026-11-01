@@ -1,4 +1,4 @@
-﻿// Cambridge IGCSE Business 0264 — content map (syllabus for 2027-2029).
+// Cambridge IGCSE Business 0264 — content map (syllabus for 2027-2029).
 // Each unit lives in ./units/unitN.js (micro-concept + practice questions).
 // ./ct/ctN.js holds the critical-thinking questions (card tests + practice pools); ./cards/cardsN.js holds the knowledge bytes
 // (small cards, each followed by a test question) that walk through every syllabus point.
@@ -33,6 +33,7 @@ import { pc1 } from './procons/pc1.js';
 import { pc2 } from './procons/pc2.js';
 import { pc3 } from './procons/pc3.js';
 import { applyOverlay } from './overlay.js';
+import { FIGURES } from './figures.js';
 import { h1 } from './hard/h1.js';
 import { h2 } from './hard/h2.js';
 import { h3 } from './hard/h3.js';
@@ -68,6 +69,18 @@ for (const unit of units) {
 
 // Harder and more varied replacements, and extra question types, keyed by question id (see overlay.js).
 for (const hard of [h1, h2, h3, h4, h5, h6]) applyOverlay(units, hard);
+
+// Diagrams for bytes that did not have one.
+const figsLeft = new Set(Object.keys(FIGURES));
+for (const unit of units) {
+  for (const sub of unit.submodules) {
+    for (const card of sub.cards) {
+      const key = `${sub.id}|${card.title}`;
+      if (FIGURES[key] && !card.fig) { card.fig = FIGURES[key]; figsLeft.delete(key); }
+    }
+  }
+}
+if (figsLeft.size) throw new Error(`figures: not found: ${[...figsLeft].join(', ')}`);
 
 /** Flat lookup: question id -> { unit, sub, challenge, qid }.
  *  Practice questions: `subId:index`. Card tests: `subId:c<cardIndex>.<testIndex>`. */

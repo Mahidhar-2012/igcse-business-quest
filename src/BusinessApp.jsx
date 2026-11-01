@@ -4,6 +4,7 @@ import UnitDashboard from './components/UnitDashboard.jsx';
 import LessonPlayer from './components/LessonPlayer.jsx';
 import MistakeBankModal from './components/MistakeBankModal.jsx';
 import ExamPlayer from './components/ExamPlayer.jsx';
+import NotesBuilder from './notes/NotesBuilder.jsx';
 import GlossaryModal from './components/GlossaryModal.jsx';import { units, questionIndex, subQuestionIds } from './data/syllabusData.js';
 import { useProgress } from './lib/store.js';
 import { checkTotal } from './lib/overview.js';
@@ -105,6 +106,8 @@ export default function BusinessApp({ onHome }) {
         }}
       />
     );
+  } else if (view.name === 'notes') {
+    body = <NotesBuilder title="Business Studies" code="0264" units={units} onBack={exit} />;
   } else if (view.name === 'drill') {
     body = (
       <LessonPlayer
@@ -128,6 +131,7 @@ export default function BusinessApp({ onHome }) {
           onSelectUnit={setActiveUnitId}
           onOpenMistakes={() => setMistakesOpen(true)}
           onOpenGlossary={() => setGlossaryOpen(true)}
+          onOpenNotes={() => setView({ name: 'notes' })}
           onHome={onHome}
           onToggle={toggle}
           onReset={reset}

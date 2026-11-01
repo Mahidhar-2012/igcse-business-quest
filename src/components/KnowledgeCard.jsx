@@ -1,6 +1,7 @@
 import { Fragment, useMemo } from 'react';
 import { BookOpen, Sparkles, ThumbsUp, ThumbsDown, KeyRound } from 'lucide-react';
 import { findTerms } from '../data/glossary.js';
+import Figure from './Figure.jsx';
 
 /**
  * Turns text with **bold** segments into render-ready parts and highlights glossary terms.
@@ -169,6 +170,7 @@ export default function KnowledgeCard({ card, no, of, recap, hasPractice }) {
     <div className="pop">
       <Header recap={recap} no={no} of={of} pc={!!card.options} example={!!card.example} hasTest={(card.tests?.length || 0) > 0} hasPractice={hasPractice} />
       <h2 className="mb-4 text-2xl font-black leading-tight">{card.title}</h2>
+      {card.fig && <Figure fig={card.fig} />}
 
       {view.body.example ? (
         <Worked ex={view.body.example} />

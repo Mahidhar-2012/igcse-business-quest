@@ -3,6 +3,7 @@ import Header from '../components/Header.jsx';
 import UnitDashboard from '../components/UnitDashboard.jsx';
 import LessonPlayer from '../components/LessonPlayer.jsx';
 import MistakeBankModal from '../components/MistakeBankModal.jsx';
+import NotesBuilder from '../notes/NotesBuilder.jsx';
 import { useProgress } from '../lib/store.js';
 import { checkTotal } from '../lib/overview.js';
 
@@ -114,6 +115,8 @@ export default function CourseApp({ onHome, config }) {
         CardView={CardView}
       />
     );
+  } else if (view.name === 'notes') {
+    body = <NotesBuilder title={heading.replace(/^IGCSE /, '').replace(/\s*\d{4}$/, '')} code={heading.match(/\d{4}/)?.[0] ?? null} units={units} onBack={exit} />;
   } else if (view.name === 'drill') {
     body = (
       <LessonPlayer
@@ -138,6 +141,7 @@ export default function CourseApp({ onHome, config }) {
           activeUnitId={activeUnitId}
           onSelectUnit={setActiveUnitId}
           onOpenMistakes={() => setMistakesOpen(true)}
+          onOpenNotes={() => setView({ name: 'notes' })}
           onHome={onHome}
           onToggle={toggle}
           onReset={reset}

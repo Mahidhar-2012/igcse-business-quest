@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Zap, Flame, Volume2, VolumeX, ShieldAlert, Settings, Unlock, Trash2, BookText, LayoutGrid } from 'lucide-react';
+import { Zap, Flame, Volume2, VolumeX, ShieldAlert, Settings, Unlock, Trash2, BookText, LayoutGrid, FileText } from 'lucide-react';
 import { UNIT_COLORS, ProgressRing } from './UnitDashboard.jsx';
 
-export default function Header({ state, unitStats, activeUnitId, onSelectUnit, onOpenMistakes, onOpenGlossary, onHome, onToggle, onReset, showUnits, courseUnits, title = 'Business Quest' }) {
+export default function Header({ state, unitStats, activeUnitId, onSelectUnit, onOpenMistakes, onOpenGlossary, onOpenNotes, onHome, onToggle, onReset, showUnits, courseUnits, title = 'Business Quest' }) {
   const [menu, setMenu] = useState(false);
   const active = courseUnits.find((u) => u.id === activeUnitId);
 
@@ -48,6 +48,15 @@ export default function Header({ state, unitStats, activeUnitId, onSelectUnit, o
               </span>
             )}
           </button>
+          {onOpenNotes && <button
+            type="button"
+            onClick={onOpenNotes}
+            aria-label="Printable notes and cheat sheets"
+            title="Printable notes"
+            className="icon-btn !text-sky-600 hover:!bg-sky-50"
+          >
+            <FileText className="h-5 w-5" />
+          </button>}
           {onOpenGlossary && <button
             type="button"
             onClick={onOpenGlossary}
