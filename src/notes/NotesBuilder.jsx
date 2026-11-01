@@ -2,7 +2,7 @@ import { Fragment, useMemo, useState } from 'react';
 import { ArrowLeft, Printer, FileText, CheckSquare, Square } from 'lucide-react';
 import Figure from '../components/Figure.jsx';
 
-/** **bold** key terms are highlighted; {{phrase}} is emphasised. */
+/** **bold** key terms are highlighted; {{phrase}} is emphasised; *text* is italic. */
 function Rich({ text }) {
   return String(text).split(/(\*\*[^*]+\*\*|\{\{.*?\}\}|\*[^*]+\*)/g).filter(Boolean).map((part, i) => {
     if (part.startsWith('**')) return <mark key={i}>{part.slice(2, -2)}</mark>;
@@ -12,20 +12,65 @@ function Rich({ text }) {
   });
 }
 
+const stripMarks = (s) => String(s).replace(/\*\*|\{\{|\}\}/g, '');
+
+/** Cleans "Define the term “x”." into "x". */
+const termOf = (q) => stripMarks(q)
+  .replace(/^(Define|State|Describe) (the term |the meaning of |what is meant by )?/i, '')
+  .replace(/[“”".?]/g, '')
+  .replace(/^(a|an|the) /i, '')
+  .trim();
+
+/** Definition line: bold the term, avoid saying it twice ("Homeostasis is..." not "homeostasis: Homeostasis is..."). */
+function DefLine({ term, model }) {
+  const t = term.charAt(0).toUpperCase() + term.slice(1);
+  if (model.toLowerCase().startsWith(term.toLowerCase())) {
+    return <><b>{model.slice(0, term.length)}</b>{model.slice(term.length)}</>;
+  }
+  return <><b>{t}:</b> {model}</>;
+}
+
 /** Everything a cheat sheet needs from one lesson, taken from the bytes already in the course. */
-function lessonNotes(sub) {
+function lessonNotes(sub, findGlossary) {
   const defs = [];
+  const exam = [];
   const seen = new Set();
   const collect = (q) => {
-    if (q?.type === 'short' && q.kind === 'Definition' && q.model && !seen.has(q.q)) {
-      seen.add(q.q);
-      defs.push({ q: q.q.replace(/^(Define|State) (the term )?/i, '').replace(/[“”".]/g, '').trim(), model: q.model });
-    }
+    if (q?.type !== 'short' || !q.model || seen.has(q.q)) return;
+    seen.add(q.q);
+    if (q.kind === 'Definition') defs.push({ term: termOf(q.q), model: q.model });
+    else exam.push(q);
   };
   (sub.challenges || []).forEach(collect);
   sub.cards.forEach((c) => (c.tests || []).forEach(collect));
-  return { defs };
+
+  let terms = [];
+  if (findGlossary) {
+    const seenT = new Set();
+    for (const c of sub.cards) {
+      const bold = (c.points || []).flatMap((p) => [...String(p).matchAll(/\*\*([^*]+)\*\*/g)].map((m) => m[1]));
+      const text = [c.title, ...bold].join(' . ');
+      for (const h of findGlossary(text, { allowGeneric: false }) || []) {
+        const k = h.entry.term.toLowerCase();
+        if (!seenT.has(k)) { seenT.add(k); terms.push(h.entry); }
+      }
+    }
+    terms = terms.slice(0, 10);
+  }
+  const eqs = sub.cards.flatMap((c) => c.eq || []);
+  return { defs, exam, terms, eqs };
 }
+
+const COMMAND_WORDS = [
+  ['State / Name', 'Give a short answer: no explanation needed.'],
+  ['Define', 'Give the exact meaning, in a sentence.'],
+  ['Describe', 'Say what you see or what happens: features, steps, pattern.'],
+  ['Explain', 'Give the reason: use “because”, “so” or “which means”.'],
+  ['Calculate', 'Show the formula, the working and the unit.'],
+  ['Compare', 'Give similarities and differences, with both sides stated.'],
+  ['Suggest', 'Apply your knowledge to a new situation.'],
+  ['Evaluate / Justify', 'Weigh both sides, then give a reasoned judgement.'],
+];
 
 const countBytes = (units, ids) => units.flatMap((u) => u.submodules).filter((s) => ids.has(s.id)).reduce((n, s) => n + s.cards.length, 0);
 
@@ -35,7 +80,7 @@ function ByteBlock({ card, opts }) {
   return (
     <section className="nb">
       <h4>{card.title}</h4>
-      {opts.figures && card.fig && !card.figAfter && <Figure fig={card.fig} className="nfig" />}
+      {opts.figures && card.fig && !card.figAfter && <><Figure fig={card.fig} className="nfig" />{opts.recall && <p className="nhint">Test yourself: cover the labels and redraw this from memory.</p>}</>}
       {card.points && (
         <ul>
           {card.points.map((p) => <li key={p}><Rich text={p} /></li>)}
@@ -63,25 +108,62 @@ function ByteBlock({ card, opts }) {
   );
 }
 
-function Sheet({ title, code, units, ids, opts }) {
+function Sheet({ title, code, units, ids, opts, findGlossary }) {
   const chosen = units.map((u) => ({ ...u, subs: u.submodules.filter((s) => ids.has(s.id)) })).filter((u) => u.subs.length);
+  const notes = useMemo(() => {
+    const m = new Map();
+    chosen.forEach((u) => u.subs.forEach((s) => m.set(s.id, lessonNotes(s, findGlossary))));
+    return m;
+  }, [chosen, findGlossary]);
+
+  const allEq = chosen.flatMap((u) => u.subs.flatMap((s) => notes.get(s.id).eqs.map((e) => ({ e, ref: s.syllabus || s.title }))));
+  const eqSeen = new Set();
+  const formulae = allEq.filter(({ e }) => (eqSeen.has(e) ? false : eqSeen.add(e)));
+  const allExam = chosen.flatMap((u) => u.subs.flatMap((s) => notes.get(s.id).exam.map((q) => ({ q, ref: s.syllabus || s.title }))));
+  const lessonCount = chosen.reduce((n, u) => n + u.subs.length, 0);
+
   return (
-    <article className={`notes-sheet ${opts.twoCol ? 'two-col' : ''}`}>
+    <article className={`notes-sheet ${opts.twoCol ? 'two-col' : ''} ${opts.mono ? 'mono' : ''} ${opts.large ? 'large' : ''}`}>
       <header className="nhead">
-        <h1>{title} cheat sheet{code ? ` · ${code}` : ''}</h1>
-        <p>
-          {chosen.length > 4 ? `${chosen.length} units, ${chosen.reduce((n, u) => n + u.subs.length, 0)} lessons` : chosen.map((u) => `Unit ${u.number}: ${u.title}`).join(' · ')}
-        </p>
+        <h1>{title}{code ? ` ${code}` : ''}: cheat sheet</h1>
+        <p>{chosen.length > 4 ? `${chosen.length} units, ${lessonCount} lessons` : chosen.map((u) => `Unit ${u.number}: ${u.title}`).join(' · ')}</p>
       </header>
+
+      <section className="nb ncover">
+        <h4>How to use this sheet</h4>
+        <ol>
+          <li><b>Read</b> a chapter once. <b>Cover</b> the page and write down everything you remember.</li>
+          <li><b>Check</b> against the sheet and tick the box for each point you can now explain.</li>
+          <li>Do the <b>Test yourself</b> questions at the end, then mark them with the answers page.</li>
+          <li><b>Repeat</b> on day 2, day 7 and day 21: spacing beats cramming.</li>
+        </ol>
+      </section>
+
+      {opts.commandWords && (
+        <section className="nb ncmd">
+          <h4>Command words: what the examiner wants</h4>
+          <table><tbody>{COMMAND_WORDS.map(([w, d]) => <tr key={w}><th>{w}</th><td>{d}</td></tr>)}</tbody></table>
+          <p className="nhint">Marks shown on a question are a guide to the number of separate points to make.</p>
+        </section>
+      )}
+
+      {opts.equations && formulae.length > 0 && (
+        <section className="nb nformulae">
+          <h4>Formulae and equations to know</h4>
+          <ul>{formulae.map(({ e, ref }) => <li key={e}>{e} <span>({ref})</span></li>)}</ul>
+        </section>
+      )}
+
       {chosen.map((u) => (
         <div key={u.id}>
           {u.subs.map((sub) => {
-            const { defs } = lessonNotes(sub);
+            const { defs, terms } = notes.get(sub.id);
             return (
               <div key={sub.id} className="nlesson">
                 <h2><span>{sub.syllabus ? `${sub.syllabus} · ` : ''}{sub.title}</span></h2>
                 {sub.microConcept && (
                   <p className="nsum">
+                    <b>In short: </b>
                     {(Array.isArray(sub.microConcept) ? sub.microConcept : [sub.microConcept]).map((m, i) => <span key={i}><Rich text={m} /> </span>)}
                   </p>
                 )}
@@ -89,29 +171,71 @@ function Sheet({ title, code, units, ids, opts }) {
                 {opts.definitions && defs.length > 0 && (
                   <section className="nb ndef">
                     <h4>Key definitions</h4>
-                    <ul>
-                      {defs.map((d) => <li key={d.q}><b>{d.q}:</b> {d.model}</li>)}
-                    </ul>
+                    <ul>{defs.map((d) => <li key={d.term}><DefLine term={d.term} model={d.model} /></li>)}</ul>
                   </section>
+                )}
+                {opts.definitions && defs.length === 0 && terms.length > 0 && (
+                  <section className="nb ndef">
+                    <h4>Key terms</h4>
+                    <ul>{terms.map((t) => <li key={t.term}><b>{t.term}</b> — {t.def}</li>)}</ul>
+                  </section>
+                )}
+                {opts.checklist && (
+                  <p className="ncheck"><b>Tick when you can explain:</b> {sub.cards.filter((c) => c.points || c.options || c.example).map((c) => <span key={c.title}>☐ {c.title}</span>)}</p>
                 )}
               </div>
             );
           })}
         </div>
       ))}
+
+      {opts.examQs && allExam.length > 0 && (
+        <>
+          <h2 className="npagebreak">Test yourself: write your answers first</h2>
+          <ol className="nqs">
+            {allExam.map(({ q, ref }, i) => (
+              <li key={q.q}><b className="qn">Q{i + 1}.</b> <b>[{q.marks} mark{q.marks > 1 ? 's' : ''}]</b> {q.command ? <i>({q.command}) </i> : null}{q.q} <span className="nref">{ref}</span></li>
+            ))}
+          </ol>
+          <h2 className="npagebreak">Answers: mark yourself honestly</h2>
+          <ol className="nqs nans">
+            {allExam.map(({ q }, i) => (
+              <li key={q.q}>
+                <span><b className="qn">Q{i + 1}.</b> {q.points.map((p) => `✓ ${p}`).join('  ')}</span>
+                <em>Model: {q.model}</em>
+              </li>
+            ))}
+          </ol>
+        </>
+      )}
+
       <footer className="nfoot">Original study notes made from the app’s knowledge bytes. Not endorsed by Cambridge University Press &amp; Assessment. Check the official syllabus for exact wording.</footer>
     </article>
   );
 }
 
+const OPTIONS = [
+  ['figures', 'Diagrams'],
+  ['definitions', 'Key definitions and terms'],
+  ['equations', 'Formulae box'],
+  ['commandWords', 'Command words'],
+  ['checklist', 'Tick-box checklists'],
+  ['recall', 'Redraw-from-memory prompts'],
+  ['examQs', 'Test yourself + answers'],
+  ['twoCol', 'Two columns'],
+  ['large', 'Larger text'],
+  ['mono', 'Black and white (saves ink)'],
+];
+
 /**
  * Chapter picker and printable cheat sheet. Pick chapters, then use "Print / save as PDF".
  * units: course units with submodules (lessons) whose cards hold the bytes.
+ * findGlossary: optional (text) => [{ entry: { term, def } }], used for subjects with a glossary (Business).
  */
-export default function NotesBuilder({ title, code, units, onBack }) {
+export default function NotesBuilder({ title, code, units, onBack, findGlossary }) {
   const allIds = useMemo(() => units.flatMap((u) => u.submodules.map((s) => s.id)), [units]);
   const [ids, setIds] = useState(() => new Set());
-  const [opts, setOpts] = useState({ figures: true, definitions: true, equations: true, twoCol: true });
+  const [opts, setOpts] = useState({ figures: true, definitions: true, equations: true, commandWords: true, checklist: true, recall: true, examQs: true, twoCol: true, large: false, mono: false });
   const [preview, setPreview] = useState(false);
 
   const toggle = (id) => setIds((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
@@ -132,7 +256,7 @@ export default function NotesBuilder({ title, code, units, onBack }) {
           <span className="text-sm font-bold text-slate-500">{ids.size} lessons · {countBytes(units, ids)} bytes. In the print window choose “Save as PDF”.</span>
         </div>
         <div className="mx-auto max-w-[900px] bg-white p-4 print:p-0">
-          <Sheet title={title} code={code} units={units} ids={ids} opts={opts} />
+          <Sheet title={title} code={code} units={units} ids={ids} opts={opts} findGlossary={findGlossary} />
         </div>
       </div>
     );
@@ -142,7 +266,7 @@ export default function NotesBuilder({ title, code, units, onBack }) {
     <div className="mx-auto max-w-3xl px-4 py-5">
       <button type="button" className="btn btn-ghost mb-3" onClick={onBack}><ArrowLeft className="h-4 w-4" aria-hidden /> Back to {title}</button>
       <h1 className="mb-1 flex items-center gap-2 text-2xl font-black"><FileText className="h-6 w-6" aria-hidden /> Printable notes</h1>
-      <p className="mb-4 text-sm font-semibold text-slate-600">Pick the chapters you want. The app puts the knowledge bytes, diagrams, equations and key definitions for those chapters onto a concise cheat sheet that you can print or save as a PDF.</p>
+      <p className="mb-4 text-sm font-semibold text-slate-600">Pick the chapters you want. The app puts the knowledge bytes, diagrams, formulae and key definitions for those chapters onto a concise cheat sheet, with command words, tick-box checklists and a self-test with answers. Print it or save it as a PDF.</p>
 
       <div className="mb-4 flex flex-wrap gap-2">
         <button type="button" className="btn btn-ghost" onClick={() => setIds(new Set(allIds))}>Select all</button>
@@ -151,9 +275,9 @@ export default function NotesBuilder({ title, code, units, onBack }) {
 
       <fieldset className="mb-4 rounded-2xl border-2 border-slate-200 bg-white p-3">
         <legend className="px-1 text-xs font-extrabold uppercase tracking-widest text-slate-500">Include</legend>
-        <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-bold">
-          {[['figures', 'Diagrams'], ['definitions', 'Key definitions'], ['equations', 'Equations'], ['twoCol', 'Two columns']].map(([k, label]) => (
-            <label key={k} className="flex items-center gap-2"><input type="checkbox" checked={opts[k]} onChange={() => opt(k)} className="h-5 w-5" />{label}</label>
+        <div className="grid gap-x-5 gap-y-2 text-sm font-bold sm:grid-cols-2">
+          {OPTIONS.map(([k, label]) => (
+            <label key={k} className="flex min-h-9 items-center gap-2"><input type="checkbox" checked={opts[k]} onChange={() => opt(k)} className="h-5 w-5" />{label}</label>
           ))}
         </div>
       </fieldset>

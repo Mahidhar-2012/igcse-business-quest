@@ -5,6 +5,7 @@ import LessonPlayer from './components/LessonPlayer.jsx';
 import MistakeBankModal from './components/MistakeBankModal.jsx';
 import ExamPlayer from './components/ExamPlayer.jsx';
 import NotesBuilder from './notes/NotesBuilder.jsx';
+import { findTerms } from './data/glossary.js';
 import GlossaryModal from './components/GlossaryModal.jsx';import { units, questionIndex, subQuestionIds } from './data/syllabusData.js';
 import { useProgress } from './lib/store.js';
 import { checkTotal } from './lib/overview.js';
@@ -107,7 +108,7 @@ export default function BusinessApp({ onHome }) {
       />
     );
   } else if (view.name === 'notes') {
-    body = <NotesBuilder title="Business Studies" code="0264" units={units} onBack={exit} />;
+    body = <NotesBuilder title="Business Studies" code="0264" units={units} onBack={exit} findGlossary={findTerms} />;
   } else if (view.name === 'drill') {
     body = (
       <LessonPlayer

@@ -84,3 +84,40 @@ body { @apply bg-slate-50 text-ink antialiased; }
   .notes-sheet mark, .notes-sheet h2, .notes-sheet .neq, .notes-sheet .ndef { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .notes-sheet svg { max-height: 60mm; }
 }
+
+/* ---------- Printable notes: extras ---------- */
+.notes-sheet .ncover ol { list-style: decimal; padding-left: 15px; }
+.notes-sheet .ncover { background: #fefce8; border: 1px solid #fde68a; border-radius: 3px; padding: 2px 6px; }
+.notes-sheet .ncmd { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 3px; padding: 2px 6px; }
+.notes-sheet .ncmd table { width: 100%; border-collapse: collapse; }
+.notes-sheet .ncmd th { text-align: left; white-space: nowrap; padding-right: 6px; font-weight: 800; vertical-align: top; }
+.notes-sheet .ncmd td { padding-bottom: 1px; }
+.notes-sheet .nformulae { background: #ede9fe; border: 1px solid #c4b5fd; border-radius: 3px; padding: 2px 6px; }
+.notes-sheet .nformulae ul { list-style: none; padding-left: 0; columns: 1; }
+.notes-sheet .nformulae li { font-weight: 800; }
+.notes-sheet .nformulae li span { font-weight: 500; color: #555; font-size: 0.85em; }
+.notes-sheet .nhint { font-size: 0.82em; font-style: italic; color: #555; }
+.notes-sheet .ncheck { font-size: 0.88em; margin-top: 2px; color: #333; }
+.notes-sheet .ncheck span { display: inline-block; margin-right: 8px; white-space: nowrap; }
+.notes-sheet .npagebreak { column-span: all; break-before: page; margin-top: 0; }
+.notes-sheet .nqs { padding-left: 16px; }
+.notes-sheet .nqs li { margin-bottom: 4px; break-inside: avoid; }
+.notes-sheet .nqs .nref { color: #777; font-size: 0.8em; }
+.notes-sheet .nans li { display: list-item; }
+.notes-sheet .nans li span { display: block; }
+.notes-sheet .nans li em { display: block; color: #444; }
+.notes-sheet.large { font-size: 11.5px; }
+.notes-sheet.mono mark { background: transparent !important; font-weight: 800; text-decoration: underline; text-decoration-thickness: 1.5px; }
+.notes-sheet.mono h2 { background: #fff !important; color: #111 !important; border: 1.5px solid #111; }
+.notes-sheet.mono .neq, .notes-sheet.mono .ndef, .notes-sheet.mono .nformulae, .notes-sheet.mono .ncover, .notes-sheet.mono .ncmd { background: #fff !important; border-color: #888 !important; }
+.notes-sheet.mono svg { filter: grayscale(1); }
+@media print {
+  @page { @bottom-center { content: 'Page ' counter(page) ' of ' counter(pages); font-size: 8pt; color: #555; } }
+  .notes-sheet.large { font-size: 10.5pt; }
+}
+.notes-sheet .nformulae { column-span: all; break-inside: avoid; }
+.notes-sheet .nformulae ul { columns: 3; column-gap: 12px; }
+.notes-sheet .nformulae li { break-inside: avoid; }
+.notes-sheet .nqs { list-style: none; padding-left: 0; }
+.notes-sheet .nqs .qn { margin-right: 2px; }
+.notes-sheet .nans li { font-size: 0.93em; }
