@@ -105,7 +105,7 @@ export default function LessonPlayer({ mode = 'lesson', title, badge, items, act
   useEffect(() => {
     const onKey = (e) => {
       if (e.key !== 'Enter' || e.repeat) return;
-      if (e.target instanceof HTMLButtonElement || e.target instanceof HTMLInputElement) return;
+      if (e.target instanceof HTMLButtonElement || e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
       if (phase === 'quiz') next();
     };
     window.addEventListener('keydown', onKey);

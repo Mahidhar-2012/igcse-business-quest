@@ -32,6 +32,13 @@ import { ct6 } from './ct/ct6.js';
 import { pc1 } from './procons/pc1.js';
 import { pc2 } from './procons/pc2.js';
 import { pc3 } from './procons/pc3.js';
+import { applyOverlay } from './overlay.js';
+import { h1 } from './hard/h1.js';
+import { h2 } from './hard/h2.js';
+import { h3 } from './hard/h3.js';
+import { h4 } from './hard/h4.js';
+import { h5 } from './hard/h5.js';
+import { h6 } from './hard/h6.js';
 
 export const units = [unit1, unit2, unit3, unit4, unit5, unit6, unit7];
 
@@ -58,6 +65,9 @@ for (const unit of units) {
     }
   }
 }
+
+// Harder and more varied replacements, and extra question types, keyed by question id (see overlay.js).
+for (const hard of [h1, h2, h3, h4, h5, h6]) applyOverlay(units, hard);
 
 /** Flat lookup: question id -> { unit, sub, challenge, qid }.
  *  Practice questions: `subId:index`. Card tests: `subId:c<cardIndex>.<testIndex>`. */

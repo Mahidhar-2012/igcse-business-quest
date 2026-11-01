@@ -11,6 +11,38 @@ export const mc = (q, options, answer) => ({
   answer,
 });
 
+/**
+ * "Select ALL that apply". options = [[text, why, isCorrect], ...]. Needs every correct option and no wrong one.
+ */
+export const multi = (q, options, explain) => ({
+  type: 'multi',
+  q,
+  options: options.map(([text, why, correct]) => ({ text, why, correct: !!correct })),
+  explain,
+});
+
+/** Match each item on the left to its partner on the right. pairs = [[left, right], ...] (right column is shuffled). */
+export const match = (q, pairs, explain) => ({ type: 'match', q, pairs: pairs.map(([left, right]) => ({ left, right })), explain });
+
+/**
+ * Fill the gaps. text uses ___ for each blank; answers = words in order; extras = wrong words added to the word bank.
+ */
+export const cloze = (q, text, answers, extras = [], explain) => ({ type: 'cloze', q, text, answers, extras, explain });
+
+/**
+ * Written answer that the learner self-marks against a mark scheme.
+ * kind: 'Definition' | 'Exam question'. points = the creditworthy points (each is one mark). model = a full-mark answer.
+ */
+export const short = (q, { kind = 'Exam question', points, model, command }) => ({
+  type: 'short',
+  q,
+  kind,
+  command,
+  points,
+  model,
+  marks: points.length,
+});
+
 /** Chain-of-reasoning ordering. steps are given in the CORRECT order (the UI shuffles them). */
 export const ord = (q, steps, explain) => ({ type: 'order', q, steps, explain });
 

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { X, ShieldAlert, Swords, PartyPopper } from 'lucide-react';
 
-const TYPE_LABEL = { mcq: 'Multiple choice', order: 'Ordering', scenario: 'Scenario', calc: 'Calculation', tfd: 'True/False' };
+const TYPE_LABEL = { mcq: 'Multiple choice', order: 'Ordering', scenario: 'Scenario', calc: 'Calculation', tfd: 'True/False', multi: 'Select all that apply', match: 'Matching', cloze: 'Fill the gaps', short: 'Written answer' };
 
 export default function MistakeBankModal({ mistakes, onClose, onStartDrill, course }) {
   const { units, questionIndex } = course;

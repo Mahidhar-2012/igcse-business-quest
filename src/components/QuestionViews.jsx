@@ -420,7 +420,260 @@ export function PaperWritten({ q, onResolve }) {
   );
 }
 
+/* ---------- 6. Select ALL that apply ---------- */
+export function MultiSelect({ q, onResolve }) {
+  const order = useMemo(() => shuffle(q.options.map((_, i) => i)), [q]);
+  const [sel, setSel] = useState([]);
+  const [result, setResult] = useState(null);
+  const resolved = result !== null;
+  const toggle = (orig) => !resolved && setSel((s) => (s.includes(orig) ? s.filter((x) => x !== orig) : [...s, orig]));
+  const check = () => {
+    const ok = q.options.every((o, i) => o.correct === sel.includes(i));
+    setResult(ok);
+    onResolve(ok);
+  };
+  const needed = q.options.filter((o) => o.correct).length;
+
+  return (
+    <div>
+      <Prompt label={`Select all that apply${resolved ? '' : ' — tick every correct statement'}`} ao={q.ao} fig={q.fig}>{q.q}</Prompt>
+      <ul className="space-y-3">
+        {order.map((orig) => {
+          const opt = q.options[orig];
+          const on = sel.includes(orig);
+          let style = on ? '!border-sky-400 !bg-sky-50' : '';
+          if (resolved) style = opt.correct ? '!border-green-400 !bg-green-50' : on ? '!border-rose-400 !bg-rose-50' : '';
+          return (
+            <li key={orig}>
+              <button type="button" role="checkbox" aria-checked={on} className={`choice ${style}`} disabled={resolved} onClick={() => toggle(orig)}>
+                <span className="flex items-start gap-3">
+                  <span className={`mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md border-2 ${on ? 'border-sky-500 bg-sky-500 text-white' : 'border-slate-300'}`} aria-hidden>
+                    {on && <Check className="h-4 w-4" />}
+                  </span>
+                  <span className="flex-1">{opt.text}</span>
+                </span>
+                {resolved && (
+                  <span className={`mt-2 block pl-9 text-sm font-semibold ${opt.correct ? 'text-green-800' : 'text-slate-600'}`}>
+                    {opt.correct ? '✔ Should be ticked. ' : '✘ Should not be ticked. '}
+                    {opt.why}
+                  </span>
+                )}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      {!resolved && (
+        <button type="button" className="btn btn-green mt-4" disabled={!sel.length} onClick={check}>Check ({needed} correct)</button>
+      )}
+      {resolved && <Verdict correct={result}>{q.explain || 'You need every correct statement and none of the wrong ones.'}</Verdict>}
+    </div>
+  );
+}
+
+/* ---------- 7. Match the pairs ---------- */
+export function Matching({ q, onResolve }) {
+  const right = useMemo(() => {
+    let r = shuffle(q.pairs.map((p, i) => ({ text: p.right, i })));
+    for (let t = 0; t < 5 && r.every((x, k) => x.i === k); t++) r = shuffle(r);
+    return r;
+  }, [q]);
+  const [chosen, setChosen] = useState(null); // index of left item awaiting a partner
+  const [pairing, setPairing] = useState({}); // left index -> right item index (position in `right`)
+  const [result, setResult] = useState(null);
+  const resolved = result !== null;
+  const used = Object.values(pairing);
+
+  const pickLeft = (i) => {
+    if (resolved) return;
+    if (pairing[i] !== undefined) {
+      setPairing(({ [i]: _, ...rest }) => rest);
+      setChosen(i);
+    } else setChosen(i);
+  };
+  const pickRight = (pos) => {
+    if (resolved || chosen === null || used.includes(pos)) return;
+    setPairing((p) => ({ ...p, [chosen]: pos }));
+    setChosen(null);
+  };
+  const full = Object.keys(pairing).length === q.pairs.length;
+  const check = () => {
+    const ok = q.pairs.every((_, i) => right[pairing[i]].i === i);
+    setResult(ok);
+    onResolve(ok);
+  };
+
+  return (
+    <div>
+      <Prompt label="Match them up — tap a term, then its partner" ao={q.ao} fig={q.fig}>{q.q}</Prompt>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <ul className="space-y-2" aria-label="Terms">
+          {q.pairs.map((p, i) => {
+            const paired = pairing[i] !== undefined;
+            const good = resolved && right[pairing[i]]?.i === i;
+            const bad = resolved && !good;
+            return (
+              <li key={p.left}>
+                <button
+                  type="button"
+                  disabled={resolved}
+                  onClick={() => pickLeft(i)}
+                  className={`choice ${chosen === i ? '!border-sky-400 !bg-sky-50' : ''} ${paired && !resolved ? '!border-indigo-300 !bg-indigo-50' : ''} ${good ? '!border-green-400 !bg-green-50' : ''} ${bad ? '!border-rose-400 !bg-rose-50' : ''}`}
+                >
+                  <span className="font-extrabold">{p.left}</span>
+                  {paired && <span className="mt-1 block text-sm font-semibold text-slate-600">→ {right[pairing[i]].text}</span>}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+        <ul className="space-y-2" aria-label="Partners">
+          {right.map((r, pos) => (
+            <li key={r.text}>
+              <button type="button" className="choice" disabled={resolved || used.includes(pos) || chosen === null} onClick={() => pickRight(pos)}>
+                {r.text}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      {!resolved && <button type="button" className="btn btn-green mt-4" disabled={!full} onClick={check}>Check matches</button>}
+      {resolved && (
+        <Verdict correct={result}>
+          <ul className="mb-2 space-y-1">{q.pairs.map((p) => <li key={p.left}><strong>{p.left}</strong> — {p.right}</li>)}</ul>
+          {q.explain}
+        </Verdict>
+      )}
+    </div>
+  );
+}
+
+/* ---------- 8. Fill the gaps from a word bank ---------- */
+export function Cloze({ q, onResolve }) {
+  const parts = useMemo(() => q.text.split('___'), [q]);
+  const bank = useMemo(() => shuffle([...q.answers, ...q.extras].map((w, i) => ({ w, i }))), [q]);
+  const [fills, setFills] = useState(() => parts.slice(1).map(() => null)); // bank positions
+  const [result, setResult] = useState(null);
+  const resolved = result !== null;
+  const nextBlank = fills.indexOf(null);
+
+  const addWord = (pos) => {
+    if (resolved || nextBlank === -1 || fills.includes(pos)) return;
+    setFills((f) => f.map((x, i) => (i === nextBlank ? pos : x)));
+  };
+  const clearBlank = (i) => !resolved && setFills((f) => f.map((x, k) => (k === i ? null : x)));
+  const check = () => {
+    const ok = fills.every((pos, i) => bank[pos].w === q.answers[i]);
+    setResult(ok);
+    onResolve(ok);
+  };
+
+  return (
+    <div>
+      <Prompt label="Fill the gaps — tap words from the bank" ao={q.ao} fig={q.fig}>{q.q}</Prompt>
+      <p className="mb-4 rounded-2xl border-2 border-slate-200 bg-white p-4 text-lg font-semibold leading-loose">
+        {parts.map((part, i) => (
+          <span key={i}>
+            {part}
+            {i < fills.length && (
+              <button
+                type="button"
+                onClick={() => clearBlank(i)}
+                disabled={resolved || fills[i] === null}
+                aria-label={fills[i] === null ? `Blank ${i + 1}, empty` : `Blank ${i + 1}: ${bank[fills[i]].w}. Tap to clear`}
+                className={`mx-1 inline-block min-w-[5.5rem] rounded-lg border-b-4 px-2 text-center font-extrabold ${
+                  resolved
+                    ? bank[fills[i]].w === q.answers[i] ? 'border-green-500 bg-green-50 text-green-800' : 'border-rose-500 bg-rose-50 text-rose-800'
+                    : fills[i] === null ? 'border-slate-300 bg-slate-100 text-transparent' : 'border-sky-400 bg-sky-50 text-sky-900'
+                }`}
+              >
+                {fills[i] === null ? '____' : bank[fills[i]].w}
+              </button>
+            )}
+          </span>
+        ))}
+      </p>
+      <div className="flex flex-wrap gap-2" aria-label="Word bank">
+        {bank.map((b, pos) => (
+          <button key={pos} type="button" className="choice !w-auto" disabled={resolved || fills.includes(pos)} onClick={() => addWord(pos)}>
+            {b.w}
+          </button>
+        ))}
+      </div>
+      {!resolved && <button type="button" className="btn btn-green mt-4" disabled={nextBlank !== -1} onClick={check}>Check</button>}
+      {resolved && (
+        <Verdict correct={result}>
+          <p className="mb-1"><strong>Answer:</strong> {q.answers.join(', ')}.</p>
+          {q.explain}
+        </Verdict>
+      )}
+    </div>
+  );
+}
+
+/* ---------- 9. Written answer, self-marked against a mark scheme (definitions and exam questions) ---------- */
+export function ShortAnswer({ q, onResolve }) {
+  const [text, setText] = useState('');
+  const [shown, setShown] = useState(false);
+  const [ticked, setTicked] = useState([]);
+  const [done, setDone] = useState(false);
+  const need = Math.max(1, Math.ceil(q.points.length * 0.6));
+  const finish = () => {
+    if (done) return;
+    setDone(true);
+    onResolve(ticked.length >= need);
+  };
+  return (
+    <div>
+      <Prompt label={`${q.kind} · ${q.marks} mark${q.marks > 1 ? 's' : ''}${q.command ? ` · command word: ${q.command}` : ''}`} ao={q.ao} fig={q.fig}>{q.q}</Prompt>
+      <label className="mb-1 block text-sm font-extrabold text-slate-500" htmlFor="short-answer">Write your answer, then compare it with the mark scheme.</label>
+      <textarea
+        id="short-answer"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        disabled={shown}
+        rows={5}
+        className="w-full rounded-2xl border-2 border-b-4 border-slate-200 bg-white p-3 text-base font-semibold outline-none focus:border-sky-400"
+        placeholder="Type your answer here (or write it on paper)"
+      />
+      {!shown && <button type="button" className="btn btn-blue mt-3 w-full" onClick={() => setShown(true)}>Show mark scheme</button>}
+      {shown && (
+        <div className="mt-4">
+          <p className="mb-2 text-sm font-extrabold text-green-700">Mark scheme: tick each point your answer made</p>
+          <ul className="space-y-2">
+            {q.points.map((pt, i) => {
+              const on = ticked.includes(i);
+              return (
+                <li key={pt}>
+                  <button type="button" role="checkbox" aria-checked={on} disabled={done} onClick={() => setTicked((t) => (t.includes(i) ? t.filter((x) => x !== i) : [...t, i]))} className={`choice ${on ? '!border-green-400 !bg-green-50' : ''}`}>
+                    <span className="flex items-start gap-3">
+                      <span className={`mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md border-2 ${on ? 'border-green-500 bg-green-500 text-white' : 'border-slate-300'}`} aria-hidden>{on && <Check className="h-4 w-4" />}</span>
+                      <span className="flex-1">{pt}</span>
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+          <p className="mt-3 rounded-xl bg-green-50 p-3 text-sm font-semibold text-green-900"><strong>Model answer:</strong> {q.model}</p>
+          {!done ? (
+            <button type="button" className="btn btn-green mt-4 w-full" onClick={finish}>Save my mark ({ticked.length}/{q.marks})</button>
+          ) : (
+            <Verdict correct={ticked.length >= need}>
+              You scored {ticked.length} out of {q.marks}. {ticked.length >= need ? 'Good: that is a secure answer.' : 'This goes to your Mistake Bank so you can try it again.'} Be honest when you tick: the only person who loses out from generous marking is you.
+            </Verdict>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export const VIEWS = {
+  multi: MultiSelect,
+  match: Matching,
+  cloze: Cloze,
+  short: ShortAnswer,
   paper: PaperMCQ,
   written: PaperWritten,
   mcq: MultiChoice,

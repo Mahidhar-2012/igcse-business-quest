@@ -53,6 +53,44 @@ test('multiple-choice and scenario questions are well formed', () => {
   }
 });
 
+test('new question types (select-all, matching, gap-fill, written) are well formed', () => {
+  let seen = { multi: 0, match: 0, cloze: 0, short: 0 };
+  for (const [name, course] of [['physics', physics], ['business', business], ['chemistry', chemistry], ['economics', economics]]) {
+    for (const { qid, challenge: q } of allQuestions(course)) {
+      if (q.type === 'multi') {
+        seen.multi += 1;
+        assert.ok(q.options.length >= 3, `${name} ${qid}: multi needs 3+ options`);
+        assert.ok(q.options.some((o) => o.correct) && q.options.some((o) => !o.correct), `${name} ${qid}: multi needs correct and wrong options`);
+        assert.ok(q.options.every((o) => o.text && o.why), `${name} ${qid}: option missing text or explanation`);
+      }
+      if (q.type === 'match') {
+        seen.match += 1;
+        assert.ok(q.pairs.length >= 3, `${name} ${qid}: match needs 3+ pairs`);
+        assert.equal(new Set(q.pairs.map((p) => p.right)).size, q.pairs.length, `${name} ${qid}: duplicate partners in match`);
+      }
+      if (q.type === 'cloze') {
+        seen.cloze += 1;
+        assert.equal(q.text.split('___').length - 1, q.answers.length, `${name} ${qid}: blanks and answers differ`);
+      }
+      if (q.type === 'short') {
+        seen.short += 1;
+        assert.ok(q.points.length >= 1 && q.model, `${name} ${qid}: short answer needs mark points and a model answer`);
+      }
+    }
+  }
+  assert.ok(seen.multi > 0 && seen.match > 0 && seen.cloze > 0 && seen.short > 0, `expected every new type to be used: ${JSON.stringify(seen)}`);
+});
+
+test('business: multiple-choice answers cannot be guessed from their length', () => {
+  let n = 0, longest = 0;
+  for (const { challenge: q } of allQuestions(business)) {
+    if (q.type !== 'mcq') continue;
+    n += 1;
+    if (q.options[q.answer].text.length === Math.max(...q.options.map((o) => o.text.length))) longest += 1;
+  }
+  assert.ok(longest / n < 0.6, `the correct answer is the longest option in ${longest} of ${n} questions`);
+});
+
 test('physics: every past-paper image exists and every answer is A to D', () => {
   let count = 0;
   for (const unit of physics.units) {
