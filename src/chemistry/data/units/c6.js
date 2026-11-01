@@ -340,7 +340,7 @@ export const c125 = lesson('c12-tests', 'Identification of ions and gases', '12.
 ]);
 
 export const unit6 = {
-  id: 'c6', number: 6, title: 'Organic Chemistry and Analysis', short: 'Organic', emoji: '🧬', color: 'indigo',
+  id: 'c6', number: 6, title: 'Organic Chemistry', short: 'Organic', emoji: '🧬', color: 'indigo',
   submodules: [c111, c112, c113, c114, c115, c116, c117, c118, c121, c122, c123, c124, c125],
   papers: [],
 };

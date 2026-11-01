@@ -191,14 +191,20 @@ export const b62 = withPractice(lesson('b6-leaf', 'Leaf structure', '6.2', [
   ]),
 );
 
-export const unit3 = {
-  id: 'b3', number: 3, title: 'Biological Molecules and Enzymes', short: 'Molecules', emoji: '🧬', color: 'violet',
-  submodules: [b41, b51],
+export const unit4 = {
+  id: 'b4', number: 4, title: 'Biological Molecules', short: 'Molecules', emoji: '🧬', color: 'violet',
+  submodules: [b41],
   papers: [],
 };
 
-export const unit4 = {
-  id: 'b4', number: 4, title: 'Plant Nutrition', short: 'Plants', emoji: '🌱', color: 'amber',
+export const unit5 = {
+  id: 'b5', number: 5, title: 'Enzymes', short: 'Enzymes', emoji: '⚗️', color: 'rose',
+  submodules: [b51],
+  papers: [],
+};
+
+export const unit6 = {
+  id: 'b6', number: 6, title: 'Plant Nutrition', short: 'Plant food', emoji: '🌱', color: 'amber',
   submodules: [b61, b62],
   papers: [],
 };

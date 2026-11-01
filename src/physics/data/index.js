@@ -24,7 +24,7 @@ import { writtenSets } from './written.js';
 import { extrasA } from './units/extras_a.js';
 import { extrasB } from './units/extras_b.js';
 import { extrasC } from './units/extras_c.js';
-import { applyOverlay } from '../../data/overlay.js';
+import { applyOverlay, dropPractical } from '../../data/overlay.js';
 import { hard } from './hard.js';
 
 const paper = (id, title, questions) => ({ id, title, questions });
@@ -92,6 +92,18 @@ for (const id of Object.keys(extras)) {
 }
 // Harder replacements and extra question types, keyed by question id.
 applyOverlay(units, hard);
+
+// Experiment and practical bytes are not taught here.
+dropPractical(units, {
+  cards: {
+    'p1-measure': ['Measuring length, volume and time'],
+    'p1-density': ['Measuring density of a regular solid and a liquid'],
+    'p2-thermal': ['Measuring specific heat capacity'],
+    'p2-transfer': ['Experiments on thermal energy transfer'],
+    'p3-sound': ['Measuring the speed of sound in air'],
+    'p4-magnetism': ['Plotting magnetic field lines'],
+  },
+});
 
 /** Extended (Paper 2) multiple-choice questions 2020-2025, one random-round set per topic group. */
 const SESSION = { m: 'Feb/Mar', s: 'May/Jun', w: 'Oct/Nov' };

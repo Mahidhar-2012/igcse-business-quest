@@ -25,7 +25,7 @@ export const SUBJECTS_META = [
     color: '#0d9488',
     text: '#0f766e',
     storageKey: 'igcse-chemistry-quest:v1',
-    total: 48,
+    total: 43,
     kind: 'progress',
   },
   {
@@ -46,12 +46,12 @@ export const SUBJECTS_META = [
     hash: '#/biology',
     title: 'Biology',
     code: '0610',
-    blurb: 'Knowledge bytes with original diagrams and tests for the 2026–2028 syllabus. Part 1 of the syllabus: topics 1 to 6.',
+    blurb: 'Knowledge bytes with original diagrams and tests for the 2026–2028 syllabus. Syllabus topics 1 to 15 so far.',
     tag: 'Lessons + diagrams',
     color: '#65a30d',
     text: '#4d7c0f',
     storageKey: 'igcse-biology-quest:v1',
-    total: 12,
+    total: 36,
     kind: 'progress',
   },  {
     id: 'business',

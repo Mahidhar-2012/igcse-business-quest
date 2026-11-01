@@ -7,7 +7,7 @@ import { unit4 } from './units/c4.js';
 import { unit5 } from './units/c5.js';
 import { unit6 } from './units/c6.js';
 import { extras } from './units/extras.js';
-import { applyOverlay } from '../../data/overlay.js';
+import { applyOverlay, dropPractical } from '../../data/overlay.js';
 import { hard } from './hard.js';
 
 export const units = [unit1, unit2, unit3, unit4, unit5, unit6];
@@ -24,6 +24,12 @@ for (const unit of units) {
 
 // Harder replacements and extra question types, keyed by question id.
 applyOverlay(units, hard);
+
+// Experiment and practical content is not taught here: topic 12 and the experimental-method bytes are removed.
+dropPractical(units, {
+  lessons: ['c12-design', 'c12-titration', 'c12-chromatography', 'c12-separation', 'c12-tests'],
+  cards: { 'c6-rate': ['Measuring the rate of reaction', 'Evaluating methods of following a reaction'] },
+});
 
 /** Flat lookup: question id -> { unit, sub, challenge, qid }. Card tests: `subId:c<cardIndex>.<testIndex>`. */
 export const questionIndex = (() => {

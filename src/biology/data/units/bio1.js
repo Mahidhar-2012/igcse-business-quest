@@ -322,13 +322,19 @@ export const b33 = withPractice(lesson('b3-active', 'Active transport', '3.3', [
 );
 
 export const unit1 = {
-  id: 'b1', number: 1, title: 'Living Organisms and Cells', short: 'Cells', emoji: '🔬', color: 'emerald',
-  submodules: [b11, b12, b13, b21, b22],
+  id: 'b1', number: 1, title: 'Characteristics and Classification', short: 'Life', emoji: '🐾', color: 'emerald',
+  submodules: [b11, b12, b13],
   papers: [],
 };
 
 export const unit2 = {
-  id: 'b2', number: 2, title: 'Movement into and out of Cells', short: 'Transport', emoji: '💧', color: 'sky',
+  id: 'b2', number: 2, title: 'Organisation of the Organism', short: 'Cells', emoji: '🔬', color: 'teal',
+  submodules: [b21, b22],
+  papers: [],
+};
+
+export const unit3 = {
+  id: 'b3', number: 3, title: 'Movement into and out of Cells', short: 'Transport', emoji: '💧', color: 'sky',
   submodules: [b31, b32, b33],
   papers: [],
 };

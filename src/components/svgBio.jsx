@@ -184,7 +184,160 @@ const EnzymeAction = () => (
   </Svg>
 );
 
+/** A label to the LEFT of the diagram: text ends at (tx, ty). */
+const LabL = ({ px, py, tx, ty, children }) => (
+  <g>
+    <L x1={px} y1={py} x2={tx + 4} y2={ty - 4} w={1.2} />
+    <circle cx={px} cy={py} r={2} fill={K} />
+    <T x={tx} y={ty} anchor="end" size={12}>{children}</T>
+  </g>
+);
+
+const RED = '#fca5a5';
+const BLU = '#93c5fd';
+
+/* ---------- Digestive system ---------- */
+const DigestiveSystem = () => (
+  <Svg w={560} h={330} label="Diagram of the human digestive system showing the mouth, salivary glands, oesophagus, liver, gall bladder, stomach, pancreas, small intestine, large intestine, rectum and anus">
+    <ellipse cx={200} cy={30} rx={34} ry={15} fill={PINK} stroke={K} strokeWidth={1.8} />
+    <ellipse cx={150} cy={50} rx={12} ry={8} fill={YEL} stroke={K} strokeWidth={1.5} />
+    <path d="M200 46 V112" stroke={K} strokeWidth={9} fill="none" strokeLinecap="round" />
+    <path d="M200 46 V112" stroke={PINK} strokeWidth={5} fill="none" strokeLinecap="round" />
+    <path d="M205 105 q55 -5 55 40 q0 38 -42 36 q-28 -2 -20 -34 z" fill={PINK} stroke={K} strokeWidth={1.8} />
+    <path d="M110 125 q-30 5 -30 35 q0 30 40 30 q60 -5 80 -35 q-30 -20 -90 -30z" fill="#e9b2a0" stroke={K} strokeWidth={1.8} />
+    <ellipse cx={175} cy={196} rx={12} ry={9} fill={GREEN} stroke={K} strokeWidth={1.6} />
+    <ellipse cx={232} cy={198} rx={34} ry={9} fill={YEL} stroke={K} strokeWidth={1.6} />
+    <rect x={150} y={208} width={140} height={90} rx={6} fill="none" stroke={K} strokeWidth={9} strokeLinejoin="round" />
+    <rect x={150} y={208} width={140} height={90} rx={6} fill="none" stroke="#fbbf24" strokeWidth={5} strokeLinejoin="round" />
+    <path d="M178 222 h82 q12 0 0 12 h-82 q-12 0 0 12 h82 q12 0 0 12 h-82 q-12 0 0 12 h82" fill="none" stroke={K} strokeWidth={5} />
+    <path d="M178 222 h82 q12 0 0 12 h-82 q-12 0 0 12 h82 q12 0 0 12 h-82 q-12 0 0 12 h82" fill="none" stroke="#fda4af" strokeWidth={2.4} />
+    <path d="M220 298 v22" stroke={K} strokeWidth={9} />
+    <circle cx={220} cy={324} r={4} fill={K} />
+    <LabL px={166} py={50} tx={128} ty={60}>salivary glands</LabL>
+    <Lab px={234} py={30} tx={310} ty={26}>mouth</Lab>
+    <Lab px={200} py={80} tx={310} ty={62}>oesophagus</Lab>
+    <Lab px={248} py={140} tx={310} ty={98}>stomach</Lab>
+    <Lab px={252} py={198} tx={310} ty={134}>pancreas</Lab>
+    <Lab px={262} py={240} tx={310} ty={170}>small intestine</Lab>
+    <Lab px={288} py={270} tx={310} ty={206}>large intestine</Lab>
+    <Lab px={220} py={310} tx={310} ty={256}>rectum</Lab>
+    <Lab px={224} py={324} tx={310} ty={300}>anus</Lab>
+    <LabL px={92} py={160} tx={56} ty={150}>liver</LabL>
+    <LabL px={166} py={198} tx={125} ty={225}>gall bladder</LabL>
+  </Svg>
+);
+
+/* ---------- Villus ---------- */
+const Villus = () => (
+  <Svg w={560} h={270} label="Diagram of a villus showing the wall one cell thick with microvilli, a network of blood capillaries and a central lacteal">
+    <rect x={190} y={25} width={120} height={215} rx={55} fill={YEL} stroke={K} strokeWidth={3} />
+    {Array.from({ length: 11 }, (_, i) => <line key={i} x1={205 + i * 9} y1={29} x2={205 + i * 9} y2={20} stroke={K} strokeWidth={1.4} />)}
+    <rect x={225} y={55} width={50} height={180} rx={22} fill="#fff" stroke={K} strokeWidth={1.8} />
+    <path d="M235 235 V70 q15 -18 30 0 V235" fill="none" stroke="#ec4899" strokeWidth={2.5} />
+    <path d="M205 240 V80 q-10 -25 22 -35" fill="none" stroke="#dc2626" strokeWidth={3} />
+    <path d="M295 240 V80 q10 -25 -22 -35" fill="none" stroke="#2563eb" strokeWidth={3} />
+    <path d="M215 120 q20 15 0 30 M285 120 q-20 15 0 30 M215 180 q20 15 0 30 M285 180 q-20 15 0 30" fill="none" stroke="#7c3aed" strokeWidth={2} />
+    <Lab px={300} py={22} tx={345} ty={30}>microvilli (tiny projections)</Lab>
+    <Lab px={308} py={90} tx={345} ty={80}>epithelium: wall one cell thick</Lab>
+    <Lab px={290} py={140} tx={345} ty={130}>network of blood capillaries</Lab>
+    <Lab px={250} py={175} tx={345} ty={180}>lacteal (lymph vessel)</Lab>
+    <LabL px={200} py={160} tx={160} ty={180}>blood vessels</LabL>
+    <T x={278} y={262} size={11}>Glucose and amino acids enter the capillaries; fatty acids and glycerol enter the lacteal</T>
+  </Svg>
+);
+
+/* ---------- Heart ---------- */
+const Heart = () => (
+  <Svg w={560} h={330} label="Diagram of the mammalian heart showing the vena cava, right atrium, right ventricle, pulmonary artery, pulmonary vein, left atrium, left ventricle with a thick wall, aorta, valves, septum and a coronary artery">
+    <path d="M165 148 h-60 q-30 0 -30 -50 v-40" fill="none" stroke={K} strokeWidth={18} />
+    <path d="M165 148 h-60 q-30 0 -30 -50 v-40" fill="none" stroke={BLU} strokeWidth={14} />
+    <rect x={160} y={5} width={26} height={68} fill={BLU} stroke={K} strokeWidth={2} />
+    <rect x={330} y={90} width={66} height={22} fill={RED} stroke={K} strokeWidth={2} />
+    <path d="M330 215 h50 q36 0 36 -50 v-120" fill="none" stroke={K} strokeWidth={22} />
+    <path d="M330 215 h50 q36 0 36 -50 v-120" fill="none" stroke={RED} strokeWidth={18} />
+    <rect x={150} y={70} width={84} height={72} rx={18} fill={BLU} stroke={K} strokeWidth={2.5} />
+    <rect x={252} y={70} width={84} height={72} rx={18} fill={RED} stroke={K} strokeWidth={2.5} />
+    <rect x={150} y={146} width={84} height={104} rx={24} fill={BLU} stroke={K} strokeWidth={2.5} />
+    <rect x={252} y={146} width={84} height={116} rx={28} fill={RED} stroke={K} strokeWidth={8} />
+    <rect x={234} y={70} width={18} height={192} fill="#e5e7eb" stroke={K} strokeWidth={2} />
+    <polygon points="170,143 214,143 192,160" fill="#fff" stroke={K} strokeWidth={1.6} />
+    <polygon points="272,143 316,143 294,160" fill="#fff" stroke={K} strokeWidth={1.6} />
+    <path d="M318 160 q22 40 6 90" fill="none" stroke="#7f1d1d" strokeWidth={2.4} />
+    <T x={192} y={112} size={12}>right</T><T x={192} y={126} size={12}>atrium</T>
+    <T x={294} y={112} size={12}>left</T><T x={294} y={126} size={12}>atrium</T>
+    <LabL px={173} py={30} tx={140} ty={20}>vena cava</LabL>
+    <LabL px={75} py={80} tx={118} ty={50}>pulmonary artery</LabL>
+    <LabL px={160} py={210} tx={125} ty={235}>right ventricle</LabL>
+    <Lab px={416} py={80} tx={438} ty={56}>aorta</Lab>
+    <Lab px={390} py={101} tx={438} ty={100}>pulmonary vein</Lab>
+    <Lab px={330} py={205} tx={430} ty={210}>left ventricle (thick wall)</Lab>
+    <Lab px={321} py={190} tx={430} ty={252}>coronary artery</Lab>
+    <Lab px={294} py={152} tx={430} ty={150}>valve</Lab>
+    <LabL px={243} py={250} tx={215} ty={290}>septum</LabL>
+  </Svg>
+);
+
+/* ---------- Reflex arc ---------- */
+const Box = ({ x, y, w, h, fill = '#fff', children }) => (
+  <g><rect x={x} y={y} width={w} height={h} rx={8} fill={fill} stroke={K} strokeWidth={2} />{children}</g>
+);
+const ReflexArc = () => (
+  <Svg w={560} h={270} label="A reflex arc: stimulus detected by a receptor, an impulse along a sensory neurone to a relay neurone in the spinal cord, along a motor neurone to an effector, giving a response">
+    <T x={55} y={30} bold size={12}>stimulus</T>
+    <path d="M55 38 l-10 18 h20z" fill="#fb923c" stroke={K} strokeWidth={1.5} />
+    <circle cx={55} cy={135} r={14} fill={YEL} stroke={K} strokeWidth={2} />
+    <T x={55} y={172} size={12}>receptor</T>
+    <L x1={69} y1={135} x2={190} y2={135} arrow w={2.6} />
+    <T x={130} y={122} size={12}>sensory neurone</T>
+    <Box x={190} y={75} w={140} h={120} fill="#e5e7eb" />
+    <T x={260} y={92} size={12} bold>spinal cord (CNS)</T>
+    <path d="M200 135 h30 v35 h-30z" fill="none" />
+    <path d="M205 135 h40 q10 0 10 12 v18 q0 10 10 10 h25" fill="none" stroke={K} strokeWidth={2.4} />
+    <T x={260} y={185} size={11}>relay neurone</T>
+    <L x1={330} y1={165} x2={430} y2={165} arrow w={2.6} />
+    <T x={380} y={154} size={12}>motor neurone</T>
+    <Box x={430} y={140} w={100} h={50} fill={PINK} />
+    <T x={480} y={170} size={12} bold>effector</T>
+    <T x={480} y={208} size={12}>(muscle or gland)</T>
+    <T x={480} y={235} bold size={12}>response</T>
+    <L x1={480} y1={212} x2={480} y2={222} arrow w={1.6} />
+    <T x={280} y={252} size={12}>Impulses travel in this order: receptor, sensory, relay, motor, effector</T>
+  </Svg>
+);
+
+/* ---------- Eye ---------- */
+const Eye = () => (
+  <Svg w={560} h={300} label="Section through the human eye showing the cornea, iris, pupil, lens, suspensory ligaments, ciliary muscle, retina, fovea, optic nerve and blind spot">
+    <circle cx={260} cy={150} r={105} fill="#fff" stroke={K} strokeWidth={2.5} />
+    <path d="M165 100 Q128 150 165 200" fill={BLUE} stroke={K} strokeWidth={3} />
+    <path d="M178 96 v34 M178 170 v34" stroke="#92400e" strokeWidth={9} strokeLinecap="round" />
+    <ellipse cx={205} cy={150} rx={13} ry={33} fill="#e0f2fe" stroke={K} strokeWidth={2} />
+    <path d="M205 118 L188 92 M205 182 L188 208" stroke={K} strokeWidth={1.4} />
+    <ellipse cx={186} cy={86} rx={14} ry={9} fill={PINK} stroke={K} strokeWidth={1.4} />
+    <ellipse cx={186} cy={214} rx={14} ry={9} fill={PINK} stroke={K} strokeWidth={1.4} />
+    <path d="M312.5 59 A105 105 0 0 1 312.5 241" fill="none" stroke="#b91c1c" strokeWidth={6} />
+    <circle cx={365} cy={150} r={4} fill="#facc15" stroke={K} strokeWidth={1} />
+    <path d="M358.7 186 L430 212" stroke={K} strokeWidth={16} strokeLinecap="round" />
+    <path d="M358.7 186 L430 212" stroke="#fde68a" strokeWidth={11} strokeLinecap="round" />
+    <LabL px={142} py={150} tx={100} ty={60}>cornea</LabL>
+    <LabL px={178} py={108} tx={100} ty={95}>iris</LabL>
+    <LabL px={178} py={150} tx={100} ty={130}>pupil</LabL>
+    <LabL px={205} py={150} tx={100} ty={165}>lens</LabL>
+    <LabL px={196} py={100} tx={135} ty={200}>suspensory ligaments</LabL>
+    <LabL px={180} py={214} tx={100} ty={250}>ciliary muscle</LabL>
+    <Lab px={330} py={66} tx={400} ty={40}>retina</Lab>
+    <Lab px={366} py={150} tx={420} ty={115}>fovea</Lab>
+    <Lab px={410} py={205} tx={450} ty={170}>optic nerve</Lab>
+    <Lab px={361} py={187} tx={400} ty={262}>blind spot</Lab>
+  </Svg>
+);
+
 export const BIO_FIGS = {
+  digestiveSystem: DigestiveSystem,
+  villus: Villus,
+  heart: Heart,
+  reflexArc: ReflexArc,
+  eye: Eye,
   animalCell: AnimalCell,
   plantCell: PlantCell,
   bacterialCell: BacterialCell,
