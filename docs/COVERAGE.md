@@ -77,3 +77,15 @@ Known limits:
 Known limits:
 - Syllabus coverage was mapped when the content was written. It has not been re-audited objective by objective in this pass.
 - There are no diagrams or graphs in Business questions.
+
+## Question types and difficulty
+
+Question types now in the app: multiple choice, select all that apply, matching, fill the gaps, true/false/depends, ordering, scenario, calculation, and written answers that learners self-mark against a mark scheme (definitions and exam-style questions). Past-paper questions are unchanged.
+
+Multiple-choice questions in Business, Physics, Chemistry and Economics (written lesson tests only, not the past papers) were rewritten so that the options have the same length and style, and wrong options are common mistakes rather than obviously absurd statements. Measured by whether the correct answer is also the longest option: Business went from 91% to about 52%, Physics 61% to 34%, Chemistry 63% to 38%, Economics 65% to 51% (by chance alone it would be about 25 to 30%). A few questions still have a longer correct answer.
+
+Known limits:
+- Written answers are self-marked, so marking is only as honest as the learner. There is no automatic marking of free text.
+- The new question types are used most in the end-of-lesson practice round and the Mega Quiz. Not every lesson has every type yet.
+- The rewritten questions have not been reviewed by a subject teacher.
+- English has no multiple-choice questions and was not changed.

@@ -3,14 +3,23 @@
 import { unit1, unit2 } from './units/ec1.js';
 import { unit3, unit4 } from './units/ec2.js';
 import { unit5, unit6 } from './units/ec3.js';
+import { applyOverlay } from '../../data/overlay.js';
+import { hard } from './hard.js';
 
 export const units = [unit1, unit2, unit3, unit4, unit5, unit6];
+
+// Harder replacements and extra question types, keyed by question id.
+applyOverlay(units, hard);
 
 /** Flat lookup: question id -> { unit, sub, challenge, qid }. Card tests: `subId:c<cardIndex>.<testIndex>`. */
 export const questionIndex = (() => {
   const map = {};
   for (const unit of units) {
     for (const sub of unit.submodules) {
+      (sub.challenges || []).forEach((challenge, i) => {
+        const qid = `${sub.id}:${i}`;
+        map[qid] = { unit, sub, challenge, qid };
+      });
       sub.cards.forEach((card, ci) =>
         card.tests.forEach((challenge, ti) => {
           const qid = `${sub.id}:c${ci}.${ti}`;
@@ -23,5 +32,7 @@ export const questionIndex = (() => {
 })();
 
 /** Question ids belonging to a lesson. */
-export const subQuestionIds = (sub) =>
-  sub.cards.flatMap((card, ci) => card.tests.map((_, ti) => `${sub.id}:c${ci}.${ti}`));
+export const subQuestionIds = (sub) => [
+  ...sub.cards.flatMap((card, ci) => card.tests.map((_, ti) => `${sub.id}:c${ci}.${ti}`)),
+  ...(sub.challenges || []).map((_, i) => `${sub.id}:${i}`),
+];

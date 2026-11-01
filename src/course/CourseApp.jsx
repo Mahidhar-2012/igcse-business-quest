@@ -7,6 +7,7 @@ import { useProgress } from '../lib/store.js';
 import { checkTotal } from '../lib/overview.js';
 
 const MEGA_PER_LESSON = 5;
+const PRACTICE_SIZE = 4; // random practice questions at the end of each lesson
 const pickRandom = (arr, n) => [...arr].sort(() => Math.random() - 0.5).slice(0, n);
 
 
@@ -17,6 +18,9 @@ const buildLessonItems = (sub, qItem) => {
     items.push({ kind: 'card', card, no: ci + 1, of: sub.cards.length });
     card.tests.forEach((_, ti) => items.push(qItem(`${sub.id}:c${ci}.${ti}`)));
   });
+  // A short random practice round from the lesson's pool (definitions, exam-style and mixed-type questions).
+  const pool = (sub.challenges || []).map((_, i) => i);
+  pickRandom(pool, PRACTICE_SIZE).forEach((i) => items.push(qItem(`${sub.id}:${i}`)));
   items.push({ kind: 'card', recap: true, card: { title: `Recap: ${sub.title}`, points: sub.microConcept } });
   return items;
 };

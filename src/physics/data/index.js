@@ -24,6 +24,8 @@ import { writtenSets } from './written.js';
 import { extrasA } from './units/extras_a.js';
 import { extrasB } from './units/extras_b.js';
 import { extrasC } from './units/extras_c.js';
+import { applyOverlay } from '../../data/overlay.js';
+import { hard } from './hard.js';
 
 const paper = (id, title, questions) => ({ id, title, questions });
 
@@ -88,6 +90,9 @@ for (const unit of units) {
 for (const id of Object.keys(extras)) {
   if (!units.some((u) => u.submodules.some((s) => s.id === id))) throw new Error(`extras: unknown lesson ${id}`);
 }
+// Harder replacements and extra question types, keyed by question id.
+applyOverlay(units, hard);
+
 /** Extended (Paper 2) multiple-choice questions 2020-2025, one random-round set per topic group. */
 const SESSION = { m: 'Feb/Mar', s: 'May/Jun', w: 'Oct/Nov' };
 const extQuestions = (rows) =>
@@ -145,6 +150,10 @@ export const questionIndex = (() => {
   const map = {};
   for (const unit of units) {
     for (const sub of unit.submodules) {
+      (sub.challenges || []).forEach((challenge, i) => {
+        const qid = `${sub.id}:${i}`;
+        map[qid] = { unit, sub, challenge, qid };
+      });
       sub.cards.forEach((card, ci) =>
         card.tests.forEach((challenge, ti) => {
           const qid = `${sub.id}:c${ci}.${ti}`;
@@ -162,6 +171,8 @@ export const questionIndex = (() => {
   return map;
 })();
 
-/** Question ids belonging to a lesson (card tests only). */
-export const subQuestionIds = (sub) =>
-  sub.cards.flatMap((card, ci) => card.tests.map((_, ti) => `${sub.id}:c${ci}.${ti}`));
+/** Question ids belonging to a lesson (card tests, then the practice pool). */
+export const subQuestionIds = (sub) => [
+  ...sub.cards.flatMap((card, ci) => card.tests.map((_, ti) => `${sub.id}:c${ci}.${ti}`)),
+  ...(sub.challenges || []).map((_, i) => `${sub.id}:${i}`),
+];
