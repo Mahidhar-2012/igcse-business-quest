@@ -92,6 +92,14 @@ Known limits:
 - Topics not covered: matrices, inequalities with linear programming beyond regions, Venn diagrams with three sets, area under a curve by integration (not in 0580), and long worked-solution pages.
 - Answers are typed as numbers, so the learner cannot enter fractions, surds or algebra; algebra topics lean on multiple choice and written self-marked answers.
 
+## Additional Mathematics 0606
+
+**Structure:** 7 units, 17 lessons, 51 knowledge bytes with a test each, and 5 practice questions per lesson (about 136 questions in all, mostly calculations plus written definition and exam-style questions). 12 original diagrams in `svgAddm.jsx`.
+
+**Coverage:** functions and the modulus, quadratics and the discriminant, the remainder and factor theorems, quadratic and modulus inequalities, surds, logarithms and exponentials, straight-line graphs from curves, radians, trigonometric functions and identities, the binomial theorem, permutations and combinations, vectors, differentiation (chain, product and quotient rules), stationary points and optimisation, integration, and kinematics.
+
+**Limits:** the syllabus topics were written from the author's knowledge of the 0606 specification and not checked line by line against the current official syllabus, so verify against the Cambridge document. Numbers have been hand-checked only. No past-paper questions. Calculation answers are numeric only. Coordinate geometry of the circle is not included.
+
 ## English 0510 / 0511
 
 **Structure:** 11 sections, 42 lessons: exam map, reading, the five writing tasks (email, review, report, essay, article), language boosters, a skills workshop (grammar fixes, sentence upgrades, planning, annotated models, self-check lists, reading practice), listening and speaking, and 38 sample answers with their questions.
