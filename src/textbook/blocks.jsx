@@ -1,9 +1,35 @@
-import { Fragment, useId, useState } from 'react';
+import { Fragment, Suspense, lazy, useId, useState } from 'react';
 import { Check, X, Lightbulb, TriangleAlert, Compass, Eye } from 'lucide-react';
 import { gradeNumeric } from './check.js';
 
-/** **bold** is the only markup content may use. Everything else is plain text. */
-export const Rich = ({ text }) => text.split('**').map((s, i) => (i % 2 ? <strong key={i}>{s}</strong> : <Fragment key={i}>{s}</Fragment>));
+const Figure = lazy(() => import('../components/Figure.jsx')); // all the lesson diagrams: only loaded when one is shown
+
+/**
+ * Inline markup: **bold**, {{a phrase worth remembering}} and *italic*. Everything else is plain text, and the
+ * pieces are rendered as React elements (never as HTML), so content cannot inject markup.
+ */
+export const Rich = ({ text }) => String(text).split(/(\*\*[^*]+\*\*|\{\{.*?\}\}|\*[^*]+\*)/g).filter(Boolean).map((part, i) => {
+  if (part.startsWith('**')) return <strong key={i}>{part.slice(2, -2)}</strong>;
+  if (part.startsWith('{{')) return <strong key={i} className="text-brand-dark">{part.slice(2, -2)}</strong>;
+  if (part.startsWith('*') && part.length > 2) return <em key={i}>{part.slice(1, -1)}</em>;
+  return <Fragment key={i}>{part}</Fragment>;
+});
+
+/** A diagram from the lesson library: { svg: 'name', caption } or { src, alt, caption }. */
+function LessonFigure({ fig }) {
+  const label = fig.caption || fig.alt || 'Diagram';
+  return (
+    <figure className="my-1">
+      <div className="overflow-x-auto" role="img" aria-label={label}>
+        <div className="min-w-[420px] sm:min-w-0">
+          <Suspense fallback={<p role="status" className="paper p-6 text-center text-sm font-bold text-slate-500">Loading diagram…</p>}><Figure fig={{ ...fig, caption: undefined }} /></Suspense>
+        </div>
+      </div>
+      <p className="mt-1 text-xs font-semibold text-slate-500 sm:hidden">Scroll sideways to see the whole figure.</p>
+      {fig.caption && <figcaption className="mt-1 text-sm font-bold text-slate-600">{fig.caption}</figcaption>}
+    </figure>
+  );
+}
 
 const btn = 'inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border-2 border-b-4 border-slate-200 bg-white px-4 py-2 text-sm font-extrabold text-slate-700 transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300';
 const btnMain = 'inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border-b-4 px-5 py-2 text-sm font-extrabold uppercase tracking-wide text-white transition hover:brightness-110 focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-sky-300 disabled:opacity-50';
@@ -59,6 +85,41 @@ function FigureBlock({ id, meta, Draw }) {
         <p className="leading-relaxed text-slate-700">{meta.text}</p>
       </details>
     </figure>
+  );
+}
+
+/* ---------- blocks that come from the lessons ---------- */
+
+function ProsCons({ block }) {
+  return (
+    <div className="grid gap-3 sm:grid-cols-2">
+      {block.options.map((o) => (
+        <section key={o.name} aria-label={o.name} className="card space-y-2 p-4">
+          <h3 className="font-display text-lg font-black leading-tight">{o.name}</h3>
+          {o.pros.length > 0 && <div><p className="text-xs font-extrabold uppercase tracking-wider text-emerald-800">{o.proLabel || 'For'}</p><ul className="list-disc space-y-1 pl-5 text-sm font-semibold leading-relaxed">{o.pros.map((t, i) => <li key={i}><Rich text={t} /></li>)}</ul></div>}
+          {o.cons.length > 0 && <div><p className="text-xs font-extrabold uppercase tracking-wider text-amber-900">{o.conLabel || 'Against'}</p><ul className="list-disc space-y-1 pl-5 text-sm font-semibold leading-relaxed">{o.cons.map((t, i) => <li key={i}><Rich text={t} /></li>)}</ul></div>}
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function Example({ block }) {
+  return (
+    <Panel title={block.title} kicker="Worked example">
+      {block.stem && <p className="leading-relaxed"><Rich text={block.stem} /></p>}
+      {block.question && <p className="font-bold leading-relaxed"><Rich text={block.question} />{block.marks ? ` [${block.marks} marks]` : ''}</p>}
+      <div className="space-y-2 rounded-xl border-2 border-emerald-200 bg-emerald-50 p-3 text-emerald-900">
+        <p className="text-xs font-extrabold uppercase tracking-wider">Model answer</p>
+        {block.answer.map((a, i) => <p key={i} className="leading-relaxed"><Rich text={a} /></p>)}
+      </div>
+      {block.notes && block.notes.length > 0 && (
+        <div className="rounded-xl border-2 border-sky-200 bg-sky-50 p-3 text-sky-900">
+          <p className="text-xs font-extrabold uppercase tracking-wider">Why it earns the marks</p>
+          <ul className="mt-1 list-disc space-y-1 pl-5 text-sm font-semibold leading-relaxed">{block.notes.map((n, i) => <li key={i}><Rich text={n} /></li>)}</ul>
+        </div>
+      )}
+    </Panel>
   );
 }
 
@@ -259,7 +320,7 @@ function PracticeNum({ q }) {
     <div className="space-y-2">
       <form onSubmit={submit} className="flex flex-wrap items-end gap-2">
         <div>
-          <label htmlFor={id} className="block text-sm font-extrabold">Your answer ({q.unit})</label>
+          <label htmlFor={id} className="block text-sm font-extrabold">Your answer{q.unit ? ` (${q.unit})` : ''}</label>
           <input id={id} inputMode="decimal" autoComplete="off" value={text} onChange={(e) => { setText(e.target.value); setRes(null); }} className="mt-1 h-11 w-40 rounded-xl border-2 border-slate-300 bg-white px-3 font-bold" />
         </div>
         <button type="submit" className={btnMain} style={mainStyle}>Check</button>
@@ -267,7 +328,7 @@ function PracticeNum({ q }) {
       {res && (
         <p role="status" className={`flex items-start gap-2 rounded-xl border-2 p-3 text-sm font-bold leading-relaxed ${tone}`}>
           {res.state === 'correct' ? <Check className="mt-0.5 h-4 w-4 shrink-0" aria-hidden /> : <X className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />}
-          <span>{res.state === 'correct' ? `Correct: ${q.answer} ${q.unit}.` : res.feedback}</span>
+          <span>{res.state === 'correct' ? `Correct: ${q.answer}${q.unit ? ` ${q.unit}` : ''}.` : res.feedback}</span>
         </p>
       )}
       <Explain open={open || (res && res.state === 'correct')} onOpen={() => setOpen(true)} steps={q.steps} text={q.explain} />
@@ -292,6 +353,7 @@ function Practice({ block }) {
         <section key={q.id} aria-label={`Question ${i + 1}`} className="card space-y-3 p-4">
           <p className="text-xs font-extrabold uppercase tracking-wider text-slate-500">Question {i + 1} of {block.items.length}</p>
           <p className="font-bold leading-relaxed"><Rich text={q.q} /></p>
+          {q.fig && <LessonFigure fig={q.fig} />}
           {q.kind === 'mcq' ? <PracticeMcq q={q} /> : <PracticeNum q={q} />}
         </section>
       ))}
@@ -320,10 +382,16 @@ function Retrieval({ block }) {
 export function Block({ block, chapter, figures }) {
   switch (block.type) {
     case 'p': return <p className="text-[1.0625rem] leading-[1.75]"><Rich text={block.text} /></p>;
-    case 'list': return <ul className="list-disc space-y-2 pl-6 text-[1.0625rem] leading-[1.7]">{block.items.map((t, i) => <li key={i}><Rich text={t} /></li>)}</ul>;
+    case 'h3': return <h3 className="pt-2 font-display text-xl font-black leading-tight">{block.text}</h3>;
+    case 'list': {
+      const List = block.ordered ? 'ol' : 'ul';
+      return <List className={`${block.ordered ? 'list-decimal' : 'list-disc'} space-y-2 pl-6 text-[1.0625rem] leading-[1.7]`}>{block.items.map((t, i) => <li key={i}><Rich text={t} /></li>)}</List>;
+    }
     case 'eq': return <Equation block={block} />;
     case 'callout': return <Callout block={block} />;
-    case 'figure': return <FigureBlock id={block.id} meta={chapter.figures[block.id]} Draw={figures[block.id]} />;
+    case 'proscons': return <ProsCons block={block} />;
+    case 'example': return <Example block={block} />;
+    case 'figure': return block.fig ? <LessonFigure fig={block.fig} /> : <FigureBlock id={block.id} meta={chapter.figures[block.id]} Draw={figures[block.id]} />;
     case 'worked': return <Worked block={block} />;
     case 'practice': return <Practice block={block} />;
     case 'retrieval': return <Retrieval block={block} />;

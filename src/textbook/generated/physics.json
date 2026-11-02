@@ -1,0 +1,1746 @@
+[
+ {
+  "id": "unit-1",
+  "kind": "generated",
+  "unit": 1,
+  "unitTitle": "Motion, Forces & Energy",
+  "title": "Motion, Forces & Energy",
+  "syllabusRef": "1.1 to 1.8",
+  "status": "draft",
+  "minutes": 60,
+  "objectives": [
+   {
+    "id": "p1-measure",
+    "text": "Measurements & vectors (syllabus 1.1)"
+   },
+   {
+    "id": "p1-motion",
+    "text": "Motion (syllabus 1.2)"
+   },
+   {
+    "id": "p1-mass",
+    "text": "Mass & weight (syllabus 1.3)"
+   },
+   {
+    "id": "p1-density",
+    "text": "Density (syllabus 1.4)"
+   },
+   {
+    "id": "p1-forces",
+    "text": "Forces & Newton’s laws (syllabus 1.5.1)"
+   },
+   {
+    "id": "p1-moments",
+    "text": "Moments & centre of mass (syllabus 1.5.2–1.5.3)"
+   },
+   {
+    "id": "p1-momentum",
+    "text": "Momentum (syllabus 1.6)"
+   },
+   {
+    "id": "p1-energy",
+    "text": "Energy & work (syllabus 1.7.1–1.7.2)"
+   },
+   {
+    "id": "p1-resources",
+    "text": "Energy resources, efficiency & power (syllabus 1.7.3–1.7.4)"
+   },
+   {
+    "id": "p1-pressure",
+    "text": "Pressure (syllabus 1.8)"
+   }
+  ],
+  "terms": [
+   [
+    "small distance",
+    "p1-measure"
+   ],
+   [
+    "short time",
+    "p1-measure"
+   ],
+   [
+    "period",
+    "p1-measure"
+   ],
+   [
+    "scalar",
+    "p1-measure"
+   ],
+   [
+    "vector",
+    "p1-measure"
+   ],
+   [
+    "velocity",
+    "p1-measure"
+   ],
+   [
+    "resultant",
+    "p1-measure"
+   ],
+   [
+    "Pythagoras",
+    "p1-measure"
+   ],
+   [
+    "Speed",
+    "p1-motion"
+   ],
+   [
+    "Average speed",
+    "p1-motion"
+   ],
+   [
+    "distance–time graph",
+    "p1-motion"
+   ],
+   [
+    "horizontal line",
+    "p1-motion"
+   ],
+   [
+    "straight sloping line",
+    "p1-motion"
+   ],
+   [
+    "curve getting steeper",
+    "p1-motion"
+   ],
+   [
+    "flattening",
+    "p1-motion"
+   ],
+   [
+    "Acceleration",
+    "p1-motion"
+   ],
+   [
+    "deceleration",
+    "p1-motion"
+   ],
+   [
+    "speed–time graph",
+    "p1-motion"
+   ],
+   [
+    "sloping upward line",
+    "p1-motion"
+   ],
+   [
+    "Sloping down",
+    "p1-motion"
+   ],
+   [
+    "gradient",
+    "p1-motion"
+   ],
+   [
+    "area under the graph",
+    "p1-motion"
+   ],
+   [
+    "triangle",
+    "p1-motion"
+   ],
+   [
+    "rectangle",
+    "p1-motion"
+   ],
+   [
+    "g ≈ 9.8 m/s²",
+    "p1-motion"
+   ],
+   [
+    "drag = weight",
+    "p1-motion"
+   ],
+   [
+    "terminal velocity",
+    "p1-motion"
+   ],
+   [
+    "Mass",
+    "p1-mass"
+   ],
+   [
+    "kilograms",
+    "p1-mass"
+   ],
+   [
+    "Weight",
+    "p1-mass"
+   ],
+   [
+    "newtons",
+    "p1-mass"
+   ],
+   [
+    "balance",
+    "p1-mass"
+   ],
+   [
+    "newtonmeter (spring balance)",
+    "p1-mass"
+   ],
+   [
+    "Gravitational field strength g",
+    "p1-mass"
+   ],
+   [
+    "10 N/kg",
+    "p1-mass"
+   ],
+   [
+    "beam balance",
+    "p1-mass"
+   ],
+   [
+    "spring balance",
+    "p1-mass"
+   ],
+   [
+    "Density",
+    "p1-density"
+   ],
+   [
+    "g/cm³",
+    "p1-density"
+   ],
+   [
+    "kg/m³",
+    "p1-density"
+   ],
+   [
+    "displacement",
+    "p1-density"
+   ],
+   [
+    "eureka (displacement) can",
+    "p1-density"
+   ],
+   [
+    "floats",
+    "p1-density"
+   ],
+   [
+    "less",
+    "p1-density"
+   ],
+   [
+    "sinks",
+    "p1-density"
+   ],
+   [
+    "less dense",
+    "p1-density"
+   ],
+   [
+    "force",
+    "p1-forces"
+   ],
+   [
+    "size",
+    "p1-forces"
+   ],
+   [
+    "shape",
+    "p1-forces"
+   ],
+   [
+    "direction",
+    "p1-forces"
+   ],
+   [
+    "zero",
+    "p1-forces"
+   ],
+   [
+    "constant speed in a straight line",
+    "p1-forces"
+   ],
+   [
+    "resultant force",
+    "p1-forces"
+   ],
+   [
+    "F = ma",
+    "p1-forces"
+   ],
+   [
+    "Friction",
+    "p1-forces"
+   ],
+   [
+    "heat",
+    "p1-forces"
+   ],
+   [
+    "Drag",
+    "p1-forces"
+   ],
+   [
+    "air resistance",
+    "p1-forces"
+   ],
+   [
+    "extension is proportional to load",
+    "p1-forces"
+   ],
+   [
+    "Spring constant k",
+    "p1-forces"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "p1-measure",
+    "title": "Measurements & vectors"
+   },
+   {
+    "id": "p1-motion",
+    "title": "Motion"
+   },
+   {
+    "id": "p1-mass",
+    "title": "Mass & weight"
+   },
+   {
+    "id": "p1-density",
+    "title": "Density"
+   },
+   {
+    "id": "p1-forces",
+    "title": "Forces & Newton’s laws"
+   },
+   {
+    "id": "p1-moments",
+    "title": "Moments & centre of mass"
+   },
+   {
+    "id": "p1-momentum",
+    "title": "Momentum"
+   },
+   {
+    "id": "p1-energy",
+    "title": "Energy & work"
+   },
+   {
+    "id": "p1-resources",
+    "title": "Energy resources, efficiency & power"
+   },
+   {
+    "id": "p1-pressure",
+    "title": "Pressure"
+   }
+  ]
+ },
+ {
+  "id": "unit-2",
+  "kind": "generated",
+  "unit": 2,
+  "unitTitle": "Thermal Physics",
+  "title": "Thermal Physics",
+  "syllabusRef": "2.1 to 2.3",
+  "status": "draft",
+  "minutes": 18,
+  "objectives": [
+   {
+    "id": "p2-particles",
+    "text": "Kinetic particle model (syllabus 2.1)"
+   },
+   {
+    "id": "p2-thermal",
+    "text": "Thermal properties & temperature (syllabus 2.2)"
+   },
+   {
+    "id": "p2-transfer",
+    "text": "Transfer of thermal energy (syllabus 2.3)"
+   }
+  ],
+  "terms": [
+   [
+    "Solid",
+    "p2-particles"
+   ],
+   [
+    "Liquid",
+    "p2-particles"
+   ],
+   [
+    "Gas",
+    "p2-particles"
+   ],
+   [
+    "evaporation",
+    "p2-particles"
+   ],
+   [
+    "sublimation",
+    "p2-particles"
+   ],
+   [
+    "collide with the walls",
+    "p2-particles"
+   ],
+   [
+    "gas pressure",
+    "p2-particles"
+   ],
+   [
+    "harder and more often",
+    "p2-particles"
+   ],
+   [
+    "kelvin",
+    "p2-particles"
+   ],
+   [
+    "pV = constant",
+    "p2-particles"
+   ],
+   [
+    "Brownian motion",
+    "p2-particles"
+   ],
+   [
+    "collisions",
+    "p2-particles"
+   ],
+   [
+    "air or water molecules",
+    "p2-particles"
+   ],
+   [
+    "expand",
+    "p2-thermal"
+   ],
+   [
+    "liquid-in-glass thermometer",
+    "p2-thermal"
+   ],
+   [
+    "fixed points",
+    "p2-thermal"
+   ],
+   [
+    "0 °C",
+    "p2-thermal"
+   ],
+   [
+    "100 °C",
+    "p2-thermal"
+   ],
+   [
+    "more sensitive",
+    "p2-thermal"
+   ],
+   [
+    "range",
+    "p2-thermal"
+   ],
+   [
+    "Thermal capacity",
+    "p2-thermal"
+   ],
+   [
+    "Specific heat capacity c",
+    "p2-thermal"
+   ],
+   [
+    "E = m c ΔT",
+    "p2-thermal"
+   ],
+   [
+    "temperature stays constant",
+    "p2-thermal"
+   ],
+   [
+    "bonds",
+    "p2-thermal"
+   ],
+   [
+    "Specific latent heat",
+    "p2-thermal"
+   ],
+   [
+    "E = m l",
+    "p2-thermal"
+   ],
+   [
+    "most energetic particles",
+    "p2-thermal"
+   ],
+   [
+    "higher temperature",
+    "p2-thermal"
+   ],
+   [
+    "larger surface area",
+    "p2-thermal"
+   ],
+   [
+    "moving air",
+    "p2-thermal"
+   ],
+   [
+    "Conduction",
+    "p2-transfer"
+   ],
+   [
+    "without the material moving",
+    "p2-transfer"
+   ],
+   [
+    "vibrating particles",
+    "p2-transfer"
+   ],
+   [
+    "metals",
+    "p2-transfer"
+   ],
+   [
+    "free electrons",
+    "p2-transfer"
+   ],
+   [
+    "Insulators",
+    "p2-transfer"
+   ],
+   [
+    "Convection",
+    "p2-transfer"
+   ],
+   [
+    "liquids and gases",
+    "p2-transfer"
+   ],
+   [
+    "expands",
+    "p2-transfer"
+   ],
+   [
+    "less dense",
+    "p2-transfer"
+   ],
+   [
+    "convection current",
+    "p2-transfer"
+   ],
+   [
+    "Thermal radiation",
+    "p2-transfer"
+   ],
+   [
+    "no medium",
+    "p2-transfer"
+   ],
+   [
+    "Dull black surfaces",
+    "p2-transfer"
+   ],
+   [
+    "shiny white or silver",
+    "p2-transfer"
+   ],
+   [
+    "Vacuum flask",
+    "p2-transfer"
+   ],
+   [
+    "Home insulation",
+    "p2-transfer"
+   ],
+   [
+    "constant temperature",
+    "p2-transfer"
+   ],
+   [
+    "faster",
+    "p2-transfer"
+   ],
+   [
+    "rises",
+    "p2-transfer"
+   ],
+   [
+    "more slowly",
+    "p2-transfer"
+   ],
+   [
+    "falls",
+    "p2-transfer"
+   ],
+   [
+    "rate of emission",
+    "p2-transfer"
+   ],
+   [
+    "hotter",
+    "p2-transfer"
+   ],
+   [
+    "larger area",
+    "p2-transfer"
+   ],
+   [
+    "A fire burning wood or coal",
+    "p2-transfer"
+   ],
+   [
+    "radiation",
+    "p2-transfer"
+   ],
+   [
+    "A car radiator",
+    "p2-transfer"
+   ],
+   [
+    "conducted",
+    "p2-transfer"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "p2-particles",
+    "title": "Kinetic particle model"
+   },
+   {
+    "id": "p2-thermal",
+    "title": "Thermal properties & temperature"
+   },
+   {
+    "id": "p2-transfer",
+    "title": "Transfer of thermal energy"
+   }
+  ]
+ },
+ {
+  "id": "unit-3",
+  "kind": "generated",
+  "unit": 3,
+  "unitTitle": "Waves",
+  "title": "Waves",
+  "syllabusRef": "3.1 to 3.4",
+  "status": "draft",
+  "minutes": 24,
+  "objectives": [
+   {
+    "id": "p3-waves",
+    "text": "General properties of waves (syllabus 3.1)"
+   },
+   {
+    "id": "p3-light",
+    "text": "Light (syllabus 3.2)"
+   },
+   {
+    "id": "p3-em",
+    "text": "Electromagnetic spectrum (syllabus 3.3)"
+   },
+   {
+    "id": "p3-sound",
+    "text": "Sound (syllabus 3.4)"
+   }
+  ],
+  "terms": [
+   [
+    "Amplitude",
+    "p3-waves"
+   ],
+   [
+    "Wavelength (λ)",
+    "p3-waves"
+   ],
+   [
+    "Frequency (f)",
+    "p3-waves"
+   ],
+   [
+    "Period (T)",
+    "p3-waves"
+   ],
+   [
+    "wavefront",
+    "p3-waves"
+   ],
+   [
+    "energy",
+    "p3-waves"
+   ],
+   [
+    "v = f λ",
+    "p3-waves"
+   ],
+   [
+    "Transverse",
+    "p3-waves"
+   ],
+   [
+    "right angles",
+    "p3-waves"
+   ],
+   [
+    "Longitudinal",
+    "p3-waves"
+   ],
+   [
+    "parallel",
+    "p3-waves"
+   ],
+   [
+    "compressions",
+    "p3-waves"
+   ],
+   [
+    "rarefactions",
+    "p3-waves"
+   ],
+   [
+    "Reflection",
+    "p3-waves"
+   ],
+   [
+    "Refraction",
+    "p3-waves"
+   ],
+   [
+    "Diffraction",
+    "p3-waves"
+   ],
+   [
+    "one wavelength wide",
+    "p3-waves"
+   ],
+   [
+    "ripple tank",
+    "p3-waves"
+   ],
+   [
+    "wavefronts",
+    "p3-waves"
+   ],
+   [
+    "shallower",
+    "p3-waves"
+   ],
+   [
+    "gap",
+    "p3-waves"
+   ],
+   [
+    "edge",
+    "p3-waves"
+   ],
+   [
+    "narrower",
+    "p3-waves"
+   ],
+   [
+    "more spreading",
+    "p3-waves"
+   ],
+   [
+    "longer wavelength diffract more",
+    "p3-waves"
+   ],
+   [
+    "P-waves",
+    "p3-waves"
+   ],
+   [
+    "S-waves",
+    "p3-waves"
+   ],
+   [
+    "normal",
+    "p3-light"
+   ],
+   [
+    "virtual",
+    "p3-light"
+   ],
+   [
+    "speed changes",
+    "p3-light"
+   ],
+   [
+    "towards the normal",
+    "p3-light"
+   ],
+   [
+    "away from the normal",
+    "p3-light"
+   ],
+   [
+    "refractive index n",
+    "p3-light"
+   ],
+   [
+    "sin i ÷ sin r",
+    "p3-light"
+   ],
+   [
+    "dense to a less dense",
+    "p3-light"
+   ],
+   [
+    "critical angle c",
+    "p3-light"
+   ],
+   [
+    "greater than c",
+    "p3-light"
+   ],
+   [
+    "total internal reflection",
+    "p3-light"
+   ],
+   [
+    "optical fibres",
+    "p3-light"
+   ],
+   [
+    "prisms",
+    "p3-light"
+   ],
+   [
+    "converging lens",
+    "p3-light"
+   ],
+   [
+    "principal focus F",
+    "p3-light"
+   ],
+   [
+    "focal length f",
+    "p3-light"
+   ],
+   [
+    "real",
+    "p3-light"
+   ],
+   [
+    "Dispersion",
+    "p3-light"
+   ],
+   [
+    "Monochromatic",
+    "p3-light"
+   ],
+   [
+    "image",
+    "p3-light"
+   ],
+   [
+    "same size",
+    "p3-light"
+   ],
+   [
+    "far behind the mirror",
+    "p3-light"
+   ],
+   [
+    "virtual image",
+    "p3-light"
+   ],
+   [
+    "appears",
+    "p3-light"
+   ],
+   [
+    "backwards",
+    "p3-light"
+   ],
+   [
+    "rectangular glass block",
+    "p3-light"
+   ],
+   [
+    "towards",
+    "p3-light"
+   ],
+   [
+    "away",
+    "p3-light"
+   ],
+   [
+    "shifted sideways",
+    "p3-light"
+   ],
+   [
+    "sin c = 1 ÷ n",
+    "p3-light"
+   ],
+   [
+    "denser",
+    "p3-light"
+   ],
+   [
+    "optical fibre",
+    "p3-light"
+   ],
+   [
+    "totally internally reflected",
+    "p3-light"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "p3-waves",
+    "title": "General properties of waves"
+   },
+   {
+    "id": "p3-light",
+    "title": "Light"
+   },
+   {
+    "id": "p3-em",
+    "title": "Electromagnetic spectrum"
+   },
+   {
+    "id": "p3-sound",
+    "title": "Sound"
+   }
+  ]
+ },
+ {
+  "id": "unit-4",
+  "kind": "generated",
+  "unit": 4,
+  "unitTitle": "Electricity & Magnetism",
+  "title": "Electricity & Magnetism",
+  "syllabusRef": "4.1 to 4.5",
+  "status": "draft",
+  "minutes": 30,
+  "objectives": [
+   {
+    "id": "p4-magnetism",
+    "text": "Magnetism (syllabus 4.1)"
+   },
+   {
+    "id": "p4-elecq",
+    "text": "Electrical quantities (syllabus 4.2)"
+   },
+   {
+    "id": "p4-circuits",
+    "text": "Electric circuits (syllabus 4.3)"
+   },
+   {
+    "id": "p4-safety",
+    "text": "Electrical safety (syllabus 4.4)"
+   },
+   {
+    "id": "p4-em",
+    "text": "Electromagnetic effects (syllabus 4.5)"
+   }
+  ],
+  "terms": [
+   [
+    "Like poles repel; unlike poles attract",
+    "p4-magnetism"
+   ],
+   [
+    "Magnetisation",
+    "p4-magnetism"
+   ],
+   [
+    "Demagnetise",
+    "p4-magnetism"
+   ],
+   [
+    "Soft iron",
+    "p4-magnetism"
+   ],
+   [
+    "Steel",
+    "p4-magnetism"
+   ],
+   [
+    "magnetic field",
+    "p4-magnetism"
+   ],
+   [
+    "from the north pole to the south pole",
+    "p4-magnetism"
+   ],
+   [
+    "placed near or touching a magnet",
+    "p4-magnetism"
+   ],
+   [
+    "induced magnetism",
+    "p4-magnetism"
+   ],
+   [
+    "nearest",
+    "p4-magnetism"
+   ],
+   [
+    "opposite pole",
+    "p4-magnetism"
+   ],
+   [
+    "temporary magnet",
+    "p4-magnetism"
+   ],
+   [
+    "permanent magnet",
+    "p4-magnetism"
+   ],
+   [
+    "Permanent magnets",
+    "p4-magnetism"
+   ],
+   [
+    "Electromagnets",
+    "p4-magnetism"
+   ],
+   [
+    "switched on and off",
+    "p4-magnetism"
+   ],
+   [
+    "soft iron core",
+    "p4-magnetism"
+   ],
+   [
+    "positive and negative",
+    "p4-elecq"
+   ],
+   [
+    "electrons",
+    "p4-elecq"
+   ],
+   [
+    "electric field",
+    "p4-elecq"
+   ],
+   [
+    "separate",
+    "p4-elecq"
+   ],
+   [
+    "earthed",
+    "p4-elecq"
+   ],
+   [
+    "Current",
+    "p4-elecq"
+   ],
+   [
+    "I = Q ÷ t",
+    "p4-elecq"
+   ],
+   [
+    "e.m.f",
+    "p4-elecq"
+   ],
+   [
+    "Potential difference (p.d.)",
+    "p4-elecq"
+   ],
+   [
+    "volts (V)",
+    "p4-elecq"
+   ],
+   [
+    "ammeter",
+    "p4-elecq"
+   ],
+   [
+    "voltmeter",
+    "p4-elecq"
+   ],
+   [
+    "Resistance",
+    "p4-elecq"
+   ],
+   [
+    "R = V ÷ I",
+    "p4-elecq"
+   ],
+   [
+    "length",
+    "p4-elecq"
+   ],
+   [
+    "cross-sectional area",
+    "p4-elecq"
+   ],
+   [
+    "thermistor’s",
+    "p4-elecq"
+   ],
+   [
+    "LDR’s",
+    "p4-elecq"
+   ],
+   [
+    "Ohmic resistor",
+    "p4-elecq"
+   ],
+   [
+    "Filament lamp",
+    "p4-elecq"
+   ],
+   [
+    "Diode",
+    "p4-elecq"
+   ],
+   [
+    "Electrical power P = I V",
+    "p4-elecq"
+   ],
+   [
+    "Energy E = I V t",
+    "p4-elecq"
+   ],
+   [
+    "Metals",
+    "p4-elecq"
+   ],
+   [
+    "free (delocalised) electrons",
+    "p4-elecq"
+   ],
+   [
+    "insulators",
+    "p4-elecq"
+   ],
+   [
+    "direction",
+    "p4-elecq"
+   ],
+   [
+    "positive charge",
+    "p4-elecq"
+   ],
+   [
+    "positive point charge",
+    "p4-elecq"
+   ],
+   [
+    "outwards",
+    "p4-elecq"
+   ],
+   [
+    "negative",
+    "p4-elecq"
+   ],
+   [
+    "inwards",
+    "p4-elecq"
+   ],
+   [
+    "oppositely charged parallel plates",
+    "p4-elecq"
+   ],
+   [
+    "uniform",
+    "p4-elecq"
+   ],
+   [
+    "positive plate to the negative plate",
+    "p4-elecq"
+   ],
+   [
+    "kilowatt-hour (kW h)",
+    "p4-elecq"
+   ],
+   [
+    "1 kW",
+    "p4-elecq"
+   ],
+   [
+    "1 hour",
+    "p4-elecq"
+   ],
+   [
+    "Energy (kW h) = power (kW) × time (h)",
+    "p4-elecq"
+   ],
+   [
+    "cost = energy in kW h × price per kW h",
+    "p4-elecq"
+   ],
+   [
+    "analogue",
+    "p4-elecq"
+   ],
+   [
+    "digital",
+    "p4-elecq"
+   ],
+   [
+    "ranges",
+    "p4-elecq"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "p4-magnetism",
+    "title": "Magnetism"
+   },
+   {
+    "id": "p4-elecq",
+    "title": "Electrical quantities"
+   },
+   {
+    "id": "p4-circuits",
+    "title": "Electric circuits"
+   },
+   {
+    "id": "p4-safety",
+    "title": "Electrical safety"
+   },
+   {
+    "id": "p4-em",
+    "title": "Electromagnetic effects"
+   }
+  ]
+ },
+ {
+  "id": "unit-5",
+  "kind": "generated",
+  "unit": 5,
+  "unitTitle": "Nuclear Physics",
+  "title": "Nuclear Physics",
+  "syllabusRef": "5.1 to 5.2",
+  "status": "draft",
+  "minutes": 12,
+  "objectives": [
+   {
+    "id": "p5-atom",
+    "text": "The nuclear model of the atom (syllabus 5.1)"
+   },
+   {
+    "id": "p5-radioactivity",
+    "text": "Radioactivity (syllabus 5.2)"
+   }
+  ],
+  "terms": [
+   [
+    "nucleus",
+    "p5-atom"
+   ],
+   [
+    "protons",
+    "p5-atom"
+   ],
+   [
+    "neutrons",
+    "p5-atom"
+   ],
+   [
+    "electrons",
+    "p5-atom"
+   ],
+   [
+    "Geiger–Marsden experiment",
+    "p5-atom"
+   ],
+   [
+    "Most passed straight through",
+    "p5-atom"
+   ],
+   [
+    "deflected through large angles",
+    "p5-atom"
+   ],
+   [
+    "bounced back",
+    "p5-atom"
+   ],
+   [
+    "mostly empty space",
+    "p5-atom"
+   ],
+   [
+    "proton number Z",
+    "p5-atom"
+   ],
+   [
+    "nucleon number A",
+    "p5-atom"
+   ],
+   [
+    "Isotopes",
+    "p5-atom"
+   ],
+   [
+    "loses electrons",
+    "p5-atom"
+   ],
+   [
+    "positive ion",
+    "p5-atom"
+   ],
+   [
+    "gains electrons",
+    "p5-atom"
+   ],
+   [
+    "negative ion",
+    "p5-atom"
+   ],
+   [
+    "proton +1",
+    "p5-atom"
+   ],
+   [
+    "neutron 0",
+    "p5-atom"
+   ],
+   [
+    "electron −1",
+    "p5-atom"
+   ],
+   [
+    "nucleon numbers",
+    "p5-atom"
+   ],
+   [
+    "proton numbers",
+    "p5-atom"
+   ],
+   [
+    "Fission",
+    "p5-atom"
+   ],
+   [
+    "energy",
+    "p5-atom"
+   ],
+   [
+    "Fusion",
+    "p5-atom"
+   ],
+   [
+    "Background radiation",
+    "p5-radioactivity"
+   ],
+   [
+    "air (radon)",
+    "p5-radioactivity"
+   ],
+   [
+    "rocks and soil",
+    "p5-radioactivity"
+   ],
+   [
+    "cosmic rays",
+    "p5-radioactivity"
+   ],
+   [
+    "food",
+    "p5-radioactivity"
+   ],
+   [
+    "count rate",
+    "p5-radioactivity"
+   ],
+   [
+    "α-particle",
+    "p5-radioactivity"
+   ],
+   [
+    "β-particle",
+    "p5-radioactivity"
+   ],
+   [
+    "γ-ray",
+    "p5-radioactivity"
+   ],
+   [
+    "random",
+    "p5-radioactivity"
+   ],
+   [
+    "spontaneous",
+    "p5-radioactivity"
+   ],
+   [
+    "α-decay",
+    "p5-radioactivity"
+   ],
+   [
+    "β-decay",
+    "p5-radioactivity"
+   ],
+   [
+    "γ-decay",
+    "p5-radioactivity"
+   ],
+   [
+    "half-life",
+    "p5-radioactivity"
+   ],
+   [
+    "activity",
+    "p5-radioactivity"
+   ],
+   [
+    "Smoke detectors",
+    "p5-radioactivity"
+   ],
+   [
+    "thickness gauges",
+    "p5-radioactivity"
+   ],
+   [
+    "medical tracers",
+    "p5-radioactivity"
+   ],
+   [
+    "sterilising equipment",
+    "p5-radioactivity"
+   ],
+   [
+    "radiotherapy",
+    "p5-radioactivity"
+   ],
+   [
+    "radioactive dating",
+    "p5-radioactivity"
+   ],
+   [
+    "damage cells",
+    "p5-radioactivity"
+   ],
+   [
+    "distance",
+    "p5-radioactivity"
+   ],
+   [
+    "time",
+    "p5-radioactivity"
+   ],
+   [
+    "shielding",
+    "p5-radioactivity"
+   ],
+   [
+    "lead-lined boxes",
+    "p5-radioactivity"
+   ],
+   [
+    "Nuclear fission",
+    "p5-radioactivity"
+   ],
+   [
+    "chain reaction",
+    "p5-radioactivity"
+   ],
+   [
+    "Nuclear fusion",
+    "p5-radioactivity"
+   ],
+   [
+    "Alpha",
+    "p5-radioactivity"
+   ],
+   [
+    "beta",
+    "p5-radioactivity"
+   ],
+   [
+    "deflected in opposite directions",
+    "p5-radioactivity"
+   ],
+   [
+    "Gamma",
+    "p5-radioactivity"
+   ],
+   [
+    "not deflected",
+    "p5-radioactivity"
+   ],
+   [
+    "much more",
+    "p5-radioactivity"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "p5-atom",
+    "title": "The nuclear model of the atom"
+   },
+   {
+    "id": "p5-radioactivity",
+    "title": "Radioactivity"
+   }
+  ]
+ },
+ {
+  "id": "unit-6",
+  "kind": "generated",
+  "unit": 6,
+  "unitTitle": "Space Physics",
+  "title": "Space Physics",
+  "syllabusRef": "6.1 to 6.2",
+  "status": "draft",
+  "minutes": 12,
+  "objectives": [
+   {
+    "id": "p6-earth",
+    "text": "The Earth and the Solar System (syllabus 6.1)"
+   },
+   {
+    "id": "p6-stars",
+    "text": "Stars and the Universe (syllabus 6.2)"
+   }
+  ],
+  "terms": [
+   [
+    "Earth rotates",
+    "p6-earth"
+   ],
+   [
+    "24 hours",
+    "p6-earth"
+   ],
+   [
+    "orbits the Sun",
+    "p6-earth"
+   ],
+   [
+    "365¼ days",
+    "p6-earth"
+   ],
+   [
+    "tilted",
+    "p6-earth"
+   ],
+   [
+    "seasons",
+    "p6-earth"
+   ],
+   [
+    "Moon",
+    "p6-earth"
+   ],
+   [
+    "one month",
+    "p6-earth"
+   ],
+   [
+    "Sun",
+    "p6-earth"
+   ],
+   [
+    "planets",
+    "p6-earth"
+   ],
+   [
+    "dwarf planets",
+    "p6-earth"
+   ],
+   [
+    "asteroids",
+    "p6-earth"
+   ],
+   [
+    "comets",
+    "p6-earth"
+   ],
+   [
+    "gravity",
+    "p6-earth"
+   ],
+   [
+    "orbital speed v = 2πr ÷ T",
+    "p6-earth"
+   ],
+   [
+    "reflected sunlight",
+    "p6-earth"
+   ],
+   [
+    "different amounts of the lit half",
+    "p6-earth"
+   ],
+   [
+    "cycle of phases",
+    "p6-earth"
+   ],
+   [
+    "one star",
+    "p6-earth"
+   ],
+   [
+    "eight planets",
+    "p6-earth"
+   ],
+   [
+    "small and rocky",
+    "p6-earth"
+   ],
+   [
+    "large and gaseous",
+    "p6-earth"
+   ],
+   [
+    "moons",
+    "p6-earth"
+   ],
+   [
+    "accretion model",
+    "p6-earth"
+   ],
+   [
+    "cloud of gas and dust",
+    "p6-earth"
+   ],
+   [
+    "rotation",
+    "p6-earth"
+   ],
+   [
+    "accretion disc",
+    "p6-earth"
+   ],
+   [
+    "small rocky inner planets",
+    "p6-earth"
+   ],
+   [
+    "gas and ice",
+    "p6-earth"
+   ],
+   [
+    "large gas giants",
+    "p6-earth"
+   ],
+   [
+    "mass",
+    "p6-earth"
+   ],
+   [
+    "decreases as you move away",
+    "p6-earth"
+   ],
+   [
+    "orbital speeds decrease",
+    "p6-earth"
+   ],
+   [
+    "ellipses",
+    "p6-earth"
+   ],
+   [
+    "faster when closer to the Sun",
+    "p6-earth"
+   ],
+   [
+    "3.0 × 10⁸ m/s",
+    "p6-earth"
+   ],
+   [
+    "orbital distance",
+    "p6-earth"
+   ],
+   [
+    "orbital period gets longer",
+    "p6-earth"
+   ],
+   [
+    "surface temperature tends to fall",
+    "p6-earth"
+   ],
+   [
+    "Density",
+    "p6-earth"
+   ],
+   [
+    "dense (rocky)",
+    "p6-earth"
+   ],
+   [
+    "less dense",
+    "p6-earth"
+   ],
+   [
+    "surface gravitational field strength",
+    "p6-earth"
+   ],
+   [
+    "star",
+    "p6-stars"
+   ],
+   [
+    "nuclear fusion",
+    "p6-stars"
+   ],
+   [
+    "galaxies",
+    "p6-stars"
+   ],
+   [
+    "Milky Way",
+    "p6-stars"
+   ],
+   [
+    "light-year",
+    "p6-stars"
+   ],
+   [
+    "nebula",
+    "p6-stars"
+   ],
+   [
+    "protostar",
+    "p6-stars"
+   ],
+   [
+    "main-sequence",
+    "p6-stars"
+   ],
+   [
+    "red giant",
+    "p6-stars"
+   ],
+   [
+    "white dwarf",
+    "p6-stars"
+   ],
+   [
+    "red supergiant",
+    "p6-stars"
+   ],
+   [
+    "supernova",
+    "p6-stars"
+   ],
+   [
+    "neutron star",
+    "p6-stars"
+   ],
+   [
+    "black hole",
+    "p6-stars"
+   ],
+   [
+    "Big Bang",
+    "p6-stars"
+   ],
+   [
+    "13.8 billion years ago",
+    "p6-stars"
+   ],
+   [
+    "red-shifted",
+    "p6-stars"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "p6-earth",
+    "title": "The Earth and the Solar System"
+   },
+   {
+    "id": "p6-stars",
+    "title": "Stars and the Universe"
+   }
+  ]
+ }
+]

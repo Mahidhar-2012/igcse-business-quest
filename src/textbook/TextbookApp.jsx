@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Bookmark, BookmarkCheck, BookOpen, Check, ChevronLeft, ChevronRight, List, Search } from 'lucide-react';
-import { bookById, chapterOf, STATUS_LABEL } from './books.js';
+import { loadBook, loadChapter, chapterOf, STATUS_LABEL, KIND_LABEL } from './books.js';
 import { SUBJECTS_META } from '../subjects.meta.js';
 import { ThemeButton, Logo } from '../hub/parts.jsx';
 import { Block, Rich } from './blocks.jsx';
@@ -13,8 +13,11 @@ const useStore = () => {
   return [state, update];
 };
 
-const Status = ({ status }) => (
-  <span className={`inline-block rounded-full border-2 px-2.5 py-0.5 text-xs font-extrabold ${status === 'reviewed' ? 'border-emerald-300 bg-emerald-50 text-emerald-900' : 'border-amber-300 bg-amber-50 text-amber-900'}`}>{STATUS_LABEL[status]}</span>
+const Status = ({ status, kind }) => (
+  <>
+    <span className={`inline-block rounded-full border-2 px-2.5 py-0.5 text-xs font-extrabold ${status === 'reviewed' ? 'border-emerald-300 bg-emerald-50 text-emerald-900' : 'border-amber-300 bg-amber-50 text-amber-900'}`}>{STATUS_LABEL[status]}</span>
+    {kind && <span className="inline-block rounded-full border-2 border-sky-200 bg-sky-50 px-2.5 py-0.5 text-xs font-extrabold text-sky-900">{KIND_LABEL[kind]}</span>}
+  </>
 );
 
 function Shell({ crumbs, children }) {
@@ -62,6 +65,8 @@ function BookHome({ book, store }) {
   const marks = P.bookmarksOf(store, book.id);
   const units = [...new Map(book.chapters.map((c) => [c.unit, c.unitTitle])).entries()].sort((a, b) => a[0] - b[0]);
   const href = (c, s) => `#/book/${book.id}/${c}${s ? `/${s}` : ''}`;
+  const handCount = book.chapters.filter((c) => c.kind === 'handwritten').length;
+  const genCount = book.chapters.length - handCount;
 
   return (
     <Shell crumbs={[{ label: 'Home', href: '#/' }, { label: `${book.title} textbook` }]}>
@@ -70,11 +75,11 @@ function BookHome({ book, store }) {
           <p className="text-xs font-extrabold uppercase tracking-widest text-white/85">Interactive textbook</p>
           <h1 className="mt-1 font-display text-3xl font-black leading-tight">IGCSE {book.title}</h1>
           <p className="mt-1 text-sm font-semibold text-white/90">{book.syllabus}</p>
-          <p className="mt-3 text-sm font-semibold text-white/90">{book.blurb}</p>
+          <p className="mt-3 text-sm font-semibold text-white/90">Every unit as a readable chapter, with the diagrams, equations, worked examples and practice from the lessons.</p>
         </div>
 
         <section aria-label="Coverage" className="rounded-2xl border-2 border-amber-300 bg-amber-50 p-4 text-sm font-semibold leading-relaxed text-amber-900">
-          <b>Coverage so far:</b> {book.chapters.length} chapter{book.chapters.length === 1 ? '' : 's'}, written as a pilot. Chapters marked “Draft” have not been reviewed by a subject expert or checked line by line against the official syllabus. The lessons remain the complete course; this textbook sits alongside them.
+          <b>Coverage so far:</b> {book.chapters.length} chapter{book.chapters.length === 1 ? '' : 's'}: {handCount} hand-written and {genCount} auto-built from the lessons. Every chapter is marked “Draft”: none has been reviewed by a subject expert or checked line by line against the official syllabus. Auto-built chapters collect the lesson content in order and do not yet have the longer connected explanations of a hand-written chapter. The lessons remain the complete course.
         </section>
 
         {lastMeta && (
@@ -122,7 +127,7 @@ function BookHome({ book, store }) {
                       <a href={href(c.id)} className="card flex items-center gap-3 p-4 transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300">
                         <span className="min-w-0 flex-1">
                           <span className="block font-display text-lg font-black leading-tight">{c.title}</span>
-                          <span className="mt-1 flex flex-wrap items-center gap-2 text-xs font-bold text-slate-500">Syllabus {c.syllabusRef} · about {c.minutes} min <Status status={c.status} /></span>
+                          <span className="mt-1 flex flex-wrap items-center gap-2 text-xs font-bold text-slate-500">Syllabus {c.syllabusRef} · about {c.minutes} min <Status status={c.status} kind={c.kind} /></span>
                         </span>
                         {P.isRead(store, book.id, c.id) && <span className="flex items-center gap-1 text-xs font-extrabold text-emerald-700"><Check className="h-4 w-4" aria-hidden /> Read</span>}
                         <ChevronRight className="h-5 w-5 shrink-0 text-slate-500" aria-hidden />
@@ -185,11 +190,11 @@ function Reader({ book, meta, sectionId, store, update }) {
 
   useEffect(() => {
     let off = false;
-    Promise.all([meta.load(), meta.loadFigures()]).then(([c, f]) => { if (!off) { setCh(c.default); setFigs(f.FIGURES); } }, (e) => { if (!off) setErr(e); });
+    loadChapter(book, meta).then(({ chapter, figures }) => { if (!off) { setCh(chapter); setFigs(figures); } }, (e) => { if (!off) setErr(e); });
     return () => { off = true; };
-  }, [meta]);
+  }, [book, meta]);
 
-  const parts = useMemo(() => (ch ? [...ch.sections.map((s) => ({ id: s.id, title: s.title })), { id: 'summary', title: 'Summary' }, { id: 'terms', title: 'Key terms' }] : []), [ch]);
+  const parts = useMemo(() => (ch ? [...ch.sections.map((s) => ({ id: s.id, title: s.title })), { id: 'summary', title: 'Summary' }, ...(ch.glossary.length ? [{ id: 'terms', title: 'Key terms' }] : [])] : []), [ch]);
   const hrefOf = (id) => `#/book/${book.id}/${meta.id}/${id}`;
 
   const jump = useCallback((id, e) => {
@@ -288,8 +293,8 @@ function Reader({ book, meta, sectionId, store, update }) {
               <p className="text-xs font-extrabold uppercase tracking-wider text-slate-500">Unit {ch.unit} · {ch.unitTitle} · Syllabus {ch.syllabusRef}</p>
               <h1 className="font-display text-3xl font-black leading-tight sm:text-4xl">{ch.title}</h1>
               <p className="text-lg font-semibold text-slate-600">{ch.subtitle}</p>
-              <p className="flex flex-wrap items-center gap-2 text-sm font-bold text-slate-500">About {ch.minutes} minutes <Status status={ch.status} /></p>
-              <p className="rounded-xl border-2 border-amber-300 bg-amber-50 p-3 text-sm font-semibold text-amber-900">{ch.review.state}</p>
+              <p className="flex flex-wrap items-center gap-2 text-sm font-bold text-slate-500">About {ch.minutes} minutes <Status status={ch.status} kind={meta.kind} /></p>
+              <p className="rounded-xl border-2 border-amber-300 bg-amber-50 p-3 text-sm font-semibold leading-relaxed text-amber-900">{ch.review.state}</p>
             </header>
 
             {resumeAt && (
@@ -301,15 +306,17 @@ function Reader({ book, meta, sectionId, store, update }) {
               </div>
             )}
 
-            <div className="grid gap-4 md:grid-cols-2">
-              <section aria-label="Learning objectives" className="card p-4">
-                <h2 className="font-display text-lg font-black">What you will learn</h2>
-                <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm font-semibold leading-relaxed">{ch.objectives.map((o) => <li key={o.id}>{o.text}</li>)}</ul>
+            <div className={`grid gap-4 ${ch.prerequisites.length ? 'md:grid-cols-2' : ''}`}>
+              <section aria-label={ch.generated ? 'Lessons in this chapter' : 'Learning objectives'} className="card p-4">
+                <h2 className="font-display text-lg font-black">{ch.generated ? 'In this chapter' : 'What you will learn'}</h2>
+                <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm font-semibold leading-relaxed">{ch.objectives.map((o) => <li key={o.id}>{ch.generated ? <a href={hrefOf(o.id)} onClick={(e) => jump(o.id, e)} className="text-brand-dark hover:underline">{o.text}</a> : o.text}</li>)}</ul>
               </section>
-              <section aria-label="Before you start" className="card p-4">
-                <h2 className="font-display text-lg font-black">Before you start</h2>
-                <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm font-semibold leading-relaxed">{ch.prerequisites.map((o) => <li key={o}>{o}</li>)}</ul>
-              </section>
+              {ch.prerequisites.length > 0 && (
+                <section aria-label="Before you start" className="card p-4">
+                  <h2 className="font-display text-lg font-black">Before you start</h2>
+                  <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm font-semibold leading-relaxed">{ch.prerequisites.map((o) => <li key={o}>{o}</li>)}</ul>
+                </section>
+              )}
             </div>
 
             {ch.sections.map((s) => (
@@ -324,10 +331,12 @@ function Reader({ book, meta, sectionId, store, update }) {
               <ul className="list-disc space-y-2 pl-6 text-[1.0625rem] leading-[1.7]">{ch.summary.map((t, i) => <li key={i}><Rich text={t} /></li>)}</ul>
             </section>
 
-            <section id="sec-terms" aria-labelledby="h-terms" className="scroll-mt-6 space-y-3">
-              {Heading({ id: 'terms', title: 'Key terms' })}
-              <dl className="card divide-y divide-slate-100">{ch.glossary.map((g) => <div key={g.term} className="p-3"><dt className="font-extrabold">{g.term}</dt><dd className="text-sm font-semibold leading-relaxed text-slate-600">{g.def}</dd></div>)}</dl>
-            </section>
+            {ch.glossary.length > 0 && (
+              <section id="sec-terms" aria-labelledby="h-terms" className="scroll-mt-6 space-y-3">
+                {Heading({ id: 'terms', title: 'Key terms' })}
+                <dl className="card divide-y divide-slate-100">{ch.glossary.map((g) => <div key={g.term} className="p-3"><dt className="font-extrabold">{g.term}</dt><dd className="text-sm font-semibold leading-relaxed text-slate-600">{g.def}</dd></div>)}</dl>
+              </section>
+            )}
 
             <footer className="space-y-4 border-t-2 border-slate-200 pt-6">
               <div className="flex flex-wrap items-center gap-3">
@@ -357,7 +366,16 @@ function Reader({ book, meta, sectionId, store, update }) {
 export default function TextbookApp({ path }) {
   const [bookId, chapterId, sectionId] = path;
   const [store, update] = useStore();
-  const book = bookById(bookId);
+  const [book, setBook] = useState(undefined); // undefined while loading, null when there is no such book
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    let off = false;
+    setBook(undefined);
+    loadBook(bookId).then((b) => { if (!off) setBook(b); }, () => { if (!off) setFailed(true); });
+    return () => { off = true; };
+  }, [bookId]);
+  if (failed) return <Shell crumbs={[{ label: 'Home', href: '#/' }, { label: 'Textbook' }]}><div role="alert" className="card mx-auto max-w-xl space-y-3 p-6 text-center"><h1 className="font-display text-2xl font-black">The textbook did not load</h1><p className="text-slate-600">Check your connection and try again.</p><button type="button" className="btn btn-green" onClick={() => window.location.reload()}>Reload</button></div></Shell>;
+  if (book === undefined) return <Shell crumbs={[{ label: 'Home', href: '#/' }, { label: 'Textbook' }]}><div role="status" aria-live="polite" className="py-20 text-center text-lg font-black text-slate-500"><span className="animate-pulse">Loading textbook…</span></div></Shell>;
   if (!book) return <NotFound what="Textbook" />;
   if (!chapterId) return <BookHome book={book} store={store} />;
   const meta = chapterOf(book, chapterId);

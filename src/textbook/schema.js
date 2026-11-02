@@ -8,7 +8,7 @@
 
 export const SCHEMA_VERSION = 1;
 export const STATUSES = ['draft', 'reviewed'];
-export const BLOCK_TYPES = ['p', 'list', 'eq', 'callout', 'figure', 'worked', 'interaction', 'practice', 'retrieval'];
+export const BLOCK_TYPES = ['p', 'h3', 'list', 'eq', 'callout', 'figure', 'worked', 'example', 'proscons', 'interaction', 'practice', 'retrieval'];
 export const CALLOUT_KINDS = ['key', 'misconception', 'application'];
 export const INTERACTION_KINDS = ['slider', 'predict', 'classify'];
 
@@ -30,6 +30,7 @@ export function blockStrings(b) {
 export function validateChapter(ch, { figureIds = [] } = {}) {
   const errs = [];
   const err = (m) => errs.push(m);
+  const gen = Boolean(ch.generated); // auto-built from lessons: no hand-written objectives, glossary or figure registry
 
   if (ch.schema !== SCHEMA_VERSION) err(`schema must be ${SCHEMA_VERSION}`);
   for (const k of ['id', 'title', 'unitTitle', 'syllabusRef']) if (!nonEmpty(ch[k])) err(`missing ${k}`);
@@ -68,13 +69,18 @@ export function validateChapter(ch, { figureIds = [] } = {}) {
       if (!BLOCK_TYPES.includes(b.type)) { err(`${bat}: unknown block type`); return; }
       blockStrings(b).forEach((str) => {
         if (!balanced(str)) err(`${bat}: unbalanced ** in "${str.slice(0, 40)}"`);
-        if (/TODO|lorem|xxx/i.test(str)) err(`${bat}: placeholder text`);
+        if (!gen && /TODO|lorem|xxx/i.test(str)) err(`${bat}: placeholder text`);
       });
       if (b.type === 'p' && !nonEmpty(b.text)) err(`${bat}: empty text`);
       if (b.type === 'list' && !(b.items && b.items.length && b.items.every(nonEmpty))) err(`${bat}: list items missing`);
       if (b.type === 'eq' && !(nonEmpty(b.tex) && nonEmpty(b.say))) err(`${bat}: equations need tex and a spoken form (say)`);
       if (b.type === 'callout' && !(CALLOUT_KINDS.includes(b.kind) && nonEmpty(b.title) && nonEmpty(b.text))) err(`${bat}: callout needs kind, title and text`);
-      if (b.type === 'figure') {
+      if (b.type === 'h3' && !nonEmpty(b.text)) err(`${bat}: empty heading`);
+      if (b.type === 'example' && !(nonEmpty(b.title) && b.answer && b.answer.length && b.answer.every(nonEmpty))) err(`${bat}: example needs a title and answer text`);
+      if (b.type === 'proscons' && !(b.options && b.options.length && b.options.every((o) => nonEmpty(o.name) && Array.isArray(o.pros) && Array.isArray(o.cons)))) err(`${bat}: proscons options need a name, pros and cons`);
+      if (b.type === 'figure' && b.fig) {
+        if (!(b.fig.svg || b.fig.src)) err(`${bat}: figure needs svg or src`);
+      } else if (b.type === 'figure') {
         const f = (ch.figures || {})[b.id];
         if (!f) err(`${bat}: figure ${b.id} has no entry in chapter.figures`);
         else if (!(nonEmpty(f.alt) && nonEmpty(f.caption) && nonEmpty(f.text))) err(`${bat}: figure ${b.id} needs alt, caption and a text equivalent`);
@@ -109,14 +115,14 @@ export function validateChapter(ch, { figureIds = [] } = {}) {
           const qat = `${bat} item ${q.id}`;
           if (!nonEmpty(q.id) || itemIds.has(q.id)) err(`${qat}: id missing or repeated`);
           itemIds.add(q.id);
-          if (!objIds.has(q.objective)) err(`${qat}: objective unknown`); else coveredByPractice.add(q.objective);
+          if (!gen) { if (!objIds.has(q.objective)) err(`${qat}: objective unknown`); else coveredByPractice.add(q.objective); }
           if (!nonEmpty(q.q)) err(`${qat}: missing question`);
           if (q.kind === 'mcq') {
             const o = q.options || [];
             if (o.length < 3 || o.filter((x) => x.correct).length !== 1) err(`${qat}: needs 3+ options with exactly one correct`);
             o.forEach((x) => { if (!nonEmpty(x.text) || !nonEmpty(x.feedback)) err(`${qat}: every option needs text and feedback`); });
           } else if (q.kind === 'num') {
-            if (typeof q.answer !== 'number' || typeof q.tol !== 'number' || !nonEmpty(q.unit)) err(`${qat}: numeric items need answer, tol and unit`);
+            if (typeof q.answer !== 'number' || typeof q.tol !== 'number' || typeof q.unit !== 'string' || (!gen && !nonEmpty(q.unit))) err(`${qat}: numeric items need answer, tol and unit`);
             if (!(q.steps && q.steps.length && q.steps.every(nonEmpty))) err(`${qat}: numeric items need a worked solution`);
             (q.wrong || []).forEach((w) => { if (typeof w.value !== 'number' || !nonEmpty(w.feedback)) err(`${qat}: wrong-answer hints need value and feedback`); });
           } else err(`${qat}: unknown kind`);
@@ -127,7 +133,7 @@ export function validateChapter(ch, { figureIds = [] } = {}) {
     });
   });
 
-  objIds.forEach((id) => {
+  if (!gen) objIds.forEach((id) => {
     if (!coveredByText.has(id)) err(`objective ${id} is not taught in any section`);
     if (!coveredByPractice.has(id)) err(`objective ${id} has no practice item`);
   });

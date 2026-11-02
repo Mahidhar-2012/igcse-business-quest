@@ -6,15 +6,19 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const { BOOKS } = await import('../src/textbook/books.js');
+const { makeBook } = await import('../src/textbook/books.js');
+const { BOOK_SUBJECTS } = await import('../src/textbook/available.js');
+const { SOURCES, buildChapters } = await import('../src/textbook/sources.js');
+const { metaOf } = await import('../src/textbook/generate.js');
+const generatedJson = (id) => JSON.parse(readFileSync(path.join(root, `src/textbook/generated/${id}.json`), 'utf8'));
 const { validateChapter, indexOf, blockStrings } = await import('../src/textbook/schema.js');
 const { gradeNumeric, parseNumber, longestAnswerShare } = await import('../src/textbook/check.js');
 const P = await import('../src/textbook/progress.js');
 const { searchBook } = await import('../src/textbook/search.js');
 const { SUBJECTS_META } = await import('../src/subjects.meta.js');
 
-const book = BOOKS[0];
-const meta = book.chapters[0];
+const book = makeBook('physics', generatedJson('physics'));
+const meta = book.chapters.find((c) => c.id === 'motion');
 const chapter = (await meta.load()).default;
 
 // the drawings are JSX, which Node cannot import, so read the ids they register
@@ -92,7 +96,7 @@ test('the registry matches the chapter file', () => {
   assert.equal(meta.syllabusRef, chapter.syllabusRef);
   assert.equal(meta.title, idx.title);
   assert.deepEqual(meta.objectives, idx.objectives);
-  assert.deepEqual(meta.terms, idx.terms);
+  assert.deepEqual(meta.terms.map((t) => t.term), idx.terms);
   assert.deepEqual(meta.sections.slice(0, idx.sections.length), idx.sections);
   assert.equal(meta.sections.length, idx.sections.length);
 });
@@ -161,6 +165,79 @@ test('search finds titles, terms, sections and objectives, and needs every word'
   const term = searchBook(book, 'velocity').find((r) => r.kind === 'term');
   assert.equal(term.sectionId, 'terms');
   assert.equal(searchBook(book, 'speed time').every((r) => /speed/i.test(r.text) && /time/i.test(r.text)), true);
+});
+
+test('every subject has a book, and the hub list matches the real books', () => {
+  assert.deepEqual([...BOOK_SUBJECTS].sort(), SUBJECTS_META.map((s) => s.id).sort());
+  assert.deepEqual([...BOOK_SUBJECTS].sort(), Object.keys(SOURCES).sort());
+  for (const id of BOOK_SUBJECTS) assert.ok(makeBook(id, generatedJson(id)), `${id}: no book`);
+});
+
+test('the generated contents files are up to date (run `npm run textbook:index` if this fails)', async () => {
+  for (const id of BOOK_SUBJECTS) {
+    const fresh = (await buildChapters(id)).map(metaOf);
+    assert.deepEqual(generatedJson(id), JSON.parse(JSON.stringify(fresh)), `${id}: src/textbook/generated/${id}.json is stale`);
+  }
+});
+
+test('every unit of every subject has a chapter, with one section per lesson', async () => {
+  for (const id of BOOK_SUBJECTS) {
+    const chapters = await buildChapters(id);
+    const data = await SOURCES[id]();
+    const units = id === 'english' ? data.sections : data.units;
+    assert.equal(chapters.length, units.length, `${id}: chapters vs units`);
+    const lessons = id === 'english' ? data.allLessons.length : units.flatMap((u) => u.submodules).length;
+    assert.equal(chapters.reduce((n, c) => n + c.sections.length, 0), lessons, `${id}: sections vs lessons`);
+    assert.equal(SUBJECTS_META.find((s) => s.id === id).total, lessons, `${id}: hub total`);
+  }
+});
+
+test('every generated chapter passes the schema and is honestly labelled', async () => {
+  let blocks = 0;
+  for (const id of BOOK_SUBJECTS) {
+    for (const c of await buildChapters(id)) {
+      const errs = validateChapter(c, { figureIds: [] });
+      assert.deepEqual(errs, [], `${id}/${c.id}: ${errs.slice(0, 3).join(' | ')}`);
+      assert.equal(c.status, 'draft');
+      assert.ok(/not been reviewed/.test(c.review.state), `${id}/${c.id}: must say it is unreviewed`);
+      blocks += c.sections.reduce((n, s) => n + s.blocks.length, 0);
+    }
+  }
+  assert.ok(blocks > 3000, `expected a large book, got ${blocks} blocks`);
+});
+
+test('generated practice does not put the correct answer first, and keeps its figures', async () => {
+  let mcq = 0;
+  let first = 0;
+  let figures = 0;
+  for (const id of BOOK_SUBJECTS) {
+    for (const c of await buildChapters(id)) {
+      for (const s of c.sections) for (const b of s.blocks) {
+        if (b.type === 'figure') figures += 1;
+        if (b.type !== 'practice') continue;
+        for (const q of b.items) {
+          if (q.kind !== 'mcq' || q.options.length !== 4) continue;
+          mcq += 1;
+          if (q.options[0].correct) first += 1;
+        }
+      }
+    }
+  }
+  assert.ok(mcq > 300, `expected many multiple-choice questions, got ${mcq}`);
+  assert.ok(first / mcq < 0.4, `the correct answer is first in ${Math.round((first / mcq) * 100)}% of questions`);
+  assert.ok(figures >= 200, `expected the lesson diagrams to carry over, got ${figures}`);
+});
+
+test('generated term links point at real sections, and search works in every book', async () => {
+  for (const id of BOOK_SUBJECTS) {
+    const b = makeBook(id, generatedJson(id));
+    for (const c of b.chapters) {
+      const sec = new Set(c.sections.map((s) => s.id));
+      c.terms.forEach((t) => assert.ok(t.sectionId === 'terms' || sec.has(t.sectionId), `${id}/${c.id}: term "${t.term}" links to missing section ${t.sectionId}`));
+    }
+    const title = b.chapters[b.chapters.length - 1].sections[0].title;
+    assert.ok(searchBook(b, title).length > 0, `${id}: searching for "${title}" found nothing`);
+  }
 });
 
 test('content contains no markup other than **bold**', () => {

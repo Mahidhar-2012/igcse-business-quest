@@ -1,0 +1,1474 @@
+[
+ {
+  "id": "unit-1",
+  "kind": "generated",
+  "unit": 1,
+  "unitTitle": "Data Representation",
+  "title": "Data Representation",
+  "syllabusRef": "0478 topic 1.1 to 0478 topic 1.3",
+  "status": "draft",
+  "minutes": 24,
+  "objectives": [
+   {
+    "id": "c1-number",
+    "text": "Binary, denary and hexadecimal (syllabus 0478 topic 1.1)"
+   },
+   {
+    "id": "c1-binops",
+    "text": "Binary addition, shifts and two’s complement (syllabus 0478 topic 1.1)"
+   },
+   {
+    "id": "c1-media",
+    "text": "Text, images and sound (syllabus 0478 topic 1.2)"
+   },
+   {
+    "id": "c1-compress",
+    "text": "Storage units and compression (syllabus 0478 topic 1.3)"
+   }
+  ],
+  "terms": [
+   [
+    "base 2",
+    "c1-number"
+   ],
+   [
+    "200 = 11001000",
+    "c1-number"
+   ],
+   [
+    "n bits",
+    "c1-number"
+   ],
+   [
+    "base 16",
+    "c1-number"
+   ],
+   [
+    "shorter",
+    "c1-number"
+   ],
+   [
+    "easier to read, remember and copy",
+    "c1-number"
+   ],
+   [
+    "fewer mistakes",
+    "c1-number"
+   ],
+   [
+    "colour codes (#FF0000)",
+    "c1-number"
+   ],
+   [
+    "MAC addresses",
+    "c1-number"
+   ],
+   [
+    "memory addresses",
+    "c1-number"
+   ],
+   [
+    "0 + 0 = 0",
+    "c1-binops"
+   ],
+   [
+    "0 + 1 = 1",
+    "c1-binops"
+   ],
+   [
+    "1 + 1 = 10",
+    "c1-binops"
+   ],
+   [
+    "1 + 1 + 1 = 11",
+    "c1-binops"
+   ],
+   [
+    "same number of bits",
+    "c1-binops"
+   ],
+   [
+    "fixed number of bits",
+    "c1-binops"
+   ],
+   [
+    "lost",
+    "c1-binops"
+   ],
+   [
+    "overflow error",
+    "c1-binops"
+   ],
+   [
+    "wrong result",
+    "c1-binops"
+   ],
+   [
+    "logical shift",
+    "c1-binops"
+   ],
+   [
+    "3 left",
+    "c1-binops"
+   ],
+   [
+    "2 right",
+    "c1-binops"
+   ],
+   [
+    "wrong answer",
+    "c1-binops"
+   ],
+   [
+    "Two’s complement",
+    "c1-binops"
+   ],
+   [
+    "negative",
+    "c1-binops"
+   ],
+   [
+    "−128, 64, 32, 16, 8, 4, 2, 1",
+    "c1-binops"
+   ],
+   [
+    "−10",
+    "c1-binops"
+   ],
+   [
+    "flip every bit, then add 1",
+    "c1-binops"
+   ],
+   [
+    "−128 to +127",
+    "c1-binops"
+   ],
+   [
+    "character set",
+    "c1-media"
+   ],
+   [
+    "ASCII",
+    "c1-media"
+   ],
+   [
+    "Unicode",
+    "c1-media"
+   ],
+   [
+    "every language, symbols and emojis",
+    "c1-media"
+   ],
+   [
+    "A = 65",
+    "c1-media"
+   ],
+   [
+    "F = 70",
+    "c1-media"
+   ],
+   [
+    "pixels",
+    "c1-media"
+   ],
+   [
+    "colour depth",
+    "c1-media"
+   ],
+   [
+    "Resolution",
+    "c1-media"
+   ],
+   [
+    "better quality",
+    "c1-media"
+   ],
+   [
+    "larger file",
+    "c1-media"
+   ],
+   [
+    "5000 bytes",
+    "c1-media"
+   ],
+   [
+    "2ⁿ colours",
+    "c1-media"
+   ],
+   [
+    "analogue",
+    "c1-media"
+   ],
+   [
+    "sampled",
+    "c1-media"
+   ],
+   [
+    "Sample rate",
+    "c1-media"
+   ],
+   [
+    "Sample resolution",
+    "c1-media"
+   ],
+   [
+    "more accurate",
+    "c1-media"
+   ],
+   [
+    "bit",
+    "c1-compress"
+   ],
+   [
+    "nibble",
+    "c1-compress"
+   ],
+   [
+    "byte",
+    "c1-compress"
+   ],
+   [
+    "down",
+    "c1-compress"
+   ],
+   [
+    "3072 bytes",
+    "c1-compress"
+   ],
+   [
+    "Compression",
+    "c1-compress"
+   ],
+   [
+    "stores more",
+    "c1-compress"
+   ],
+   [
+    "transmits faster",
+    "c1-compress"
+   ],
+   [
+    "Lossless",
+    "c1-compress"
+   ],
+   [
+    "all the data",
+    "c1-compress"
+   ],
+   [
+    "run-length encoding",
+    "c1-compress"
+   ],
+   [
+    "Lossy",
+    "c1-compress"
+   ],
+   [
+    "permanently removes",
+    "c1-compress"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "c1-number",
+    "title": "Binary, denary and hexadecimal"
+   },
+   {
+    "id": "c1-binops",
+    "title": "Binary addition, shifts and two’s complement"
+   },
+   {
+    "id": "c1-media",
+    "title": "Text, images and sound"
+   },
+   {
+    "id": "c1-compress",
+    "title": "Storage units and compression"
+   }
+  ]
+ },
+ {
+  "id": "unit-2",
+  "kind": "generated",
+  "unit": 2,
+  "unitTitle": "Data Transmission",
+  "title": "Data Transmission",
+  "syllabusRef": "0478 topic 2.1 to 0478 topic 2.2",
+  "status": "draft",
+  "minutes": 12,
+  "objectives": [
+   {
+    "id": "c2-packets",
+    "text": "Packets, serial and parallel, duplex (syllabus 0478 topic 2.1)"
+   },
+   {
+    "id": "c2-errors",
+    "text": "Detecting and fixing errors (syllabus 0478 topic 2.2)"
+   }
+  ],
+  "terms": [
+   [
+    "packets",
+    "c2-packets"
+   ],
+   [
+    "header",
+    "c2-packets"
+   ],
+   [
+    "payload",
+    "c2-packets"
+   ],
+   [
+    "trailer",
+    "c2-packets"
+   ],
+   [
+    "packet number",
+    "c2-packets"
+   ],
+   [
+    "correct order",
+    "c2-packets"
+   ],
+   [
+    "separately",
+    "c2-packets"
+   ],
+   [
+    "router",
+    "c2-packets"
+   ],
+   [
+    "may take different routes",
+    "c2-packets"
+   ],
+   [
+    "out of order",
+    "c2-packets"
+   ],
+   [
+    "reassembles",
+    "c2-packets"
+   ],
+   [
+    "Serial",
+    "c2-packets"
+   ],
+   [
+    "one wire",
+    "c2-packets"
+   ],
+   [
+    "long distances",
+    "c2-packets"
+   ],
+   [
+    "Parallel",
+    "c2-packets"
+   ],
+   [
+    "several wires",
+    "c2-packets"
+   ],
+   [
+    "out of step",
+    "c2-packets"
+   ],
+   [
+    "Simplex",
+    "c2-packets"
+   ],
+   [
+    "Half-duplex",
+    "c2-packets"
+   ],
+   [
+    "not at the same time",
+    "c2-packets"
+   ],
+   [
+    "Full-duplex",
+    "c2-packets"
+   ],
+   [
+    "at once",
+    "c2-packets"
+   ],
+   [
+    "USB",
+    "c2-packets"
+   ],
+   [
+    "corrupted",
+    "c2-errors"
+   ],
+   [
+    "detected",
+    "c2-errors"
+   ],
+   [
+    "parity bit",
+    "c2-errors"
+   ],
+   [
+    "even",
+    "c2-errors"
+   ],
+   [
+    "odd",
+    "c2-errors"
+   ],
+   [
+    "even parity",
+    "c2-errors"
+   ],
+   [
+    "cannot say which bit",
+    "c2-errors"
+   ],
+   [
+    "misses",
+    "c2-errors"
+   ],
+   [
+    "two bits",
+    "c2-errors"
+   ],
+   [
+    "Checksum",
+    "c2-errors"
+   ],
+   [
+    "Check digit",
+    "c2-errors"
+   ],
+   [
+    "data entry",
+    "c2-errors"
+   ],
+   [
+    "Echo check",
+    "c2-errors"
+   ],
+   [
+    "back",
+    "c2-errors"
+   ],
+   [
+    "false alarm",
+    "c2-errors"
+   ],
+   [
+    "ARQ",
+    "c2-errors"
+   ],
+   [
+    "acknowledgements",
+    "c2-errors"
+   ],
+   [
+    "timeout",
+    "c2-errors"
+   ],
+   [
+    "positive acknowledgement",
+    "c2-errors"
+   ],
+   [
+    "negative acknowledgement",
+    "c2-errors"
+   ],
+   [
+    "resends",
+    "c2-errors"
+   ],
+   [
+    "no reply before the timeout",
+    "c2-errors"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "c2-packets",
+    "title": "Packets, serial and parallel, duplex"
+   },
+   {
+    "id": "c2-errors",
+    "title": "Detecting and fixing errors"
+   }
+  ]
+ },
+ {
+  "id": "unit-3",
+  "kind": "generated",
+  "unit": 3,
+  "unitTitle": "Hardware",
+  "title": "Hardware",
+  "syllabusRef": "0478 topic 3.1 to 0478 topic 3.3",
+  "status": "draft",
+  "minutes": 18,
+  "objectives": [
+   {
+    "id": "c3-cpu",
+    "text": "The CPU and the fetch–decode–execute cycle (syllabus 0478 topic 3.1)"
+   },
+   {
+    "id": "c3-mem",
+    "text": "Memory and storage (syllabus 0478 topic 3.2)"
+   },
+   {
+    "id": "c3-io",
+    "text": "Input, output and sensors (syllabus 0478 topic 3.3)"
+   }
+  ],
+  "terms": [
+   [
+    "ALU",
+    "c3-cpu"
+   ],
+   [
+    "Registers",
+    "c3-cpu"
+   ],
+   [
+    "MAR",
+    "c3-cpu"
+   ],
+   [
+    "MDR",
+    "c3-cpu"
+   ],
+   [
+    "CIR",
+    "c3-cpu"
+   ],
+   [
+    "ACC",
+    "c3-cpu"
+   ],
+   [
+    "Buses",
+    "c3-cpu"
+   ],
+   [
+    "address bus",
+    "c3-cpu"
+   ],
+   [
+    "data bus",
+    "c3-cpu"
+   ],
+   [
+    "control bus",
+    "c3-cpu"
+   ],
+   [
+    "Von Neumann",
+    "c3-cpu"
+   ],
+   [
+    "main memory (RAM)",
+    "c3-cpu"
+   ],
+   [
+    "Fetch",
+    "c3-cpu"
+   ],
+   [
+    "Decode",
+    "c3-cpu"
+   ],
+   [
+    "Execute",
+    "c3-cpu"
+   ],
+   [
+    "Clock speed",
+    "c3-cpu"
+   ],
+   [
+    "Cores",
+    "c3-cpu"
+   ],
+   [
+    "Cache",
+    "c3-cpu"
+   ],
+   [
+    "embedded system",
+    "c3-cpu"
+   ],
+   [
+    "RAM",
+    "c3-mem"
+   ],
+   [
+    "main memory",
+    "c3-mem"
+   ],
+   [
+    "volatile",
+    "c3-mem"
+   ],
+   [
+    "ROM",
+    "c3-mem"
+   ],
+   [
+    "non-volatile",
+    "c3-mem"
+   ],
+   [
+    "bootstrap",
+    "c3-mem"
+   ],
+   [
+    "virtual memory",
+    "c3-mem"
+   ],
+   [
+    "slower",
+    "c3-mem"
+   ],
+   [
+    "Magnetic",
+    "c3-mem"
+   ],
+   [
+    "large and cheap per GiB",
+    "c3-mem"
+   ],
+   [
+    "Optical",
+    "c3-mem"
+   ],
+   [
+    "cheap and portable",
+    "c3-mem"
+   ],
+   [
+    "Solid state",
+    "c3-mem"
+   ],
+   [
+    "more expensive",
+    "c3-mem"
+   ],
+   [
+    "faster and smaller",
+    "c3-mem"
+   ],
+   [
+    "secondary storage into RAM",
+    "c3-mem"
+   ],
+   [
+    "Input devices",
+    "c3-io"
+   ],
+   [
+    "into",
+    "c3-io"
+   ],
+   [
+    "barcode scanner",
+    "c3-io"
+   ],
+   [
+    "capacitive touch screen",
+    "c3-io"
+   ],
+   [
+    "several touches",
+    "c3-io"
+   ],
+   [
+    "Output devices",
+    "c3-io"
+   ],
+   [
+    "Laser printer",
+    "c3-io"
+   ],
+   [
+    "fast",
+    "c3-io"
+   ],
+   [
+    "large volumes",
+    "c3-io"
+   ],
+   [
+    "Inkjet printer",
+    "c3-io"
+   ],
+   [
+    "photos and small jobs",
+    "c3-io"
+   ],
+   [
+    "3D printer",
+    "c3-io"
+   ],
+   [
+    "layer by layer",
+    "c3-io"
+   ],
+   [
+    "sensor",
+    "c3-io"
+   ],
+   [
+    "ADC",
+    "c3-io"
+   ],
+   [
+    "DAC",
+    "c3-io"
+   ],
+   [
+    "actuator",
+    "c3-io"
+   ],
+   [
+    "greenhouse",
+    "c3-io"
+   ],
+   [
+    "heater or window actuator",
+    "c3-io"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "c3-cpu",
+    "title": "The CPU and the fetch–decode–execute cycle"
+   },
+   {
+    "id": "c3-mem",
+    "title": "Memory and storage"
+   },
+   {
+    "id": "c3-io",
+    "title": "Input, output and sensors"
+   }
+  ]
+ },
+ {
+  "id": "unit-4",
+  "kind": "generated",
+  "unit": 4,
+  "unitTitle": "Software, Networks and Security",
+  "title": "Software, Networks and Security",
+  "syllabusRef": "0478 topic 4 to 0478 topic 6",
+  "status": "draft",
+  "minutes": 24,
+  "objectives": [
+   {
+    "id": "c4-sw",
+    "text": "Operating systems, interrupts and languages (syllabus 0478 topic 4)"
+   },
+   {
+    "id": "c4-net",
+    "text": "Networks and the internet (syllabus 0478 topic 2.3 and 5)"
+   },
+   {
+    "id": "c4-sec",
+    "text": "Security threats and protection (syllabus 0478 topic 6)"
+   },
+   {
+    "id": "c4-ai",
+    "text": "Automation, AI and ethics (syllabus 0478 topic 6)"
+   }
+  ],
+  "terms": [
+   [
+    "System software",
+    "c4-sw"
+   ],
+   [
+    "Application software",
+    "c4-sw"
+   ],
+   [
+    "operating system",
+    "c4-sw"
+   ],
+   [
+    "user interface",
+    "c4-sw"
+   ],
+   [
+    "manages memory and files",
+    "c4-sw"
+   ],
+   [
+    "peripherals",
+    "c4-sw"
+   ],
+   [
+    "device drivers",
+    "c4-sw"
+   ],
+   [
+    "multitasking",
+    "c4-sw"
+   ],
+   [
+    "security",
+    "c4-sw"
+   ],
+   [
+    "handles interrupts",
+    "c4-sw"
+   ],
+   [
+    "Utility software",
+    "c4-sw"
+   ],
+   [
+    "interrupt",
+    "c4-sw"
+   ],
+   [
+    "checks for interrupts",
+    "c4-sw"
+   ],
+   [
+    "saves the current state",
+    "c4-sw"
+   ],
+   [
+    "interrupt service routine (ISR)",
+    "c4-sw"
+   ],
+   [
+    "restores the state",
+    "c4-sw"
+   ],
+   [
+    "High-level",
+    "c4-sw"
+   ],
+   [
+    "easier to read and debug",
+    "c4-sw"
+   ],
+   [
+    "different types of computer",
+    "c4-sw"
+   ],
+   [
+    "Low-level",
+    "c4-sw"
+   ],
+   [
+    "assembly",
+    "c4-sw"
+   ],
+   [
+    "direct control of the hardware",
+    "c4-sw"
+   ],
+   [
+    "Machine code",
+    "c4-sw"
+   ],
+   [
+    "assembler",
+    "c4-sw"
+   ],
+   [
+    "compiler",
+    "c4-sw"
+   ],
+   [
+    "whole program",
+    "c4-sw"
+   ],
+   [
+    "interpreter",
+    "c4-sw"
+   ],
+   [
+    "one line at a time",
+    "c4-sw"
+   ],
+   [
+    "easier to debug",
+    "c4-sw"
+   ],
+   [
+    "LAN",
+    "c4-net"
+   ],
+   [
+    "WAN",
+    "c4-net"
+   ],
+   [
+    "internet",
+    "c4-net"
+   ],
+   [
+    "NIC",
+    "c4-net"
+   ],
+   [
+    "switch",
+    "c4-net"
+   ],
+   [
+    "router",
+    "c4-net"
+   ],
+   [
+    "WAP",
+    "c4-net"
+   ],
+   [
+    "star",
+    "c4-net"
+   ],
+   [
+    "MAC address",
+    "c4-net"
+   ],
+   [
+    "network card",
+    "c4-net"
+   ],
+   [
+    "IP address",
+    "c4-net"
+   ],
+   [
+    "on a network",
+    "c4-net"
+   ],
+   [
+    "IPv4",
+    "c4-net"
+   ],
+   [
+    "IPv6",
+    "c4-net"
+   ],
+   [
+    "DNS",
+    "c4-net"
+   ],
+   [
+    "converts a domain name",
+    "c4-net"
+   ],
+   [
+    "World Wide Web",
+    "c4-net"
+   ],
+   [
+    "browser",
+    "c4-net"
+   ],
+   [
+    "HTTP or HTTPS",
+    "c4-net"
+   ],
+   [
+    "web server",
+    "c4-net"
+   ],
+   [
+    "Cloud storage",
+    "c4-net"
+   ],
+   [
+    "from anywhere",
+    "c4-net"
+   ],
+   [
+    "internet connection",
+    "c4-net"
+   ],
+   [
+    "provider’s security",
+    "c4-net"
+   ],
+   [
+    "Malware",
+    "c4-sec"
+   ],
+   [
+    "virus",
+    "c4-sec"
+   ],
+   [
+    "worm",
+    "c4-sec"
+   ],
+   [
+    "trojan",
+    "c4-sec"
+   ],
+   [
+    "spyware",
+    "c4-sec"
+   ],
+   [
+    "ransomware",
+    "c4-sec"
+   ],
+   [
+    "Phishing",
+    "c4-sec"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "c4-sw",
+    "title": "Operating systems, interrupts and languages"
+   },
+   {
+    "id": "c4-net",
+    "title": "Networks and the internet"
+   },
+   {
+    "id": "c4-sec",
+    "title": "Security threats and protection"
+   },
+   {
+    "id": "c4-ai",
+    "title": "Automation, AI and ethics"
+   }
+  ]
+ },
+ {
+  "id": "unit-5",
+  "kind": "generated",
+  "unit": 5,
+  "unitTitle": "Algorithms and Programming",
+  "title": "Algorithms and Programming",
+  "syllabusRef": "0478 topic 7 to 0478 topics 8 and 9",
+  "status": "draft",
+  "minutes": 12,
+  "objectives": [
+   {
+    "id": "c5-algo",
+    "text": "Algorithms, trace tables, searching and sorting (syllabus 0478 topic 7)"
+   },
+   {
+    "id": "c5-prog",
+    "text": "Programming concepts (syllabus 0478 topics 8 and 9)"
+   }
+  ],
+  "terms": [
+   [
+    "algorithm",
+    "c5-algo"
+   ],
+   [
+    "Decomposition",
+    "c5-algo"
+   ],
+   [
+    "abstraction",
+    "c5-algo"
+   ],
+   [
+    "pseudocode",
+    "c5-algo"
+   ],
+   [
+    "flowchart",
+    "c5-algo"
+   ],
+   [
+    "terminator",
+    "c5-algo"
+   ],
+   [
+    "process",
+    "c5-algo"
+   ],
+   [
+    "parallelogram",
+    "c5-algo"
+   ],
+   [
+    "diamond",
+    "c5-algo"
+   ],
+   [
+    "two exits",
+    "c5-algo"
+   ],
+   [
+    "trace table",
+    "c5-algo"
+   ],
+   [
+    "find errors",
+    "c5-algo"
+   ],
+   [
+    "work out the output",
+    "c5-algo"
+   ],
+   [
+    "one row per change",
+    "c5-algo"
+   ],
+   [
+    "Linear search",
+    "c5-algo"
+   ],
+   [
+    "any list",
+    "c5-algo"
+   ],
+   [
+    "Binary search",
+    "c5-algo"
+   ],
+   [
+    "sorted",
+    "c5-algo"
+   ],
+   [
+    "middle",
+    "c5-algo"
+   ],
+   [
+    "halves",
+    "c5-algo"
+   ],
+   [
+    "Bubble sort",
+    "c5-algo"
+   ],
+   [
+    "no swaps",
+    "c5-algo"
+   ],
+   [
+    "variable",
+    "c5-prog"
+   ],
+   [
+    "constant",
+    "c5-prog"
+   ],
+   [
+    "meaningful names",
+    "c5-prog"
+   ],
+   [
+    "Data types",
+    "c5-prog"
+   ],
+   [
+    "integer",
+    "c5-prog"
+   ],
+   [
+    "real",
+    "c5-prog"
+   ],
+   [
+    "char",
+    "c5-prog"
+   ],
+   [
+    "string",
+    "c5-prog"
+   ],
+   [
+    "Boolean",
+    "c5-prog"
+   ],
+   [
+    "DIV",
+    "c5-prog"
+   ],
+   [
+    "MOD",
+    "c5-prog"
+   ],
+   [
+    "Selection",
+    "c5-prog"
+   ],
+   [
+    "Iteration",
+    "c5-prog"
+   ],
+   [
+    "FOR … NEXT",
+    "c5-prog"
+   ],
+   [
+    "WHILE … ENDWHILE",
+    "c5-prog"
+   ],
+   [
+    "first",
+    "c5-prog"
+   ],
+   [
+    "REPEAT … UNTIL",
+    "c5-prog"
+   ],
+   [
+    "at the end",
+    "c5-prog"
+   ],
+   [
+    "at least once",
+    "c5-prog"
+   ],
+   [
+    "nested",
+    "c5-prog"
+   ],
+   [
+    "array",
+    "c5-prog"
+   ],
+   [
+    "index",
+    "c5-prog"
+   ],
+   [
+    "2D array",
+    "c5-prog"
+   ],
+   [
+    "String handling",
+    "c5-prog"
+   ],
+   [
+    "procedure",
+    "c5-prog"
+   ],
+   [
+    "function",
+    "c5-prog"
+   ],
+   [
+    "returns a value",
+    "c5-prog"
+   ],
+   [
+    "avoid repeating code",
+    "c5-prog"
+   ],
+   [
+    "easier to test",
+    "c5-prog"
+   ],
+   [
+    "Parameters",
+    "c5-prog"
+   ],
+   [
+    "Validation",
+    "c5-prog"
+   ],
+   [
+    "reasonable",
+    "c5-prog"
+   ],
+   [
+    "not",
+    "c5-prog"
+   ],
+   [
+    "Verification",
+    "c5-prog"
+   ],
+   [
+    "copied or entered correctly",
+    "c5-prog"
+   ],
+   [
+    "Test data",
+    "c5-prog"
+   ],
+   [
+    "normal",
+    "c5-prog"
+   ],
+   [
+    "abnormal",
+    "c5-prog"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "c5-algo",
+    "title": "Algorithms, trace tables, searching and sorting"
+   },
+   {
+    "id": "c5-prog",
+    "title": "Programming concepts"
+   }
+  ]
+ },
+ {
+  "id": "unit-6",
+  "kind": "generated",
+  "unit": 6,
+  "unitTitle": "Logic and Databases",
+  "title": "Logic and Databases",
+  "syllabusRef": "0478 topic 10",
+  "status": "draft",
+  "minutes": 12,
+  "objectives": [
+   {
+    "id": "c6-logic",
+    "text": "Logic gates and truth tables (syllabus 0478 topic 10)"
+   },
+   {
+    "id": "c6-db",
+    "text": "Databases and SQL (syllabus 0478 topic 10)"
+   }
+  ],
+  "terms": [
+   [
+    "logic gate",
+    "c6-logic"
+   ],
+   [
+    "AND",
+    "c6-logic"
+   ],
+   [
+    "both",
+    "c6-logic"
+   ],
+   [
+    "either",
+    "c6-logic"
+   ],
+   [
+    "NOT",
+    "c6-logic"
+   ],
+   [
+    "opposite",
+    "c6-logic"
+   ],
+   [
+    "NAND",
+    "c6-logic"
+   ],
+   [
+    "NOR",
+    "c6-logic"
+   ],
+   [
+    "XOR",
+    "c6-logic"
+   ],
+   [
+    "different",
+    "c6-logic"
+   ],
+   [
+    "truth table",
+    "c6-logic"
+   ],
+   [
+    "n inputs give 2ⁿ rows",
+    "c6-logic"
+   ],
+   [
+    "Q = (A AND B) OR (NOT C)",
+    "c6-logic"
+   ],
+   [
+    "inside brackets first",
+    "c6-logic"
+   ],
+   [
+    "column by column",
+    "c6-logic"
+   ],
+   [
+    "binary counting order",
+    "c6-logic"
+   ],
+   [
+    "database",
+    "c6-db"
+   ],
+   [
+    "table",
+    "c6-db"
+   ],
+   [
+    "records",
+    "c6-db"
+   ],
+   [
+    "fields",
+    "c6-db"
+   ],
+   [
+    "data type",
+    "c6-db"
+   ],
+   [
+    "primary key",
+    "c6-db"
+   ],
+   [
+    "unique",
+    "c6-db"
+   ],
+   [
+    "flat-file",
+    "c6-db"
+   ],
+   [
+    "relational",
+    "c6-db"
+   ],
+   [
+    "SELECT",
+    "c6-db"
+   ],
+   [
+    "FROM",
+    "c6-db"
+   ],
+   [
+    "WHERE",
+    "c6-db"
+   ],
+   [
+    "ORDER BY",
+    "c6-db"
+   ],
+   [
+    "SUM",
+    "c6-db"
+   ],
+   [
+    "COUNT",
+    "c6-db"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "c6-logic",
+    "title": "Logic gates and truth tables"
+   },
+   {
+    "id": "c6-db",
+    "title": "Databases and SQL"
+   }
+  ]
+ }
+]

@@ -1,5 +1,37 @@
 # Interactive textbook: pilot stage report
 
+## Update: every unit of every subject now has a chapter (auto-built from the lessons)
+
+Every subject has a Textbook button on its hub card and a book at `#/book/<subject>`: Physics, Chemistry, Economics, Biology, Maths, Additional Maths, Computer Science, Business Studies and English.
+
+| Subject | Chapters (one per unit) | Lessons covered |
+|---|---|---|
+| Physics | 6 (plus the hand-written pilot chapter) | 26 |
+| Chemistry | 6 | 43 |
+| Economics | 6 | 36 |
+| Biology | 21 | 55 |
+| Maths | 9 | 30 |
+| Additional Maths | 7 | 17 |
+| Computer Science | 6 | 17 |
+| Business Studies | 7 | 38 |
+| English | 11 (one per section of the notes) | 42 |
+
+**How these chapters are made.** `src/textbook/generate.js` turns each unit's lessons into a chapter, one section per lesson: the lesson's key points, equations, diagrams, advantages and disadvantages, worked examples and model answers, then a "Check yourself" set built from the lesson's questions (multiple choice, calculations, true/false, with the answer options shuffled in a fixed order) and "Recall" prompts from its written questions. The contents and search index for each subject is the generated file `src/textbook/generated/<subject>.json`. Chapters are built on demand, so they are always in step with the lessons.
+
+**What these chapters are not.** They are not hand-written textbook prose. They collect the lesson content in order with the diagrams, and they do not have the longer connected explanations, original interactions and tailored wrong-answer feedback of the hand-written pilot chapter. The page says so on the cover and in every chapter. Question types that need dragging, matching or ordering stay in the lessons. All chapters are marked Draft: none has been reviewed by a subject expert.
+
+**Checks.** `npm test` (47 tests) checks that every unit of every subject has a chapter, that sections equal lessons and match the hub totals, that every chapter passes the schema, that the correct answer is not first in practice questions, that the diagrams carry over, that term links point at real sections, and that the generated index files are up to date. After changing lesson content, run `npm run textbook:index` and commit the updated files.
+
+**Browser checks.** Contents and chapters for Chemistry, Business and English opened with their diagrams, pros/cons cards and model answers; practice questions graded correctly; every subject's hub button points at its book; eight chapters across all subject types had no horizontal overflow at 375 px.
+
+**Known limits of this update.** Diagrams from the lessons have a caption but no longer text description (the original lesson diagrams were not written with one). Keyboard-only and screen-reader passes were not run. The 310 kB diagram library loads when a chapter shows a diagram.
+
+**Next.** Hand-written chapters in the style of the pilot, written unit by unit and replacing the auto-built chapter for that unit once reviewed.
+
+---
+
+# Pilot chapter report (Physics, "Describing motion")
+
 Status: pilot chapter built and checked in a browser. **Not pushed.** One chapter exists (Physics, "Describing motion"). It is marked **Draft** in the app because no subject expert has reviewed it and it has not been checked line by line against the official syllabus.
 
 ## What was added

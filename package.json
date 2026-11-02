@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "test": "node --test tests/",
+    "textbook:index": "node scripts/build-textbook-index.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },

@@ -1,0 +1,1790 @@
+[
+ {
+  "id": "unit-1",
+  "kind": "generated",
+  "unit": 1,
+  "unitTitle": "The Basic Economic Problem",
+  "title": "The Basic Economic Problem",
+  "syllabusRef": "1.1 to 1.4",
+  "status": "draft",
+  "minutes": 24,
+  "objectives": [
+   {
+    "id": "e1-problem",
+    "text": "The nature of the basic economic problem (syllabus 1.1)"
+   },
+   {
+    "id": "e1-factors",
+    "text": "Factors of production (syllabus 1.2)"
+   },
+   {
+    "id": "e1-opportunity",
+    "text": "Opportunity cost (syllabus 1.3)"
+   },
+   {
+    "id": "e1-ppc",
+    "text": "Production possibility curves (syllabus 1.4)"
+   }
+  ],
+  "terms": [
+   [
+    "basic economic problem",
+    "e1-problem"
+   ],
+   [
+    "unlimited (infinite) wants",
+    "e1-problem"
+   ],
+   [
+    "resources",
+    "e1-problem"
+   ],
+   [
+    "limited (finite)",
+    "e1-problem"
+   ],
+   [
+    "Scarcity",
+    "e1-problem"
+   ],
+   [
+    "choices",
+    "e1-problem"
+   ],
+   [
+    "consumers",
+    "e1-problem"
+   ],
+   [
+    "workers",
+    "e1-problem"
+   ],
+   [
+    "producers",
+    "e1-problem"
+   ],
+   [
+    "governments",
+    "e1-problem"
+   ],
+   [
+    "what to produce",
+    "e1-problem"
+   ],
+   [
+    "how to produce it",
+    "e1-problem"
+   ],
+   [
+    "who to produce for",
+    "e1-problem"
+   ],
+   [
+    "Economic goods",
+    "e1-problem"
+   ],
+   [
+    "scarce",
+    "e1-problem"
+   ],
+   [
+    "opportunity cost",
+    "e1-problem"
+   ],
+   [
+    "Free goods",
+    "e1-problem"
+   ],
+   [
+    "not scarce",
+    "e1-problem"
+   ],
+   [
+    "no opportunity cost",
+    "e1-problem"
+   ],
+   [
+    "income",
+    "e1-problem"
+   ],
+   [
+    "time",
+    "e1-problem"
+   ],
+   [
+    "Producers (firms)",
+    "e1-problem"
+   ],
+   [
+    "finance, land, labour and capital",
+    "e1-problem"
+   ],
+   [
+    "tax revenue",
+    "e1-problem"
+   ],
+   [
+    "Land",
+    "e1-factors"
+   ],
+   [
+    "rent",
+    "e1-factors"
+   ],
+   [
+    "Labour",
+    "e1-factors"
+   ],
+   [
+    "wages",
+    "e1-factors"
+   ],
+   [
+    "Capital",
+    "e1-factors"
+   ],
+   [
+    "interest",
+    "e1-factors"
+   ],
+   [
+    "Enterprise",
+    "e1-factors"
+   ],
+   [
+    "profit",
+    "e1-factors"
+   ],
+   [
+    "Quantity of labour",
+    "e1-factors"
+   ],
+   [
+    "Quality of labour",
+    "e1-factors"
+   ],
+   [
+    "education, training and healthcare",
+    "e1-factors"
+   ],
+   [
+    "Quality of capital",
+    "e1-factors"
+   ],
+   [
+    "technology and investment",
+    "e1-factors"
+   ],
+   [
+    "not",
+    "e1-opportunity"
+   ],
+   [
+    "next best",
+    "e1-opportunity"
+   ],
+   [
+    "Firms",
+    "e1-opportunity"
+   ],
+   [
+    "production possibility curve (PPC)",
+    "e1-ppc"
+   ],
+   [
+    "inside",
+    "e1-ppc"
+   ],
+   [
+    "unemployed or wasted resources",
+    "e1-ppc"
+   ],
+   [
+    "outside",
+    "e1-ppc"
+   ],
+   [
+    "unattainable",
+    "e1-ppc"
+   ],
+   [
+    "along",
+    "e1-ppc"
+   ],
+   [
+    "switching resources",
+    "e1-ppc"
+   ],
+   [
+    "given up",
+    "e1-ppc"
+   ],
+   [
+    "outward shift",
+    "e1-ppc"
+   ],
+   [
+    "economic growth",
+    "e1-ppc"
+   ],
+   [
+    "Causes of an outward shift",
+    "e1-ppc"
+   ],
+   [
+    "better quality resources",
+    "e1-ppc"
+   ],
+   [
+    "improved technology",
+    "e1-ppc"
+   ],
+   [
+    "inward shift",
+    "e1-ppc"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "e1-problem",
+    "title": "The nature of the basic economic problem"
+   },
+   {
+    "id": "e1-factors",
+    "title": "Factors of production"
+   },
+   {
+    "id": "e1-opportunity",
+    "title": "Opportunity cost"
+   },
+   {
+    "id": "e1-ppc",
+    "title": "Production possibility curves"
+   }
+  ]
+ },
+ {
+  "id": "unit-2",
+  "kind": "generated",
+  "unit": 2,
+  "unitTitle": "The Allocation of Resources",
+  "title": "The Allocation of Resources",
+  "syllabusRef": "2.1 to 2.10",
+  "status": "draft",
+  "minutes": 60,
+  "objectives": [
+   {
+    "id": "e2-markets",
+    "text": "How markets work (syllabus 2.1)"
+   },
+   {
+    "id": "e2-demand",
+    "text": "Demand (syllabus 2.2)"
+   },
+   {
+    "id": "e2-supply",
+    "text": "Supply (syllabus 2.3)"
+   },
+   {
+    "id": "e2-price",
+    "text": "Price determination (syllabus 2.4)"
+   },
+   {
+    "id": "e2-pricechange",
+    "text": "Price changes (syllabus 2.5)"
+   },
+   {
+    "id": "e2-ped",
+    "text": "Price elasticity of demand (PED) (syllabus 2.6)"
+   },
+   {
+    "id": "e2-pes",
+    "text": "Price elasticity of supply (PES) (syllabus 2.7)"
+   },
+   {
+    "id": "e2-system",
+    "text": "Market economic system (syllabus 2.8)"
+   },
+   {
+    "id": "e2-failure",
+    "text": "Market failure (syllabus 2.9)"
+   },
+   {
+    "id": "e2-mixed",
+    "text": "Mixed economic system and government intervention (syllabus 2.10)"
+   }
+  ],
+  "terms": [
+   [
+    "market",
+    "e2-markets"
+   ],
+   [
+    "buyers and sellers come together",
+    "e2-markets"
+   ],
+   [
+    "Buyers",
+    "e2-markets"
+   ],
+   [
+    "sellers",
+    "e2-markets"
+   ],
+   [
+    "prices and quantities traded",
+    "e2-markets"
+   ],
+   [
+    "Demand",
+    "e2-demand"
+   ],
+   [
+    "Market demand",
+    "e2-demand"
+   ],
+   [
+    "sum of all individual demands",
+    "e2-demand"
+   ],
+   [
+    "curve slopes downwards",
+    "e2-demand"
+   ],
+   [
+    "as price falls, quantity demanded rises",
+    "e2-demand"
+   ],
+   [
+    "change in the price of the good itself",
+    "e2-demand"
+   ],
+   [
+    "movement along",
+    "e2-demand"
+   ],
+   [
+    "fall in price",
+    "e2-demand"
+   ],
+   [
+    "extension",
+    "e2-demand"
+   ],
+   [
+    "rise in price",
+    "e2-demand"
+   ],
+   [
+    "contraction",
+    "e2-demand"
+   ],
+   [
+    "shifts",
+    "e2-demand"
+   ],
+   [
+    "other than the price of the good",
+    "e2-demand"
+   ],
+   [
+    "Increase in demand (shift right)",
+    "e2-demand"
+   ],
+   [
+    "substitute",
+    "e2-demand"
+   ],
+   [
+    "complement",
+    "e2-demand"
+   ],
+   [
+    "Decrease in demand (shift left)",
+    "e2-demand"
+   ],
+   [
+    "Individual demand",
+    "e2-demand"
+   ],
+   [
+    "Supply",
+    "e2-supply"
+   ],
+   [
+    "Market supply",
+    "e2-supply"
+   ],
+   [
+    "sum of all firms’ supplies",
+    "e2-supply"
+   ],
+   [
+    "curve slopes upwards",
+    "e2-supply"
+   ],
+   [
+    "as price rises, quantity supplied rises",
+    "e2-supply"
+   ],
+   [
+    "Increase in supply (shift right)",
+    "e2-supply"
+   ],
+   [
+    "technology",
+    "e2-supply"
+   ],
+   [
+    "subsidy",
+    "e2-supply"
+   ],
+   [
+    "Decrease in supply (shift left)",
+    "e2-supply"
+   ],
+   [
+    "indirect tax",
+    "e2-supply"
+   ],
+   [
+    "Individual supply",
+    "e2-supply"
+   ],
+   [
+    "price mechanism",
+    "e2-price"
+   ],
+   [
+    "what",
+    "e2-price"
+   ],
+   [
+    "how",
+    "e2-price"
+   ],
+   [
+    "for whom",
+    "e2-price"
+   ],
+   [
+    "signals and incentives",
+    "e2-price"
+   ],
+   [
+    "Market equilibrium",
+    "e2-price"
+   ],
+   [
+    "equilibrium price (Pe)",
+    "e2-price"
+   ],
+   [
+    "equilibrium quantity (Qe)",
+    "e2-price"
+   ],
+   [
+    "demand and supply curves cross",
+    "e2-price"
+   ],
+   [
+    "Disequilibrium",
+    "e2-price"
+   ],
+   [
+    "not equal",
+    "e2-price"
+   ],
+   [
+    "below",
+    "e2-price"
+   ],
+   [
+    "shortage",
+    "e2-price"
+   ],
+   [
+    "above",
+    "e2-price"
+   ],
+   [
+    "surplus",
+    "e2-price"
+   ],
+   [
+    "down",
+    "e2-price"
+   ],
+   [
+    "Increase in demand",
+    "e2-pricechange"
+   ],
+   [
+    "rises",
+    "e2-pricechange"
+   ],
+   [
+    "Decrease in demand",
+    "e2-pricechange"
+   ],
+   [
+    "falls",
+    "e2-pricechange"
+   ],
+   [
+    "Increase in supply",
+    "e2-pricechange"
+   ],
+   [
+    "Decrease in supply",
+    "e2-pricechange"
+   ],
+   [
+    "sales and revenue",
+    "e2-pricechange"
+   ],
+   [
+    "producers’ profits",
+    "e2-pricechange"
+   ],
+   [
+    "afford",
+    "e2-pricechange"
+   ],
+   [
+    "higher price",
+    "e2-pricechange"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "e2-markets",
+    "title": "How markets work"
+   },
+   {
+    "id": "e2-demand",
+    "title": "Demand"
+   },
+   {
+    "id": "e2-supply",
+    "title": "Supply"
+   },
+   {
+    "id": "e2-price",
+    "title": "Price determination"
+   },
+   {
+    "id": "e2-pricechange",
+    "title": "Price changes"
+   },
+   {
+    "id": "e2-ped",
+    "title": "Price elasticity of demand (PED)"
+   },
+   {
+    "id": "e2-pes",
+    "title": "Price elasticity of supply (PES)"
+   },
+   {
+    "id": "e2-system",
+    "title": "Market economic system"
+   },
+   {
+    "id": "e2-failure",
+    "title": "Market failure"
+   },
+   {
+    "id": "e2-mixed",
+    "title": "Mixed economic system and government intervention"
+   }
+  ]
+ },
+ {
+  "id": "unit-3",
+  "kind": "generated",
+  "unit": 3,
+  "unitTitle": "Microeconomic Decision-Makers",
+  "title": "Microeconomic Decision-Makers",
+  "syllabusRef": "3.1 to 3.7",
+  "status": "draft",
+  "minutes": 42,
+  "objectives": [
+   {
+    "id": "e3-money",
+    "text": "Money and banking (syllabus 3.1)"
+   },
+   {
+    "id": "e3-households",
+    "text": "Households (syllabus 3.2)"
+   },
+   {
+    "id": "e3-workers",
+    "text": "Workers (syllabus 3.3)"
+   },
+   {
+    "id": "e3-firms",
+    "text": "Firms (syllabus 3.4)"
+   },
+   {
+    "id": "e3-production",
+    "text": "Firms and production (syllabus 3.5)"
+   },
+   {
+    "id": "e3-costs",
+    "text": "Firms’ costs, revenue and objectives (syllabus 3.6)"
+   },
+   {
+    "id": "e3-markets",
+    "text": "Market structures (syllabus 3.7)"
+   }
+  ],
+  "terms": [
+   [
+    "Money",
+    "e3-money"
+   ],
+   [
+    "medium of exchange",
+    "e3-money"
+   ],
+   [
+    "store of value",
+    "e3-money"
+   ],
+   [
+    "unit of account",
+    "e3-money"
+   ],
+   [
+    "standard for deferred payment",
+    "e3-money"
+   ],
+   [
+    "barter",
+    "e3-money"
+   ],
+   [
+    "double coincidence of wants",
+    "e3-money"
+   ],
+   [
+    "Commercial banks",
+    "e3-money"
+   ],
+   [
+    "deposits",
+    "e3-money"
+   ],
+   [
+    "loans",
+    "e3-money"
+   ],
+   [
+    "overdrafts",
+    "e3-money"
+   ],
+   [
+    "central bank",
+    "e3-money"
+   ],
+   [
+    "money supply and interest rates",
+    "e3-money"
+   ],
+   [
+    "lender of last resort",
+    "e3-money"
+   ],
+   [
+    "Forms of money",
+    "e3-money"
+   ],
+   [
+    "Characteristics of good money",
+    "e3-money"
+   ],
+   [
+    "acceptable",
+    "e3-money"
+   ],
+   [
+    "durable",
+    "e3-money"
+   ],
+   [
+    "portable",
+    "e3-money"
+   ],
+   [
+    "divisible",
+    "e3-money"
+   ],
+   [
+    "scarce",
+    "e3-money"
+   ],
+   [
+    "uniform",
+    "e3-money"
+   ],
+   [
+    "Spending",
+    "e3-households"
+   ],
+   [
+    "income",
+    "e3-households"
+   ],
+   [
+    "wealth",
+    "e3-households"
+   ],
+   [
+    "interest rates",
+    "e3-households"
+   ],
+   [
+    "confidence",
+    "e3-households"
+   ],
+   [
+    "save a larger amount",
+    "e3-households"
+   ],
+   [
+    "Saving",
+    "e3-households"
+   ],
+   [
+    "interest",
+    "e3-households"
+   ],
+   [
+    "Borrowing",
+    "e3-households"
+   ],
+   [
+    "repaid with interest",
+    "e3-households"
+   ],
+   [
+    "rise in interest rates",
+    "e3-households"
+   ],
+   [
+    "Age",
+    "e3-households"
+   ],
+   [
+    "Culture",
+    "e3-households"
+   ],
+   [
+    "labour market",
+    "e3-workers"
+   ],
+   [
+    "demand for labour",
+    "e3-workers"
+   ],
+   [
+    "supply of labour",
+    "e3-workers"
+   ],
+   [
+    "higher",
+    "e3-workers"
+   ],
+   [
+    "skills, qualifications and experience",
+    "e3-workers"
+   ],
+   [
+    "risky or unpleasant",
+    "e3-workers"
+   ],
+   [
+    "high demand",
+    "e3-workers"
+   ],
+   [
+    "unskilled",
+    "e3-workers"
+   ],
+   [
+    "minimum wage",
+    "e3-workers"
+   ],
+   [
+    "unemployment",
+    "e3-workers"
+   ],
+   [
+    "Trade unions",
+    "e3-workers"
+   ],
+   [
+    "pay",
+    "e3-workers"
+   ],
+   [
+    "non-pay factors",
+    "e3-workers"
+   ],
+   [
+    "time rate",
+    "e3-workers"
+   ],
+   [
+    "piece rate",
+    "e3-workers"
+   ],
+   [
+    "salary",
+    "e3-workers"
+   ],
+   [
+    "commission",
+    "e3-workers"
+   ],
+   [
+    "bonus",
+    "e3-workers"
+   ],
+   [
+    "Wage factors",
+    "e3-workers"
+   ],
+   [
+    "Non-wage factors",
+    "e3-workers"
+   ],
+   [
+    "job security",
+    "e3-workers"
+   ],
+   [
+    "promotion prospects",
+    "e3-workers"
+   ],
+   [
+    "fringe benefits",
+    "e3-workers"
+   ],
+   [
+    "Demand and supply of labour",
+    "e3-workers"
+   ],
+   [
+    "Bargaining strength",
+    "e3-workers"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "e3-money",
+    "title": "Money and banking"
+   },
+   {
+    "id": "e3-households",
+    "title": "Households"
+   },
+   {
+    "id": "e3-workers",
+    "title": "Workers"
+   },
+   {
+    "id": "e3-firms",
+    "title": "Firms"
+   },
+   {
+    "id": "e3-production",
+    "title": "Firms and production"
+   },
+   {
+    "id": "e3-costs",
+    "title": "Firms’ costs, revenue and objectives"
+   },
+   {
+    "id": "e3-markets",
+    "title": "Market structures"
+   }
+  ]
+ },
+ {
+  "id": "unit-4",
+  "kind": "generated",
+  "unit": 4,
+  "unitTitle": "Government and the Macroeconomy",
+  "title": "Government and the Macroeconomy",
+  "syllabusRef": "4.1 to 4.7",
+  "status": "draft",
+  "minutes": 42,
+  "objectives": [
+   {
+    "id": "e4-aims",
+    "text": "The role of government and macroeconomic aims (syllabus 4.1)"
+   },
+   {
+    "id": "e4-fiscal",
+    "text": "Fiscal policy (syllabus 4.2)"
+   },
+   {
+    "id": "e4-monetary",
+    "text": "Monetary policy (syllabus 4.3)"
+   },
+   {
+    "id": "e4-supplyside",
+    "text": "Supply-side policy (syllabus 4.4)"
+   },
+   {
+    "id": "e4-growth",
+    "text": "Economic growth (syllabus 4.5)"
+   },
+   {
+    "id": "e4-unemployment",
+    "text": "Employment and unemployment (syllabus 4.6)"
+   },
+   {
+    "id": "e4-inflation",
+    "text": "Inflation and deflation (syllabus 4.7)"
+   }
+  ],
+  "terms": [
+   [
+    "economic growth",
+    "e4-aims"
+   ],
+   [
+    "low unemployment",
+    "e4-aims"
+   ],
+   [
+    "stable prices (low inflation)",
+    "e4-aims"
+   ],
+   [
+    "balance of payments",
+    "e4-aims"
+   ],
+   [
+    "redistribution of income",
+    "e4-aims"
+   ],
+   [
+    "protection of the environment",
+    "e4-aims"
+   ],
+   [
+    "conflict",
+    "e4-aims"
+   ],
+   [
+    "living standards",
+    "e4-aims"
+   ],
+   [
+    "criteria",
+    "e4-aims"
+   ],
+   [
+    "Conflicts",
+    "e4-aims"
+   ],
+   [
+    "full employment and stable prices",
+    "e4-aims"
+   ],
+   [
+    "growth and environmental sustainability",
+    "e4-aims"
+   ],
+   [
+    "Fiscal policy",
+    "e4-fiscal"
+   ],
+   [
+    "taxation and government spending",
+    "e4-fiscal"
+   ],
+   [
+    "Direct taxes",
+    "e4-fiscal"
+   ],
+   [
+    "Indirect taxes",
+    "e4-fiscal"
+   ],
+   [
+    "progressive",
+    "e4-fiscal"
+   ],
+   [
+    "proportional",
+    "e4-fiscal"
+   ],
+   [
+    "regressive",
+    "e4-fiscal"
+   ],
+   [
+    "budget deficit",
+    "e4-fiscal"
+   ],
+   [
+    "surplus",
+    "e4-fiscal"
+   ],
+   [
+    "Expansionary fiscal policy",
+    "e4-fiscal"
+   ],
+   [
+    "demand, growth and jobs",
+    "e4-fiscal"
+   ],
+   [
+    "inflation",
+    "e4-fiscal"
+   ],
+   [
+    "Contractionary fiscal policy",
+    "e4-fiscal"
+   ],
+   [
+    "government budget",
+    "e4-fiscal"
+   ],
+   [
+    "Budget surplus",
+    "e4-fiscal"
+   ],
+   [
+    "Size = revenue − spending",
+    "e4-fiscal"
+   ],
+   [
+    "Reasons and effects",
+    "e4-fiscal"
+   ],
+   [
+    "Reasons",
+    "e4-fiscal"
+   ],
+   [
+    "revenue",
+    "e4-fiscal"
+   ],
+   [
+    "demerit goods",
+    "e4-fiscal"
+   ],
+   [
+    "imports",
+    "e4-fiscal"
+   ],
+   [
+    "redistribute income",
+    "e4-fiscal"
+   ],
+   [
+    "total demand",
+    "e4-fiscal"
+   ],
+   [
+    "environmental sustainability",
+    "e4-fiscal"
+   ],
+   [
+    "Impact",
+    "e4-fiscal"
+   ],
+   [
+    "government spending and taxation",
+    "e4-fiscal"
+   ],
+   [
+    "To boost growth and jobs",
+    "e4-fiscal"
+   ],
+   [
+    "To cut inflation",
+    "e4-fiscal"
+   ],
+   [
+    "Monetary policy",
+    "e4-monetary"
+   ],
+   [
+    "central bank",
+    "e4-monetary"
+   ],
+   [
+    "interest rates",
+    "e4-monetary"
+   ],
+   [
+    "money supply",
+    "e4-monetary"
+   ],
+   [
+    "exchange rate",
+    "e4-monetary"
+   ],
+   [
+    "Raising interest rates",
+    "e4-monetary"
+   ],
+   [
+    "inflation falls",
+    "e4-monetary"
+   ],
+   [
+    "growth may slow",
+    "e4-monetary"
+   ],
+   [
+    "Lowering rates",
+    "e4-monetary"
+   ],
+   [
+    "Expansionary",
+    "e4-monetary"
+   ],
+   [
+    "Contractionary",
+    "e4-monetary"
+   ],
+   [
+    "higher exchange rate",
+    "e4-monetary"
+   ],
+   [
+    "Cutting interest rates",
+    "e4-monetary"
+   ],
+   [
+    "stronger currency",
+    "e4-monetary"
+   ],
+   [
+    "Supply-side policies",
+    "e4-supplyside"
+   ],
+   [
+    "increase productive capacity",
+    "e4-supplyside"
+   ],
+   [
+    "education and training",
+    "e4-supplyside"
+   ],
+   [
+    "investment in infrastructure",
+    "e4-supplyside"
+   ],
+   [
+    "deregulation",
+    "e4-supplyside"
+   ],
+   [
+    "privatisation",
+    "e4-supplyside"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "e4-aims",
+    "title": "The role of government and macroeconomic aims"
+   },
+   {
+    "id": "e4-fiscal",
+    "title": "Fiscal policy"
+   },
+   {
+    "id": "e4-monetary",
+    "title": "Monetary policy"
+   },
+   {
+    "id": "e4-supplyside",
+    "title": "Supply-side policy"
+   },
+   {
+    "id": "e4-growth",
+    "title": "Economic growth"
+   },
+   {
+    "id": "e4-unemployment",
+    "title": "Employment and unemployment"
+   },
+   {
+    "id": "e4-inflation",
+    "title": "Inflation and deflation"
+   }
+  ]
+ },
+ {
+  "id": "unit-5",
+  "kind": "generated",
+  "unit": 5,
+  "unitTitle": "Economic Development",
+  "title": "Economic Development",
+  "syllabusRef": "5.1 to 5.4",
+  "status": "draft",
+  "minutes": 24,
+  "objectives": [
+   {
+    "id": "e5-living",
+    "text": "Living standards (syllabus 5.1)"
+   },
+   {
+    "id": "e5-poverty",
+    "text": "Poverty (syllabus 5.2)"
+   },
+   {
+    "id": "e5-population",
+    "text": "Population (syllabus 5.3)"
+   },
+   {
+    "id": "e5-development",
+    "text": "Development (syllabus 5.4)"
+   }
+  ],
+  "terms": [
+   [
+    "Real GDP per head",
+    "e5-living"
+   ],
+   [
+    "inequality",
+    "e5-living"
+   ],
+   [
+    "non-market output",
+    "e5-living"
+   ],
+   [
+    "Human Development Index (HDI)",
+    "e5-living"
+   ],
+   [
+    "income",
+    "e5-living"
+   ],
+   [
+    "health",
+    "e5-living"
+   ],
+   [
+    "education",
+    "e5-living"
+   ],
+   [
+    "Developed",
+    "e5-living"
+   ],
+   [
+    "developing",
+    "e5-living"
+   ],
+   [
+    "average",
+    "e5-living"
+   ],
+   [
+    "HDI",
+    "e5-living"
+   ],
+   [
+    "income, health and education",
+    "e5-living"
+   ],
+   [
+    "Disadvantages",
+    "e5-living"
+   ],
+   [
+    "between countries",
+    "e5-living"
+   ],
+   [
+    "unequally distributed",
+    "e5-living"
+   ],
+   [
+    "Absolute poverty",
+    "e5-poverty"
+   ],
+   [
+    "basic needs",
+    "e5-poverty"
+   ],
+   [
+    "Relative poverty",
+    "e5-poverty"
+   ],
+   [
+    "much less income than the average",
+    "e5-poverty"
+   ],
+   [
+    "Causes",
+    "e5-poverty"
+   ],
+   [
+    "Policies",
+    "e5-poverty"
+   ],
+   [
+    "illness",
+    "e5-poverty"
+   ],
+   [
+    "age",
+    "e5-poverty"
+   ],
+   [
+    "environmental factors",
+    "e5-poverty"
+   ],
+   [
+    "healthcare",
+    "e5-poverty"
+   ],
+   [
+    "state benefits",
+    "e5-poverty"
+   ],
+   [
+    "progressive taxation",
+    "e5-poverty"
+   ],
+   [
+    "national minimum wage",
+    "e5-poverty"
+   ],
+   [
+    "birth rate",
+    "e5-population"
+   ],
+   [
+    "death rate",
+    "e5-population"
+   ],
+   [
+    "Age structure",
+    "e5-population"
+   ],
+   [
+    "ageing population",
+    "e5-population"
+   ],
+   [
+    "Population density",
+    "e5-population"
+   ],
+   [
+    "growing working-age population",
+    "e5-population"
+   ],
+   [
+    "jobs",
+    "e5-population"
+   ],
+   [
+    "resources, housing and public services",
+    "e5-population"
+   ],
+   [
+    "dependency ratio",
+    "e5-population"
+   ],
+   [
+    "tax burden",
+    "e5-population"
+   ],
+   [
+    "Net migration = immigration − emigration",
+    "e5-population"
+   ],
+   [
+    "Optimum population",
+    "e5-population"
+   ],
+   [
+    "highest output per head",
+    "e5-population"
+   ],
+   [
+    "Overpopulation",
+    "e5-population"
+   ],
+   [
+    "Underpopulation",
+    "e5-population"
+   ],
+   [
+    "Effects of change",
+    "e5-population"
+   ],
+   [
+    "ageing",
+    "e5-population"
+   ],
+   [
+    "males and females",
+    "e5-population"
+   ],
+   [
+    "Education and healthcare",
+    "e5-development"
+   ],
+   [
+    "Investment",
+    "e5-development"
+   ],
+   [
+    "Foreign aid",
+    "e5-development"
+   ],
+   [
+    "foreign direct investment",
+    "e5-development"
+   ],
+   [
+    "Trade",
+    "e5-development"
+   ],
+   [
+    "Problems",
+    "e5-development"
+   ],
+   [
+    "productivity",
+    "e5-development"
+   ],
+   [
+    "population growth",
+    "e5-development"
+   ],
+   [
+    "primary, secondary and tertiary sectors",
+    "e5-development"
+   ],
+   [
+    "saving and investment",
+    "e5-development"
+   ],
+   [
+    "natural resources",
+    "e5-development"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "e5-living",
+    "title": "Living standards"
+   },
+   {
+    "id": "e5-poverty",
+    "title": "Poverty"
+   },
+   {
+    "id": "e5-population",
+    "title": "Population"
+   },
+   {
+    "id": "e5-development",
+    "title": "Development"
+   }
+  ]
+ },
+ {
+  "id": "unit-6",
+  "kind": "generated",
+  "unit": 6,
+  "unitTitle": "International Trade and Globalisation",
+  "title": "International Trade and Globalisation",
+  "syllabusRef": "6.1 to 6.4",
+  "status": "draft",
+  "minutes": 24,
+  "objectives": [
+   {
+    "id": "e6-trade",
+    "text": "Specialisation and free trade (syllabus 6.1)"
+   },
+   {
+    "id": "e6-global",
+    "text": "Globalisation and multinationals (syllabus 6.2)"
+   },
+   {
+    "id": "e6-fx",
+    "text": "Foreign exchange rates (syllabus 6.3)"
+   },
+   {
+    "id": "e6-bop",
+    "text": "Balance of payments (syllabus 6.4)"
+   }
+  ],
+  "terms": [
+   [
+    "Specialisation",
+    "e6-trade"
+   ],
+   [
+    "most efficiently",
+    "e6-trade"
+   ],
+   [
+    "Advantages",
+    "e6-trade"
+   ],
+   [
+    "Disadvantages",
+    "e6-trade"
+   ],
+   [
+    "Free trade",
+    "e6-trade"
+   ],
+   [
+    "lower prices",
+    "e6-trade"
+   ],
+   [
+    "wider choice",
+    "e6-trade"
+   ],
+   [
+    "competition",
+    "e6-trade"
+   ],
+   [
+    "Protectionism",
+    "e6-trade"
+   ],
+   [
+    "infant and key industries and jobs",
+    "e6-trade"
+   ],
+   [
+    "retaliation",
+    "e6-trade"
+   ],
+   [
+    "Specialisation by country",
+    "e6-trade"
+   ],
+   [
+    "best resources",
+    "e6-trade"
+   ],
+   [
+    "lower costs",
+    "e6-trade"
+   ],
+   [
+    "Advantages of free trade",
+    "e6-trade"
+   ],
+   [
+    "Globalisation",
+    "e6-global"
+   ],
+   [
+    "integration of economies",
+    "e6-global"
+   ],
+   [
+    "multinational company (MNC)",
+    "e6-global"
+   ],
+   [
+    "more than one country",
+    "e6-global"
+   ],
+   [
+    "Benefits to host countries",
+    "e6-global"
+   ],
+   [
+    "Costs",
+    "e6-global"
+   ],
+   [
+    "Causes",
+    "e6-global"
+   ],
+   [
+    "trade restrictions",
+    "e6-global"
+   ],
+   [
+    "transport costs",
+    "e6-global"
+   ],
+   [
+    "communication costs",
+    "e6-global"
+   ],
+   [
+    "multinational companies",
+    "e6-global"
+   ],
+   [
+    "Effects",
+    "e6-global"
+   ],
+   [
+    "MNC",
+    "e6-global"
+   ],
+   [
+    "Host country advantages",
+    "e6-global"
+   ],
+   [
+    "Home country advantages",
+    "e6-global"
+   ],
+   [
+    "Tariff",
+    "e6-global"
+   ],
+   [
+    "Import quota",
+    "e6-global"
+   ],
+   [
+    "Subsidy",
+    "e6-global"
+   ],
+   [
+    "Embargo",
+    "e6-global"
+   ],
+   [
+    "Reasons",
+    "e6-global"
+   ],
+   [
+    "infant (sunrise) industries",
+    "e6-global"
+   ],
+   [
+    "declining (sunset) industries",
+    "e6-global"
+   ],
+   [
+    "strategic industries",
+    "e6-global"
+   ],
+   [
+    "dumping",
+    "e6-global"
+   ],
+   [
+    "current account deficit",
+    "e6-global"
+   ],
+   [
+    "tax revenue",
+    "e6-global"
+   ],
+   [
+    "demerit goods",
+    "e6-global"
+   ],
+   [
+    "environmental sustainability",
+    "e6-global"
+   ],
+   [
+    "Consequences",
+    "e6-global"
+   ],
+   [
+    "higher prices and less choice",
+    "e6-global"
+   ],
+   [
+    "retaliate",
+    "e6-global"
+   ],
+   [
+    "exchange rate",
+    "e6-fx"
+   ],
+   [
+    "floating",
+    "e6-fx"
+   ],
+   [
+    "demand and supply of the currency",
+    "e6-fx"
+   ],
+   [
+    "fixed",
+    "e6-fx"
+   ],
+   [
+    "Appreciation",
+    "e6-fx"
+   ],
+   [
+    "depreciation",
+    "e6-fx"
+   ],
+   [
+    "more expensive abroad",
+    "e6-fx"
+   ],
+   [
+    "cheaper",
+    "e6-fx"
+   ],
+   [
+    "cheaper abroad",
+    "e6-fx"
+   ],
+   [
+    "dearer",
+    "e6-fx"
+   ],
+   [
+    "goods and services",
+    "e6-fx"
+   ],
+   [
+    "investment",
+    "e6-fx"
+   ],
+   [
+    "profit, interest and dividends",
+    "e6-fx"
+   ],
+   [
+    "workers’ remittances",
+    "e6-fx"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "e6-trade",
+    "title": "Specialisation and free trade"
+   },
+   {
+    "id": "e6-global",
+    "title": "Globalisation and multinationals"
+   },
+   {
+    "id": "e6-fx",
+    "title": "Foreign exchange rates"
+   },
+   {
+    "id": "e6-bop",
+    "title": "Balance of payments"
+   }
+  ]
+ }
+]

@@ -1,0 +1,1882 @@
+[
+ {
+  "id": "unit-1",
+  "kind": "generated",
+  "unit": 1,
+  "unitTitle": "Particles, Atoms and Bonding",
+  "title": "Particles, Atoms and Bonding",
+  "syllabusRef": "1.1 to 2.7",
+  "status": "draft",
+  "minutes": 54,
+  "objectives": [
+   {
+    "id": "c1-states",
+    "text": "Solids, liquids and gases (syllabus 1.1)"
+   },
+   {
+    "id": "c1-diffusion",
+    "text": "Diffusion (syllabus 1.2)"
+   },
+   {
+    "id": "c2-substances",
+    "text": "Elements, compounds and mixtures (syllabus 2.1)"
+   },
+   {
+    "id": "c2-atoms",
+    "text": "Atomic structure and the Periodic Table (syllabus 2.2)"
+   },
+   {
+    "id": "c2-isotopes",
+    "text": "Isotopes (syllabus 2.3)"
+   },
+   {
+    "id": "c2-ionic",
+    "text": "Ions and ionic bonds (syllabus 2.4)"
+   },
+   {
+    "id": "c2-covalent",
+    "text": "Simple molecules and covalent bonds (syllabus 2.5)"
+   },
+   {
+    "id": "c2-giant",
+    "text": "Giant covalent structures (syllabus 2.6)"
+   },
+   {
+    "id": "c2-metallic",
+    "text": "Metallic bonding (syllabus 2.7)"
+   }
+  ],
+  "terms": [
+   [
+    "Solid",
+    "c1-states"
+   ],
+   [
+    "close together",
+    "c1-states"
+   ],
+   [
+    "regular pattern",
+    "c1-states"
+   ],
+   [
+    "vibrate",
+    "c1-states"
+   ],
+   [
+    "Liquid",
+    "c1-states"
+   ],
+   [
+    "irregularly arranged",
+    "c1-states"
+   ],
+   [
+    "slide past each other",
+    "c1-states"
+   ],
+   [
+    "Gas",
+    "c1-states"
+   ],
+   [
+    "far apart",
+    "c1-states"
+   ],
+   [
+    "quickly in random directions",
+    "c1-states"
+   ],
+   [
+    "Melting",
+    "c1-states"
+   ],
+   [
+    "freezing",
+    "c1-states"
+   ],
+   [
+    "boiling",
+    "c1-states"
+   ],
+   [
+    "evaporation",
+    "c1-states"
+   ],
+   [
+    "condensation",
+    "c1-states"
+   ],
+   [
+    "Sublimation",
+    "c1-states"
+   ],
+   [
+    "energy to overcome forces",
+    "c1-states"
+   ],
+   [
+    "release",
+    "c1-states"
+   ],
+   [
+    "temperature is constant",
+    "c1-states"
+   ],
+   [
+    "colliding with the walls",
+    "c1-states"
+   ],
+   [
+    "faster",
+    "c1-states"
+   ],
+   [
+    "harder and more often",
+    "c1-states"
+   ],
+   [
+    "more frequent",
+    "c1-states"
+   ],
+   [
+    "constant pressure",
+    "c1-states"
+   ],
+   [
+    "expands",
+    "c1-states"
+   ],
+   [
+    "increases",
+    "c1-states"
+   ],
+   [
+    "constant temperature",
+    "c1-states"
+   ],
+   [
+    "more often",
+    "c1-states"
+   ],
+   [
+    "Diffusion",
+    "c1-diffusion"
+   ],
+   [
+    "random motion",
+    "c1-diffusion"
+   ],
+   [
+    "gases and liquids",
+    "c1-diffusion"
+   ],
+   [
+    "evidence",
+    "c1-diffusion"
+   ],
+   [
+    "ammonia solution",
+    "c1-diffusion"
+   ],
+   [
+    "hydrochloric acid",
+    "c1-diffusion"
+   ],
+   [
+    "react to form white ammonium chloride",
+    "c1-diffusion"
+   ],
+   [
+    "closer to the HCl end",
+    "c1-diffusion"
+   ],
+   [
+    "NH₃ is lighter",
+    "c1-diffusion"
+   ],
+   [
+    "Temperature",
+    "c1-diffusion"
+   ],
+   [
+    "Mass of the particles",
+    "c1-diffusion"
+   ],
+   [
+    "lighter",
+    "c1-diffusion"
+   ],
+   [
+    "diffuse faster",
+    "c1-diffusion"
+   ],
+   [
+    "much faster in gases",
+    "c1-diffusion"
+   ],
+   [
+    "element",
+    "c2-substances"
+   ],
+   [
+    "one type of atom",
+    "c2-substances"
+   ],
+   [
+    "compound",
+    "c2-substances"
+   ],
+   [
+    "two or more elements chemically bonded",
+    "c2-substances"
+   ],
+   [
+    "fixed proportions",
+    "c2-substances"
+   ],
+   [
+    "mixture",
+    "c2-substances"
+   ],
+   [
+    "any proportion",
+    "c2-substances"
+   ],
+   [
+    "chemically combined",
+    "c2-substances"
+   ],
+   [
+    "properties differ",
+    "c2-substances"
+   ],
+   [
+    "fixed composition",
+    "c2-substances"
+   ],
+   [
+    "chemical reaction",
+    "c2-substances"
+   ],
+   [
+    "physical methods",
+    "c2-substances"
+   ],
+   [
+    "nucleus",
+    "c2-atoms"
+   ],
+   [
+    "protons",
+    "c2-atoms"
+   ],
+   [
+    "neutrons",
+    "c2-atoms"
+   ],
+   [
+    "electrons",
+    "c2-atoms"
+   ],
+   [
+    "Proton",
+    "c2-atoms"
+   ],
+   [
+    "Neutron",
+    "c2-atoms"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "c1-states",
+    "title": "Solids, liquids and gases"
+   },
+   {
+    "id": "c1-diffusion",
+    "title": "Diffusion"
+   },
+   {
+    "id": "c2-substances",
+    "title": "Elements, compounds and mixtures"
+   },
+   {
+    "id": "c2-atoms",
+    "title": "Atomic structure and the Periodic Table"
+   },
+   {
+    "id": "c2-isotopes",
+    "title": "Isotopes"
+   },
+   {
+    "id": "c2-ionic",
+    "title": "Ions and ionic bonds"
+   },
+   {
+    "id": "c2-covalent",
+    "title": "Simple molecules and covalent bonds"
+   },
+   {
+    "id": "c2-giant",
+    "title": "Giant covalent structures"
+   },
+   {
+    "id": "c2-metallic",
+    "title": "Metallic bonding"
+   }
+  ]
+ },
+ {
+  "id": "unit-2",
+  "kind": "generated",
+  "unit": 2,
+  "unitTitle": "Quantities and Electrochemistry",
+  "title": "Quantities and Electrochemistry",
+  "syllabusRef": "3.1 to 4.2",
+  "status": "draft",
+  "minutes": 30,
+  "objectives": [
+   {
+    "id": "c3-formulae",
+    "text": "Formulae and equations (syllabus 3.1)"
+   },
+   {
+    "id": "c3-masses",
+    "text": "Relative masses of atoms and molecules (syllabus 3.2)"
+   },
+   {
+    "id": "c3-mole",
+    "text": "The mole and the Avogadro constant (syllabus 3.3)"
+   },
+   {
+    "id": "c4-electrolysis",
+    "text": "Electrolysis (syllabus 4.1)"
+   },
+   {
+    "id": "c4-fuelcell",
+    "text": "Hydrogen–oxygen fuel cells (syllabus 4.2)"
+   }
+  ],
+  "terms": [
+   [
+    "formula",
+    "c3-formulae"
+   ],
+   [
+    "subscripts",
+    "c3-formulae"
+   ],
+   [
+    "brackets",
+    "c3-formulae"
+   ],
+   [
+    "in front",
+    "c3-formulae"
+   ],
+   [
+    "not created or destroyed",
+    "c3-formulae"
+   ],
+   [
+    "same number of each atom on both sides",
+    "c3-formulae"
+   ],
+   [
+    "numbers in front of formulae",
+    "c3-formulae"
+   ],
+   [
+    "2Mg + O₂ → 2MgO",
+    "c3-formulae"
+   ],
+   [
+    "(s)",
+    "c3-formulae"
+   ],
+   [
+    "(l)",
+    "c3-formulae"
+   ],
+   [
+    "(g)",
+    "c3-formulae"
+   ],
+   [
+    "(aq)",
+    "c3-formulae"
+   ],
+   [
+    "ionic equation",
+    "c3-formulae"
+   ],
+   [
+    "spectator ions",
+    "c3-formulae"
+   ],
+   [
+    "Ag⁺(aq) + Cl⁻(aq) → AgCl(s)",
+    "c3-formulae"
+   ],
+   [
+    "Relative atomic mass (Aᵣ)",
+    "c3-masses"
+   ],
+   [
+    "Relative molecular mass (Mᵣ)",
+    "c3-masses"
+   ],
+   [
+    "sum of the relative atomic masses",
+    "c3-masses"
+   ],
+   [
+    "relative formula mass",
+    "c3-masses"
+   ],
+   [
+    "no units",
+    "c3-masses"
+   ],
+   [
+    "mole",
+    "c3-mole"
+   ],
+   [
+    "amount of substance",
+    "c3-mole"
+   ],
+   [
+    "6.02 × 10²³",
+    "c3-mole"
+   ],
+   [
+    "Avogadro constant",
+    "c3-mole"
+   ],
+   [
+    "mass of one mole",
+    "c3-mole"
+   ],
+   [
+    "Amount in moles = mass in g ÷ Mᵣ (or Aᵣ)",
+    "c3-mole"
+   ],
+   [
+    "units",
+    "c3-mole"
+   ],
+   [
+    "any gas",
+    "c3-mole"
+   ],
+   [
+    "24 dm³ (24 000 cm³)",
+    "c3-mole"
+   ],
+   [
+    "room temperature and pressure (r.t.p.)",
+    "c3-mole"
+   ],
+   [
+    "Volume of gas = moles × 24 dm³",
+    "c3-mole"
+   ],
+   [
+    "Concentration",
+    "c3-mole"
+   ],
+   [
+    "mol/dm³",
+    "c3-mole"
+   ],
+   [
+    "g/dm³",
+    "c3-mole"
+   ],
+   [
+    "coefficients",
+    "c3-mole"
+   ],
+   [
+    "ratio of moles",
+    "c3-mole"
+   ],
+   [
+    "empirical formula",
+    "c3-mole"
+   ],
+   [
+    "simplest whole-number ratio of atoms",
+    "c3-mole"
+   ],
+   [
+    "limiting reactant",
+    "c3-mole"
+   ],
+   [
+    "completely used up",
+    "c3-mole"
+   ],
+   [
+    "in excess",
+    "c3-mole"
+   ],
+   [
+    "Electrolysis",
+    "c4-electrolysis"
+   ],
+   [
+    "electrolyte",
+    "c4-electrolysis"
+   ],
+   [
+    "electrodes",
+    "c4-electrolysis"
+   ],
+   [
+    "anode",
+    "c4-electrolysis"
+   ],
+   [
+    "positive",
+    "c4-electrolysis"
+   ],
+   [
+    "cathode",
+    "c4-electrolysis"
+   ],
+   [
+    "negative",
+    "c4-electrolysis"
+   ],
+   [
+    "negative ions (anions) move to the anode",
+    "c4-electrolysis"
+   ],
+   [
+    "molten binary ionic compound",
+    "c4-electrolysis"
+   ],
+   [
+    "metal at the cathode",
+    "c4-electrolysis"
+   ],
+   [
+    "non-metal at the anode",
+    "c4-electrolysis"
+   ],
+   [
+    "lead",
+    "c4-electrolysis"
+   ],
+   [
+    "bromine",
+    "c4-electrolysis"
+   ],
+   [
+    "hydrogen",
+    "c4-electrolysis"
+   ],
+   [
+    "less reactive than hydrogen",
+    "c4-electrolysis"
+   ],
+   [
+    "metal",
+    "c4-electrolysis"
+   ],
+   [
+    "halogen",
+    "c4-electrolysis"
+   ],
+   [
+    "oxygen",
+    "c4-electrolysis"
+   ],
+   [
+    "Concentrated sodium chloride (brine)",
+    "c4-electrolysis"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "c3-formulae",
+    "title": "Formulae and equations"
+   },
+   {
+    "id": "c3-masses",
+    "title": "Relative masses of atoms and molecules"
+   },
+   {
+    "id": "c3-mole",
+    "title": "The mole and the Avogadro constant"
+   },
+   {
+    "id": "c4-electrolysis",
+    "title": "Electrolysis"
+   },
+   {
+    "id": "c4-fuelcell",
+    "title": "Hydrogen–oxygen fuel cells"
+   }
+  ]
+ },
+ {
+  "id": "unit-3",
+  "kind": "generated",
+  "unit": 3,
+  "unitTitle": "Energy and Chemical Reactions",
+  "title": "Energy and Chemical Reactions",
+  "syllabusRef": "5.1 to 6.4",
+  "status": "draft",
+  "minutes": 30,
+  "objectives": [
+   {
+    "id": "c5-energetics",
+    "text": "Exothermic and endothermic reactions (syllabus 5.1)"
+   },
+   {
+    "id": "c6-changes",
+    "text": "Physical and chemical changes (syllabus 6.1)"
+   },
+   {
+    "id": "c6-rate",
+    "text": "Rate of reaction (syllabus 6.2)"
+   },
+   {
+    "id": "c6-equilibrium",
+    "text": "Reversible reactions and equilibrium (syllabus 6.3)"
+   },
+   {
+    "id": "c6-redox",
+    "text": "Redox (syllabus 6.4)"
+   }
+  ],
+  "terms": [
+   [
+    "exothermic",
+    "c5-energetics"
+   ],
+   [
+    "transfers energy to the surroundings",
+    "c5-energetics"
+   ],
+   [
+    "rises",
+    "c5-energetics"
+   ],
+   [
+    "endothermic",
+    "c5-energetics"
+   ],
+   [
+    "takes in energy from the surroundings",
+    "c5-energetics"
+   ],
+   [
+    "falls",
+    "c5-energetics"
+   ],
+   [
+    "negative",
+    "c5-energetics"
+   ],
+   [
+    "positive",
+    "c5-energetics"
+   ],
+   [
+    "reaction profile",
+    "c5-energetics"
+   ],
+   [
+    "activation energy",
+    "c5-energetics"
+   ],
+   [
+    "lower in energy",
+    "c5-energetics"
+   ],
+   [
+    "higher",
+    "c5-energetics"
+   ],
+   [
+    "difference",
+    "c5-energetics"
+   ],
+   [
+    "overall energy change",
+    "c5-energetics"
+   ],
+   [
+    "Breaking bonds is endothermic",
+    "c5-energetics"
+   ],
+   [
+    "Making bonds is exothermic",
+    "c5-energetics"
+   ],
+   [
+    "kJ/mol",
+    "c5-energetics"
+   ],
+   [
+    "physical change",
+    "c6-changes"
+   ],
+   [
+    "easy to reverse",
+    "c6-changes"
+   ],
+   [
+    "chemical change",
+    "c6-changes"
+   ],
+   [
+    "new substances form",
+    "c6-changes"
+   ],
+   [
+    "hard to reverse",
+    "c6-changes"
+   ],
+   [
+    "Increase the concentration",
+    "c6-rate"
+   ],
+   [
+    "pressure",
+    "c6-rate"
+   ],
+   [
+    "temperature",
+    "c6-rate"
+   ],
+   [
+    "surface area",
+    "c6-rate"
+   ],
+   [
+    "catalyst",
+    "c6-rate"
+   ],
+   [
+    "more surface area",
+    "c6-rate"
+   ],
+   [
+    "collision theory",
+    "c6-rate"
+   ],
+   [
+    "collide",
+    "c6-rate"
+   ],
+   [
+    "at least the activation energy",
+    "c6-rate"
+   ],
+   [
+    "successful collisions",
+    "c6-rate"
+   ],
+   [
+    "Higher concentration or pressure",
+    "c6-rate"
+   ],
+   [
+    "more frequent collisions",
+    "c6-rate"
+   ],
+   [
+    "Higher temperature",
+    "c6-rate"
+   ],
+   [
+    "more frequent",
+    "c6-rate"
+   ],
+   [
+    "more of them have enough energy",
+    "c6-rate"
+   ],
+   [
+    "volume of gas against time",
+    "c6-rate"
+   ],
+   [
+    "steeper",
+    "c6-rate"
+   ],
+   [
+    "faster",
+    "c6-rate"
+   ],
+   [
+    "levels off",
+    "c6-rate"
+   ],
+   [
+    "steeper curve",
+    "c6-rate"
+   ],
+   [
+    "same final volume",
+    "c6-rate"
+   ],
+   [
+    "speeds up a reaction",
+    "c6-rate"
+   ],
+   [
+    "used up",
+    "c6-rate"
+   ],
+   [
+    "chemically unchanged",
+    "c6-rate"
+   ],
+   [
+    "Enzymes",
+    "c6-rate"
+   ],
+   [
+    "biological catalysts",
+    "c6-rate"
+   ],
+   [
+    "photochemical reaction",
+    "c6-rate"
+   ],
+   [
+    "uses light energy",
+    "c6-rate"
+   ],
+   [
+    "photosynthesis",
+    "c6-rate"
+   ],
+   [
+    "darkening of silver bromide",
+    "c6-rate"
+   ],
+   [
+    "light intensity",
+    "c6-rate"
+   ],
+   [
+    "reversible reaction",
+    "c6-equilibrium"
+   ],
+   [
+    "Hydrated copper(II) sulfate (blue)",
+    "c6-equilibrium"
+   ],
+   [
+    "anhydrous copper(II) sulfate (white)",
+    "c6-equilibrium"
+   ],
+   [
+    "blue",
+    "c6-equilibrium"
+   ],
+   [
+    "releases energy",
+    "c6-equilibrium"
+   ],
+   [
+    "test for water",
+    "c6-equilibrium"
+   ],
+   [
+    "Equilibrium",
+    "c6-equilibrium"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "c5-energetics",
+    "title": "Exothermic and endothermic reactions"
+   },
+   {
+    "id": "c6-changes",
+    "title": "Physical and chemical changes"
+   },
+   {
+    "id": "c6-rate",
+    "title": "Rate of reaction"
+   },
+   {
+    "id": "c6-equilibrium",
+    "title": "Reversible reactions and equilibrium"
+   },
+   {
+    "id": "c6-redox",
+    "title": "Redox"
+   }
+  ]
+ },
+ {
+  "id": "unit-4",
+  "kind": "generated",
+  "unit": 4,
+  "unitTitle": "Acids, Salts and the Periodic Table",
+  "title": "Acids, Salts and the Periodic Table",
+  "syllabusRef": "7.1 to 8.5",
+  "status": "draft",
+  "minutes": 48,
+  "objectives": [
+   {
+    "id": "c7-acids",
+    "text": "Acids and bases (syllabus 7.1)"
+   },
+   {
+    "id": "c7-oxides",
+    "text": "Oxides (syllabus 7.2)"
+   },
+   {
+    "id": "c7-salts",
+    "text": "Preparation of salts (syllabus 7.3)"
+   },
+   {
+    "id": "c8-table",
+    "text": "Arrangement of elements (syllabus 8.1)"
+   },
+   {
+    "id": "c8-group1",
+    "text": "Group I: the alkali metals (syllabus 8.2)"
+   },
+   {
+    "id": "c8-group7",
+    "text": "Group VII: the halogens (syllabus 8.3)"
+   },
+   {
+    "id": "c8-transition",
+    "text": "Transition elements (syllabus 8.4)"
+   },
+   {
+    "id": "c8-noble",
+    "text": "Noble gases (syllabus 8.5)"
+   }
+  ],
+  "terms": [
+   [
+    "acid",
+    "c7-acids"
+   ],
+   [
+    "H⁺ ions in water",
+    "c7-acids"
+   ],
+   [
+    "base",
+    "c7-acids"
+   ],
+   [
+    "alkali",
+    "c7-acids"
+   ],
+   [
+    "soluble base",
+    "c7-acids"
+   ],
+   [
+    "OH⁻ ions",
+    "c7-acids"
+   ],
+   [
+    "pH scale",
+    "c7-acids"
+   ],
+   [
+    "below 7 acidic",
+    "c7-acids"
+   ],
+   [
+    "7 neutral",
+    "c7-acids"
+   ],
+   [
+    "above 7 alkaline",
+    "c7-acids"
+   ],
+   [
+    "Universal indicator",
+    "c7-acids"
+   ],
+   [
+    "red in acid and blue in alkali",
+    "c7-acids"
+   ],
+   [
+    "red in acid and yellow in alkali",
+    "c7-acids"
+   ],
+   [
+    "colourless in acid and blue in alkali",
+    "c7-acids"
+   ],
+   [
+    "Acid + base (or alkali) → salt + water",
+    "c7-acids"
+   ],
+   [
+    "neutralisation",
+    "c7-acids"
+   ],
+   [
+    "H⁺(aq) + OH⁻(aq) → H₂O(l)",
+    "c7-acids"
+   ],
+   [
+    "Acid + reactive metal → salt + hydrogen",
+    "c7-acids"
+   ],
+   [
+    "strong acid",
+    "c7-acids"
+   ],
+   [
+    "completely ionised",
+    "c7-acids"
+   ],
+   [
+    "hydrochloric acid",
+    "c7-acids"
+   ],
+   [
+    "weak acid",
+    "c7-acids"
+   ],
+   [
+    "partially ionised",
+    "c7-acids"
+   ],
+   [
+    "ethanoic acid",
+    "c7-acids"
+   ],
+   [
+    "lower pH",
+    "c7-acids"
+   ],
+   [
+    "conducts better",
+    "c7-acids"
+   ],
+   [
+    "faster",
+    "c7-acids"
+   ],
+   [
+    "proton (H⁺) donor",
+    "c7-acids"
+   ],
+   [
+    "proton acceptor",
+    "c7-acids"
+   ],
+   [
+    "Litmus",
+    "c7-acids"
+   ],
+   [
+    "Methyl orange",
+    "c7-acids"
+   ],
+   [
+    "Thymolphthalein",
+    "c7-acids"
+   ],
+   [
+    "H⁺ ions",
+    "c7-acids"
+   ],
+   [
+    "ammonium salt",
+    "c7-acids"
+   ],
+   [
+    "ammonia",
+    "c7-acids"
+   ],
+   [
+    "Acidic oxides",
+    "c7-oxides"
+   ],
+   [
+    "non-metal",
+    "c7-oxides"
+   ],
+   [
+    "CO₂ and SO₂",
+    "c7-oxides"
+   ],
+   [
+    "Basic oxides",
+    "c7-oxides"
+   ],
+   [
+    "metal oxides",
+    "c7-oxides"
+   ],
+   [
+    "CuO and MgO",
+    "c7-oxides"
+   ],
+   [
+    "Amphoteric oxides",
+    "c7-oxides"
+   ],
+   [
+    "aluminium oxide (Al₂O₃)",
+    "c7-oxides"
+   ],
+   [
+    "zinc oxide (ZnO)",
+    "c7-oxides"
+   ],
+   [
+    "both acids and bases",
+    "c7-oxides"
+   ],
+   [
+    "solid in excess",
+    "c7-salts"
+   ],
+   [
+    "warm acid",
+    "c7-salts"
+   ],
+   [
+    "Filter",
+    "c7-salts"
+   ],
+   [
+    "heat the filtrate",
+    "c7-salts"
+   ],
+   [
+    "filter the crystals",
+    "c7-salts"
+   ],
+   [
+    "all the acid is used",
+    "c7-salts"
+   ],
+   [
+    "soluble base (alkali)",
+    "c7-salts"
+   ],
+   [
+    "Titrate",
+    "c7-salts"
+   ],
+   [
+    "Repeat without the indicator",
+    "c7-salts"
+   ],
+   [
+    "evaporate and crystallise",
+    "c7-salts"
+   ],
+   [
+    "two soluble solutions",
+    "c7-salts"
+   ],
+   [
+    "precipitate",
+    "c7-salts"
+   ],
+   [
+    "wash the residue",
+    "c7-salts"
+   ],
+   [
+    "dry",
+    "c7-salts"
+   ],
+   [
+    "All nitrates",
+    "c7-salts"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "c7-acids",
+    "title": "Acids and bases"
+   },
+   {
+    "id": "c7-oxides",
+    "title": "Oxides"
+   },
+   {
+    "id": "c7-salts",
+    "title": "Preparation of salts"
+   },
+   {
+    "id": "c8-table",
+    "title": "Arrangement of elements"
+   },
+   {
+    "id": "c8-group1",
+    "title": "Group I: the alkali metals"
+   },
+   {
+    "id": "c8-group7",
+    "title": "Group VII: the halogens"
+   },
+   {
+    "id": "c8-transition",
+    "title": "Transition elements"
+   },
+   {
+    "id": "c8-noble",
+    "title": "Noble gases"
+   }
+  ]
+ },
+ {
+  "id": "unit-5",
+  "kind": "generated",
+  "unit": 5,
+  "unitTitle": "Metals and the Environment",
+  "title": "Metals and the Environment",
+  "syllabusRef": "9.1–9.2 to 10.3",
+  "status": "draft",
+  "minutes": 48,
+  "objectives": [
+   {
+    "id": "c9-props",
+    "text": "Properties and uses of metals (syllabus 9.1–9.2)"
+   },
+   {
+    "id": "c9-alloys",
+    "text": "Alloys and their properties (syllabus 9.3)"
+   },
+   {
+    "id": "c9-reactivity",
+    "text": "The reactivity series (syllabus 9.4)"
+   },
+   {
+    "id": "c9-corrosion",
+    "text": "Corrosion of metals (syllabus 9.5)"
+   },
+   {
+    "id": "c9-extraction",
+    "text": "Extraction of metals (syllabus 9.6)"
+   },
+   {
+    "id": "c10-water",
+    "text": "Water (syllabus 10.1)"
+   },
+   {
+    "id": "c10-fertilisers",
+    "text": "Fertilisers (syllabus 10.2)"
+   },
+   {
+    "id": "c10-air",
+    "text": "Air quality and climate (syllabus 10.3)"
+   }
+  ],
+  "terms": [
+   [
+    "Physical",
+    "c9-props"
+   ],
+   [
+    "conductors of heat and electricity",
+    "c9-props"
+   ],
+   [
+    "malleable",
+    "c9-props"
+   ],
+   [
+    "ductile",
+    "c9-props"
+   ],
+   [
+    "shiny",
+    "c9-props"
+   ],
+   [
+    "high melting points and densities",
+    "c9-props"
+   ],
+   [
+    "Chemical",
+    "c9-props"
+   ],
+   [
+    "positive ions",
+    "c9-props"
+   ],
+   [
+    "basic",
+    "c9-props"
+   ],
+   [
+    "poor conductors",
+    "c9-props"
+   ],
+   [
+    "brittle",
+    "c9-props"
+   ],
+   [
+    "acidic oxides",
+    "c9-props"
+   ],
+   [
+    "Aluminium",
+    "c9-props"
+   ],
+   [
+    "low density",
+    "c9-props"
+   ],
+   [
+    "resistant to corrosion",
+    "c9-props"
+   ],
+   [
+    "Copper",
+    "c9-props"
+   ],
+   [
+    "good conductor",
+    "c9-props"
+   ],
+   [
+    "Mild steel",
+    "c9-props"
+   ],
+   [
+    "Stainless steel",
+    "c9-props"
+   ],
+   [
+    "resists corrosion",
+    "c9-props"
+   ],
+   [
+    "alloy",
+    "c9-alloys"
+   ],
+   [
+    "brass",
+    "c9-alloys"
+   ],
+   [
+    "harder and stronger",
+    "c9-alloys"
+   ],
+   [
+    "slide easily",
+    "c9-alloys"
+   ],
+   [
+    "different-sized atoms disrupt the layers",
+    "c9-alloys"
+   ],
+   [
+    "harder for them to slide",
+    "c9-alloys"
+   ],
+   [
+    "properties needed",
+    "c9-alloys"
+   ],
+   [
+    "decreasing reactivity",
+    "c9-reactivity"
+   ],
+   [
+    "water, dilute acids and oxygen",
+    "c9-reactivity"
+   ],
+   [
+    "displacement reactions",
+    "c9-reactivity"
+   ],
+   [
+    "Potassium, sodium and calcium",
+    "c9-reactivity"
+   ],
+   [
+    "cold water",
+    "c9-reactivity"
+   ],
+   [
+    "Magnesium",
+    "c9-reactivity"
+   ],
+   [
+    "steam",
+    "c9-reactivity"
+   ],
+   [
+    "Zinc and iron",
+    "c9-reactivity"
+   ],
+   [
+    "above hydrogen",
+    "c9-reactivity"
+   ],
+   [
+    "dilute acids",
+    "c9-reactivity"
+   ],
+   [
+    "Copper, silver and gold",
+    "c9-reactivity"
+   ],
+   [
+    "not",
+    "c9-reactivity"
+   ],
+   [
+    "less vigorous",
+    "c9-reactivity"
+   ],
+   [
+    "Zn + CuSO₄ → ZnSO₄ + Cu",
+    "c9-reactivity"
+   ],
+   [
+    "less reactive",
+    "c9-reactivity"
+   ],
+   [
+    "redox",
+    "c9-reactivity"
+   ],
+   [
+    "carbonates decompose on heating",
+    "c9-reactivity"
+   ],
+   [
+    "metal oxide and carbon dioxide",
+    "c9-reactivity"
+   ],
+   [
+    "CuCO₃ → CuO + CO₂",
+    "c9-reactivity"
+   ],
+   [
+    "hydroxides",
+    "c9-reactivity"
+   ],
+   [
+    "aluminium oxide",
+    "c9-reactivity"
+   ],
+   [
+    "Rusting",
+    "c9-corrosion"
+   ],
+   [
+    "iron or steel",
+    "c9-corrosion"
+   ],
+   [
+    "both oxygen (air) and water",
+    "c9-corrosion"
+   ],
+   [
+    "hydrated iron(III) oxide",
+    "c9-corrosion"
+   ],
+   [
+    "speeds up rusting",
+    "c9-corrosion"
+   ],
+   [
+    "Barrier methods",
+    "c9-corrosion"
+   ],
+   [
+    "paint, oil or grease, plastic coating",
+    "c9-corrosion"
+   ],
+   [
+    "Galvanising",
+    "c9-corrosion"
+   ],
+   [
+    "zinc",
+    "c9-corrosion"
+   ],
+   [
+    "sacrificial protection",
+    "c9-corrosion"
+   ],
+   [
+    "more reactive metal",
+    "c9-corrosion"
+   ],
+   [
+    "loses electrons more readily",
+    "c9-corrosion"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "c9-props",
+    "title": "Properties and uses of metals"
+   },
+   {
+    "id": "c9-alloys",
+    "title": "Alloys and their properties"
+   },
+   {
+    "id": "c9-reactivity",
+    "title": "The reactivity series"
+   },
+   {
+    "id": "c9-corrosion",
+    "title": "Corrosion of metals"
+   },
+   {
+    "id": "c9-extraction",
+    "title": "Extraction of metals"
+   },
+   {
+    "id": "c10-water",
+    "title": "Water"
+   },
+   {
+    "id": "c10-fertilisers",
+    "title": "Fertilisers"
+   },
+   {
+    "id": "c10-air",
+    "title": "Air quality and climate"
+   }
+  ]
+ },
+ {
+  "id": "unit-6",
+  "kind": "generated",
+  "unit": 6,
+  "unitTitle": "Organic Chemistry",
+  "title": "Organic Chemistry",
+  "syllabusRef": "11.1 to 11.8",
+  "status": "draft",
+  "minutes": 48,
+  "objectives": [
+   {
+    "id": "c11-intro",
+    "text": "Formulae, functional groups and terminology (syllabus 11.1)"
+   },
+   {
+    "id": "c11-naming",
+    "text": "Naming organic compounds (syllabus 11.2)"
+   },
+   {
+    "id": "c11-fuels",
+    "text": "Fuels and petroleum (syllabus 11.3)"
+   },
+   {
+    "id": "c11-alkanes",
+    "text": "Alkanes (syllabus 11.4)"
+   },
+   {
+    "id": "c11-alkenes",
+    "text": "Alkenes (syllabus 11.5)"
+   },
+   {
+    "id": "c11-alcohols",
+    "text": "Alcohols (syllabus 11.6)"
+   },
+   {
+    "id": "c11-acids",
+    "text": "Carboxylic acids (syllabus 11.7)"
+   },
+   {
+    "id": "c11-polymers",
+    "text": "Polymers (syllabus 11.8)"
+   }
+  ],
+  "terms": [
+   [
+    "homologous series",
+    "c11-intro"
+   ],
+   [
+    "alkanes CₙH₂ₙ₊₂",
+    "c11-intro"
+   ],
+   [
+    "alkenes CₙH₂ₙ",
+    "c11-intro"
+   ],
+   [
+    "alcohols CₙH₂ₙ₊₁OH",
+    "c11-intro"
+   ],
+   [
+    "carboxylic acids CₙH₂ₙ₊₁COOH",
+    "c11-intro"
+   ],
+   [
+    "CH₂",
+    "c11-intro"
+   ],
+   [
+    "Molecular formula",
+    "c11-intro"
+   ],
+   [
+    "Structural formula",
+    "c11-intro"
+   ],
+   [
+    "Displayed formula",
+    "c11-intro"
+   ],
+   [
+    "all atoms and all bonds",
+    "c11-intro"
+   ],
+   [
+    "General formula",
+    "c11-intro"
+   ],
+   [
+    "Isomers",
+    "c11-intro"
+   ],
+   [
+    "functional group",
+    "c11-intro"
+   ],
+   [
+    "determines the chemical properties",
+    "c11-intro"
+   ],
+   [
+    "C=C",
+    "c11-intro"
+   ],
+   [
+    "–OH",
+    "c11-intro"
+   ],
+   [
+    "–COOH",
+    "c11-intro"
+   ],
+   [
+    "Saturated",
+    "c11-intro"
+   ],
+   [
+    "only single carbon–carbon bonds",
+    "c11-intro"
+   ],
+   [
+    "Unsaturated",
+    "c11-intro"
+   ],
+   [
+    "C=C double bond",
+    "c11-intro"
+   ],
+   [
+    "Hydrocarbons",
+    "c11-intro"
+   ],
+   [
+    "carbon and hydrogen only",
+    "c11-intro"
+   ],
+   [
+    "stem",
+    "c11-naming"
+   ],
+   [
+    "meth-",
+    "c11-naming"
+   ],
+   [
+    "eth-",
+    "c11-naming"
+   ],
+   [
+    "prop-",
+    "c11-naming"
+   ],
+   [
+    "but-",
+    "c11-naming"
+   ],
+   [
+    "pent-",
+    "c11-naming"
+   ],
+   [
+    "hex-",
+    "c11-naming"
+   ],
+   [
+    "ending",
+    "c11-naming"
+   ],
+   [
+    "-ane",
+    "c11-naming"
+   ],
+   [
+    "-ene",
+    "c11-naming"
+   ],
+   [
+    "-ol",
+    "c11-naming"
+   ],
+   [
+    "-oic acid",
+    "c11-naming"
+   ],
+   [
+    "CH₃CH₂CH₃ is propane",
+    "c11-naming"
+   ],
+   [
+    "C₂H₄ is ethene",
+    "c11-naming"
+   ],
+   [
+    "CH₃CH₂OH is ethanol",
+    "c11-naming"
+   ],
+   [
+    "CH₃COOH is ethanoic acid",
+    "c11-naming"
+   ],
+   [
+    "CH₃CH₂CH₂COOH is butanoic acid",
+    "c11-naming"
+   ],
+   [
+    "fossil fuels",
+    "c11-fuels"
+   ],
+   [
+    "coal",
+    "c11-fuels"
+   ],
+   [
+    "natural gas (mainly methane)",
+    "c11-fuels"
+   ],
+   [
+    "petroleum (crude oil)",
+    "c11-fuels"
+   ],
+   [
+    "finite resources",
+    "c11-fuels"
+   ],
+   [
+    "mixture of hydrocarbons",
+    "c11-fuels"
+   ],
+   [
+    "carbon dioxide",
+    "c11-fuels"
+   ],
+   [
+    "condense at their boiling point range",
+    "c11-fuels"
+   ],
+   [
+    "fractions",
+    "c11-fuels"
+   ],
+   [
+    "refinery gases",
+    "c11-fuels"
+   ],
+   [
+    "petrol (gasoline)",
+    "c11-fuels"
+   ],
+   [
+    "naphtha",
+    "c11-fuels"
+   ],
+   [
+    "kerosene (paraffin)",
+    "c11-fuels"
+   ],
+   [
+    "diesel oil",
+    "c11-fuels"
+   ],
+   [
+    "fuel oil",
+    "c11-fuels"
+   ],
+   [
+    "bitumen",
+    "c11-fuels"
+   ],
+   [
+    "chain length increases",
+    "c11-fuels"
+   ],
+   [
+    "boiling point rises",
+    "c11-fuels"
+   ],
+   [
+    "more viscous (thicker)",
+    "c11-fuels"
+   ],
+   [
+    "less flammable",
+    "c11-fuels"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "c11-intro",
+    "title": "Formulae, functional groups and terminology"
+   },
+   {
+    "id": "c11-naming",
+    "title": "Naming organic compounds"
+   },
+   {
+    "id": "c11-fuels",
+    "title": "Fuels and petroleum"
+   },
+   {
+    "id": "c11-alkanes",
+    "title": "Alkanes"
+   },
+   {
+    "id": "c11-alkenes",
+    "title": "Alkenes"
+   },
+   {
+    "id": "c11-alcohols",
+    "title": "Alcohols"
+   },
+   {
+    "id": "c11-acids",
+    "title": "Carboxylic acids"
+   },
+   {
+    "id": "c11-polymers",
+    "title": "Polymers"
+   }
+  ]
+ }
+]

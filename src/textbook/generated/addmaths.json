@@ -1,0 +1,1146 @@
+[
+ {
+  "id": "unit-1",
+  "kind": "generated",
+  "unit": 1,
+  "unitTitle": "Functions and Polynomials",
+  "title": "Functions and Polynomials",
+  "syllabusRef": "0606 topic 1 to 0606 topic 3",
+  "status": "draft",
+  "minutes": 18,
+  "objectives": [
+   {
+    "id": "a1-func",
+    "text": "Functions (syllabus 0606 topic 1)"
+   },
+   {
+    "id": "a1-quad",
+    "text": "Quadratic functions (syllabus 0606 topic 2)"
+   },
+   {
+    "id": "a1-poly",
+    "text": "Polynomials and the factor theorem (syllabus 0606 topic 3)"
+   }
+  ],
+  "terms": [
+   [
+    "domain",
+    "a1-func"
+   ],
+   [
+    "range",
+    "a1-func"
+   ],
+   [
+    "x ≥ 4",
+    "a1-func"
+   ],
+   [
+    "x ≠ 3",
+    "a1-func"
+   ],
+   [
+    "fg(x) = f(g(x))",
+    "a1-func"
+   ],
+   [
+    "and",
+    "a1-func"
+   ],
+   [
+    "one-to-one",
+    "a1-func"
+   ],
+   [
+    "swap x and y",
+    "a1-func"
+   ],
+   [
+    "reflection of f in y = x",
+    "a1-func"
+   ],
+   [
+    "range of f",
+    "a1-func"
+   ],
+   [
+    "f⁻¹(x) = (3x + 1)/(x − 2)",
+    "a1-func"
+   ],
+   [
+    "|x|",
+    "a1-func"
+   ],
+   [
+    "positive",
+    "a1-func"
+   ],
+   [
+    "V-shape",
+    "a1-func"
+   ],
+   [
+    "|f(x)| = k",
+    "a1-func"
+   ],
+   [
+    "|x − a| < b",
+    "a1-func"
+   ],
+   [
+    "a − b < x < a + b",
+    "a1-func"
+   ],
+   [
+    "check",
+    "a1-func"
+   ],
+   [
+    "a(x + p)² + q",
+    "a1-quad"
+   ],
+   [
+    "(−p, q)",
+    "a1-quad"
+   ],
+   [
+    "−11 at x = 3",
+    "a1-quad"
+   ],
+   [
+    "maximum",
+    "a1-quad"
+   ],
+   [
+    "b² − 4ac > 0",
+    "a1-quad"
+   ],
+   [
+    "= 0",
+    "a1-quad"
+   ],
+   [
+    "tangent",
+    "a1-quad"
+   ],
+   [
+    "< 0",
+    "a1-quad"
+   ],
+   [
+    "substitute",
+    "a1-quad"
+   ],
+   [
+    "all",
+    "a1-quad"
+   ],
+   [
+    "α + β = −b/a",
+    "a1-quad"
+   ],
+   [
+    "αβ = c/a",
+    "a1-quad"
+   ],
+   [
+    "α² + β² = (α + β)² − 2αβ",
+    "a1-quad"
+   ],
+   [
+    "x² − (α + β)x + αβ = 0",
+    "a1-quad"
+   ],
+   [
+    "(x − a)",
+    "a1-poly"
+   ],
+   [
+    "remainder is f(a)",
+    "a1-poly"
+   ],
+   [
+    "find unknown coefficients",
+    "a1-poly"
+   ],
+   [
+    "repeated root touches",
+    "a1-poly"
+   ],
+   [
+    "(x + 1)",
+    "a1-poly"
+   ],
+   [
+    "k = 2",
+    "a1-poly"
+   ],
+   [
+    "two conditions",
+    "a1-poly"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "a1-func",
+    "title": "Functions"
+   },
+   {
+    "id": "a1-quad",
+    "title": "Quadratic functions"
+   },
+   {
+    "id": "a1-poly",
+    "title": "Polynomials and the factor theorem"
+   }
+  ]
+ },
+ {
+  "id": "unit-2",
+  "kind": "generated",
+  "unit": 2,
+  "unitTitle": "Inequalities, Surds and Logarithms",
+  "title": "Inequalities, Surds and Logarithms",
+  "syllabusRef": "0606 topic 3 to 0606 topic 4",
+  "status": "draft",
+  "minutes": 18,
+  "objectives": [
+   {
+    "id": "a2-ineq",
+    "text": "Inequalities and the modulus (syllabus 0606 topic 3)"
+   },
+   {
+    "id": "a2-surd",
+    "text": "Surds (syllabus 0606 topic 4)"
+   },
+   {
+    "id": "a2-log",
+    "text": "Logarithms and exponentials (syllabus 0606 topic 4)"
+   }
+  ],
+  "terms": [
+   [
+    "sketch",
+    "a2-ineq"
+   ],
+   [
+    "2 < x < 3",
+    "a2-ineq"
+   ],
+   [
+    "> 0",
+    "a2-ineq"
+   ],
+   [
+    "outside",
+    "a2-ineq"
+   ],
+   [
+    "|x − a| < b",
+    "a2-ineq"
+   ],
+   [
+    "a − b < x < a + b",
+    "a2-ineq"
+   ],
+   [
+    "|x − a| > b",
+    "a2-ineq"
+   ],
+   [
+    "x < a − b or x > a + b",
+    "a2-ineq"
+   ],
+   [
+    "double inequality",
+    "a2-ineq"
+   ],
+   [
+    "all",
+    "a2-ineq"
+   ],
+   [
+    "no real roots",
+    "a2-ineq"
+   ],
+   [
+    "−4 < k < 4",
+    "a2-ineq"
+   ],
+   [
+    "conjugate",
+    "a2-surd"
+   ],
+   [
+    "a + √b",
+    "a2-surd"
+   ],
+   [
+    "a − √b",
+    "a2-surd"
+   ],
+   [
+    "(a + √b)(a − √b) = a² − b",
+    "a2-surd"
+   ],
+   [
+    "3 + √5",
+    "a2-surd"
+   ],
+   [
+    "7 + 4√3",
+    "a2-surd"
+   ],
+   [
+    "rational",
+    "a2-surd"
+   ],
+   [
+    "irrational",
+    "a2-surd"
+   ],
+   [
+    "square both sides",
+    "a2-surd"
+   ],
+   [
+    "check",
+    "a2-surd"
+   ],
+   [
+    "x = 6",
+    "a2-surd"
+   ],
+   [
+    "extra (false) solutions",
+    "a2-surd"
+   ],
+   [
+    "log_a x + log_a y = log_a(xy)",
+    "a2-log"
+   ],
+   [
+    "log_a x − log_a y = log_a(x/y)",
+    "a2-log"
+   ],
+   [
+    "n log_a x = log_a(xⁿ)",
+    "a2-log"
+   ],
+   [
+    "log_a a = 1",
+    "a2-log"
+   ],
+   [
+    "log_a 1 = 0",
+    "a2-log"
+   ],
+   [
+    "Change of base",
+    "a2-log"
+   ],
+   [
+    "aˣ = b",
+    "a2-log"
+   ],
+   [
+    "x = log b ÷ log a",
+    "a2-log"
+   ],
+   [
+    "Log equations",
+    "a2-log"
+   ],
+   [
+    "check the arguments are positive",
+    "a2-log"
+   ],
+   [
+    "ln x = log_e x",
+    "a2-log"
+   ],
+   [
+    "ln(eᵏ) = k",
+    "a2-log"
+   ],
+   [
+    "e^(ln k) = k",
+    "a2-log"
+   ],
+   [
+    "(0, 1)",
+    "a2-log"
+   ],
+   [
+    "(1, 0)",
+    "a2-log"
+   ],
+   [
+    "reflections in y = x",
+    "a2-log"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "a2-ineq",
+    "title": "Inequalities and the modulus"
+   },
+   {
+    "id": "a2-surd",
+    "title": "Surds"
+   },
+   {
+    "id": "a2-log",
+    "title": "Logarithms and exponentials"
+   }
+  ]
+ },
+ {
+  "id": "unit-3",
+  "kind": "generated",
+  "unit": 3,
+  "unitTitle": "Graphs and Circular Measure",
+  "title": "Graphs and Circular Measure",
+  "syllabusRef": "0606 topic 5 to 0606 topic 6",
+  "status": "draft",
+  "minutes": 12,
+  "objectives": [
+   {
+    "id": "a3-lingraph",
+    "text": "Straight-line graphs from curves (syllabus 0606 topic 5)"
+   },
+   {
+    "id": "a3-radian",
+    "text": "Radians, arcs and sectors (syllabus 0606 topic 6)"
+   }
+  ],
+  "terms": [
+   [
+    "Y = mX + c",
+    "a3-lingraph"
+   ],
+   [
+    "y against x²",
+    "a3-lingraph"
+   ],
+   [
+    "gradient 3",
+    "a3-lingraph"
+   ],
+   [
+    "intercept 2",
+    "a3-lingraph"
+   ],
+   [
+    "y = kxⁿ",
+    "a3-lingraph"
+   ],
+   [
+    "lg y = n lg x + lg k",
+    "a3-lingraph"
+   ],
+   [
+    "lg y against lg x",
+    "a3-lingraph"
+   ],
+   [
+    "y = abˣ",
+    "a3-lingraph"
+   ],
+   [
+    "lg y = x lg b + lg a",
+    "a3-lingraph"
+   ],
+   [
+    "lg y against x",
+    "a3-lingraph"
+   ],
+   [
+    "two points",
+    "a3-lingraph"
+   ],
+   [
+    "gradient",
+    "a3-lingraph"
+   ],
+   [
+    "intercept",
+    "a3-lingraph"
+   ],
+   [
+    "y = 4x² + 1",
+    "a3-lingraph"
+   ],
+   [
+    "y against 1/x",
+    "a3-lingraph"
+   ],
+   [
+    "(2, 4)",
+    "a3-lingraph"
+   ],
+   [
+    "(−1, 1)",
+    "a3-lingraph"
+   ],
+   [
+    "distance",
+    "a3-lingraph"
+   ],
+   [
+    "π radians = 180°",
+    "a3-radian"
+   ],
+   [
+    "π/180",
+    "a3-radian"
+   ],
+   [
+    "180/π",
+    "a3-radian"
+   ],
+   [
+    "equal to the radius",
+    "a3-radian"
+   ],
+   [
+    "150°",
+    "a3-radian"
+   ],
+   [
+    "Arc length s = rθ",
+    "a3-radian"
+   ],
+   [
+    "sector area A = ½r²θ",
+    "a3-radian"
+   ],
+   [
+    "rθ + 2r",
+    "a3-radian"
+   ],
+   [
+    "segment",
+    "a3-radian"
+   ],
+   [
+    "A = ½r²(θ − sin θ)",
+    "a3-radian"
+   ],
+   [
+    "radian mode",
+    "a3-radian"
+   ],
+   [
+    "13.40 cm²",
+    "a3-radian"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "a3-lingraph",
+    "title": "Straight-line graphs from curves"
+   },
+   {
+    "id": "a3-radian",
+    "title": "Radians, arcs and sectors"
+   }
+  ]
+ },
+ {
+  "id": "unit-4",
+  "kind": "generated",
+  "unit": 4,
+  "unitTitle": "Trigonometry",
+  "title": "Trigonometry",
+  "syllabusRef": "0606 topic 7",
+  "status": "draft",
+  "minutes": 12,
+  "objectives": [
+   {
+    "id": "a4-trig",
+    "text": "Trigonometric functions and equations (syllabus 0606 topic 7)"
+   },
+   {
+    "id": "a4-trigid",
+    "text": "Trigonometric identities (syllabus 0606 topic 7)"
+   }
+  ],
+  "terms": [
+   [
+    "1/√2",
+    "a4-trig"
+   ],
+   [
+    "√3/2",
+    "a4-trig"
+   ],
+   [
+    "unit circle",
+    "a4-trig"
+   ],
+   [
+    "ASTC",
+    "a4-trig"
+   ],
+   [
+    "amplitude a",
+    "a4-trig"
+   ],
+   [
+    "period 2π/b",
+    "a4-trig"
+   ],
+   [
+    "principal value",
+    "a4-trig"
+   ],
+   [
+    "sec x = 1/cos x",
+    "a4-trig"
+   ],
+   [
+    "cosec x = 1/sin x",
+    "a4-trig"
+   ],
+   [
+    "cot x = 1/tan x = cos x/sin x",
+    "a4-trig"
+   ],
+   [
+    "undefined",
+    "a4-trig"
+   ],
+   [
+    "asymptotes",
+    "a4-trig"
+   ],
+   [
+    "π/3 ≈ 1.05",
+    "a4-trig"
+   ],
+   [
+    "sin²x + cos²x = 1",
+    "a4-trigid"
+   ],
+   [
+    "1 + tan²x = sec²x",
+    "a4-trigid"
+   ],
+   [
+    "1 + cot²x = cosec²x",
+    "a4-trigid"
+   ],
+   [
+    "tan x = sin x ÷ cos x",
+    "a4-trigid"
+   ],
+   [
+    "tan A = 3/4",
+    "a4-trigid"
+   ],
+   [
+    "sign",
+    "a4-trigid"
+   ],
+   [
+    "more complicated side",
+    "a4-trigid"
+   ],
+   [
+    "tan θ",
+    "a4-trigid"
+   ],
+   [
+    "one trig function",
+    "a4-trigid"
+   ],
+   [
+    "do not divide by a trig function",
+    "a4-trigid"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "a4-trig",
+    "title": "Trigonometric functions and equations"
+   },
+   {
+    "id": "a4-trigid",
+    "title": "Trigonometric identities"
+   }
+  ]
+ },
+ {
+  "id": "unit-5",
+  "kind": "generated",
+  "unit": 5,
+  "unitTitle": "Binomial and Counting",
+  "title": "Binomial and Counting",
+  "syllabusRef": "0606 topic 8 to 0606 topic 9",
+  "status": "draft",
+  "minutes": 12,
+  "objectives": [
+   {
+    "id": "a5-binom",
+    "text": "The binomial theorem (syllabus 0606 topic 8)"
+   },
+   {
+    "id": "a5-perm",
+    "text": "Permutations and combinations (syllabus 0606 topic 9)"
+   }
+  ],
+  "terms": [
+   [
+    "Pascal’s triangle",
+    "a5-binom"
+   ],
+   [
+    "sum of the two above it",
+    "a5-binom"
+   ],
+   [
+    "nCr = n!/(r!(n − r)!)",
+    "a5-binom"
+   ],
+   [
+    "nCr = nC(n − r)",
+    "a5-binom"
+   ],
+   [
+    "brackets round",
+    "a5-binom"
+   ],
+   [
+    "80x³",
+    "a5-binom"
+   ],
+   [
+    "nCr aⁿ⁻ʳ bʳ",
+    "a5-binom"
+   ],
+   [
+    "independent of x",
+    "a5-binom"
+   ],
+   [
+    "approximations",
+    "a5-binom"
+   ],
+   [
+    "repeated",
+    "a5-perm"
+   ],
+   [
+    "together",
+    "a5-perm"
+   ],
+   [
+    "restricted",
+    "a5-perm"
+   ],
+   [
+    "nPr = n!/(n − r)!",
+    "a5-perm"
+   ],
+   [
+    "order matters",
+    "a5-perm"
+   ],
+   [
+    "nCr",
+    "a5-perm"
+   ],
+   [
+    "order does not matter",
+    "a5-perm"
+   ],
+   [
+    "“some of each”",
+    "a5-perm"
+   ],
+   [
+    "total − none",
+    "a5-perm"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "a5-binom",
+    "title": "The binomial theorem"
+   },
+   {
+    "id": "a5-perm",
+    "title": "Permutations and combinations"
+   }
+  ]
+ },
+ {
+  "id": "unit-6",
+  "kind": "generated",
+  "unit": 6,
+  "unitTitle": "Vectors",
+  "title": "Vectors",
+  "syllabusRef": "0606 topic 10",
+  "status": "draft",
+  "minutes": 10,
+  "objectives": [
+   {
+    "id": "a6-vec",
+    "text": "Vectors (syllabus 0606 topic 10)"
+   }
+  ],
+  "terms": [
+   [
+    "xi + yj",
+    "a6-vec"
+   ],
+   [
+    "magnitude √(x² + y²)",
+    "a6-vec"
+   ],
+   [
+    "unit vector",
+    "a6-vec"
+   ],
+   [
+    "Parallel",
+    "a6-vec"
+   ],
+   [
+    "AB = b − a",
+    "a6-vec"
+   ],
+   [
+    "OM = ½(a + b)",
+    "a6-vec"
+   ],
+   [
+    "m : n",
+    "a6-vec"
+   ],
+   [
+    "OP = (n a + m b)/(m + n)",
+    "a6-vec"
+   ],
+   [
+    "collinear",
+    "a6-vec"
+   ],
+   [
+    "Resultant velocity = sum",
+    "a6-vec"
+   ],
+   [
+    "triangle of velocities",
+    "a6-vec"
+   ],
+   [
+    "speed",
+    "a6-vec"
+   ],
+   [
+    "direction",
+    "a6-vec"
+   ],
+   [
+    "206.2 km/h",
+    "a6-vec"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "a6-vec",
+    "title": "Vectors"
+   }
+  ]
+ },
+ {
+  "id": "unit-7",
+  "kind": "generated",
+  "unit": 7,
+  "unitTitle": "Calculus and Kinematics",
+  "title": "Calculus and Kinematics",
+  "syllabusRef": "0606 topic 11 to 0606 topic 12",
+  "status": "draft",
+  "minutes": 24,
+  "objectives": [
+   {
+    "id": "a7-diff",
+    "text": "Differentiation rules (syllabus 0606 topic 11)"
+   },
+   {
+    "id": "a7-stat",
+    "text": "Stationary points and applications (syllabus 0606 topic 11)"
+   },
+   {
+    "id": "a7-int",
+    "text": "Integration (syllabus 0606 topic 12)"
+   },
+   {
+    "id": "a7-kin",
+    "text": "Kinematics (syllabus 0606 topic 12)"
+   }
+  ],
+  "terms": [
+   [
+    "dy/dx = dy/du × du/dx",
+    "a7-diff"
+   ],
+   [
+    "6(2x + 1)²",
+    "a7-diff"
+   ],
+   [
+    "inner function",
+    "a7-diff"
+   ],
+   [
+    "Product",
+    "a7-diff"
+   ],
+   [
+    "dy/dx = u dv/dx + v du/dx",
+    "a7-diff"
+   ],
+   [
+    "Quotient",
+    "a7-diff"
+   ],
+   [
+    "dy/dx = (v du/dx − u dv/dx)/v²",
+    "a7-diff"
+   ],
+   [
+    "1/(x + 1)²",
+    "a7-diff"
+   ],
+   [
+    "v u′ − u v′",
+    "a7-diff"
+   ],
+   [
+    "a e^(ax)",
+    "a7-diff"
+   ],
+   [
+    "1/x",
+    "a7-diff"
+   ],
+   [
+    "a/(ax + b)",
+    "a7-diff"
+   ],
+   [
+    "cos x",
+    "a7-diff"
+   ],
+   [
+    "−sin x",
+    "a7-diff"
+   ],
+   [
+    "sec²x",
+    "a7-diff"
+   ],
+   [
+    "radians",
+    "a7-diff"
+   ],
+   [
+    "3 cos 3x",
+    "a7-diff"
+   ],
+   [
+    "2x/(x² + 1)",
+    "a7-diff"
+   ],
+   [
+    "dy/dx = 0",
+    "a7-stat"
+   ],
+   [
+    "d²y/dx² > 0",
+    "a7-stat"
+   ],
+   [
+    "d²y/dx² < 0",
+    "a7-stat"
+   ],
+   [
+    "= 0",
+    "a7-stat"
+   ],
+   [
+    "maximum",
+    "a7-stat"
+   ],
+   [
+    "minimum",
+    "a7-stat"
+   ],
+   [
+    "one variable",
+    "a7-stat"
+   ],
+   [
+    "prove",
+    "a7-stat"
+   ],
+   [
+    "100 m²",
+    "a7-stat"
+   ],
+   [
+    "allowed range",
+    "a7-stat"
+   ],
+   [
+    "dy/dt = dy/dx × dx/dt",
+    "a7-stat"
+   ],
+   [
+    "4π ≈ 12.57 cm²/s",
+    "a7-stat"
+   ],
+   [
+    "Small changes",
+    "a7-stat"
+   ],
+   [
+    "positive",
+    "a7-stat"
+   ],
+   [
+    "∫xⁿ dx = xⁿ⁺¹/(n + 1) + c",
+    "a7-int"
+   ],
+   [
+    "∫e^(ax) dx = e^(ax)/a + c",
+    "a7-int"
+   ],
+   [
+    "∫1/x dx = ln|x| + c",
+    "a7-int"
+   ],
+   [
+    "Definite integral",
+    "a7-int"
+   ],
+   [
+    "+ c",
+    "a7-int"
+   ],
+   [
+    "limits",
+    "a7-int"
+   ],
+   [
+    "∫ₐᵇ y dx",
+    "a7-int"
+   ],
+   [
+    "two curves",
+    "a7-int"
+   ],
+   [
+    "∫ (top − bottom) dx",
+    "a7-int"
+   ],
+   [
+    "1/6",
+    "a7-int"
+   ],
+   [
+    "given point",
+    "a7-int"
+   ],
+   [
+    "c = 2",
+    "a7-int"
+   ],
+   [
+    "v = ds/dt",
+    "a7-kin"
+   ],
+   [
+    "a = dv/dt = d²s/dt²",
+    "a7-kin"
+   ],
+   [
+    "particle is at rest",
+    "a7-kin"
+   ],
+   [
+    "a = 12 m/s²",
+    "a7-kin"
+   ],
+   [
+    "displacement",
+    "a7-kin"
+   ],
+   [
+    "distance",
+    "a7-kin"
+   ],
+   [
+    "speed",
+    "a7-kin"
+   ],
+   [
+    "v = ∫a dt",
+    "a7-kin"
+   ],
+   [
+    "s = ∫v dt",
+    "a7-kin"
+   ],
+   [
+    "initial conditions",
+    "a7-kin"
+   ],
+   [
+    "v = u + at",
+    "a7-kin"
+   ],
+   [
+    "s = ut + ½at²",
+    "a7-kin"
+   ],
+   [
+    "v² = u² + 2as",
+    "a7-kin"
+   ],
+   [
+    "66 m",
+    "a7-kin"
+   ],
+   [
+    "v–t graph",
+    "a7-kin"
+   ],
+   [
+    "s–t graph",
+    "a7-kin"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "a7-diff",
+    "title": "Differentiation rules"
+   },
+   {
+    "id": "a7-stat",
+    "title": "Stationary points and applications"
+   },
+   {
+    "id": "a7-int",
+    "title": "Integration"
+   },
+   {
+    "id": "a7-kin",
+    "title": "Kinematics"
+   }
+  ]
+ }
+]

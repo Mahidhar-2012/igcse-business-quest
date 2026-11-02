@@ -1,0 +1,2098 @@
+[
+ {
+  "id": "unit-1",
+  "kind": "generated",
+  "unit": 1,
+  "unitTitle": "Number",
+  "title": "Number",
+  "syllabusRef": "C1.1 to C1.5 to C1.14 to C1.17, E1.13",
+  "status": "draft",
+  "minutes": 30,
+  "objectives": [
+   {
+    "id": "m1-number",
+    "text": "Types of number, HCF and LCM (syllabus C1.1 to C1.5)"
+   },
+   {
+    "id": "m1-index",
+    "text": "Indices, standard form and surds (syllabus C1.6, C1.9, E1.5, E1.6)"
+   },
+   {
+    "id": "m1-percent",
+    "text": "Fractions, decimals and percentages (syllabus C1.7 to C1.13)"
+   },
+   {
+    "id": "m1-ratio",
+    "text": "Ratio, proportion and rates (syllabus C1.11, E1.11)"
+   },
+   {
+    "id": "m1-bounds",
+    "text": "Rounding, estimation and bounds (syllabus C1.14 to C1.17, E1.13)"
+   }
+  ],
+  "terms": [
+   [
+    "Natural",
+    "m1-number"
+   ],
+   [
+    "Integers",
+    "m1-number"
+   ],
+   [
+    "Rational",
+    "m1-number"
+   ],
+   [
+    "irrational",
+    "m1-number"
+   ],
+   [
+    "prime number",
+    "m1-number"
+   ],
+   [
+    "two factors",
+    "m1-number"
+   ],
+   [
+    "not",
+    "m1-number"
+   ],
+   [
+    "product of prime factors",
+    "m1-number"
+   ],
+   [
+    "factor tree",
+    "m1-number"
+   ],
+   [
+    "HCF",
+    "m1-number"
+   ],
+   [
+    "LCM",
+    "m1-number"
+   ],
+   [
+    "lowest power",
+    "m1-number"
+   ],
+   [
+    "shared",
+    "m1-number"
+   ],
+   [
+    "highest power",
+    "m1-number"
+   ],
+   [
+    "every",
+    "m1-number"
+   ],
+   [
+    "terminating",
+    "m1-number"
+   ],
+   [
+    "recurring",
+    "m1-number"
+   ],
+   [
+    "sum or product of two irrationals",
+    "m1-number"
+   ],
+   [
+    "√3 × √5 = √15",
+    "m1-number"
+   ],
+   [
+    "5/11",
+    "m1-number"
+   ],
+   [
+    "aᵐ × aⁿ = aᵐ⁺ⁿ",
+    "m1-index"
+   ],
+   [
+    "aᵐ ÷ aⁿ = aᵐ⁻ⁿ",
+    "m1-index"
+   ],
+   [
+    "(aᵐ)ⁿ = aᵐⁿ",
+    "m1-index"
+   ],
+   [
+    "a⁰ = 1",
+    "m1-index"
+   ],
+   [
+    "a⁻ⁿ = 1/aⁿ",
+    "m1-index"
+   ],
+   [
+    "a^(1/n) = ⁿ√a",
+    "m1-index"
+   ],
+   [
+    "a^(m/n) = (ⁿ√a)ᵐ",
+    "m1-index"
+   ],
+   [
+    "A × 10ⁿ",
+    "m1-index"
+   ],
+   [
+    "1 ≤ A < 10",
+    "m1-index"
+   ],
+   [
+    "4.7 × 10⁻⁴",
+    "m1-index"
+   ],
+   [
+    "5.2 × 10⁷",
+    "m1-index"
+   ],
+   [
+    "A parts",
+    "m1-index"
+   ],
+   [
+    "add or subtract the powers",
+    "m1-index"
+   ],
+   [
+    "adjust",
+    "m1-index"
+   ],
+   [
+    "surd",
+    "m1-index"
+   ],
+   [
+    "6√2",
+    "m1-index"
+   ],
+   [
+    "√a × √b = √(ab)",
+    "m1-index"
+   ],
+   [
+    "√a ÷ √b = √(a/b)",
+    "m1-index"
+   ],
+   [
+    "Rationalise",
+    "m1-index"
+   ],
+   [
+    "2√3",
+    "m1-index"
+   ],
+   [
+    "1 + r/100",
+    "m1-percent"
+   ],
+   [
+    "1 − r/100",
+    "m1-percent"
+   ],
+   [
+    "before",
+    "m1-percent"
+   ],
+   [
+    "less",
+    "m1-percent"
+   ],
+   [
+    "final",
+    "m1-percent"
+   ],
+   [
+    "Divide by the multiplier",
+    "m1-percent"
+   ],
+   [
+    "Simple interest",
+    "m1-percent"
+   ],
+   [
+    "Compound interest",
+    "m1-percent"
+   ],
+   [
+    "amount = P × (1 + R/100)ⁿ",
+    "m1-percent"
+   ],
+   [
+    "multiplier below 1",
+    "m1-percent"
+   ],
+   [
+    "end",
+    "m1-percent"
+   ],
+   [
+    "parts",
+    "m1-ratio"
+   ],
+   [
+    "one part",
+    "m1-ratio"
+   ],
+   [
+    "same units",
+    "m1-ratio"
+   ],
+   [
+    "Direct proportion",
+    "m1-ratio"
+   ],
+   [
+    "straight line through the origin",
+    "m1-ratio"
+   ],
+   [
+    "Inverse proportion",
+    "m1-ratio"
+   ],
+   [
+    "halves",
+    "m1-ratio"
+   ],
+   [
+    "constant",
+    "m1-ratio"
+   ],
+   [
+    "fewer",
+    "m1-ratio"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "m1-number",
+    "title": "Types of number, HCF and LCM"
+   },
+   {
+    "id": "m1-index",
+    "title": "Indices, standard form and surds"
+   },
+   {
+    "id": "m1-percent",
+    "title": "Fractions, decimals and percentages"
+   },
+   {
+    "id": "m1-ratio",
+    "title": "Ratio, proportion and rates"
+   },
+   {
+    "id": "m1-bounds",
+    "title": "Rounding, estimation and bounds"
+   }
+  ]
+ },
+ {
+  "id": "unit-2",
+  "kind": "generated",
+  "unit": 2,
+  "unitTitle": "Algebra",
+  "title": "Algebra",
+  "syllabusRef": "C2.1 to C2.4, E2.2 to C2.13, E2.13",
+  "status": "draft",
+  "minutes": 30,
+  "objectives": [
+   {
+    "id": "m2-expand",
+    "text": "Expanding, factorising and algebraic fractions (syllabus C2.1 to C2.4, E2.2)"
+   },
+   {
+    "id": "m2-solve",
+    "text": "Equations, inequalities and formulae (syllabus C2.5 to C2.8, E2.4)"
+   },
+   {
+    "id": "m2-quad",
+    "text": "Quadratic equations (syllabus E2.5, E2.6)"
+   },
+   {
+    "id": "m2-simul",
+    "text": "Simultaneous equations (syllabus C2.9, E2.7)"
+   },
+   {
+    "id": "m2-seq",
+    "text": "Sequences (syllabus C2.13, E2.13)"
+   }
+  ],
+  "terms": [
+   [
+    "every term",
+    "m2-expand"
+   ],
+   [
+    "2x² + x − 15",
+    "m2-expand"
+   ],
+   [
+    "(x + a)² = x² + 2ax + a²",
+    "m2-expand"
+   ],
+   [
+    "not",
+    "m2-expand"
+   ],
+   [
+    "negative signs",
+    "m2-expand"
+   ],
+   [
+    "+ 10",
+    "m2-expand"
+   ],
+   [
+    "highest common factor",
+    "m2-expand"
+   ],
+   [
+    "Difference of two squares",
+    "m2-expand"
+   ],
+   [
+    "Trinomials",
+    "m2-expand"
+   ],
+   [
+    "multiply to c",
+    "m2-expand"
+   ],
+   [
+    "add to b",
+    "m2-expand"
+   ],
+   [
+    "grouping",
+    "m2-expand"
+   ],
+   [
+    "Check by expanding",
+    "m2-expand"
+   ],
+   [
+    "Simplify",
+    "m2-expand"
+   ],
+   [
+    "cancel common factors",
+    "m2-expand"
+   ],
+   [
+    "Add or subtract",
+    "m2-expand"
+   ],
+   [
+    "common denominator",
+    "m2-expand"
+   ],
+   [
+    "divide",
+    "m2-expand"
+   ],
+   [
+    "multiply by its reciprocal",
+    "m2-expand"
+   ],
+   [
+    "Substitute back",
+    "m2-solve"
+   ],
+   [
+    "x > 4",
+    "m2-solve"
+   ],
+   [
+    "open circle",
+    "m2-solve"
+   ],
+   [
+    "filled circle",
+    "m2-solve"
+   ],
+   [
+    "all three parts at once",
+    "m2-solve"
+   ],
+   [
+    "subject",
+    "m2-solve"
+   ],
+   [
+    "reverse order",
+    "m2-solve"
+   ],
+   [
+    "more than once",
+    "m2-solve"
+   ],
+   [
+    "factorise",
+    "m2-solve"
+   ],
+   [
+    "square root",
+    "m2-solve"
+   ],
+   [
+    "= 0",
+    "m2-quad"
+   ],
+   [
+    "each bracket to zero",
+    "m2-quad"
+   ],
+   [
+    "zero",
+    "m2-quad"
+   ],
+   [
+    "x-intercepts",
+    "m2-quad"
+   ],
+   [
+    "x = (−b ± √(b² − 4ac)) / 2a",
+    "m2-quad"
+   ],
+   [
+    "discriminant b² − 4ac",
+    "m2-quad"
+   ],
+   [
+    "> 0",
+    "m2-quad"
+   ],
+   [
+    "< 0",
+    "m2-quad"
+   ],
+   [
+    "decimal places or significant figures",
+    "m2-quad"
+   ],
+   [
+    "(x + b/2)² − (b/2)² + c",
+    "m2-quad"
+   ],
+   [
+    "(x + 3)² − 16",
+    "m2-quad"
+   ],
+   [
+    "turning point",
+    "m2-quad"
+   ],
+   [
+    "(−p, q)",
+    "m2-quad"
+   ],
+   [
+    "−16 at x = −3",
+    "m2-quad"
+   ],
+   [
+    "Elimination",
+    "m2-simul"
+   ],
+   [
+    "Substitution",
+    "m2-simul"
+   ],
+   [
+    "Same signs subtract, different signs add",
+    "m2-simul"
+   ],
+   [
+    "lines cross",
+    "m2-simul"
+   ],
+   [
+    "linear",
+    "m2-simul"
+   ],
+   [
+    "substitute into the quadratic",
+    "m2-simul"
+   ],
+   [
+    "two",
+    "m2-simul"
+   ],
+   [
+    "matching y-value",
+    "m2-simul"
+   ],
+   [
+    "line meets a curve (or circle)",
+    "m2-simul"
+   ],
+   [
+    "one equation per fact",
+    "m2-simul"
+   ],
+   [
+    "makes sense",
+    "m2-simul"
+   ],
+   [
+    "dn + (first term − d)",
+    "m2-seq"
+   ],
+   [
+    "4n − 1",
+    "m2-seq"
+   ],
+   [
+    "solve",
+    "m2-seq"
+   ],
+   [
+    "positive whole number",
+    "m2-seq"
+   ],
+   [
+    "second difference",
+    "m2-seq"
+   ],
+   [
+    "(second difference ÷ 2) n²",
+    "m2-seq"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "m2-expand",
+    "title": "Expanding, factorising and algebraic fractions"
+   },
+   {
+    "id": "m2-solve",
+    "title": "Equations, inequalities and formulae"
+   },
+   {
+    "id": "m2-quad",
+    "title": "Quadratic equations"
+   },
+   {
+    "id": "m2-simul",
+    "title": "Simultaneous equations"
+   },
+   {
+    "id": "m2-seq",
+    "title": "Sequences"
+   }
+  ]
+ },
+ {
+  "id": "unit-3",
+  "kind": "generated",
+  "unit": 3,
+  "unitTitle": "Graphs, Functions and Calculus",
+  "title": "Graphs, Functions and Calculus",
+  "syllabusRef": "C3.1 to C3.6, E3.1 to E3.5 to E2.13, E3.8",
+  "status": "draft",
+  "minutes": 24,
+  "objectives": [
+   {
+    "id": "m3-line",
+    "text": "Straight lines and regions (syllabus C3.1 to C3.6, E3.1 to E3.5)"
+   },
+   {
+    "id": "m3-graphs",
+    "text": "Graphs of functions and motion (syllabus C3.7 to C3.9, E2.9, E3.7)"
+   },
+   {
+    "id": "m3-funcs",
+    "text": "Functions (syllabus E2.13)"
+   },
+   {
+    "id": "m3-diff",
+    "text": "Differentiation (syllabus E2.13, E3.8)"
+   }
+  ],
+  "terms": [
+   [
+    "y = mx + c",
+    "m3-line"
+   ],
+   [
+    "y-intercept",
+    "m3-line"
+   ],
+   [
+    "one point",
+    "m3-line"
+   ],
+   [
+    "Parallel",
+    "m3-line"
+   ],
+   [
+    "same gradient",
+    "m3-line"
+   ],
+   [
+    "Perpendicular",
+    "m3-line"
+   ],
+   [
+    "product −1",
+    "m3-line"
+   ],
+   [
+    "−1/m₁",
+    "m3-line"
+   ],
+   [
+    "new gradient",
+    "m3-line"
+   ],
+   [
+    "Midpoint = ((x₁ + x₂)/2, (y₁ + y₂)/2)",
+    "m3-line"
+   ],
+   [
+    "Length = √((x₂ − x₁)² + (y₂ − y₁)²)",
+    "m3-line"
+   ],
+   [
+    "boundary line",
+    "m3-line"
+   ],
+   [
+    "solid line for ≤ or ≥",
+    "m3-line"
+   ],
+   [
+    "dashed line for < or >",
+    "m3-line"
+   ],
+   [
+    "Test a point",
+    "m3-line"
+   ],
+   [
+    "wanted region",
+    "m3-line"
+   ],
+   [
+    "all",
+    "m3-line"
+   ],
+   [
+    "quadratic",
+    "m3-graphs"
+   ],
+   [
+    "parabola",
+    "m3-graphs"
+   ],
+   [
+    "U-shaped if a > 0",
+    "m3-graphs"
+   ],
+   [
+    "∩-shaped if a < 0",
+    "m3-graphs"
+   ],
+   [
+    "cubic",
+    "m3-graphs"
+   ],
+   [
+    "smooth curve",
+    "m3-graphs"
+   ],
+   [
+    "roots",
+    "m3-graphs"
+   ],
+   [
+    "minimum −4 at x = 3",
+    "m3-graphs"
+   ],
+   [
+    "y = a/x",
+    "m3-graphs"
+   ],
+   [
+    "two branches",
+    "m3-graphs"
+   ],
+   [
+    "asymptotes",
+    "m3-graphs"
+   ],
+   [
+    "y = aˣ",
+    "m3-graphs"
+   ],
+   [
+    "(0, 1)",
+    "m3-graphs"
+   ],
+   [
+    "not defined at x = 0",
+    "m3-graphs"
+   ],
+   [
+    "f(x) = 0",
+    "m3-graphs"
+   ],
+   [
+    "x-intercepts",
+    "m3-graphs"
+   ],
+   [
+    "f(x) = k",
+    "m3-graphs"
+   ],
+   [
+    "horizontal line y = k",
+    "m3-graphs"
+   ],
+   [
+    "f(x) = g(x)",
+    "m3-graphs"
+   ],
+   [
+    "Distance–time",
+    "m3-graphs"
+   ],
+   [
+    "speed",
+    "m3-graphs"
+   ],
+   [
+    "stationary",
+    "m3-graphs"
+   ],
+   [
+    "Speed–time",
+    "m3-graphs"
+   ],
+   [
+    "acceleration",
+    "m3-graphs"
+   ],
+   [
+    "constant speed",
+    "m3-graphs"
+   ],
+   [
+    "triangles, rectangles and trapezia",
+    "m3-graphs"
+   ],
+   [
+    "same units",
+    "m3-graphs"
+   ],
+   [
+    "domain",
+    "m3-funcs"
+   ],
+   [
+    "range",
+    "m3-funcs"
+   ],
+   [
+    "exactly one",
+    "m3-funcs"
+   ],
+   [
+    "brackets",
+    "m3-funcs"
+   ],
+   [
+    "fg(x) means f(g(x))",
+    "m3-funcs"
+   ],
+   [
+    "g first",
+    "m3-funcs"
+   ],
+   [
+    "gf(3) = g(7) = 49",
+    "m3-funcs"
+   ],
+   [
+    "not equal",
+    "m3-funcs"
+   ],
+   [
+    "replace x in f with the whole of g(x)",
+    "m3-funcs"
+   ],
+   [
+    "inverse f⁻¹",
+    "m3-funcs"
+   ],
+   [
+    "swap x and y",
+    "m3-funcs"
+   ],
+   [
+    "f⁻¹(x) = (x + 2)/3",
+    "m3-funcs"
+   ],
+   [
+    "f⁻¹(f(x)) = x",
+    "m3-funcs"
+   ],
+   [
+    "reflection of f in the line y = x",
+    "m3-funcs"
+   ],
+   [
+    "derivative dy/dx = naxⁿ⁻¹",
+    "m3-diff"
+   ],
+   [
+    "constant",
+    "m3-diff"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "m3-line",
+    "title": "Straight lines and regions"
+   },
+   {
+    "id": "m3-graphs",
+    "title": "Graphs of functions and motion"
+   },
+   {
+    "id": "m3-funcs",
+    "title": "Functions"
+   },
+   {
+    "id": "m3-diff",
+    "title": "Differentiation"
+   }
+  ]
+ },
+ {
+  "id": "unit-4",
+  "kind": "generated",
+  "unit": 4,
+  "unitTitle": "Geometry",
+  "title": "Geometry",
+  "syllabusRef": "C4.3, C4.4, C4.6 to C4.1, C4.5, E4.1",
+  "status": "draft",
+  "minutes": 24,
+  "objectives": [
+   {
+    "id": "m4-angles",
+    "text": "Angles and polygons (syllabus C4.3, C4.4, C4.6)"
+   },
+   {
+    "id": "m4-similar",
+    "text": "Congruence and similarity (syllabus C4.2, E4.2)"
+   },
+   {
+    "id": "m4-circle",
+    "text": "Circle theorems (syllabus E4.5)"
+   },
+   {
+    "id": "m4-construct",
+    "text": "Constructions, loci and symmetry (syllabus C4.1, C4.5, E4.1)"
+   }
+  ],
+  "terms": [
+   [
+    "straight line",
+    "m4-angles"
+   ],
+   [
+    "180°",
+    "m4-angles"
+   ],
+   [
+    "point",
+    "m4-angles"
+   ],
+   [
+    "360°",
+    "m4-angles"
+   ],
+   [
+    "vertically opposite",
+    "m4-angles"
+   ],
+   [
+    "equal",
+    "m4-angles"
+   ],
+   [
+    "triangle",
+    "m4-angles"
+   ],
+   [
+    "alternate",
+    "m4-angles"
+   ],
+   [
+    "corresponding",
+    "m4-angles"
+   ],
+   [
+    "co-interior",
+    "m4-angles"
+   ],
+   [
+    "reason",
+    "m4-angles"
+   ],
+   [
+    "isosceles",
+    "m4-angles"
+   ],
+   [
+    "base angles are equal",
+    "m4-angles"
+   ],
+   [
+    "equilateral",
+    "m4-angles"
+   ],
+   [
+    "exterior angle",
+    "m4-angles"
+   ],
+   [
+    "sum of the two opposite interior angles",
+    "m4-angles"
+   ],
+   [
+    "quadrilateral",
+    "m4-angles"
+   ],
+   [
+    "parallelogram",
+    "m4-angles"
+   ],
+   [
+    "kite",
+    "m4-angles"
+   ],
+   [
+    "trapezium",
+    "m4-angles"
+   ],
+   [
+    "(n − 2) × 180°",
+    "m4-angles"
+   ],
+   [
+    "any",
+    "m4-angles"
+   ],
+   [
+    "regular",
+    "m4-angles"
+   ],
+   [
+    "360° ÷ n",
+    "m4-angles"
+   ],
+   [
+    "interior + exterior = 180°",
+    "m4-angles"
+   ],
+   [
+    "144°",
+    "m4-angles"
+   ],
+   [
+    "congruent",
+    "m4-similar"
+   ],
+   [
+    "SSS",
+    "m4-similar"
+   ],
+   [
+    "SAS",
+    "m4-similar"
+   ],
+   [
+    "ASA",
+    "m4-similar"
+   ],
+   [
+    "RHS",
+    "m4-similar"
+   ],
+   [
+    "AAA is not enough",
+    "m4-similar"
+   ],
+   [
+    "similar",
+    "m4-similar"
+   ],
+   [
+    "each pair of equal parts with a reason",
+    "m4-similar"
+   ],
+   [
+    "equal angles",
+    "m4-similar"
+   ],
+   [
+    "corresponding sides in the same ratio",
+    "m4-similar"
+   ],
+   [
+    "scale factor k",
+    "m4-similar"
+   ],
+   [
+    "new length ÷ old length",
+    "m4-similar"
+   ],
+   [
+    "areas scale by k²",
+    "m4-similar"
+   ],
+   [
+    "volumes by k³",
+    "m4-similar"
+   ],
+   [
+    "a² : b²",
+    "m4-similar"
+   ],
+   [
+    "a³ : b³",
+    "m4-similar"
+   ],
+   [
+    "8 : 27",
+    "m4-similar"
+   ],
+   [
+    "mass or capacity",
+    "m4-similar"
+   ],
+   [
+    "volume",
+    "m4-similar"
+   ],
+   [
+    "angle in a semicircle is 90°",
+    "m4-circle"
+   ],
+   [
+    "Angles in the same segment are equal",
+    "m4-circle"
+   ],
+   [
+    "tangent is perpendicular to the radius",
+    "m4-circle"
+   ],
+   [
+    "bisects",
+    "m4-circle"
+   ],
+   [
+    "tangent and a chord",
+    "m4-circle"
+   ],
+   [
+    "alternate segment",
+    "m4-circle"
+   ],
+   [
+    "perpendicular to a chord bisects",
+    "m4-circle"
+   ],
+   [
+    "ruler and compasses",
+    "m4-construct"
+   ],
+   [
+    "keep your construction arcs",
+    "m4-construct"
+   ],
+   [
+    "perpendicular bisector",
+    "m4-construct"
+   ],
+   [
+    "angle bisector",
+    "m4-construct"
+   ],
+   [
+    "triangle from three sides",
+    "m4-construct"
+   ],
+   [
+    "Fixed distance from a point",
+    "m4-construct"
+   ],
+   [
+    "circle",
+    "m4-construct"
+   ],
+   [
+    "Equidistant from two points",
+    "m4-construct"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "m4-angles",
+    "title": "Angles and polygons"
+   },
+   {
+    "id": "m4-similar",
+    "title": "Congruence and similarity"
+   },
+   {
+    "id": "m4-circle",
+    "title": "Circle theorems"
+   },
+   {
+    "id": "m4-construct",
+    "title": "Constructions, loci and symmetry"
+   }
+  ]
+ },
+ {
+  "id": "unit-5",
+  "kind": "generated",
+  "unit": 5,
+  "unitTitle": "Mensuration",
+  "title": "Mensuration",
+  "syllabusRef": "C5.1 to C5.4 to C5.5, E5.4",
+  "status": "draft",
+  "minutes": 12,
+  "objectives": [
+   {
+    "id": "m5-area",
+    "text": "Area, circles, arcs and sectors (syllabus C5.1 to C5.4)"
+   },
+   {
+    "id": "m5-volume",
+    "text": "Volume and surface area (syllabus C5.5, E5.4)"
+   }
+  ],
+  "terms": [
+   [
+    "Triangle ½bh",
+    "m5-area"
+   ],
+   [
+    "parallelogram bh",
+    "m5-area"
+   ],
+   [
+    "trapezium ½(a + b)h",
+    "m5-area"
+   ],
+   [
+    "rectangle lw",
+    "m5-area"
+   ],
+   [
+    "perpendicular",
+    "m5-area"
+   ],
+   [
+    "add or subtract",
+    "m5-area"
+   ],
+   [
+    "Circumference C = 2πr = πd",
+    "m5-area"
+   ],
+   [
+    "area A = πr²",
+    "m5-area"
+   ],
+   [
+    "Arc length = (θ/360) × 2πr",
+    "m5-area"
+   ],
+   [
+    "sector area = (θ/360) × πr²",
+    "m5-area"
+   ],
+   [
+    "arc + 2 radii",
+    "m5-area"
+   ],
+   [
+    "rectangles, triangles and sectors",
+    "m5-area"
+   ],
+   [
+    "1 m² = 10 000 cm²",
+    "m5-area"
+   ],
+   [
+    "length",
+    "m5-area"
+   ],
+   [
+    "Cylinder: V = πr²h",
+    "m5-volume"
+   ],
+   [
+    "same all the way through",
+    "m5-volume"
+   ],
+   [
+    "502.65 cm³",
+    "m5-volume"
+   ],
+   [
+    "Pyramid: V = ⅓ × base area × h",
+    "m5-volume"
+   ],
+   [
+    "Cone: V = ⅓πr²h",
+    "m5-volume"
+   ],
+   [
+    "Sphere: V = 4/3 πr³",
+    "m5-volume"
+   ],
+   [
+    "Hemisphere",
+    "m5-volume"
+   ],
+   [
+    "perpendicular height",
+    "m5-volume"
+   ],
+   [
+    "314.16 cm³",
+    "m5-volume"
+   ],
+   [
+    "Sphere: 4πr²",
+    "m5-volume"
+   ],
+   [
+    "Cylinder: 2πr² + 2πrh",
+    "m5-volume"
+   ],
+   [
+    "Cone curved surface: πrl",
+    "m5-volume"
+   ],
+   [
+    "l is the slant height",
+    "m5-volume"
+   ],
+   [
+    "204.2 cm²",
+    "m5-volume"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "m5-area",
+    "title": "Area, circles, arcs and sectors"
+   },
+   {
+    "id": "m5-volume",
+    "title": "Volume and surface area"
+   }
+  ]
+ },
+ {
+  "id": "unit-6",
+  "kind": "generated",
+  "unit": 6,
+  "unitTitle": "Trigonometry",
+  "title": "Trigonometry",
+  "syllabusRef": "C5.6, E6.1 to C6.4, E6.3, E6.6",
+  "status": "draft",
+  "minutes": 24,
+  "objectives": [
+   {
+    "id": "m6-pyth",
+    "text": "Pythagoras’ theorem (syllabus C5.6, E6.1)"
+   },
+   {
+    "id": "m6-trig",
+    "text": "Sine, cosine and tangent (syllabus C6.1 to C6.3)"
+   },
+   {
+    "id": "m6-rules",
+    "text": "Sine rule, cosine rule and area (syllabus E6.2 to E6.5)"
+   },
+   {
+    "id": "m6-graphs",
+    "text": "Exact values, trig graphs and bearings (syllabus C6.4, E6.3, E6.6)"
+   }
+  ],
+  "terms": [
+   [
+    "a² + b² = c²",
+    "m6-pyth"
+   ],
+   [
+    "c is the hypotenuse",
+    "m6-pyth"
+   ],
+   [
+    "hypotenuse add",
+    "m6-pyth"
+   ],
+   [
+    "shorter side subtract",
+    "m6-pyth"
+   ],
+   [
+    "converse",
+    "m6-pyth"
+   ],
+   [
+    "right-angled",
+    "m6-pyth"
+   ],
+   [
+    "Pythagorean triples",
+    "m6-pyth"
+   ],
+   [
+    "both sides",
+    "m6-pyth"
+   ],
+   [
+    "distance = √(Δx² + Δy²)",
+    "m6-pyth"
+   ],
+   [
+    "3D diagonal",
+    "m6-pyth"
+   ],
+   [
+    "√(l² + w² + h²)",
+    "m6-pyth"
+   ],
+   [
+    "face diagonal first",
+    "m6-pyth"
+   ],
+   [
+    "second right-angled triangle",
+    "m6-pyth"
+   ],
+   [
+    "hypotenuse",
+    "m6-trig"
+   ],
+   [
+    "opposite",
+    "m6-trig"
+   ],
+   [
+    "adjacent",
+    "m6-trig"
+   ],
+   [
+    "sin θ = opp/hyp",
+    "m6-trig"
+   ],
+   [
+    "cos θ = adj/hyp",
+    "m6-trig"
+   ],
+   [
+    "tan θ = opp/adj",
+    "m6-trig"
+   ],
+   [
+    "angle",
+    "m6-trig"
+   ],
+   [
+    "inverse",
+    "m6-trig"
+   ],
+   [
+    "16.26°",
+    "m6-trig"
+   ],
+   [
+    "degrees",
+    "m6-trig"
+   ],
+   [
+    "side you know",
+    "m6-trig"
+   ],
+   [
+    "side you want",
+    "m6-trig"
+   ],
+   [
+    "top",
+    "m6-trig"
+   ],
+   [
+    "bottom",
+    "m6-trig"
+   ],
+   [
+    "angle of elevation",
+    "m6-trig"
+   ],
+   [
+    "up from the horizontal",
+    "m6-trig"
+   ],
+   [
+    "angle of depression",
+    "m6-trig"
+   ],
+   [
+    "down from the horizontal",
+    "m6-trig"
+   ],
+   [
+    "alternate angles",
+    "m6-trig"
+   ],
+   [
+    "right-angled triangle",
+    "m6-trig"
+   ],
+   [
+    "31.2 m",
+    "m6-trig"
+   ],
+   [
+    "a/sin A = b/sin B = c/sin C",
+    "m6-rules"
+   ],
+   [
+    "matching pair",
+    "m6-rules"
+   ],
+   [
+    "side",
+    "m6-rules"
+   ],
+   [
+    "a² = b² + c² − 2bc cos A",
+    "m6-rules"
+   ],
+   [
+    "two sides and the included angle (SAS)",
+    "m6-rules"
+   ],
+   [
+    "three sides (SSS)",
+    "m6-rules"
+   ],
+   [
+    "cos A = (b² + c² − a²)/(2bc)",
+    "m6-rules"
+   ],
+   [
+    "squared alone",
+    "m6-rules"
+   ],
+   [
+    "Area = ½ab sin C",
+    "m6-rules"
+   ],
+   [
+    "between",
+    "m6-rules"
+   ],
+   [
+    "two sides and the included angle",
+    "m6-rules"
+   ],
+   [
+    "√3/2",
+    "m6-graphs"
+   ],
+   [
+    "1/√3",
+    "m6-graphs"
+   ],
+   [
+    "half-equilateral triangle",
+    "m6-graphs"
+   ],
+   [
+    "right-angled isosceles triangle",
+    "m6-graphs"
+   ],
+   [
+    "y = sin x",
+    "m6-graphs"
+   ],
+   [
+    "y = cos x",
+    "m6-graphs"
+   ],
+   [
+    "360°",
+    "m6-graphs"
+   ],
+   [
+    "−1 and 1",
+    "m6-graphs"
+   ],
+   [
+    "y = tan x",
+    "m6-graphs"
+   ],
+   [
+    "180°",
+    "m6-graphs"
+   ],
+   [
+    "y = a sin(bx)",
+    "m6-graphs"
+   ],
+   [
+    "amplitude a",
+    "m6-graphs"
+   ],
+   [
+    "period 360° ÷ b",
+    "m6-graphs"
+   ],
+   [
+    "two",
+    "m6-graphs"
+   ],
+   [
+    "150°",
+    "m6-graphs"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "m6-pyth",
+    "title": "Pythagoras’ theorem"
+   },
+   {
+    "id": "m6-trig",
+    "title": "Sine, cosine and tangent"
+   },
+   {
+    "id": "m6-rules",
+    "title": "Sine rule, cosine rule and area"
+   },
+   {
+    "id": "m6-graphs",
+    "title": "Exact values, trig graphs and bearings"
+   }
+  ]
+ },
+ {
+  "id": "unit-7",
+  "kind": "generated",
+  "unit": 7,
+  "unitTitle": "Transformations and Vectors",
+  "title": "Transformations and Vectors",
+  "syllabusRef": "C7.1, E7.1 to E7.2 to E7.4",
+  "status": "draft",
+  "minutes": 12,
+  "objectives": [
+   {
+    "id": "m7-transform",
+    "text": "Transformations (syllabus C7.1, E7.1)"
+   },
+   {
+    "id": "m7-vector",
+    "text": "Vectors (syllabus E7.2 to E7.4)"
+   }
+  ],
+  "terms": [
+   [
+    "Reflection",
+    "m7-transform"
+   ],
+   [
+    "mirror line",
+    "m7-transform"
+   ],
+   [
+    "y = x",
+    "m7-transform"
+   ],
+   [
+    "(y, x)",
+    "m7-transform"
+   ],
+   [
+    "Translation",
+    "m7-transform"
+   ],
+   [
+    "column vector",
+    "m7-transform"
+   ],
+   [
+    "not turned or resized",
+    "m7-transform"
+   ],
+   [
+    "(−2, 3)",
+    "m7-transform"
+   ],
+   [
+    "angle",
+    "m7-transform"
+   ],
+   [
+    "direction",
+    "m7-transform"
+   ],
+   [
+    "centre",
+    "m7-transform"
+   ],
+   [
+    "90° anticlockwise",
+    "m7-transform"
+   ],
+   [
+    "180°",
+    "m7-transform"
+   ],
+   [
+    "90° clockwise",
+    "m7-transform"
+   ],
+   [
+    "centre can be found",
+    "m7-transform"
+   ],
+   [
+    "scale factor k",
+    "m7-transform"
+   ],
+   [
+    "negative k",
+    "m7-transform"
+   ],
+   [
+    "opposite side",
+    "m7-transform"
+   ],
+   [
+    "inverted",
+    "m7-transform"
+   ],
+   [
+    "smaller",
+    "m7-transform"
+   ],
+   [
+    "areas by k²",
+    "m7-transform"
+   ],
+   [
+    "(−4, −6)",
+    "m7-transform"
+   ],
+   [
+    "column vector (a, b)",
+    "m7-vector"
+   ],
+   [
+    "Magnitude |v| = √(a² + b²)",
+    "m7-vector"
+   ],
+   [
+    "Add",
+    "m7-vector"
+   ],
+   [
+    "scalar multiples",
+    "m7-vector"
+   ],
+   [
+    "Parallel vectors",
+    "m7-vector"
+   ],
+   [
+    "3p − 2q = (6, 9) − (−2, 8) = (8, 1)",
+    "m7-vector"
+   ],
+   [
+    "AB = b − a",
+    "m7-vector"
+   ],
+   [
+    "BA = −AB",
+    "m7-vector"
+   ],
+   [
+    "parallel",
+    "m7-vector"
+   ],
+   [
+    "one straight line",
+    "m7-vector"
+   ],
+   [
+    "a and b",
+    "m7-vector"
+   ],
+   [
+    "OA = a",
+    "m7-vector"
+   ],
+   [
+    "OB = b",
+    "m7-vector"
+   ],
+   [
+    "AB = −a + b",
+    "m7-vector"
+   ],
+   [
+    "midpoint",
+    "m7-vector"
+   ],
+   [
+    "OM = ½(a + b)",
+    "m7-vector"
+   ],
+   [
+    "OP = a + ⅓(b − a)",
+    "m7-vector"
+   ],
+   [
+    "collinear",
+    "m7-vector"
+   ],
+   [
+    "and share a point",
+    "m7-vector"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "m7-transform",
+    "title": "Transformations"
+   },
+   {
+    "id": "m7-vector",
+    "title": "Vectors"
+   }
+  ]
+ },
+ {
+  "id": "unit-8",
+  "kind": "generated",
+  "unit": 8,
+  "unitTitle": "Probability",
+  "title": "Probability",
+  "syllabusRef": "C8.1 to C8.3 to C8.4, E8.1, E8.2",
+  "status": "draft",
+  "minutes": 12,
+  "objectives": [
+   {
+    "id": "m8-prob",
+    "text": "Probability basics (syllabus C8.1 to C8.3)"
+   },
+   {
+    "id": "m8-tree",
+    "text": "Tree diagrams and Venn diagrams (syllabus C8.4, E8.1, E8.2)"
+   }
+  ],
+  "terms": [
+   [
+    "0 and 1",
+    "m8-prob"
+   ],
+   [
+    "add to 1",
+    "m8-prob"
+   ],
+   [
+    "P(not A) = 1 − P(A)",
+    "m8-prob"
+   ],
+   [
+    "sample space",
+    "m8-prob"
+   ],
+   [
+    "1/6",
+    "m8-prob"
+   ],
+   [
+    "11/36",
+    "m8-prob"
+   ],
+   [
+    "Mutually exclusive",
+    "m8-prob"
+   ],
+   [
+    "P(A or B) = P(A) + P(B)",
+    "m8-prob"
+   ],
+   [
+    "Independent",
+    "m8-prob"
+   ],
+   [
+    "P(A and B) = P(A) × P(B)",
+    "m8-prob"
+   ],
+   [
+    "P(A or B) = P(A) + P(B) − P(A and B)",
+    "m8-prob"
+   ],
+   [
+    "estimates",
+    "m8-prob"
+   ],
+   [
+    "along",
+    "m8-tree"
+   ],
+   [
+    "Add",
+    "m8-tree"
+   ],
+   [
+    "adds to 1",
+    "m8-tree"
+   ],
+   [
+    "1 − P(none)",
+    "m8-tree"
+   ],
+   [
+    "not replaced",
+    "m8-tree"
+   ],
+   [
+    "second branch probabilities change",
+    "m8-tree"
+   ],
+   [
+    "down by 1",
+    "m8-tree"
+   ],
+   [
+    "5/14",
+    "m8-tree"
+   ],
+   [
+    "15/28",
+    "m8-tree"
+   ],
+   [
+    "both orders",
+    "m8-tree"
+   ],
+   [
+    "A ∩ B",
+    "m8-tree"
+   ],
+   [
+    "A ∪ B",
+    "m8-tree"
+   ],
+   [
+    "n(A)",
+    "m8-tree"
+   ],
+   [
+    "n(A ∪ B) = n(A) + n(B) − n(A ∩ B)",
+    "m8-tree"
+   ],
+   [
+    "intersection first",
+    "m8-tree"
+   ],
+   [
+    "Conditional probability",
+    "m8-tree"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "m8-prob",
+    "title": "Probability basics"
+   },
+   {
+    "id": "m8-tree",
+    "title": "Tree diagrams and Venn diagrams"
+   }
+  ]
+ },
+ {
+  "id": "unit-9",
+  "kind": "generated",
+  "unit": 9,
+  "unitTitle": "Statistics",
+  "title": "Statistics",
+  "syllabusRef": "C9.3, E9.4 to C9.2, E9.1 to E9.3",
+  "status": "draft",
+  "minutes": 12,
+  "objectives": [
+   {
+    "id": "m9-avg",
+    "text": "Averages and spread (syllabus C9.3, E9.4)"
+   },
+   {
+    "id": "m9-charts",
+    "text": "Statistical diagrams (syllabus C9.2, E9.1 to E9.3)"
+   }
+  ],
+  "terms": [
+   [
+    "Mean",
+    "m9-avg"
+   ],
+   [
+    "Median",
+    "m9-avg"
+   ],
+   [
+    "Mode",
+    "m9-avg"
+   ],
+   [
+    "Range",
+    "m9-avg"
+   ],
+   [
+    "outliers",
+    "m9-avg"
+   ],
+   [
+    "skewed data",
+    "m9-avg"
+   ],
+   [
+    "midpoint",
+    "m9-avg"
+   ],
+   [
+    "frequency",
+    "m9-avg"
+   ],
+   [
+    "estimate",
+    "m9-avg"
+   ],
+   [
+    "modal class",
+    "m9-avg"
+   ],
+   [
+    "lower quartile Q₁",
+    "m9-avg"
+   ],
+   [
+    "IQR = Q₃ − Q₁",
+    "m9-avg"
+   ],
+   [
+    "cumulative frequency",
+    "m9-avg"
+   ],
+   [
+    "n/4",
+    "m9-avg"
+   ],
+   [
+    "n/2",
+    "m9-avg"
+   ],
+   [
+    "3n/4",
+    "m9-avg"
+   ],
+   [
+    "scatter graph",
+    "m9-charts"
+   ],
+   [
+    "positive",
+    "m9-charts"
+   ],
+   [
+    "negative",
+    "m9-charts"
+   ],
+   [
+    "none",
+    "m9-charts"
+   ],
+   [
+    "not proof of cause",
+    "m9-charts"
+   ],
+   [
+    "line of best fit",
+    "m9-charts"
+   ],
+   [
+    "within the data range",
+    "m9-charts"
+   ],
+   [
+    "unequal class widths",
+    "m9-charts"
+   ],
+   [
+    "Area of a bar = frequency",
+    "m9-charts"
+   ],
+   [
+    "not",
+    "m9-charts"
+   ],
+   [
+    "median at n/2",
+    "m9-charts"
+   ],
+   [
+    "lower quartile at n/4",
+    "m9-charts"
+   ],
+   [
+    "upper quartile at 3n/4",
+    "m9-charts"
+   ],
+   [
+    "IQR",
+    "m9-charts"
+   ],
+   [
+    "above",
+    "m9-charts"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "m9-avg",
+    "title": "Averages and spread"
+   },
+   {
+    "id": "m9-charts",
+    "title": "Statistical diagrams"
+   }
+  ]
+ }
+]

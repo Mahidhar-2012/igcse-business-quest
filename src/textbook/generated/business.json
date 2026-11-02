@@ -1,0 +1,2074 @@
+[
+ {
+  "id": "unit-1",
+  "kind": "generated",
+  "unit": 1,
+  "unitTitle": "Understanding Business Activity",
+  "title": "Understanding Business Activity",
+  "syllabusRef": "1.1 – 1.2 to 1.5",
+  "status": "draft",
+  "minutes": 30,
+  "objectives": [
+   {
+    "id": "u1-activity-sectors",
+    "text": "Business Activity & Sectors (syllabus 1.1 – 1.2)"
+   },
+   {
+    "id": "u1-enterprise",
+    "text": "Enterprise & Business Plans (syllabus 1.3.1)"
+   },
+   {
+    "id": "u1-size-growth",
+    "text": "Business Size & Growth (syllabus 1.3.2 – 1.3.4)"
+   },
+   {
+    "id": "u1-organisations",
+    "text": "Types of Business Organisation (syllabus 1.4)"
+   },
+   {
+    "id": "u1-objectives-stakeholders",
+    "text": "Objectives & Stakeholders (syllabus 1.5)"
+   }
+  ],
+  "terms": [
+   [
+    "Land",
+    "u1-activity-sectors"
+   ],
+   [
+    "Labour",
+    "u1-activity-sectors"
+   ],
+   [
+    "Capital",
+    "u1-activity-sectors"
+   ],
+   [
+    "Enterprise",
+    "u1-activity-sectors"
+   ],
+   [
+    "Added value",
+    "u1-activity-sectors"
+   ],
+   [
+    "Opportunity cost",
+    "u1-activity-sectors"
+   ],
+   [
+    "Primary",
+    "u1-activity-sectors"
+   ],
+   [
+    "Secondary",
+    "u1-activity-sectors"
+   ],
+   [
+    "Tertiary",
+    "u1-activity-sectors"
+   ],
+   [
+    "Private sector",
+    "u1-activity-sectors"
+   ],
+   [
+    "Public sector",
+    "u1-activity-sectors"
+   ],
+   [
+    "entrepreneur",
+    "u1-enterprise"
+   ],
+   [
+    "direction and targets",
+    "u1-enterprise"
+   ],
+   [
+    "Persuades lenders and investors",
+    "u1-enterprise"
+   ],
+   [
+    "create jobs",
+    "u1-enterprise"
+   ],
+   [
+    "tax revenue",
+    "u1-enterprise"
+   ],
+   [
+    "Grants",
+    "u1-enterprise"
+   ],
+   [
+    "Low-cost loans",
+    "u1-enterprise"
+   ],
+   [
+    "Advice",
+    "u1-enterprise"
+   ],
+   [
+    "training schemes",
+    "u1-enterprise"
+   ],
+   [
+    "Profit is NOT a measure of size",
+    "u1-size-growth"
+   ],
+   [
+    "capital-intensive",
+    "u1-size-growth"
+   ],
+   [
+    "profit",
+    "u1-size-growth"
+   ],
+   [
+    "market share",
+    "u1-size-growth"
+   ],
+   [
+    "Economies of scale",
+    "u1-size-growth"
+   ],
+   [
+    "new products, new markets, more outlets",
+    "u1-size-growth"
+   ],
+   [
+    "Merger",
+    "u1-size-growth"
+   ],
+   [
+    "Takeover",
+    "u1-size-growth"
+   ],
+   [
+    "Horizontal",
+    "u1-size-growth"
+   ],
+   [
+    "Vertical backward",
+    "u1-size-growth"
+   ],
+   [
+    "Vertical forward",
+    "u1-size-growth"
+   ],
+   [
+    "Diseconomies",
+    "u1-size-growth"
+   ],
+   [
+    "Success",
+    "u1-size-growth"
+   ],
+   [
+    "Failure",
+    "u1-size-growth"
+   ],
+   [
+    "running out of cash",
+    "u1-size-growth"
+   ],
+   [
+    "Unlimited liability",
+    "u1-organisations"
+   ],
+   [
+    "shareholders",
+    "u1-organisations"
+   ],
+   [
+    "limited liability",
+    "u1-organisations"
+   ],
+   [
+    "privately",
+    "u1-organisations"
+   ],
+   [
+    "public on the stock exchange",
+    "u1-organisations"
+   ],
+   [
+    "sole trader",
+    "u1-organisations"
+   ],
+   [
+    "partnership",
+    "u1-organisations"
+   ],
+   [
+    "private limited company",
+    "u1-organisations"
+   ],
+   [
+    "PLC",
+    "u1-organisations"
+   ],
+   [
+    "franchisee",
+    "u1-organisations"
+   ],
+   [
+    "royalty",
+    "u1-organisations"
+   ],
+   [
+    "franchisor’s",
+    "u1-organisations"
+   ],
+   [
+    "Joint venture",
+    "u1-organisations"
+   ],
+   [
+    "Social enterprise",
+    "u1-organisations"
+   ],
+   [
+    "survival, growth, profit, market share",
+    "u1-objectives-stakeholders"
+   ],
+   [
+    "direction",
+    "u1-objectives-stakeholders"
+   ],
+   [
+    "measure success",
+    "u1-objectives-stakeholders"
+   ],
+   [
+    "Owners",
+    "u1-objectives-stakeholders"
+   ],
+   [
+    "Managers",
+    "u1-objectives-stakeholders"
+   ],
+   [
+    "Employees",
+    "u1-objectives-stakeholders"
+   ],
+   [
+    "Customers",
+    "u1-objectives-stakeholders"
+   ],
+   [
+    "Suppliers",
+    "u1-objectives-stakeholders"
+   ],
+   [
+    "Lenders/banks",
+    "u1-objectives-stakeholders"
+   ],
+   [
+    "Government",
+    "u1-objectives-stakeholders"
+   ],
+   [
+    "Local community",
+    "u1-objectives-stakeholders"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "u1-activity-sectors",
+    "title": "Business Activity & Sectors"
+   },
+   {
+    "id": "u1-enterprise",
+    "title": "Enterprise & Business Plans"
+   },
+   {
+    "id": "u1-size-growth",
+    "title": "Business Size & Growth"
+   },
+   {
+    "id": "u1-organisations",
+    "title": "Types of Business Organisation"
+   },
+   {
+    "id": "u1-objectives-stakeholders",
+    "title": "Objectives & Stakeholders"
+   }
+  ]
+ },
+ {
+  "id": "unit-2",
+  "kind": "generated",
+  "unit": 2,
+  "unitTitle": "People in Business",
+  "title": "People in Business",
+  "syllabusRef": "2.1.1 to 2.4",
+  "status": "draft",
+  "minutes": 30,
+  "objectives": [
+   {
+    "id": "u2-recruitment",
+    "text": "Recruitment & Selection (syllabus 2.1.1)"
+   },
+   {
+    "id": "u2-contracts-training",
+    "text": "Contracts, Laws & Training (syllabus 2.1.2 – 2.1.3)"
+   },
+   {
+    "id": "u2-organisation-management",
+    "text": "Organisation & Management (syllabus 2.2)"
+   },
+   {
+    "id": "u2-communication",
+    "text": "Communication (syllabus 2.3)"
+   },
+   {
+    "id": "u2-motivation",
+    "text": "Motivating Employees (syllabus 2.4)"
+   }
+  ],
+  "terms": [
+   [
+    "Job description",
+    "u2-recruitment"
+   ],
+   [
+    "Person specification",
+    "u2-recruitment"
+   ],
+   [
+    "Internal",
+    "u2-recruitment"
+   ],
+   [
+    "External",
+    "u2-recruitment"
+   ],
+   [
+    "employment agencies",
+    "u2-recruitment"
+   ],
+   [
+    "CV / application form",
+    "u2-recruitment"
+   ],
+   [
+    "References",
+    "u2-recruitment"
+   ],
+   [
+    "Tests / assessment centres",
+    "u2-recruitment"
+   ],
+   [
+    "Interviews",
+    "u2-recruitment"
+   ],
+   [
+    "job description and person specification",
+    "u2-recruitment"
+   ],
+   [
+    "justify",
+    "u2-recruitment"
+   ],
+   [
+    "Employer",
+    "u2-contracts-training"
+   ],
+   [
+    "Employee",
+    "u2-contracts-training"
+   ],
+   [
+    "Unfair dismissal",
+    "u2-contracts-training"
+   ],
+   [
+    "Discrimination",
+    "u2-contracts-training"
+   ],
+   [
+    "Health and safety",
+    "u2-contracts-training"
+   ],
+   [
+    "Legal minimum wage",
+    "u2-contracts-training"
+   ],
+   [
+    "Employers",
+    "u2-contracts-training"
+   ],
+   [
+    "Employees",
+    "u2-contracts-training"
+   ],
+   [
+    "Business",
+    "u2-contracts-training"
+   ],
+   [
+    "new starters",
+    "u2-contracts-training"
+   ],
+   [
+    "while working",
+    "u2-contracts-training"
+   ],
+   [
+    "away from the workplace",
+    "u2-contracts-training"
+   ],
+   [
+    "Operations",
+    "u2-organisation-management"
+   ],
+   [
+    "marketing",
+    "u2-organisation-management"
+   ],
+   [
+    "finance",
+    "u2-organisation-management"
+   ],
+   [
+    "human resources",
+    "u2-organisation-management"
+   ],
+   [
+    "Hierarchy",
+    "u2-organisation-management"
+   ],
+   [
+    "Chain of command",
+    "u2-organisation-management"
+   ],
+   [
+    "Span of control",
+    "u2-organisation-management"
+   ],
+   [
+    "Tall",
+    "u2-organisation-management"
+   ],
+   [
+    "Flat",
+    "u2-organisation-management"
+   ],
+   [
+    "levels",
+    "u2-organisation-management"
+   ],
+   [
+    "boxes directly below",
+    "u2-organisation-management"
+   ],
+   [
+    "Flexible working",
+    "u2-organisation-management"
+   ],
+   [
+    "Part-time",
+    "u2-organisation-management"
+   ],
+   [
+    "Full-time",
+    "u2-organisation-management"
+   ],
+   [
+    "Planning",
+    "u2-organisation-management"
+   ],
+   [
+    "organising",
+    "u2-organisation-management"
+   ],
+   [
+    "coordinating",
+    "u2-organisation-management"
+   ],
+   [
+    "commanding",
+    "u2-organisation-management"
+   ],
+   [
+    "controlling",
+    "u2-organisation-management"
+   ],
+   [
+    "Delegation",
+    "u2-organisation-management"
+   ],
+   [
+    "Autocratic",
+    "u2-organisation-management"
+   ],
+   [
+    "Democratic",
+    "u2-organisation-management"
+   ],
+   [
+    "Laissez-faire",
+    "u2-organisation-management"
+   ],
+   [
+    "Downsizing",
+    "u2-organisation-management"
+   ],
+   [
+    "Redundancy",
+    "u2-organisation-management"
+   ],
+   [
+    "trade union",
+    "u2-organisation-management"
+   ],
+   [
+    "collective bargaining",
+    "u2-organisation-management"
+   ],
+   [
+    "instructions",
+    "u2-communication"
+   ],
+   [
+    "Meetings",
+    "u2-communication"
+   ],
+   [
+    "email",
+    "u2-communication"
+   ],
+   [
+    "text messages",
+    "u2-communication"
+   ],
+   [
+    "social media",
+    "u2-communication"
+   ],
+   [
+    "phone calls",
+    "u2-communication"
+   ],
+   [
+    "letters",
+    "u2-communication"
+   ],
+   [
+    "posters and noticeboards",
+    "u2-communication"
+   ],
+   [
+    "Phone",
+    "u2-communication"
+   ],
+   [
+    "Notices",
+    "u2-communication"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "u2-recruitment",
+    "title": "Recruitment & Selection"
+   },
+   {
+    "id": "u2-contracts-training",
+    "title": "Contracts, Laws & Training"
+   },
+   {
+    "id": "u2-organisation-management",
+    "title": "Organisation & Management"
+   },
+   {
+    "id": "u2-communication",
+    "title": "Communication"
+   },
+   {
+    "id": "u2-motivation",
+    "title": "Motivating Employees"
+   }
+  ]
+ },
+ {
+  "id": "unit-3",
+  "kind": "generated",
+  "unit": 3,
+  "unitTitle": "Marketing",
+  "title": "Marketing",
+  "syllabusRef": "3.1 to 3.3.6 – 3.4",
+  "status": "draft",
+  "minutes": 30,
+  "objectives": [
+   {
+    "id": "u3-market",
+    "text": "Role of Marketing & the Market (syllabus 3.1)"
+   },
+   {
+    "id": "u3-research",
+    "text": "Market Research (syllabus 3.2)"
+   },
+   {
+    "id": "u3-product-price",
+    "text": "Product & Price (syllabus 3.3.1 – 3.3.2)"
+   },
+   {
+    "id": "u3-place-promotion",
+    "text": "Place, Promotion & E-commerce (syllabus 3.3.3 – 3.3.5)"
+   },
+   {
+    "id": "u3-strategy-legal",
+    "text": "Strategy, New Markets & Legal Controls (syllabus 3.3.6 – 3.4)"
+   }
+  ],
+  "terms": [
+   [
+    "Identify",
+    "u3-market"
+   ],
+   [
+    "satisfy",
+    "u3-market"
+   ],
+   [
+    "maintain loyalty",
+    "u3-market"
+   ],
+   [
+    "build relationships",
+    "u3-market"
+   ],
+   [
+    "anticipate",
+    "u3-market"
+   ],
+   [
+    "Spending patterns change",
+    "u3-market"
+   ],
+   [
+    "Markets get more competitive",
+    "u3-market"
+   ],
+   [
+    "new products",
+    "u3-market"
+   ],
+   [
+    "prices",
+    "u3-market"
+   ],
+   [
+    "promotion",
+    "u3-market"
+   ],
+   [
+    "customer service",
+    "u3-market"
+   ],
+   [
+    "market research",
+    "u3-market"
+   ],
+   [
+    "Mass market",
+    "u3-market"
+   ],
+   [
+    "Niche market",
+    "u3-market"
+   ],
+   [
+    "risk",
+    "u3-research"
+   ],
+   [
+    "needs and opinions",
+    "u3-research"
+   ],
+   [
+    "new, first-hand data",
+    "u3-research"
+   ],
+   [
+    "sample",
+    "u3-research"
+   ],
+   [
+    "representative",
+    "u3-research"
+   ],
+   [
+    "existing data",
+    "u3-research"
+   ],
+   [
+    "Sample size",
+    "u3-research"
+   ],
+   [
+    "how representative",
+    "u3-research"
+   ],
+   [
+    "biased or leading questions",
+    "u3-research"
+   ],
+   [
+    "recent",
+    "u3-research"
+   ],
+   [
+    "% × total respondents",
+    "u3-research"
+   ],
+   [
+    "brand image",
+    "u3-product-price"
+   ],
+   [
+    "charge higher prices",
+    "u3-product-price"
+   ],
+   [
+    "protects",
+    "u3-product-price"
+   ],
+   [
+    "informs",
+    "u3-product-price"
+   ],
+   [
+    "attracts",
+    "u3-product-price"
+   ],
+   [
+    "Introduction",
+    "u3-product-price"
+   ],
+   [
+    "Growth",
+    "u3-product-price"
+   ],
+   [
+    "Maturity",
+    "u3-product-price"
+   ],
+   [
+    "Decline",
+    "u3-product-price"
+   ],
+   [
+    "sales curve",
+    "u3-product-price"
+   ],
+   [
+    "new markets",
+    "u3-product-price"
+   ],
+   [
+    "new uses",
+    "u3-product-price"
+   ],
+   [
+    "adapt product/packaging",
+    "u3-product-price"
+   ],
+   [
+    "more promotion",
+    "u3-product-price"
+   ],
+   [
+    "Cost-plus",
+    "u3-product-price"
+   ],
+   [
+    "Competitive",
+    "u3-product-price"
+   ],
+   [
+    "Penetration",
+    "u3-product-price"
+   ],
+   [
+    "Skimming",
+    "u3-product-price"
+   ],
+   [
+    "Dynamic",
+    "u3-product-price"
+   ],
+   [
+    "Direct",
+    "u3-place-promotion"
+   ],
+   [
+    "retailers",
+    "u3-place-promotion"
+   ],
+   [
+    "wholesalers",
+    "u3-place-promotion"
+   ],
+   [
+    "agents",
+    "u3-place-promotion"
+   ],
+   [
+    "Retailer",
+    "u3-place-promotion"
+   ],
+   [
+    "Wholesaler",
+    "u3-place-promotion"
+   ],
+   [
+    "Agent",
+    "u3-place-promotion"
+   ],
+   [
+    "Inform",
+    "u3-place-promotion"
+   ],
+   [
+    "persuade",
+    "u3-place-promotion"
+   ],
+   [
+    "remind",
+    "u3-place-promotion"
+   ],
+   [
+    "sales",
+    "u3-place-promotion"
+   ],
+   [
+    "Social media",
+    "u3-place-promotion"
+   ],
+   [
+    "direct/targeted emails",
+    "u3-place-promotion"
+   ],
+   [
+    "leaflets",
+    "u3-place-promotion"
+   ],
+   [
+    "billboards",
+    "u3-place-promotion"
+   ],
+   [
+    "product, price, place, promotion",
+    "u3-strategy-legal"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "u3-market",
+    "title": "Role of Marketing & the Market"
+   },
+   {
+    "id": "u3-research",
+    "title": "Market Research"
+   },
+   {
+    "id": "u3-product-price",
+    "title": "Product & Price"
+   },
+   {
+    "id": "u3-place-promotion",
+    "title": "Place, Promotion & E-commerce"
+   },
+   {
+    "id": "u3-strategy-legal",
+    "title": "Strategy, New Markets & Legal Controls"
+   }
+  ]
+ },
+ {
+  "id": "unit-4",
+  "kind": "generated",
+  "unit": 4,
+  "unitTitle": "Operations Management",
+  "title": "Operations Management",
+  "syllabusRef": "4.1.1 to 4.3, 4.5, 4.6",
+  "status": "draft",
+  "minutes": 30,
+  "objectives": [
+   {
+    "id": "u4-efficiency-lean",
+    "text": "Efficiency, Lean & Inventory (syllabus 4.1.1)"
+   },
+   {
+    "id": "u4-methods-technology",
+    "text": "Production Methods & Technology (syllabus 4.1.2, 4.2)"
+   },
+   {
+    "id": "u4-costs-scale",
+    "text": "Costs & Economies of Scale (syllabus 4.4.1 – 4.4.2)"
+   },
+   {
+    "id": "u4-break-even",
+    "text": "Break-even Analysis (syllabus 4.4.3)"
+   },
+   {
+    "id": "u4-quality-sustainability-location",
+    "text": "Quality, Sustainability & Location (syllabus 4.3, 4.5, 4.6)"
+   }
+  ],
+  "terms": [
+   [
+    "fewer resources per unit",
+    "u4-efficiency-lean"
+   ],
+   [
+    "Automation and technology",
+    "u4-efficiency-lean"
+   ],
+   [
+    "training to improve labour skills",
+    "u4-efficiency-lean"
+   ],
+   [
+    "Lean production",
+    "u4-efficiency-lean"
+   ],
+   [
+    "waste",
+    "u4-efficiency-lean"
+   ],
+   [
+    "just-in-time (JIT)",
+    "u4-efficiency-lean"
+   ],
+   [
+    "Kaizen",
+    "u4-efficiency-lean"
+   ],
+   [
+    "exactly when needed",
+    "u4-efficiency-lean"
+   ],
+   [
+    "stock-outs",
+    "u4-efficiency-lean"
+   ],
+   [
+    "groups (batches)",
+    "u4-methods-technology"
+   ],
+   [
+    "Continuous",
+    "u4-methods-technology"
+   ],
+   [
+    "job",
+    "u4-methods-technology"
+   ],
+   [
+    "batch",
+    "u4-methods-technology"
+   ],
+   [
+    "flow",
+    "u4-methods-technology"
+   ],
+   [
+    "Automation",
+    "u4-methods-technology"
+   ],
+   [
+    "mechanisation",
+    "u4-methods-technology"
+   ],
+   [
+    "CAM",
+    "u4-methods-technology"
+   ],
+   [
+    "robots",
+    "u4-methods-technology"
+   ],
+   [
+    "3D printing",
+    "u4-methods-technology"
+   ],
+   [
+    "contactless payments",
+    "u4-methods-technology"
+   ],
+   [
+    "more customers are served per hour",
+    "u4-methods-technology"
+   ],
+   [
+    "Business",
+    "u4-methods-technology"
+   ],
+   [
+    "Employees",
+    "u4-methods-technology"
+   ],
+   [
+    "job losses",
+    "u4-methods-technology"
+   ],
+   [
+    "Fixed costs",
+    "u4-costs-scale"
+   ],
+   [
+    "Variable costs",
+    "u4-costs-scale"
+   ],
+   [
+    "falls",
+    "u4-costs-scale"
+   ],
+   [
+    "Purchasing",
+    "u4-costs-scale"
+   ],
+   [
+    "marketing",
+    "u4-costs-scale"
+   ],
+   [
+    "financial",
+    "u4-costs-scale"
+   ],
+   [
+    "managerial",
+    "u4-costs-scale"
+   ],
+   [
+    "technical",
+    "u4-costs-scale"
+   ],
+   [
+    "rises",
+    "u4-costs-scale"
+   ],
+   [
+    "Break-even",
+    "u4-break-even"
+   ],
+   [
+    "total revenue = total costs",
+    "u4-break-even"
+   ],
+   [
+    "output",
+    "u4-break-even"
+   ],
+   [
+    "costs/revenue",
+    "u4-break-even"
+   ],
+   [
+    "Fixed cost line",
+    "u4-break-even"
+   ],
+   [
+    "Total cost line",
+    "u4-break-even"
+   ],
+   [
+    "Revenue line",
+    "u4-break-even"
+   ],
+   [
+    "Price rises",
+    "u4-break-even"
+   ],
+   [
+    "Fixed costs rise",
+    "u4-break-even"
+   ],
+   [
+    "Variable cost per unit rises",
+    "u4-break-even"
+   ],
+   [
+    "what if",
+    "u4-break-even"
+   ],
+   [
+    "all output is sold",
+    "u4-break-even"
+   ],
+   [
+    "stay constant",
+    "u4-break-even"
+   ],
+   [
+    "reputation",
+    "u4-quality-sustainability-location"
+   ],
+   [
+    "set-up costs",
+    "u4-quality-sustainability-location"
+   ],
+   [
+    "fit for purpose",
+    "u4-quality-sustainability-location"
+   ],
+   [
+    "Quality control",
+    "u4-quality-sustainability-location"
+   ],
+   [
+    "find defects",
+    "u4-quality-sustainability-location"
+   ],
+   [
+    "Quality assurance",
+    "u4-quality-sustainability-location"
+   ],
+   [
+    "prevent",
+    "u4-quality-sustainability-location"
+   ],
+   [
+    "justify",
+    "u4-quality-sustainability-location"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "u4-efficiency-lean",
+    "title": "Efficiency, Lean & Inventory"
+   },
+   {
+    "id": "u4-methods-technology",
+    "title": "Production Methods & Technology"
+   },
+   {
+    "id": "u4-costs-scale",
+    "title": "Costs & Economies of Scale"
+   },
+   {
+    "id": "u4-break-even",
+    "title": "Break-even Analysis"
+   },
+   {
+    "id": "u4-quality-sustainability-location",
+    "title": "Quality, Sustainability & Location"
+   }
+  ]
+ },
+ {
+  "id": "unit-5",
+  "kind": "generated",
+  "unit": 5,
+  "unitTitle": "Financial Information & Decisions",
+  "title": "Financial Information & Decisions",
+  "syllabusRef": "5.1 to 5.5",
+  "status": "draft",
+  "minutes": 30,
+  "objectives": [
+   {
+    "id": "u5-finance",
+    "text": "Business Finance (syllabus 5.1)"
+   },
+   {
+    "id": "u5-cash-flow",
+    "text": "Cash Flow Forecast (syllabus 5.2)"
+   },
+   {
+    "id": "u5-profit-loss",
+    "text": "Profit & the Statement of Profit or Loss (syllabus 5.3)"
+   },
+   {
+    "id": "u5-financial-position",
+    "text": "Statement of Financial Position (syllabus 5.4)"
+   },
+   {
+    "id": "u5-ratios",
+    "text": "Ratio Analysis (syllabus 5.5)"
+   }
+  ],
+  "terms": [
+   [
+    "expansion",
+    "u5-finance"
+   ],
+   [
+    "replacing non-current assets",
+    "u5-finance"
+   ],
+   [
+    "investing in new technology",
+    "u5-finance"
+   ],
+   [
+    "working capital",
+    "u5-finance"
+   ],
+   [
+    "Short-term",
+    "u5-finance"
+   ],
+   [
+    "Long-term",
+    "u5-finance"
+   ],
+   [
+    "Owner’s investment",
+    "u5-finance"
+   ],
+   [
+    "retained profit",
+    "u5-finance"
+   ],
+   [
+    "sale of unwanted assets",
+    "u5-finance"
+   ],
+   [
+    "Share capital",
+    "u5-finance"
+   ],
+   [
+    "Venture capital",
+    "u5-finance"
+   ],
+   [
+    "Bank overdraft",
+    "u5-finance"
+   ],
+   [
+    "Bank loan",
+    "u5-finance"
+   ],
+   [
+    "Leasing",
+    "u5-finance"
+   ],
+   [
+    "Hire purchase",
+    "u5-finance"
+   ],
+   [
+    "Trade credit",
+    "u5-finance"
+   ],
+   [
+    "Government grants",
+    "u5-finance"
+   ],
+   [
+    "Crowdfunding",
+    "u5-finance"
+   ],
+   [
+    "Internal",
+    "u5-finance"
+   ],
+   [
+    "External",
+    "u5-finance"
+   ],
+   [
+    "wages, suppliers, rent and bills",
+    "u5-cash-flow"
+   ],
+   [
+    "insolvent",
+    "u5-cash-flow"
+   ],
+   [
+    "Cash is not the same as profit",
+    "u5-cash-flow"
+   ],
+   [
+    "cash flow forecast",
+    "u5-cash-flow"
+   ],
+   [
+    "Cash inflows",
+    "u5-cash-flow"
+   ],
+   [
+    "cash outflows",
+    "u5-cash-flow"
+   ],
+   [
+    "net cash flow",
+    "u5-cash-flow"
+   ],
+   [
+    "opening balance",
+    "u5-cash-flow"
+   ],
+   [
+    "closing balance",
+    "u5-cash-flow"
+   ],
+   [
+    "Net cash flow = inflows − outflows",
+    "u5-cash-flow"
+   ],
+   [
+    "negative closing balances",
+    "u5-cash-flow"
+   ],
+   [
+    "Overdraft",
+    "u5-cash-flow"
+   ],
+   [
+    "delay payments to suppliers",
+    "u5-cash-flow"
+   ],
+   [
+    "ask customers to pay sooner",
+    "u5-cash-flow"
+   ],
+   [
+    "delay buying non-current assets",
+    "u5-cash-flow"
+   ],
+   [
+    "Profit = total revenue − total costs",
+    "u5-profit-loss"
+   ],
+   [
+    "loss",
+    "u5-profit-loss"
+   ],
+   [
+    "reward for risk-taking",
+    "u5-profit-loss"
+   ],
+   [
+    "source of finance",
+    "u5-profit-loss"
+   ],
+   [
+    "measure of success",
+    "u5-profit-loss"
+   ],
+   [
+    "attract investors",
+    "u5-profit-loss"
+   ],
+   [
+    "gross profit",
+    "u5-profit-loss"
+   ],
+   [
+    "profit",
+    "u5-profit-loss"
+   ],
+   [
+    "Cost of sales",
+    "u5-profit-loss"
+   ],
+   [
+    "Expenses",
+    "u5-profit-loss"
+   ],
+   [
+    "Revenue = price × units sold",
+    "u5-profit-loss"
+   ],
+   [
+    "Gross profit = revenue − cost of sales",
+    "u5-profit-loss"
+   ],
+   [
+    "Profit = gross profit − expenses",
+    "u5-profit-loss"
+   ],
+   [
+    "Non-current assets",
+    "u5-financial-position"
+   ],
+   [
+    "Current assets",
+    "u5-financial-position"
+   ],
+   [
+    "inventory, trade receivables, cash",
+    "u5-financial-position"
+   ],
+   [
+    "Non-current liabilities",
+    "u5-financial-position"
+   ],
+   [
+    "Current liabilities",
+    "u5-financial-position"
+   ],
+   [
+    "trade payables, overdraft",
+    "u5-financial-position"
+   ],
+   [
+    "liquidity and debts",
+    "u5-financial-position"
+   ],
+   [
+    "assets, borrowing and growth potential",
+    "u5-financial-position"
+   ],
+   [
+    "Profitability",
+    "u5-ratios"
+   ],
+   [
+    "Profit margin = (profit ÷ revenue) × 100",
+    "u5-ratios"
+   ],
+   [
+    "ROCE = (profit ÷ capital employed) × 100",
+    "u5-ratios"
+   ],
+   [
+    "raising prices",
+    "u5-ratios"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "u5-finance",
+    "title": "Business Finance"
+   },
+   {
+    "id": "u5-cash-flow",
+    "title": "Cash Flow Forecast"
+   },
+   {
+    "id": "u5-profit-loss",
+    "title": "Profit & the Statement of Profit or Loss"
+   },
+   {
+    "id": "u5-financial-position",
+    "title": "Statement of Financial Position"
+   },
+   {
+    "id": "u5-ratios",
+    "title": "Ratio Analysis"
+   }
+  ]
+ },
+ {
+  "id": "unit-6",
+  "kind": "generated",
+  "unit": 6,
+  "unitTitle": "External Influences on Business Activity",
+  "title": "External Influences on Business Activity",
+  "syllabusRef": "6.1.1 to 6.2.3, 6.3 – 6.5",
+  "status": "draft",
+  "minutes": 24,
+  "objectives": [
+   {
+    "id": "u6-business-cycle",
+    "text": "The Business Cycle (syllabus 6.1.1)"
+   },
+   {
+    "id": "u6-government-policy",
+    "text": "Government Policy: Taxes, Interest & Spending (syllabus 6.1.2)"
+   },
+   {
+    "id": "u6-globalisation",
+    "text": "Globalisation, MNCs & Exchange Rates (syllabus 6.2)"
+   },
+   {
+    "id": "u6-environment-ethics",
+    "text": "Environment, Ethics & Pressure Groups (syllabus 6.2.3, 6.3 – 6.5)"
+   }
+  ],
+  "terms": [
+   [
+    "Growth",
+    "u6-business-cycle"
+   ],
+   [
+    "boom",
+    "u6-business-cycle"
+   ],
+   [
+    "recession",
+    "u6-business-cycle"
+   ],
+   [
+    "slump",
+    "u6-business-cycle"
+   ],
+   [
+    "Growth/boom",
+    "u6-business-cycle"
+   ],
+   [
+    "Recession/slump",
+    "u6-business-cycle"
+   ],
+   [
+    "High employment",
+    "u6-business-cycle"
+   ],
+   [
+    "High unemployment",
+    "u6-business-cycle"
+   ],
+   [
+    "Inflation",
+    "u6-business-cycle"
+   ],
+   [
+    "costs",
+    "u6-business-cycle"
+   ],
+   [
+    "purchasing power",
+    "u6-business-cycle"
+   ],
+   [
+    "Economic growth",
+    "u6-business-cycle"
+   ],
+   [
+    "Corporation tax",
+    "u6-government-policy"
+   ],
+   [
+    "Income tax up",
+    "u6-government-policy"
+   ],
+   [
+    "Income tax down",
+    "u6-government-policy"
+   ],
+   [
+    "construction firms and suppliers",
+    "u6-government-policy"
+   ],
+   [
+    "Interest rate up",
+    "u6-government-policy"
+   ],
+   [
+    "Interest rate down",
+    "u6-government-policy"
+   ],
+   [
+    "Improved transport links",
+    "u6-globalisation"
+   ],
+   [
+    "technological change",
+    "u6-globalisation"
+   ],
+   [
+    "free trade agreements",
+    "u6-globalisation"
+   ],
+   [
+    "newly industrialised countries",
+    "u6-globalisation"
+   ],
+   [
+    "Opportunities",
+    "u6-globalisation"
+   ],
+   [
+    "Threats",
+    "u6-globalisation"
+   ],
+   [
+    "Tariff",
+    "u6-globalisation"
+   ],
+   [
+    "Quota",
+    "u6-globalisation"
+   ],
+   [
+    "Importers",
+    "u6-globalisation"
+   ],
+   [
+    "Domestic producers",
+    "u6-globalisation"
+   ],
+   [
+    "Exporters",
+    "u6-globalisation"
+   ],
+   [
+    "MNC",
+    "u6-globalisation"
+   ],
+   [
+    "lower costs",
+    "u6-globalisation"
+   ],
+   [
+    "avoiding trade barriers",
+    "u6-globalisation"
+   ],
+   [
+    "Jobs",
+    "u6-globalisation"
+   ],
+   [
+    "investment",
+    "u6-globalisation"
+   ],
+   [
+    "exports",
+    "u6-globalisation"
+   ],
+   [
+    "choice",
+    "u6-globalisation"
+   ],
+   [
+    "competition",
+    "u6-globalisation"
+   ],
+   [
+    "environmental damage",
+    "u6-globalisation"
+   ],
+   [
+    "exploitation of natural resources",
+    "u6-globalisation"
+   ],
+   [
+    "repatriation of profits",
+    "u6-globalisation"
+   ],
+   [
+    "Appreciation",
+    "u6-globalisation"
+   ],
+   [
+    "exports dearer",
+    "u6-globalisation"
+   ],
+   [
+    "imports cheaper",
+    "u6-globalisation"
+   ],
+   [
+    "Depreciation",
+    "u6-globalisation"
+   ],
+   [
+    "exports cheaper",
+    "u6-globalisation"
+   ],
+   [
+    "imports dearer",
+    "u6-globalisation"
+   ],
+   [
+    "External costs",
+    "u6-environment-ethics"
+   ],
+   [
+    "External benefits",
+    "u6-environment-ethics"
+   ],
+   [
+    "Pollution",
+    "u6-environment-ethics"
+   ],
+   [
+    "depletion of resources",
+    "u6-environment-ethics"
+   ],
+   [
+    "improved reputation",
+    "u6-environment-ethics"
+   ],
+   [
+    "more sales",
+    "u6-environment-ethics"
+   ],
+   [
+    "recycle",
+    "u6-environment-ethics"
+   ],
+   [
+    "renewable energy",
+    "u6-environment-ethics"
+   ],
+   [
+    "how",
+    "u6-environment-ethics"
+   ],
+   [
+    "what",
+    "u6-environment-ethics"
+   ],
+   [
+    "where",
+    "u6-environment-ethics"
+   ],
+   [
+    "higher costs",
+    "u6-environment-ethics"
+   ],
+   [
+    "child labour",
+    "u6-environment-ethics"
+   ],
+   [
+    "fair wages",
+    "u6-environment-ethics"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "u6-business-cycle",
+    "title": "The Business Cycle"
+   },
+   {
+    "id": "u6-government-policy",
+    "title": "Government Policy: Taxes, Interest & Spending"
+   },
+   {
+    "id": "u6-globalisation",
+    "title": "Globalisation, MNCs & Exchange Rates"
+   },
+   {
+    "id": "u6-environment-ethics",
+    "title": "Environment, Ethics & Pressure Groups"
+   }
+  ]
+ },
+ {
+  "id": "unit-7",
+  "kind": "generated",
+  "unit": 7,
+  "unitTitle": "Exam Technique: How to Write A* Answers",
+  "title": "Exam Technique: How to Write A* Answers",
+  "syllabusRef": "Section 2 to Exam skills",
+  "status": "draft",
+  "minutes": 54,
+  "objectives": [
+   {
+    "id": "u7-aos",
+    "text": "Start Here: The Four Assessment Objectives (syllabus Section 2)"
+   },
+   {
+    "id": "u7-knowledge",
+    "text": "AO1 Knowledge: Know It and Say It Precisely (syllabus AO1)"
+   },
+   {
+    "id": "u7-application",
+    "text": "AO2 Application: Use the Case (syllabus AO2)"
+   },
+   {
+    "id": "u7-analysis",
+    "text": "AO3 Analysis: Build the Chain of Reasoning (syllabus AO3)"
+   },
+   {
+    "id": "u7-evaluation",
+    "text": "AO4 Evaluation: Decide, Reject, Justify (syllabus AO4)"
+   },
+   {
+    "id": "u7-command",
+    "text": "The Papers, Mark Allocation & Command Words (syllabus Section 4)"
+   },
+   {
+    "id": "u7-paper1",
+    "text": "Paper 1: A* Model Answers (syllabus Paper 1)"
+   },
+   {
+    "id": "u7-paper2",
+    "text": "Paper 2: A* Model Answers (syllabus Paper 2)"
+   },
+   {
+    "id": "u7-playbook",
+    "text": "Exam-Day Playbook (syllabus Exam skills)"
+   }
+  ],
+  "terms": [
+   [
+    "assessment objectives (AOs)",
+    "u7-aos"
+   ],
+   [
+    "AO1 Knowledge and understanding",
+    "u7-aos"
+   ],
+   [
+    "AO2 Application",
+    "u7-aos"
+   ],
+   [
+    "AO3 Analysis",
+    "u7-aos"
+   ],
+   [
+    "AO4 Evaluation",
+    "u7-aos"
+   ],
+   [
+    "AO1 35%, AO2 30%, AO3 22%, AO4 13%",
+    "u7-aos"
+   ],
+   [
+    "Paper 1",
+    "u7-aos"
+   ],
+   [
+    "32, 24, 16 and 8 marks",
+    "u7-aos"
+   ],
+   [
+    "Paper 2",
+    "u7-aos"
+   ],
+   [
+    "24, 24, 20 and 12 marks",
+    "u7-aos"
+   ],
+   [
+    "60–70%",
+    "u7-aos"
+   ],
+   [
+    "Knowledge",
+    "u7-aos"
+   ],
+   [
+    "Application",
+    "u7-aos"
+   ],
+   [
+    "Analysis",
+    "u7-aos"
+   ],
+   [
+    "Evaluation",
+    "u7-aos"
+   ],
+   [
+    "credit-worthy points",
+    "u7-aos"
+   ],
+   [
+    "not",
+    "u7-aos"
+   ],
+   [
+    "papers and command words",
+    "u7-aos"
+   ],
+   [
+    "Knowledge and understanding",
+    "u7-knowledge"
+   ],
+   [
+    "business concepts, terms and theories",
+    "u7-knowledge"
+   ],
+   [
+    "correct terminology",
+    "u7-knowledge"
+   ],
+   [
+    "40% of Paper 1",
+    "u7-knowledge"
+   ],
+   [
+    "30% of Paper 2",
+    "u7-knowledge"
+   ],
+   [
+    "easiest marks to secure",
+    "u7-knowledge"
+   ],
+   [
+    "start from a knowledge point",
+    "u7-knowledge"
+   ],
+   [
+    "depend",
+    "u7-knowledge"
+   ],
+   [
+    "Define",
+    "u7-knowledge"
+   ],
+   [
+    "2 knowledge marks",
+    "u7-knowledge"
+   ],
+   [
+    "“Define ‘redundancy’.”",
+    "u7-knowledge"
+   ],
+   [
+    "vague",
+    "u7-knowledge"
+   ],
+   [
+    "Identify",
+    "u7-knowledge"
+   ],
+   [
+    "State",
+    "u7-knowledge"
+   ],
+   [
+    "One mark for each correct point",
+    "u7-knowledge"
+   ],
+   [
+    "no extra marks",
+    "u7-knowledge"
+   ],
+   [
+    "“Email. Letter.”",
+    "u7-knowledge"
+   ],
+   [
+    "knowledge point",
+    "u7-knowledge"
+   ],
+   [
+    "exact syllabus keyword",
+    "u7-knowledge"
+   ],
+   [
+    "two or three precise definitions",
+    "u7-knowledge"
+   ],
+   [
+    "lists the syllabus names",
+    "u7-knowledge"
+   ],
+   [
+    "Vague words",
+    "u7-knowledge"
+   ],
+   [
+    "Mixing up similar terms",
+    "u7-knowledge"
+   ],
+   [
+    "Explaining an Identify question",
+    "u7-knowledge"
+   ],
+   [
+    "list of unrelated points",
+    "u7-knowledge"
+   ],
+   [
+    "details from the case",
+    "u7-application"
+   ],
+   [
+    "30% of the marks in both papers",
+    "u7-application"
+   ],
+   [
+    "no application marks",
+    "u7-application"
+   ],
+   [
+    "what the business sells and uses",
+    "u7-application"
+   ],
+   [
+    "nine out of ten",
+    "u7-application"
+   ],
+   [
+    "two good details per question",
+    "u7-application"
+   ],
+   [
+    "gold",
+    "u7-application"
+   ],
+   [
+    "mining / primary sector",
+    "u7-application"
+   ],
+   [
+    "3,000 employees",
+    "u7-application"
+   ],
+   [
+    "exports 80%",
+    "u7-application"
+   ],
+   [
+    "new technology",
+    "u7-application"
+   ],
+   [
+    "1) No business name",
+    "u7-application"
+   ],
+   [
+    "2) No owner’s name",
+    "u7-application"
+   ],
+   [
+    "3) Not if it is already in the question",
+    "u7-application"
+   ],
+   [
+    "two or three strong details",
+    "u7-application"
+   ],
+   [
+    "specific related examples",
+    "u7-application"
+   ],
+   [
+    "dresses, t-shirts, sweaters",
+    "u7-application"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "u7-aos",
+    "title": "Start Here: The Four Assessment Objectives"
+   },
+   {
+    "id": "u7-knowledge",
+    "title": "AO1 Knowledge: Know It and Say It Precisely"
+   },
+   {
+    "id": "u7-application",
+    "title": "AO2 Application: Use the Case"
+   },
+   {
+    "id": "u7-analysis",
+    "title": "AO3 Analysis: Build the Chain of Reasoning"
+   },
+   {
+    "id": "u7-evaluation",
+    "title": "AO4 Evaluation: Decide, Reject, Justify"
+   },
+   {
+    "id": "u7-command",
+    "title": "The Papers, Mark Allocation & Command Words"
+   },
+   {
+    "id": "u7-paper1",
+    "title": "Paper 1: A* Model Answers"
+   },
+   {
+    "id": "u7-paper2",
+    "title": "Paper 2: A* Model Answers"
+   },
+   {
+    "id": "u7-playbook",
+    "title": "Exam-Day Playbook"
+   }
+  ]
+ }
+]

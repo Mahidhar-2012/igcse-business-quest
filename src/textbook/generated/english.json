@@ -1,0 +1,1530 @@
+[
+ {
+  "id": "unit-1",
+  "kind": "generated",
+  "unit": 1,
+  "unitTitle": "A* model answers",
+  "title": "A* model answers",
+  "syllabusRef": "English as a Second Language",
+  "status": "draft",
+  "minutes": 30,
+  "objectives": [
+   {
+    "id": "sm-email",
+    "text": "Email samples (19)"
+   },
+   {
+    "id": "sm-review",
+    "text": "Review samples (4)"
+   },
+   {
+    "id": "sm-report",
+    "text": "Report samples (7)"
+   },
+   {
+    "id": "sm-essay",
+    "text": "Essay samples (3)"
+   },
+   {
+    "id": "sm-article",
+    "text": "Article samples (5)"
+   }
+  ],
+  "terms": [
+   [
+    "Discover Your Talent — A Course Review",
+    "sm-review"
+   ],
+   [
+    "IMAX Cinema",
+    "sm-review"
+   ],
+   [
+    "Sky Zone Amusement Park",
+    "sm-review"
+   ],
+   [
+    "Report: School Trip to the NMEC",
+    "sm-report"
+   ],
+   [
+    "Introduction",
+    "sm-report"
+   ],
+   [
+    "Summary",
+    "sm-report"
+   ],
+   [
+    "Findings",
+    "sm-report"
+   ],
+   [
+    "Conclusion",
+    "sm-report"
+   ],
+   [
+    "A visit to the science exhibition",
+    "sm-report"
+   ],
+   [
+    "The Learning Experience",
+    "sm-report"
+   ],
+   [
+    "Art Exhibition Report",
+    "sm-report"
+   ],
+   [
+    "Positive Points",
+    "sm-report"
+   ],
+   [
+    "Negative Points and Suggestions",
+    "sm-report"
+   ],
+   [
+    "The After-School Music Club",
+    "sm-report"
+   ],
+   [
+    "Negative Points",
+    "sm-report"
+   ],
+   [
+    "Suggestions",
+    "sm-report"
+   ],
+   [
+    "Report: A Weekend at the Activity Centre",
+    "sm-report"
+   ],
+   [
+    "Friends: The More the Better?",
+    "sm-article"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "sm-email",
+    "title": "Email samples (19)"
+   },
+   {
+    "id": "sm-review",
+    "title": "Review samples (4)"
+   },
+   {
+    "id": "sm-report",
+    "title": "Report samples (7)"
+   },
+   {
+    "id": "sm-essay",
+    "title": "Essay samples (3)"
+   },
+   {
+    "id": "sm-article",
+    "title": "Article samples (5)"
+   }
+  ]
+ },
+ {
+  "id": "unit-2",
+  "kind": "generated",
+  "unit": 2,
+  "unitTitle": "Exam map",
+  "title": "Exam map",
+  "syllabusRef": "English as a Second Language",
+  "status": "draft",
+  "minutes": 18,
+  "objectives": [
+   {
+    "id": "ov-papers",
+    "text": "The three papers"
+   },
+   {
+    "id": "ov-marks",
+    "text": "How writing marks work"
+   },
+   {
+    "id": "ov-time",
+    "text": "Time and planning"
+   }
+  ],
+  "terms": [
+   [
+    "reading exercises",
+    "ov-papers"
+   ],
+   [
+    "two writing tasks",
+    "ov-papers"
+   ],
+   [
+    "informal email",
+    "ov-papers"
+   ],
+   [
+    "longer piece",
+    "ov-papers"
+   ],
+   [
+    "content",
+    "ov-papers"
+   ],
+   [
+    "language",
+    "ov-papers"
+   ],
+   [
+    "twice",
+    "ov-papers"
+   ],
+   [
+    "short",
+    "ov-papers"
+   ],
+   [
+    "before",
+    "ov-papers"
+   ],
+   [
+    "developed answers",
+    "ov-papers"
+   ],
+   [
+    "Core",
+    "ov-papers"
+   ],
+   [
+    "Extended",
+    "ov-papers"
+   ],
+   [
+    "instructions on the front page",
+    "ov-papers"
+   ],
+   [
+    "bracketed marks",
+    "ov-papers"
+   ],
+   [
+    "content and structure",
+    "ov-marks"
+   ],
+   [
+    "8 marks for content",
+    "ov-marks"
+   ],
+   [
+    "8 marks for language",
+    "ov-marks"
+   ],
+   [
+    "both",
+    "ov-marks"
+   ],
+   [
+    "Cover every bullet",
+    "ov-marks"
+   ],
+   [
+    "Develop",
+    "ov-marks"
+   ],
+   [
+    "on task",
+    "ov-marks"
+   ],
+   [
+    "structure",
+    "ov-marks"
+   ],
+   [
+    "Accuracy",
+    "ov-marks"
+   ],
+   [
+    "Range",
+    "ov-marks"
+   ],
+   [
+    "Tone",
+    "ov-marks"
+   ],
+   [
+    "Linking",
+    "ov-marks"
+   ],
+   [
+    "middle of the range",
+    "ov-marks"
+   ],
+   [
+    "below",
+    "ov-marks"
+   ],
+   [
+    "above",
+    "ov-marks"
+   ],
+   [
+    "Read",
+    "ov-time"
+   ],
+   [
+    "Plan",
+    "ov-time"
+   ],
+   [
+    "Write",
+    "ov-time"
+   ],
+   [
+    "Check",
+    "ov-time"
+   ],
+   [
+    "move on",
+    "ov-time"
+   ],
+   [
+    "line by line",
+    "ov-time"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "ov-papers",
+    "title": "The three papers"
+   },
+   {
+    "id": "ov-marks",
+    "title": "How writing marks work"
+   },
+   {
+    "id": "ov-time",
+    "title": "Time and planning"
+   }
+  ]
+ },
+ {
+  "id": "unit-3",
+  "kind": "generated",
+  "unit": 3,
+  "unitTitle": "Reading Exercises 1–4",
+  "title": "Reading Exercises 1–4",
+  "syllabusRef": "English as a Second Language",
+  "status": "draft",
+  "minutes": 18,
+  "objectives": [
+   {
+    "id": "rd-method",
+    "text": "A reliable reading method"
+   },
+   {
+    "id": "rd-types",
+    "text": "Question types"
+   },
+   {
+    "id": "rd-inference",
+    "text": "Opinions and attitudes"
+   }
+  ],
+  "terms": [
+   [
+    "title and headings",
+    "rd-method"
+   ],
+   [
+    "main idea",
+    "rd-method"
+   ],
+   [
+    "question",
+    "rd-method"
+   ],
+   [
+    "copied accurately",
+    "rd-method"
+   ],
+   [
+    "explain in your own words",
+    "rd-method"
+   ],
+   [
+    "one word",
+    "rd-method"
+   ],
+   [
+    "two reasons",
+    "rd-method"
+   ],
+   [
+    "different words for the same idea",
+    "rd-method"
+   ],
+   [
+    "different",
+    "rd-method"
+   ],
+   [
+    "Not",
+    "rd-method"
+   ],
+   [
+    "only",
+    "rd-method"
+   ],
+   [
+    "except",
+    "rd-method"
+   ],
+   [
+    "one phrase",
+    "rd-types"
+   ],
+   [
+    "right part only",
+    "rd-types"
+   ],
+   [
+    "matching",
+    "rd-types"
+   ],
+   [
+    "True",
+    "rd-types"
+   ],
+   [
+    "False",
+    "rd-types"
+   ],
+   [
+    "Not given",
+    "rd-types"
+   ],
+   [
+    "short phrases",
+    "rd-types"
+   ],
+   [
+    "facts",
+    "rd-types"
+   ],
+   [
+    "own words",
+    "rd-types"
+   ],
+   [
+    "one idea",
+    "rd-types"
+   ],
+   [
+    "sentences around it",
+    "rd-types"
+   ],
+   [
+    "Fact",
+    "rd-inference"
+   ],
+   [
+    "Opinion",
+    "rd-inference"
+   ],
+   [
+    "suggested",
+    "rd-inference"
+   ],
+   [
+    "adjectives, adverbs and verbs",
+    "rd-inference"
+   ],
+   [
+    "specific word or phrase",
+    "rd-inference"
+   ],
+   [
+    "ideas and vocabulary",
+    "rd-inference"
+   ],
+   [
+    "good phrases",
+    "rd-inference"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "rd-method",
+    "title": "A reliable reading method"
+   },
+   {
+    "id": "rd-types",
+    "title": "Question types"
+   },
+   {
+    "id": "rd-inference",
+    "title": "Opinions and attitudes"
+   }
+  ]
+ },
+ {
+  "id": "unit-4",
+  "kind": "generated",
+  "unit": 4,
+  "unitTitle": "Informal Email (Ex 5)",
+  "title": "Informal Email (Ex 5)",
+  "syllabusRef": "English as a Second Language",
+  "status": "draft",
+  "minutes": 24,
+  "objectives": [
+   {
+    "id": "em-basics",
+    "text": "What the examiner wants"
+   },
+   {
+    "id": "em-paragraphs",
+    "text": "Building each paragraph"
+   },
+   {
+    "id": "em-model",
+    "text": "Model email"
+   },
+   {
+    "id": "em-checks",
+    "text": "Final email checklist"
+   }
+  ],
+  "terms": [
+   [
+    "informal email",
+    "em-basics"
+   ],
+   [
+    "bullet points",
+    "em-basics"
+   ],
+   [
+    "what happened or will happen",
+    "em-basics"
+   ],
+   [
+    "your opinion or advice",
+    "em-basics"
+   ],
+   [
+    "an invitation or question",
+    "em-basics"
+   ],
+   [
+    "warm and natural",
+    "em-basics"
+   ],
+   [
+    "accurate",
+    "em-basics"
+   ],
+   [
+    "contractions",
+    "em-basics"
+   ],
+   [
+    "not",
+    "em-basics"
+   ],
+   [
+    "spelling, punctuation and grammar",
+    "em-basics"
+   ],
+   [
+    "Greeting",
+    "em-basics"
+   ],
+   [
+    "Opening line",
+    "em-basics"
+   ],
+   [
+    "Body",
+    "em-basics"
+   ],
+   [
+    "Closing line",
+    "em-basics"
+   ],
+   [
+    "Sign-off",
+    "em-basics"
+   ],
+   [
+    "prompt",
+    "em-paragraphs"
+   ],
+   [
+    "reason",
+    "em-paragraphs"
+   ],
+   [
+    "detail",
+    "em-paragraphs"
+   ],
+   [
+    "feeling",
+    "em-paragraphs"
+   ],
+   [
+    "3–4 sentences",
+    "em-paragraphs"
+   ],
+   [
+    "Say it → Explain it → Show it",
+    "em-paragraphs"
+   ],
+   [
+    "Weak",
+    "em-paragraphs"
+   ],
+   [
+    "Strong",
+    "em-paragraphs"
+   ],
+   [
+    "structure",
+    "em-model"
+   ],
+   [
+    "voice",
+    "em-model"
+   ],
+   [
+    "new topics",
+    "em-model"
+   ],
+   [
+    "verb tenses",
+    "em-checks"
+   ],
+   [
+    "capital letters",
+    "em-checks"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "em-basics",
+    "title": "What the examiner wants"
+   },
+   {
+    "id": "em-paragraphs",
+    "title": "Building each paragraph"
+   },
+   {
+    "id": "em-model",
+    "title": "Model email"
+   },
+   {
+    "id": "em-checks",
+    "title": "Final email checklist"
+   }
+  ]
+ },
+ {
+  "id": "unit-5",
+  "kind": "generated",
+  "unit": 5,
+  "unitTitle": "Review (Ex 6)",
+  "title": "Review (Ex 6)",
+  "syllabusRef": "English as a Second Language",
+  "status": "draft",
+  "minutes": 18,
+  "objectives": [
+   {
+    "id": "rv-basics",
+    "text": "What a review is"
+   },
+   {
+    "id": "rv-language",
+    "text": "Language for reviews"
+   },
+   {
+    "id": "rv-model",
+    "text": "Model review"
+   }
+  ],
+  "terms": [
+   [
+    "describes",
+    "rv-basics"
+   ],
+   [
+    "judgement",
+    "rv-basics"
+   ],
+   [
+    "school magazine or website",
+    "rv-basics"
+   ],
+   [
+    "friendly but fairly polished",
+    "rv-basics"
+   ],
+   [
+    "what it is",
+    "rv-basics"
+   ],
+   [
+    "what you liked or disliked",
+    "rv-basics"
+   ],
+   [
+    "a recommendation",
+    "rv-basics"
+   ],
+   [
+    "Title",
+    "rv-basics"
+   ],
+   [
+    "Introduction",
+    "rv-basics"
+   ],
+   [
+    "Description",
+    "rv-basics"
+   ],
+   [
+    "Evaluation",
+    "rv-basics"
+   ],
+   [
+    "Recommendation",
+    "rv-basics"
+   ],
+   [
+    "at least one honest criticism",
+    "rv-basics"
+   ],
+   [
+    "at least one strong positive",
+    "rv-basics"
+   ],
+   [
+    "reason or example",
+    "rv-basics"
+   ],
+   [
+    "precise ones",
+    "rv-language"
+   ],
+   [
+    "detail",
+    "rv-language"
+   ],
+   [
+    "comparison",
+    "rv-language"
+   ],
+   [
+    "A Corner of Calm: Bluebird Café",
+    "rv-model"
+   ],
+   [
+    "know well",
+    "rv-model"
+   ],
+   [
+    "magazine",
+    "rv-model"
+   ],
+   [
+    "website",
+    "rv-model"
+   ],
+   [
+    "letter",
+    "rv-model"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "rv-basics",
+    "title": "What a review is"
+   },
+   {
+    "id": "rv-language",
+    "title": "Language for reviews"
+   },
+   {
+    "id": "rv-model",
+    "title": "Model review"
+   }
+  ]
+ },
+ {
+  "id": "unit-6",
+  "kind": "generated",
+  "unit": 6,
+  "unitTitle": "Report (Ex 6)",
+  "title": "Report (Ex 6)",
+  "syllabusRef": "English as a Second Language",
+  "status": "draft",
+  "minutes": 18,
+  "objectives": [
+   {
+    "id": "rp-basics",
+    "text": "What a report is"
+   },
+   {
+    "id": "rp-language",
+    "text": "Formal language"
+   },
+   {
+    "id": "rp-model",
+    "text": "Model report"
+   }
+  ],
+  "terms": [
+   [
+    "gives information",
+    "rp-basics"
+   ],
+   [
+    "recommends action",
+    "rp-basics"
+   ],
+   [
+    "formal and neutral",
+    "rp-basics"
+   ],
+   [
+    "organised for scanning",
+    "rp-basics"
+   ],
+   [
+    "Title",
+    "rp-basics"
+   ],
+   [
+    "Introduction",
+    "rp-basics"
+   ],
+   [
+    "aim",
+    "rp-basics"
+   ],
+   [
+    "Headed sections",
+    "rp-basics"
+   ],
+   [
+    "Conclusion / recommendation",
+    "rp-basics"
+   ],
+   [
+    "one short paragraph",
+    "rp-basics"
+   ],
+   [
+    "few concise sentences",
+    "rp-basics"
+   ],
+   [
+    "full, accurate sentences",
+    "rp-basics"
+   ],
+   [
+    "specific",
+    "rp-language"
+   ],
+   [
+    "reason or benefit",
+    "rp-language"
+   ],
+   [
+    "most important",
+    "rp-language"
+   ],
+   [
+    "Report on the School Canteen",
+    "rp-model"
+   ],
+   [
+    "Strengths",
+    "rp-model"
+   ],
+   [
+    "Problems",
+    "rp-model"
+   ],
+   [
+    "Recommendations",
+    "rp-model"
+   ],
+   [
+    "Conclusion",
+    "rp-model"
+   ],
+   [
+    "headings",
+    "rp-model"
+   ],
+   [
+    "link recommendations to problems",
+    "rp-model"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "rp-basics",
+    "title": "What a report is"
+   },
+   {
+    "id": "rp-language",
+    "title": "Formal language"
+   },
+   {
+    "id": "rp-model",
+    "title": "Model report"
+   }
+  ]
+ },
+ {
+  "id": "unit-7",
+  "kind": "generated",
+  "unit": 7,
+  "unitTitle": "Essay (Ex 6)",
+  "title": "Essay (Ex 6)",
+  "syllabusRef": "English as a Second Language",
+  "status": "draft",
+  "minutes": 24,
+  "objectives": [
+   {
+    "id": "es-basics",
+    "text": "What an essay is"
+   },
+   {
+    "id": "es-paragraphs",
+    "text": "Strong paragraphs"
+   },
+   {
+    "id": "es-model-bal",
+    "text": "Model: balanced essay"
+   },
+   {
+    "id": "es-model-one",
+    "text": "Model: one-sided essay"
+   }
+  ],
+  "terms": [
+   [
+    "argues a point of view",
+    "es-basics"
+   ],
+   [
+    "weighs two sides",
+    "es-basics"
+   ],
+   [
+    "formal and thoughtful",
+    "es-basics"
+   ],
+   [
+    "your opinion",
+    "es-basics"
+   ],
+   [
+    "both sides",
+    "es-basics"
+   ],
+   [
+    "no headings",
+    "es-basics"
+   ],
+   [
+    "no greeting",
+    "es-basics"
+   ],
+   [
+    "Introduction",
+    "es-basics"
+   ],
+   [
+    "Paragraph 1",
+    "es-basics"
+   ],
+   [
+    "Paragraph 2",
+    "es-basics"
+   ],
+   [
+    "Paragraph 3",
+    "es-basics"
+   ],
+   [
+    "Conclusion",
+    "es-basics"
+   ],
+   [
+    "One-sided",
+    "es-basics"
+   ],
+   [
+    "Balanced",
+    "es-basics"
+   ],
+   [
+    "state your position clearly",
+    "es-basics"
+   ],
+   [
+    "2–3 strong ideas",
+    "es-model-one"
+   ],
+   [
+    "mini example",
+    "es-model-one"
+   ],
+   [
+    "conclusion first",
+    "es-model-one"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "es-basics",
+    "title": "What an essay is"
+   },
+   {
+    "id": "es-paragraphs",
+    "title": "Strong paragraphs"
+   },
+   {
+    "id": "es-model-bal",
+    "title": "Model: balanced essay"
+   },
+   {
+    "id": "es-model-one",
+    "title": "Model: one-sided essay"
+   }
+  ]
+ },
+ {
+  "id": "unit-8",
+  "kind": "generated",
+  "unit": 8,
+  "unitTitle": "Article (Ex 6)",
+  "title": "Article (Ex 6)",
+  "syllabusRef": "English as a Second Language",
+  "status": "draft",
+  "minutes": 24,
+  "objectives": [
+   {
+    "id": "ar-basics",
+    "text": "What an article is"
+   },
+   {
+    "id": "ar-hook",
+    "text": "Hooks and endings"
+   },
+   {
+    "id": "ar-model-one",
+    "text": "Model: one-sided article"
+   },
+   {
+    "id": "ar-model-two",
+    "text": "Model: two-sided article"
+   }
+  ],
+  "terms": [
+   [
+    "magazine, website or newsletter",
+    "ar-basics"
+   ],
+   [
+    "interest, inform or persuade",
+    "ar-basics"
+   ],
+   [
+    "engaging",
+    "ar-basics"
+   ],
+   [
+    "catchy title",
+    "ar-basics"
+   ],
+   [
+    "Headline",
+    "ar-basics"
+   ],
+   [
+    "Opening",
+    "ar-basics"
+   ],
+   [
+    "Body",
+    "ar-basics"
+   ],
+   [
+    "Ending",
+    "ar-basics"
+   ],
+   [
+    "one-sided",
+    "ar-basics"
+   ],
+   [
+    "two-sided",
+    "ar-basics"
+   ],
+   [
+    "\"give your views\"",
+    "ar-basics"
+   ],
+   [
+    "\"discuss\"",
+    "ar-basics"
+   ],
+   [
+    "Give a Little, Gain a Lot",
+    "ar-model-one"
+   ],
+   [
+    "Homework: Help or Hindrance?",
+    "ar-model-two"
+   ],
+   [
+    "hook",
+    "ar-model-two"
+   ],
+   [
+    "\"you\"",
+    "ar-model-two"
+   ],
+   [
+    "tone",
+    "ar-model-two"
+   ],
+   [
+    "leave an impression",
+    "ar-model-two"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "ar-basics",
+    "title": "What an article is"
+   },
+   {
+    "id": "ar-hook",
+    "title": "Hooks and endings"
+   },
+   {
+    "id": "ar-model-one",
+    "title": "Model: one-sided article"
+   },
+   {
+    "id": "ar-model-two",
+    "title": "Model: two-sided article"
+   }
+  ]
+ },
+ {
+  "id": "unit-9",
+  "kind": "generated",
+  "unit": 9,
+  "unitTitle": "Language boosters",
+  "title": "Language boosters",
+  "syllabusRef": "English as a Second Language",
+  "status": "draft",
+  "minutes": 24,
+  "objectives": [
+   {
+    "id": "lg-sentences",
+    "text": "Sentences and linking"
+   },
+   {
+    "id": "lg-vocab",
+    "text": "Vocabulary upgrades"
+   },
+   {
+    "id": "lg-accuracy",
+    "text": "Accuracy checks"
+   },
+   {
+    "id": "lg-tone",
+    "text": "Formal and informal tone"
+   }
+  ],
+  "terms": [
+   [
+    "short",
+    "lg-sentences"
+   ],
+   [
+    "longer",
+    "lg-sentences"
+   ],
+   [
+    "who / which / that",
+    "lg-sentences"
+   ],
+   [
+    "pronouns",
+    "lg-sentences"
+   ],
+   [
+    "synonyms",
+    "lg-sentences"
+   ],
+   [
+    "sure of its meaning",
+    "lg-vocab"
+   ],
+   [
+    "phrases",
+    "lg-vocab"
+   ],
+   [
+    "do not slide",
+    "lg-accuracy"
+   ],
+   [
+    "past simple",
+    "lg-accuracy"
+   ],
+   [
+    "present perfect",
+    "lg-accuracy"
+   ],
+   [
+    "will / going to",
+    "lg-accuracy"
+   ],
+   [
+    "Subject–verb agreement",
+    "lg-accuracy"
+   ],
+   [
+    "Articles",
+    "lg-accuracy"
+   ],
+   [
+    "Prepositions",
+    "lg-accuracy"
+   ],
+   [
+    "full stops",
+    "lg-accuracy"
+   ],
+   [
+    "capital letters",
+    "lg-accuracy"
+   ],
+   [
+    "Informal",
+    "lg-tone"
+   ],
+   [
+    "Neutral / semi-formal",
+    "lg-tone"
+   ],
+   [
+    "Formal",
+    "lg-tone"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "lg-sentences",
+    "title": "Sentences and linking"
+   },
+   {
+    "id": "lg-vocab",
+    "title": "Vocabulary upgrades"
+   },
+   {
+    "id": "lg-accuracy",
+    "title": "Accuracy checks"
+   },
+   {
+    "id": "lg-tone",
+    "title": "Formal and informal tone"
+   }
+  ]
+ },
+ {
+  "id": "unit-10",
+  "kind": "generated",
+  "unit": 10,
+  "unitTitle": "Skills workshop",
+  "title": "Skills workshop",
+  "syllabusRef": "English as a Second Language",
+  "status": "draft",
+  "minutes": 36,
+  "objectives": [
+   {
+    "id": "ws-fix",
+    "text": "Fix the sentence"
+   },
+   {
+    "id": "ws-upgrade",
+    "text": "Upgrade the sentence"
+   },
+   {
+    "id": "ws-plan",
+    "text": "Plan before you write"
+   },
+   {
+    "id": "ws-analyse",
+    "text": "Model answer analysis"
+   },
+   {
+    "id": "ws-check",
+    "text": "Self-check against the criteria"
+   },
+   {
+    "id": "ws-read",
+    "text": "Reading practice"
+   }
+  ],
+  "terms": [
+   [
+    "write your own answer on paper",
+    "ws-fix"
+   ],
+   [
+    "meaning and accuracy",
+    "ws-fix"
+   ],
+   [
+    "correct, clear and natural",
+    "ws-fix"
+   ],
+   [
+    "reader",
+    "ws-plan"
+   ],
+   [
+    "purpose",
+    "ws-plan"
+   ],
+   [
+    "every bullet",
+    "ws-plan"
+   ],
+   [
+    "tone",
+    "ws-plan"
+   ],
+   [
+    "one idea plus a detail",
+    "ws-plan"
+   ],
+   [
+    "opening and ending",
+    "ws-plan"
+   ],
+   [
+    "for your own revision",
+    "ws-check"
+   ],
+   [
+    "friendly and natural",
+    "ws-check"
+   ],
+   [
+    "detail",
+    "ws-check"
+   ],
+   [
+    "title",
+    "ws-check"
+   ],
+   [
+    "specific details",
+    "ws-check"
+   ],
+   [
+    "at least one criticism",
+    "ws-check"
+   ],
+   [
+    "recommend",
+    "ws-check"
+   ],
+   [
+    "headings",
+    "ws-check"
+   ],
+   [
+    "formal and neutral",
+    "ws-check"
+   ],
+   [
+    "answer the problems",
+    "ws-check"
+   ],
+   [
+    "opinion",
+    "ws-check"
+   ],
+   [
+    "one idea",
+    "ws-check"
+   ],
+   [
+    "linking words",
+    "ws-check"
+   ],
+   [
+    "headline",
+    "ws-check"
+   ],
+   [
+    "developed with examples",
+    "ws-check"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "ws-fix",
+    "title": "Fix the sentence"
+   },
+   {
+    "id": "ws-upgrade",
+    "title": "Upgrade the sentence"
+   },
+   {
+    "id": "ws-plan",
+    "title": "Plan before you write"
+   },
+   {
+    "id": "ws-analyse",
+    "title": "Model answer analysis"
+   },
+   {
+    "id": "ws-check",
+    "title": "Self-check against the criteria"
+   },
+   {
+    "id": "ws-read",
+    "title": "Reading practice"
+   }
+  ]
+ },
+ {
+  "id": "unit-11",
+  "kind": "generated",
+  "unit": 11,
+  "unitTitle": "Listening & Speaking",
+  "title": "Listening & Speaking",
+  "syllabusRef": "English as a Second Language",
+  "status": "draft",
+  "minutes": 18,
+  "objectives": [
+   {
+    "id": "ls-listening",
+    "text": "Listening tips"
+   },
+   {
+    "id": "ls-speaking",
+    "text": "Speaking tips"
+   },
+   {
+    "id": "ls-routine",
+    "text": "Study routine"
+   }
+  ],
+  "terms": [
+   [
+    "Before",
+    "ls-listening"
+   ],
+   [
+    "First listening",
+    "ls-listening"
+   ],
+   [
+    "Second listening",
+    "ls-listening"
+   ],
+   [
+    "After",
+    "ls-listening"
+   ],
+   [
+    "right form",
+    "ls-listening"
+   ],
+   [
+    "correct themselves",
+    "ls-listening"
+   ],
+   [
+    "13 vs 30",
+    "ls-listening"
+   ],
+   [
+    "15 vs 50",
+    "ls-listening"
+   ],
+   [
+    "keep listening",
+    "ls-listening"
+   ],
+   [
+    "reason",
+    "ls-speaking"
+   ],
+   [
+    "example",
+    "ls-speaking"
+   ],
+   [
+    "feeling",
+    "ls-speaking"
+   ],
+   [
+    "Answer → Because → For example",
+    "ls-speaking"
+   ],
+   [
+    "explain around it",
+    "ls-speaking"
+   ],
+   [
+    "Writing",
+    "ls-routine"
+   ],
+   [
+    "Reading",
+    "ls-routine"
+   ],
+   [
+    "Listening",
+    "ls-routine"
+   ],
+   [
+    "Speaking",
+    "ls-routine"
+   ],
+   [
+    "mistake list",
+    "ls-routine"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "ls-listening",
+    "title": "Listening tips"
+   },
+   {
+    "id": "ls-speaking",
+    "title": "Speaking tips"
+   },
+   {
+    "id": "ls-routine",
+    "title": "Study routine"
+   }
+  ]
+ }
+]

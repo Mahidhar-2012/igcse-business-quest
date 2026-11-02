@@ -1,6 +1,6 @@
 import { ArrowRight, Flame, Zap, Target, Play, ShieldAlert, FileText, ChevronRight, Check, Trash2, BookOpen, Star, RotateCcw } from 'lucide-react';
 import { Ring, SubjectBadge, ThemePicker } from './parts.jsx';
-import { bookForSubject } from '../textbook/books.js';
+import { hasBook } from '../textbook/available.js';
 
 const Chip = ({ icon: Icon, tint, value, label }) => (
   <span className="flex items-center gap-1.5 rounded-full border-2 border-slate-200 bg-white px-3 py-1.5 text-sm font-bold" title={label}>
@@ -98,7 +98,7 @@ export function Learn({ subjects, ov, current, setCurrent }) {
           <div className="mt-2 flex flex-wrap gap-2">
             <a href={cur.hash} className="btn btn-green !px-4 !py-2 text-sm">{st.started ? 'Continue' : 'Start'} <ArrowRight className="h-4 w-4" aria-hidden /></a>
             <a href={`${cur.hash}/notes`} className="btn btn-ghost !px-3 !py-2 text-sm"><FileText className="h-4 w-4" aria-hidden /> Notes</a>
-            {bookForSubject(cur.id) && <a href={`#/book/${bookForSubject(cur.id).id}`} className="btn btn-ghost !px-3 !py-2 text-sm"><BookOpen className="h-4 w-4" aria-hidden /> Textbook</a>}
+            {hasBook(cur.id) && <a href={`#/book/${cur.id}`} className="btn btn-ghost !px-3 !py-2 text-sm"><BookOpen className="h-4 w-4" aria-hidden /> Textbook</a>}
           </div>
         </div>
       </section>
