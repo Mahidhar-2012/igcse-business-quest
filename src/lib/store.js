@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { SoundController } from './SoundController.js';
 import { schedule, dayKey as srsDay } from './srs.js';
+import { logAttempt } from './cloud.js';
 
 const defaults = {
   xp: 0,
@@ -87,6 +88,7 @@ export function useProgress(course) {
   const record = useCallback((qid, correct) => {
     const info = course.questionIndex[qid];
     if (!info) return;
+    logAttempt(course.key, info.sub.id, qid, correct); // signed-in students only; lets teachers see real accuracy
     setState((s) => {
       const a = s.acc?.[info.sub.id] || { r: 0, w: 0, t: info.sub.title };
       return {

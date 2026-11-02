@@ -21,6 +21,7 @@ function Field({ label, ...props }) {
 
 function SignedOut({ onDone }) {
   const [mode, setMode] = useState('in'); // in | up | reset
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
@@ -35,7 +36,7 @@ function SignedOut({ onDone }) {
         await signIn(email.trim(), password);
         onDone();
       } else if (mode === 'up') {
-        const r = await signUp(email.trim(), password);
+        const r = await signUp(email.trim(), password, name);
         if (r === 'in') onDone();
         else setMsg({ kind: 'ok', text: 'Almost there: we sent a confirmation link to your email. Open it, then sign in here.' });
       } else {
@@ -55,6 +56,7 @@ function SignedOut({ onDone }) {
       <p className="text-sm font-semibold text-slate-500">
         {mode === 'reset' ? 'Enter your email and we will send a link.' : 'Save your progress online and pick up on any device. What you have already done here is kept and added to your account.'}
       </p>
+      {mode === 'up' && <Field label="Your name (your teacher sees this)" autoComplete="name" required maxLength={80} value={name} onChange={(e) => setName(e.target.value)} />}
       <Field label="Email" type="email" autoComplete="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
       {mode !== 'reset' && (
         <Field label="Password" type="password" autoComplete={mode === 'up' ? 'new-password' : 'current-password'} required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} />
@@ -108,7 +110,9 @@ function SignedIn({ st }) {
   return (
     <div className="space-y-3">
       <p className="text-sm font-semibold text-slate-500">Signed in as</p>
-      <p className="break-all text-lg font-black">{st.user.email}</p>
+      <p className="break-all text-lg font-black">{st.profile?.full_name || st.user.email}</p>
+      {st.profile?.full_name && <p className="-mt-2 break-all text-sm font-semibold text-slate-500">{st.user.email}</p>}
+      {st.profile?.role === 'teacher' && <a href="#/teacher" className="btn btn-blue w-full">Open teacher portal</a>}
       <p className="flex items-center gap-2 text-sm font-bold text-slate-500" role="status">
         {st.state === 'syncing' && <><LoaderCircle className="h-4 w-4 animate-spin" aria-hidden /> Saving…</>}
         {st.state === 'synced' && <><Cloud className="h-4 w-4 text-emerald-600" aria-hidden /> Saved to your account {ago(st.at)}</>}

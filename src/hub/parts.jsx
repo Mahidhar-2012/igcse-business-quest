@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Atom, Briefcase, PenLine, FlaskConical, TrendingUp, Leaf, Sigma, Calculator, Cpu, House, Brain, FileText, ChartColumn, Sun, Moon, MonitorSmartphone } from 'lucide-react';
+import { Atom, Briefcase, PenLine, FlaskConical, TrendingUp, Leaf, Sigma, Calculator, Cpu, House, Brain, FileText, ChartColumn, School, Sun, Moon, MonitorSmartphone } from 'lucide-react';
 import { getTheme, setTheme } from '../lib/theme.js';
+import { cloudEnabled } from '../lib/cloud.js';
 
 export const ICONS = { physics: Atom, business: Briefcase, english: PenLine, chemistry: FlaskConical, economics: TrendingUp, biology: Leaf, maths: Sigma, addmaths: Calculator, cs: Cpu };
 
@@ -42,13 +43,14 @@ const TABS = [
   ['learn', 'Learn', House, '#/'],
   ['recall', 'Recall', Brain, '#/recall'],
   ['notes', 'Notes', FileText, '#/notes'],
+  ...(cloudEnabled ? [['classes', 'Classes', School, '#/classes']] : []), // only when accounts are set up
   ['progress', 'Progress', ChartColumn, '#/progress'],
 ];
 
 export function BottomNav({ tab }) {
   return (
     <nav aria-label="Main" className="fixed inset-x-0 bottom-0 z-40 border-t-2 border-slate-200 bg-white/95 backdrop-blur" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0)' }}>
-      <ul className="mx-auto grid max-w-xl grid-cols-4 gap-1 px-2 py-1.5">
+      <ul className="mx-auto grid max-w-xl gap-1 px-2 py-1.5" style={{ gridTemplateColumns: `repeat(${TABS.length}, minmax(0, 1fr))` }}>
         {TABS.map(([id, label, Icon, href]) => {
           const on = tab === id;
           return (

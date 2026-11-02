@@ -4,7 +4,9 @@ import { SUBJECTS_META } from './subjects.meta.js';
 import { Logo, BottomNav, ThemeButton, ICONS } from './hub/parts.jsx';
 import { Learn, Recall, NotesTab, Progress, StatChips } from './hub/Tabs.jsx';
 import AccountButton from './hub/Account.jsx';
-import { getStatus, resetEverything } from './lib/cloud.js';
+import NotificationBell from './hub/Bell.jsx';
+import ClassesTab from './classes/ClassesTab.jsx';
+import { cloudEnabled, getStatus, resetEverything } from './lib/cloud.js';
 
 // Each subject is its own chunk, so the hub opens quickly and a subject downloads only when it is chosen.
 // To add a subject: add it to src/subjects.meta.js, then register its icon in src/hub/parts.jsx and its loader here.
@@ -20,14 +22,16 @@ const LOADERS = {
   cs: lazy(() => import('./cs/CSApp.jsx')),
 };
 const SUBJECTS = SUBJECTS_META.filter((s) => LOADERS[s.id] && ICONS[s.id]);
-const TABS = ['learn', 'recall', 'notes', 'progress'];
+const TeacherApp = lazy(() => import('./teacher/TeacherApp.jsx'));
+const TABS = ['learn', 'recall', 'notes', 'progress', ...(cloudEnabled ? ['classes'] : [])];
 const CURRENT_KEY = 'iq:current';
 
 /** #/ is Learn; #/recall, #/notes, #/progress are hub tabs; #/maths opens a subject; #/maths/notes and #/maths/mistakes deep-link into it. */
 const parseHash = () => {
-  const [a, b] = window.location.hash.replace(/^#\/?/, '').split('/');
+  const [a, b, ...rest] = window.location.hash.replace(/^#\/?/, '').split('/');
   if (!a) return { tab: 'learn' };
-  if (TABS.includes(a)) return { tab: a };
+  if (a === 'teacher' && cloudEnabled) return { teacher: [b, ...rest].filter(Boolean) };
+  if (TABS.includes(a)) return { tab: a, classId: b || null };
   const s = SUBJECTS.find((x) => x.id === a);
   return s ? { subject: s.id, deep: b || null } : { tab: 'learn' };
 };
@@ -36,7 +40,7 @@ const readCurrent = () => {
   try { return localStorage.getItem(CURRENT_KEY) || SUBJECTS[0].id; } catch { return SUBJECTS[0].id; }
 };
 
-function Hub({ tab }) {
+function Hub({ tab, classId }) {
   const ov = useMemo(loadOverview, [tab]);
   const [current, setCurrentState] = useState(readCurrent);
   const setCurrent = (id) => {
@@ -62,6 +66,7 @@ function Hub({ tab }) {
             <h1 className="font-display text-2xl font-black leading-none text-brand-dark">IGCSE Quest</h1>
             <p className="mt-0.5 text-xs font-bold text-slate-500">{totalDone} of {totalLessons} lessons done</p>
           </div>
+          <NotificationBell />
           <AccountButton />
           <ThemeButton />
         </header>
@@ -69,6 +74,7 @@ function Hub({ tab }) {
         {tab === 'learn' && <Learn subjects={SUBJECTS} ov={ov} current={current} setCurrent={setCurrent} />}
         {tab === 'recall' && <Recall subjects={SUBJECTS} ov={ov} />}
         {tab === 'notes' && <NotesTab subjects={SUBJECTS} ov={ov} />}
+        {tab === 'classes' && <ClassesTab classId={classId} />}
         {tab === 'progress' && <Progress subjects={SUBJECTS} ov={ov} onReset={resetAll} />}
         <p className="mt-8 text-center text-xs font-semibold text-slate-500">
           Independent study tool, not affiliated with or endorsed by Cambridge.
@@ -102,7 +108,8 @@ export default function App() {
     <Suspense fallback={<Loading />}>
       <a href="#main" className="skip-link" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>Skip to content</a>
       {Active && <Active key={`${route.subject}:${route.deep || ''}`} onHome={home} deep={route.deep} />}
-      {!route.subject && <Hub tab={route.tab} />}
+      {route.teacher && <TeacherApp path={route.teacher} />}
+      {!route.subject && !route.teacher && <Hub tab={route.tab} classId={route.classId} />}
     </Suspense>
   );
 }

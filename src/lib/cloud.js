@@ -10,7 +10,10 @@ export const cloudEnabled = !!(PROJECT_URL && ANON);
 const KEYS = SUBJECTS_META.map((s) => s.storageKey);
 const PUSH_DELAY = 2500;
 
+const KEY_TO_SUBJECT = Object.fromEntries(SUBJECTS_META.map((s) => [s.storageKey, s.id]));
+
 let clientPromise = null;
+export const getClient = () => client();
 const client = () => {
   if (!cloudEnabled) return Promise.resolve(null);
   clientPromise ||= import('@supabase/supabase-js').then(({ createClient }) =>
@@ -19,7 +22,7 @@ const client = () => {
 };
 
 // ---- status, for the account button -------------------------------------------------------------------------------
-let status = { user: null, state: 'idle', at: null, error: '' }; // state: idle | syncing | synced | error
+let status = { user: null, profile: null, state: 'idle', at: null, error: '' }; // state: idle | syncing | synced | error; profile: { role, full_name, school_id }
 const listeners = new Set();
 const setStatus = (patch) => {
   status = { ...status, ...patch };
@@ -48,6 +51,41 @@ const writeLocal = (key, value) => {
   }
 };
 
+// ---- profile (role comes from the database, never from the browser) -------------------------------------------------
+/** Loads the signed-in user's profile row. Roles are enforced by the database; this is only for choosing what to show. */
+export async function refreshProfile() {
+  const sb = await client();
+  if (!sb || !status.user) return null;
+  const { data } = await sb.from('profiles').select('role,full_name,school_id').eq('id', status.user.id).maybeSingle();
+  setStatus({ profile: data || null });
+  return data || null;
+}
+
+// ---- attempts (first-try answers, so teachers see real accuracy) ------------------------------------------------------
+let attemptQ = [];
+
+/** Queues one first-attempt answer. Only signed-in users are logged; nothing is sent otherwise. */
+export function logAttempt(courseKey, lessonId, qid, correct) {
+  const subject_id = KEY_TO_SUBJECT[courseKey];
+  if (!status.user || !subject_id) return;
+  attemptQ.push({ subject_id, lesson_id: lessonId, qid, correct: !!correct });
+  if (attemptQ.length > 500) attemptQ = attemptQ.slice(-500);
+  clearTimeout(timer);
+  timer = setTimeout(flush, PUSH_DELAY);
+}
+
+async function flushAttempts() {
+  const batch = attemptQ;
+  if (!batch.length) return;
+  attemptQ = [];
+  const sb = await client();
+  const { error } = await sb.from('attempts').insert(batch);
+  if (error) {
+    attemptQ = [...batch, ...attemptQ].slice(-500);
+    throw error;
+  }
+}
+
 // ---- push -----------------------------------------------------------------------------------------------------------
 const dirty = new Set();
 let timer = null;
@@ -70,10 +108,11 @@ async function flush() {
   timer = null;
   const keys = [...dirty];
   dirty.clear();
-  if (!keys.length || !status.user) return;
+  if ((!keys.length && !attemptQ.length) || !status.user) return;
   setStatus({ state: 'syncing' });
   try {
     await push(keys);
+    await flushAttempts();
     setStatus({ state: 'synced', at: Date.now(), error: '' });
   } catch (e) {
     keys.forEach((k) => dirty.add(k));
@@ -94,10 +133,10 @@ function hookStorage() {
       timer = setTimeout(flush, PUSH_DELAY);
     }
   };
-  const now = () => dirty.size && flush();
+  const now = () => (dirty.size || attemptQ.length) && flush();
   window.addEventListener('pagehide', now);
   document.addEventListener('visibilitychange', () => document.visibilityState === 'hidden' && now());
-  window.addEventListener('online', () => dirty.size && flush());
+  window.addEventListener('online', now);
 }
 
 // ---- pull and merge -------------------------------------------------------------------------------------------------
@@ -156,9 +195,9 @@ export async function signIn(email, password) {
 }
 
 /** Returns 'confirm' when the project requires email confirmation before the first sign-in. */
-export async function signUp(email, password) {
+export async function signUp(email, password, fullName = '') {
   const sb = await client();
-  const { data, error } = await sb.auth.signUp({ email, password, options: { emailRedirectTo: window.location.origin + window.location.pathname } });
+  const { data, error } = await sb.auth.signUp({ email, password, options: { data: { full_name: fullName.trim().slice(0, 80) }, emailRedirectTo: window.location.origin + window.location.pathname } });
   if (error) throw new Error(friendly(error));
   return data.session ? 'in' : 'confirm';
 }
@@ -210,15 +249,16 @@ export async function initCloud() {
   const session = sb ? (await sb.auth.getSession()).data.session : null;
   if (session) {
     setStatus({ user: { id: session.user.id, email: session.user.email } });
-    await Promise.race([syncNow(), new Promise((r) => setTimeout(r, 3500))]);
+    await Promise.race([Promise.all([syncNow(), refreshProfile()]), new Promise((r) => setTimeout(r, 3500))]);
   }
   // later changes: sign-in, sign-out, token refresh, and a password-reset link
   client().then((c) =>
     c.auth.onAuthStateChange((event, s) => {
       const user = s?.user ? { id: s.user.id, email: s.user.email } : null;
       const was = status.user?.id;
-      setStatus({ user, state: user ? status.state : 'idle', recovery: event === 'PASSWORD_RECOVERY' });
+      setStatus({ user, profile: user && user.id === was ? status.profile : null, state: user ? status.state : 'idle', recovery: event === 'PASSWORD_RECOVERY' });
       if (user && user.id !== was && event === 'SIGNED_IN') {
+        refreshProfile();
         syncNow().then((changed) => changed && window.location.reload());
       }
     }));
