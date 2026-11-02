@@ -1,5 +1,5 @@
-import { Fragment, useMemo, useState } from 'react';
-import { ArrowLeft, Printer, FileText, CheckSquare, Square } from 'lucide-react';
+import { Fragment, useMemo, useRef, useState } from 'react';
+import { ArrowLeft, Download, Printer, FileText, CheckSquare, Square } from 'lucide-react';
 import Figure from '../components/Figure.jsx';
 import { TIPS } from './tips.js';
 
@@ -292,8 +292,26 @@ export default function NotesBuilder({ title, code, units, onBack, findGlossary 
   const [ids, setIds] = useState(() => new Set());
   const [opts, setOpts] = useState({ figures: true, tips: true, definitions: true, equations: true, commandWords: true, checklist: true, recall: true, examQs: true, models: false, twoCol: true, large: false, mono: false });
   const [preview, setPreview] = useState(false);
+  const sheetRef = useRef(null);
 
-  const toggle = (id) => setIds((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
+  const download = () => {
+    if (!sheetRef.current) return;
+    const css = [...document.styleSheets].map((sh) => {
+      try { return [...sh.cssRules].map((r) => r.cssText).join('\n'); } catch { return ''; }
+    }).join('\n');
+    const name = `${title.replace(/[^\w]+/g, '-').replace(/^-|-$/g, '')}-notes`;
+    const html = `<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} notes</title><style>${css}\nbody{margin:0;background:#fff;color:#111}.wrap{max-width:900px;margin:0 auto;padding:16px}</style></head><body><div class="wrap">${sheetRef.current.innerHTML}</div></body></html>`;
+    const url = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${name}.html`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+
+  const toggle =(id) => setIds((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
   const toggleUnit = (u) => setIds((s) => {
     const n = new Set(s);
     const all = u.submodules.every((x) => n.has(x.id));
@@ -307,10 +325,11 @@ export default function NotesBuilder({ title, code, units, onBack, findGlossary 
       <div className="notes-root">
         <div className="no-print sticky top-0 z-30 flex flex-wrap items-center gap-2 border-b-2 border-slate-200 bg-white/95 px-3 py-2">
           <button type="button" className="btn btn-ghost" onClick={() => setPreview(false)}><ArrowLeft className="h-4 w-4" aria-hidden /> Change chapters</button>
-          <button type="button" className="btn btn-green" onClick={() => window.print()}><Printer className="h-4 w-4" aria-hidden /> Print / save as PDF</button>
-          <span className="text-sm font-bold text-slate-500">{ids.size} lessons · {countBytes(units, ids)} bytes. In the print window choose “Save as PDF”.</span>
+          <button type="button" className="btn btn-green" onClick={download}><Download className="h-4 w-4" aria-hidden /> Download file</button>
+          <button type="button" className="btn btn-ghost" onClick={() => window.print()}><Printer className="h-4 w-4" aria-hidden /> Print / save as PDF</button>
+          <span className="text-sm font-bold text-slate-500">{ids.size} lessons · {countBytes(units, ids)} bytes. The download is one file that opens in any browser, offline.</span>
         </div>
-        <div className="mx-auto max-w-[900px] bg-white p-4 print:p-0">
+        <div ref={sheetRef} className="mx-auto max-w-[900px] bg-white p-4 print:p-0">
           <Sheet title={title} code={code} units={units} ids={ids} opts={opts} findGlossary={findGlossary} />
         </div>
       </div>
@@ -321,7 +340,7 @@ export default function NotesBuilder({ title, code, units, onBack, findGlossary 
     <div className="mx-auto max-w-3xl px-4 py-5">
       <button type="button" className="btn btn-ghost mb-3" onClick={onBack}><ArrowLeft className="h-4 w-4" aria-hidden /> Back to {title}</button>
       <h1 className="mb-1 flex items-center gap-2 text-2xl font-black"><FileText className="h-6 w-6" aria-hidden /> Printable notes</h1>
-      <p className="mb-4 text-sm font-semibold text-slate-600">Pick the chapters you want. The app puts the knowledge bytes, diagrams, formulae and key definitions for those chapters onto a concise cheat sheet, with command words, tick-box checklists and a self-test with answers. Print it or save it as a PDF.</p>
+      <p className="mb-4 text-sm font-semibold text-slate-600">Pick the chapters you want. The app puts the knowledge bytes, diagrams, formulae and key definitions for those chapters onto a concise cheat sheet, with command words, tick-box checklists and a self-test with answers. Download it as a file, or print it or save it as a PDF.</p>
 
       <div className="mb-4 flex flex-wrap gap-2">
         <button type="button" className="btn btn-ghost" onClick={() => setIds(new Set(allIds))}>Select all</button>

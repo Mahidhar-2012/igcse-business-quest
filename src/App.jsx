@@ -3,6 +3,8 @@ import { loadOverview } from './lib/overview.js';
 import { SUBJECTS_META } from './subjects.meta.js';
 import { Logo, BottomNav, ThemeButton, ICONS } from './hub/parts.jsx';
 import { Learn, Recall, NotesTab, Progress, StatChips } from './hub/Tabs.jsx';
+import AccountButton from './hub/Account.jsx';
+import { getStatus, resetEverything } from './lib/cloud.js';
 
 // Each subject is its own chunk, so the hub opens quickly and a subject downloads only when it is chosen.
 // To add a subject: add it to src/subjects.meta.js, then register its icon in src/hub/parts.jsx and its loader here.
@@ -43,9 +45,10 @@ function Hub({ tab }) {
   };
   const resetAll = () => {
     if (!window.confirm('Reset ALL progress, XP, streak and mistakes in every subject?')) return;
+    const done = () => { window.location.hash = ''; window.location.reload(); };
+    if (getStatus().user) { resetEverything().then(done, done); return; } // signed in: reset the saved copy too
     try { SUBJECTS.forEach((s) => localStorage.removeItem(s.storageKey)); } catch { /* ignore */ }
-    window.location.hash = '';
-    window.location.reload();
+    done();
   };
   const totalDone = Object.values(ov.subjects).reduce((n, s) => n + s.done, 0);
   const totalLessons = Object.values(ov.subjects).reduce((n, s) => n + s.total, 0);
@@ -59,6 +62,7 @@ function Hub({ tab }) {
             <h1 className="font-display text-2xl font-black leading-none text-brand-dark">IGCSE Quest</h1>
             <p className="mt-0.5 text-xs font-bold text-slate-500">{totalDone} of {totalLessons} lessons done</p>
           </div>
+          <AccountButton />
           <ThemeButton />
         </header>
         <div className="mt-3"><StatChips ov={ov} /></div>

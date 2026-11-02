@@ -118,7 +118,7 @@ export function useProgress(course) {
 
   const toggle = useCallback((key) => setState((s) => ({ ...s, [key]: !s[key] })), []);
 
-  const reset = useCallback(() => setState({ ...defaults }), []);
+  const reset = useCallback(() => setState({ ...defaults, resetAt: Date.now() }), []); // resetAt: lets cloud sync tell a reset from a fresh device
 
   const unitStats = useMemo(() => {
     const out = {};
