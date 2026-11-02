@@ -54,13 +54,15 @@ insert into auth.users (id, email, email_confirmed_at) values
 
 select t.ok((select count(*) from public.profiles where role = 'student') = 6, 'every new account starts as a student');
 
-create temp table codes (who text primary key, code text);
-insert into codes values
+create table t.codes (who text primary key, code text);
+insert into t.codes values
   ('ta',  public.admin_create_teacher_invite('00000000-0000-0000-0000-0000000000a1')),
   ('tb',  public.admin_create_teacher_invite('00000000-0000-0000-0000-0000000000a2')),
   ('ta2', public.admin_create_teacher_invite('00000000-0000-0000-0000-0000000000a1', 'ta2@north.test')),
   ('un',  public.admin_create_teacher_invite('00000000-0000-0000-0000-0000000000a1'));
-grant select on codes to public;
+grant select on t.codes to public;
+create table t.rooms (who text primary key, id uuid, code text);
+grant all on t.rooms to public;
 
 insert into public.progress (user_id, subject, data) values
   ('00000000-0000-0000-0000-000000000003', 'igcse-physics-quest:v1',   '{"xp":120}'),
@@ -83,60 +85,58 @@ reset role;
 
 -- activating teachers --------------------------------------------------------------------------------------------
 select t.as_user('00000000-0000-0000-0000-000000000006', 'unconfirmed@x.test');
-select t.denied(format('select public.redeem_teacher_invite(%L)', (select code from codes where who = 'un')), 'an unconfirmed email cannot redeem an invitation');
+select t.denied(format('select public.redeem_teacher_invite(%L)', (select code from t.codes where who = 'un')), 'an unconfirmed email cannot redeem an invitation');
 reset role;
 
 select t.as_user('00000000-0000-0000-0000-000000000001', 'ta@north.test');
-select public.redeem_teacher_invite((select code from codes where who = 'ta'));
+select public.redeem_teacher_invite((select code from t.codes where who = 'ta'));
 select t.ok(public.my_role() = 'teacher' and public.my_school() = '00000000-0000-0000-0000-0000000000a1', 'a valid invitation activates a teacher at the right school');
-select t.denied(format('select public.redeem_teacher_invite(%L)', (select code from codes where who = 'ta')), 'an invitation cannot be used twice');
+select t.denied(format('select public.redeem_teacher_invite(%L)', (select code from t.codes where who = 'ta')), 'an invitation cannot be used twice');
 reset role;
 
 select t.as_user('00000000-0000-0000-0000-000000000002', 'tb@south.test');
-select public.redeem_teacher_invite((select code from codes where who = 'tb'));
+select public.redeem_teacher_invite((select code from t.codes where who = 'tb'));
 reset role;
 
 select t.as_user('00000000-0000-0000-0000-000000000004', 's2@x.test');
-select t.denied(format('select public.redeem_teacher_invite(%L)', (select code from codes where who = 'ta2')), 'an invitation tied to another email is refused');
+select t.denied(format('select public.redeem_teacher_invite(%L)', (select code from t.codes where who = 'ta2')), 'an invitation tied to another email is refused');
 reset role;
 
 select t.as_user('00000000-0000-0000-0000-000000000005', 'ta2@north.test');
-select public.redeem_teacher_invite((select code from codes where who = 'ta2'));
+select public.redeem_teacher_invite((select code from t.codes where who = 'ta2'));
 reset role;
 
 -- classrooms -----------------------------------------------------------------------------------------------------
 select t.as_user('00000000-0000-0000-0000-000000000001', 'ta@north.test');
-create temp table rooms (who text primary key, id uuid, code text);
-grant all on rooms to public;
-insert into rooms select 'a', c.id, c.join_code from public.create_classroom('Physics 10A', '10', 'A', 'physics', '2026-27') c;
+insert into t.rooms select 'a', c.id, c.join_code from public.create_classroom('Physics 10A', '10', 'A', 'physics', '2026-27') c;
 select t.ok((select count(*) from public.classrooms) = 1, 'a teacher sees their classroom');
-select t.ok((select char_length(code) from rooms where who = 'a') = 7, 'a join code is generated');
+select t.ok((select char_length(code) from t.rooms where who = 'a') = 7, 'a join code is generated');
 select t.denied($q$select public.create_classroom('Bad', '9', 'A', 'astrology', '2026-27')$q$, 'an unknown subject is refused');
 reset role;
 
 select t.as_user('00000000-0000-0000-0000-000000000002', 'tb@south.test');
-insert into rooms select 'b', c.id, c.join_code from public.create_classroom('Chem 10B', '10', 'B', 'chemistry', '2026-27') c;
+insert into t.rooms select 'b', c.id, c.join_code from public.create_classroom('Chem 10B', '10', 'B', 'chemistry', '2026-27') c;
 select t.ok((select count(*) from public.classrooms) = 1, 'teacher B sees only their own classroom');
-select t.ok((select count(*) from public.classrooms where id = (select id from rooms where who = 'a')) = 0, 'a teacher at another school cannot see this classroom');
-update public.classrooms set name = 'Hacked' where id = (select id from rooms where who = 'a');
+select t.ok((select count(*) from public.classrooms where id = (select id from t.rooms where who = 'a')) = 0, 'a teacher at another school cannot see this classroom');
+update public.classrooms set name = 'Hacked' where id = (select id from t.rooms where who = 'a');
 reset role;
-select t.ok((select name from public.classrooms where id = (select id from rooms where who = 'a')) = 'Physics 10A', 'another school cannot edit this classroom');
+select t.ok((select name from public.classrooms where id = (select id from t.rooms where who = 'a')) = 'Physics 10A', 'another school cannot edit this classroom');
 select t.as_user('00000000-0000-0000-0000-000000000002', 'tb@south.test');
-select t.denied(format($q$insert into public.announcements (classroom_id, author_id, title, body) values (%L, auth.uid(), 'x', 'y')$q$, (select id from rooms where who = 'a')), 'another school cannot post announcements here');
-select t.denied(format($q$select public.share_classroom(%L, 'ta2@north.test')$q$, (select id from rooms where who = 'a')), 'a stranger cannot share someone else''s classroom');
+select t.denied(format($q$insert into public.announcements (classroom_id, author_id, title, body) values (%L, auth.uid(), 'x', 'y')$q$, (select id from t.rooms where who = 'a')), 'another school cannot post announcements here');
+select t.denied(format($q$select public.share_classroom(%L, 'ta2@north.test')$q$, (select id from t.rooms where who = 'a')), 'a stranger cannot share someone else''s classroom');
 reset role;
 
 -- enrolment ------------------------------------------------------------------------------------------------------
 select t.as_user('00000000-0000-0000-0000-000000000003', 's1@x.test');
 select t.denied($q$select public.join_classroom('ZZZZZZZ')$q$, 'a wrong join code fails');
-select public.join_classroom((select code from rooms where who = 'a'));
+select public.join_classroom((select code from t.rooms where who = 'a'));
 select t.ok((select count(*) from public.classrooms) = 1, 'the student now sees the classroom');
 select t.ok((select count(*) from public.profiles where role = 'teacher') = 1, 'the student can see their teacher');
-update public.classrooms set name = 'Mine' where id = (select id from rooms where who = 'a');
-select t.denied(format($q$insert into public.classroom_students values (%L, auth.uid())$q$, (select id from rooms where who = 'b')), 'a student cannot enrol themselves directly');
-select t.denied(format($q$insert into public.announcements (classroom_id, author_id, title, body) values (%L, auth.uid(), 'x', 'y')$q$, (select id from rooms where who = 'a')), 'a student cannot post announcements');
+update public.classrooms set name = 'Mine' where id = (select id from t.rooms where who = 'a');
+select t.denied(format($q$insert into public.classroom_students values (%L, auth.uid())$q$, (select id from t.rooms where who = 'b')), 'a student cannot enrol themselves directly');
+select t.denied(format($q$insert into public.announcements (classroom_id, author_id, title, body) values (%L, auth.uid(), 'x', 'y')$q$, (select id from t.rooms where who = 'a')), 'a student cannot post announcements');
 reset role;
-select t.ok((select name from public.classrooms where id = (select id from rooms where who = 'a')) = 'Physics 10A', 'a student cannot edit classrooms');
+select t.ok((select name from public.classrooms where id = (select id from t.rooms where who = 'a')) = 'Physics 10A', 'a student cannot edit classrooms');
 
 select t.as_user('00000000-0000-0000-0000-000000000004', 's2@x.test');
 select t.ok((select count(*) from public.classrooms) = 0, 'a student outside the class sees no classrooms');
@@ -174,7 +174,7 @@ reset role;
 
 -- announcements and notifications --------------------------------------------------------------------------------
 select t.as_user('00000000-0000-0000-0000-000000000001', 'ta@north.test');
-insert into public.announcements (classroom_id, author_id, title, body) values ((select id from rooms where who = 'a'), auth.uid(), 'Test on Friday', 'Chapters 1 to 3');
+insert into public.announcements (classroom_id, author_id, title, body) values ((select id from t.rooms where who = 'a'), auth.uid(), 'Test on Friday', 'Chapters 1 to 3');
 select t.ok((select count(*) from public.announcements) = 1, 'the teacher can post an announcement');
 reset role;
 select t.as_user('00000000-0000-0000-0000-000000000003', 's1@x.test');
@@ -190,9 +190,9 @@ reset role;
 
 -- sharing and invites --------------------------------------------------------------------------------------------
 select t.as_user('00000000-0000-0000-0000-000000000001', 'ta@north.test');
-select public.share_classroom((select id from rooms where who = 'a'), 'ta2@north.test');
-select t.denied(format($q$select public.share_classroom(%L, 'tb@south.test')$q$, (select id from rooms where who = 'a')), 'a classroom cannot be shared with a teacher from another school');
-insert into public.classroom_invites (classroom_id, email, created_by) values ((select id from rooms where who = 'a'), 's2@x.test', auth.uid());
+select public.share_classroom((select id from t.rooms where who = 'a'), 'ta2@north.test');
+select t.denied(format($q$select public.share_classroom(%L, 'tb@south.test')$q$, (select id from t.rooms where who = 'a')), 'a classroom cannot be shared with a teacher from another school');
+insert into public.classroom_invites (classroom_id, email, created_by) values ((select id from t.rooms where who = 'a'), 's2@x.test', auth.uid());
 reset role;
 select t.as_user('00000000-0000-0000-0000-000000000005', 'ta2@north.test');
 select t.ok((select count(*) from public.classrooms) = 1, 'a shared classroom is visible to the second teacher');
@@ -208,7 +208,7 @@ reset role;
 select t.as_user('00000000-0000-0000-0000-000000000001', 'ta@north.test');
 delete from public.classroom_students where student_id = '00000000-0000-0000-0000-000000000003';
 select t.ok((select count(*) from public.classroom_students) = 1, 'a teacher can remove a student');
-update public.classrooms set archived = true where id = (select id from rooms where who = 'a');
+update public.classrooms set archived = true where id = (select id from t.rooms where who = 'a');
 reset role;
 select t.as_user('00000000-0000-0000-0000-000000000003', 's1@x.test');
 select t.ok((select count(*) from public.classrooms) = 0, 'a removed student loses access');
