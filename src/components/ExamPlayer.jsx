@@ -175,6 +175,19 @@ export default function ExamPlayer({ exam, onExit, onFinish }) {
           <div className="card p-3"><p className="flex items-center justify-center gap-1 text-2xl font-black"><Clock className="h-5 w-5" aria-hidden />{Math.round(totalMarks * 1.1)}</p><p className="text-xs font-bold text-slate-500">suggested minutes</p></div>
         </div>
         {exam.intro && <Source title={exam.intro.title} paragraphs={exam.intro.paragraphs} table={exam.intro.table} />}
+        {exam.mock && (
+          <section className="card mb-4 p-4 text-sm font-semibold leading-relaxed" aria-label="What is in this paper">
+            <p className="mb-2 font-black">What is in this paper</p>
+            <ol className="space-y-1">
+              {exam.questions.map((qq, n) => (
+                <li key={n} className="flex justify-between gap-3">
+                  <span>{qq.stemTitle || `Question ${n + 1}: ${qq.intro?.title || ''}`}</span>
+                  <span className="shrink-0 font-extrabold text-amber-800">{qq.parts.reduce((m, pp) => m + pp.marks, 0)} marks</span>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
         <div className="card p-4 text-sm font-semibold leading-relaxed">
           <p className="mb-2 font-black">How this works</p>
           <Legend />
@@ -255,7 +268,7 @@ export default function ExamPlayer({ exam, onExit, onFinish }) {
   const { q, qi, p } = cur;
   const isRevealed = !!revealed[cur.key];
   const got = Math.round(scoreFor(cur) * 10) / 10;
-  const intro = exam.intro;
+  const intro = q.intro || exam.intro; // a mock paper can hold several case studies, each attached to its own questions
   const grouped = ['K', 'A', 'N', 'E'].map((k) => ({ k, items: p.points.map((pt, idx) => ({ pt, idx })).filter(({ pt }) => pt.ao === k) })).filter((g) => g.items.length);
 
   const footer = !isRevealed ? (
@@ -275,7 +288,7 @@ export default function ExamPlayer({ exam, onExit, onFinish }) {
         <span className="text-xs font-extrabold text-slate-500">Part {i + 1} of {parts.length}</span>
       </div>
 
-      {intro && <details className="mb-3 rounded-2xl border-2 border-sky-200 bg-sky-50/70 p-3"><summary className="cursor-pointer text-sm font-black text-sky-800">Case study material (tap to open)</summary><div className="mt-2"><Source title={intro.title} paragraphs={intro.paragraphs} table={intro.table} /></div></details>}
+      {intro && <details className="mb-3 rounded-2xl border-2 border-sky-200 bg-sky-50/70 p-3"><summary className="cursor-pointer text-sm font-black text-sky-800">Case study material{intro.title ? `: ${intro.title}` : ''} (tap to open)</summary><div className="mt-2"><Source title={intro.title} paragraphs={intro.paragraphs} table={intro.table} /></div></details>}
       {(q.stem || q.table) && <Source title={q.stemTitle} paragraphs={q.stem ? [q.stem] : []} table={q.table} />}
 
       <div className="card p-5">

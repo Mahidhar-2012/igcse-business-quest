@@ -4,6 +4,8 @@ import UnitDashboard from './components/UnitDashboard.jsx';
 import LessonPlayer from './components/LessonPlayer.jsx';
 import MistakeBankModal from './components/MistakeBankModal.jsx';
 import ExamPlayer from './components/ExamPlayer.jsx';
+import MegaUnit from './components/MegaUnit.jsx';
+import { FileText as FileTextIcon } from 'lucide-react';
 import NotesBuilder from './notes/NotesBuilder.jsx';
 import { findTerms } from './data/glossary.js';
 import GlossaryModal from './components/GlossaryModal.jsx';import { units, questionIndex, subQuestionIds } from './data/syllabusData.js';
@@ -43,6 +45,7 @@ export default function BusinessApp({ onHome, deep }) {
   const [activeUnitId, setActiveUnitId] = useState(() => (units.find((u) => !unitStats[u.id].allDone) || units[0]).id);
   const [view, setView] = useState(() => {
     if (deep === 'notes') return { name: 'notes' };
+    if (deep === 'mega') return { name: 'mega' };
     if (deep === 'review' && due.length) return { name: 'review', ids: due.slice(0, SESSION_SIZE) };
     return { name: 'dashboard' };
   });
@@ -67,6 +70,8 @@ export default function BusinessApp({ onHome, deep }) {
   }, []);
 
   const startExam = useCallback((unit, exam) => setView({ name: 'exam', unit, exam }), []);
+  const startMegaExam = useCallback((exam) => setView({ name: 'exam', unit: null, exam, from: 'mega' }), []);
+  const openMega = useCallback(() => setView({ name: 'mega' }), []);
 
   const startDrill = useCallback((ids) => {
     setMistakesOpen(false);
@@ -107,13 +112,15 @@ export default function BusinessApp({ onHome, deep }) {
       <ExamPlayer
         key={view.exam.id}
         exam={view.exam}
-        onExit={exit}
+        onExit={view.from === 'mega' ? openMega : exit}
         onFinish={(pct, score) => {
           recordExam(view.exam.id, pct);
           addXp(score); // 1 XP per mark earned
         }}
       />
     );
+  } else if (view.name === 'mega') {
+    body = <MegaUnit onBack={exit} exams={state.exams} onStart={startMegaExam} />;
   } else if (view.name === 'notes') {
     body = <NotesBuilder title="Business Studies" code="0264" units={units} onBack={exit} findGlossary={findTerms} />;
   } else if (view.name === 'review') {
@@ -159,6 +166,16 @@ export default function BusinessApp({ onHome, deep }) {
           showUnits
         />
         <ReviewBanner count={due.length} onStart={() => setView({ name: 'review', ids: due.slice(0, SESSION_SIZE) })} />
+        <div className="mx-auto mt-3 max-w-3xl px-4">
+          <button type="button" onClick={openMega} className="card flex w-full items-center gap-3 p-3 text-left transition hover:bg-violet-50 focus-visible:outline focus-visible:outline-4 focus-visible:outline-sky-300" style={{ borderColor: '#7c3aed' }}>
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl text-white" style={{ background: '#7c3aed' }}><FileTextIcon className="h-5 w-5" aria-hidden /></span>
+            <span className="min-w-0 flex-1">
+              <span className="block font-extrabold leading-tight">Exam Mega Unit</span>
+              <span className="block text-sm font-semibold text-slate-500">Paper 1 and Paper 2 mock papers with mark schemes, across every unit</span>
+            </span>
+            <span className="btn btn-blue !px-3 !py-1.5 text-xs">Open</span>
+          </button>
+        </div>
         <UnitDashboard
           units={units}
           state={state}
