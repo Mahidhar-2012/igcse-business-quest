@@ -27,7 +27,7 @@
    },
    {
     "id": "sm-article",
-    "text": "Article samples (5)"
+    "text": "Article samples (6)"
    }
   ],
   "terms": [
@@ -102,6 +102,10 @@
    [
     "Friends: The More the Better?",
     "sm-article"
+   ],
+   [
+    "Fashion: Style, or Just a Price Tag?",
+    "sm-article"
    ]
   ],
   "sections": [
@@ -123,7 +127,7 @@
    },
    {
     "id": "sm-article",
-    "title": "Article samples (5)"
+    "title": "Article samples (6)"
    }
   ]
  },

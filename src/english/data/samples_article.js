@@ -90,4 +90,31 @@ export const articleSamples = [
       'In conclusion, both options have pros and cons. I strongly believe that the optimal choice is the one that fits your circumstances and preferences.',
     ],
   },
+  {
+    title: 'Article 6: Fashion and the clothes people wear',
+    task: [
+      'Your class has recently been discussing fashion and the clothes people like to wear. Your teacher has asked you to write an article about fashion and the clothes people wear.',
+      'Here are some comments from your classmates:',
+      '“It’s good to look smart.”',
+      '“Everyone ends up looking the same!”',
+      '“I like my clothes to be comfortable.”',
+      '“Fashionable clothes are very expensive.”',
+      '**Write an article for your teacher, giving your views.**',
+      'The comments above may give you some ideas, and you should also use some ideas of your own.',
+      '**Your article should be between 120 and 160 words long.**',
+    ],
+    why: [
+      'A title and a rhetorical question hook the reader — typical of a strong article.',
+      'Clear two-sided structure: a paragraph for, a paragraph against, then a judgement.',
+      'Uses the classmates’ comments (smart, same, comfortable, expensive) but develops each with a reason, and adds an original idea (self-expression).',
+      'Ambitious but accurate vocabulary: “first impression”, “individuality”, “sacrificed”, “reflect your own taste”.',
+    ],
+    paras: [
+      '**Fashion: Style, or Just a Price Tag?**',
+      'Do the clothes we wear reveal who we are, or simply empty our wallets? Fashion divides opinion sharply, and I believe it matters more than we like to admit.',
+      'On one hand, dressing well can boost confidence and create a strong first impression. A smart, well-chosen outfit shows self-respect, and following trends lets us express our personality and feel part of a group. For many, experimenting with style is a creative, enjoyable hobby.',
+      'On the other hand, chasing every new trend is expensive and, ironically, can make everyone look identical. When we all copy the same styles, individuality disappears. Comfort is sacrificed too, as impractical clothes are worn purely for appearance.',
+      'Weighing both sides, I believe the smartest approach is balance: wear clothes that are comfortable and affordable, yet still reflect your own taste. True style is not about the price of a label, but about the confidence to be yourself.',
+    ],
+  },
 ];
