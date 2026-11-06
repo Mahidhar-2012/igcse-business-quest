@@ -5,7 +5,7 @@ import { reportSamples } from './samples_report.js';
 import { articleSamples } from './samples_article.js';
 
 // The Essay PDF contains the three essays only, without their exam questions.
-const essaySamples = [
+export const essaySamples = [
   {
     title: 'Essay 1: Length of school holidays',
     task: ['The exam question was not included in the PDF. The essay discusses how long school holidays should be.'],

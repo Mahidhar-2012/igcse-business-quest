@@ -5,9 +5,14 @@ const KEY = 'igcse-english:v1';
 const load = () => {
   try {
     const parsed = JSON.parse(localStorage.getItem(KEY));
-    return { done: Array.isArray(parsed?.done) ? parsed.done : [], lastDay: parsed?.lastDay || null, resetAt: parsed?.resetAt || 0 };
+    return {
+      done: Array.isArray(parsed?.done) ? parsed.done : [],
+      scores: parsed?.scores && typeof parsed.scores === 'object' ? parsed.scores : {}, // writing-practice best marks per task
+      lastDay: parsed?.lastDay || null,
+      resetAt: parsed?.resetAt || 0,
+    };
   } catch {
-    return { done: [], lastDay: null };
+    return { done: [], scores: {}, lastDay: null };
   }
 };
 
@@ -33,13 +38,23 @@ export function useEnglishProgress() {
     });
   }, []);
 
+  const recordScore = useCallback((id, marks) => {
+    setState((s) => {
+      const best = Math.max(s.scores?.[id] ?? 0, marks);
+      if (s.scores?.[id] === best && id in (s.scores || {})) return s;
+      const next = { ...s, scores: { ...s.scores, [id]: best } };
+      save(next);
+      return next;
+    });
+  }, []);
+
   const reset = useCallback(() => {
-    const next = { done: [], lastDay: null, resetAt: Date.now() };
+    const next = { done: [], scores: {}, lastDay: null, resetAt: Date.now() };
     save(next);
     setState(next);
   }, []);
 
-  return { done: state.done, markDone, reset };
+  return { done: state.done, scores: state.scores || {}, markDone, recordScore, reset };
 }
 
 /** Number of finished English lessons (read without mounting the module, for the hub). */
