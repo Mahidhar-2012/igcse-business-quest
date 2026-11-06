@@ -134,6 +134,22 @@ function Try({ card }) {
   );
 }
 
+function Vocab({ card }) {
+  return (
+    <dl className="divide-y divide-slate-100 rounded-2xl border-2 border-slate-200 bg-white">
+      {card.items.map(([word, meaning, example]) => (
+        <div key={word} className="p-3">
+          <dt className="font-black text-ink">{word}</dt>
+          <dd className="text-sm font-semibold leading-snug text-slate-600">
+            {meaning}
+            {example && <span className="mt-0.5 block text-slate-500">e.g. {example}</span>}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
 const TINTS = ['bg-amber-100', 'bg-sky-100', 'bg-green-100', 'bg-violet-100', 'bg-rose-100', 'bg-orange-100'];
 
 function Annotated({ card }) {
@@ -163,8 +179,8 @@ function Annotated({ card }) {
     </div>
   );
 }
-const BODY = { note: Note, steps: Steps, dont: Dont, bank: Bank, model: Model, try: Try, annotated: Annotated };
-const KIND = { note: 'Note', steps: 'Steps', dont: 'Do & avoid', bank: 'Phrase bank', model: 'Model answer', try: 'Try it', annotated: 'Annotated model' };
+const BODY = { note: Note, steps: Steps, dont: Dont, bank: Bank, model: Model, try: Try, annotated: Annotated, vocab: Vocab };
+const KIND = { note: 'Note', steps: 'Steps', dont: 'Do & avoid', bank: 'Phrase bank', model: 'Model answer', try: 'Try it', annotated: 'Annotated model', vocab: 'Word bank' };
 
 export default function EnglishCard({ card, no, of }) {
   const Body = BODY[card.type] || Note;

@@ -4,11 +4,12 @@ import { essay, article } from './part3.js';
 import { language, listenSpeak } from './part4.js';
 import { samples } from './samples.js';
 import { workshop } from './part5.js';
+import { vocabulary } from './vocabulary.js';
 
 export const SECTION_COLORS = {
   sky: '#0ea5e9', violet: '#8b5cf6', green: '#58cc02', amber: '#f59e0b',
   rose: '#f43f5e', orange: '#f97316', teal: '#14b8a6',
 };
 
-export const sections = [samples, overview, reading, email, review, report, essay, article, language, workshop, listenSpeak];
+export const sections = [samples, overview, reading, email, review, report, essay, article, language, workshop, listenSpeak, vocabulary];
 export const allLessons = sections.flatMap((s) => s.lessons);

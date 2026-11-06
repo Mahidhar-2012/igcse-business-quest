@@ -20,6 +20,7 @@ const LOADERS = {
   maths: lazy(() => import('./maths/MathsApp.jsx')),
   addmaths: lazy(() => import('./addmaths/AddMathsApp.jsx')),
   cs: lazy(() => import('./cs/CSApp.jsx')),
+  gp: lazy(() => import('./gp/GPApp.jsx')),
 };
 const SUBJECTS = SUBJECTS_META.filter((s) => LOADERS[s.id] && ICONS[s.id]);
 const TeacherApp = lazy(() => import('./teacher/TeacherApp.jsx'));

@@ -76,6 +76,7 @@ const COMMAND_WORDS = [
 const countBytes = (units, ids) => units.flatMap((u) => u.submodules).filter((s) => ids.has(s.id)).reduce((n, s) => n + s.cards.length, 0);
 
 const hasBody = (c) => !!(c.points || c.options || c.example || c.items || c.doList || c.groups || c.task || c.parts);
+// (vocab cards carry `items`, already covered above)
 const asList = (v) => (Array.isArray(v) ? v : v ? [v] : []);
 
 /** English card types (steps, do/avoid, phrase banks, model answers, try-it and annotated examples). */
@@ -92,6 +93,8 @@ function EnglishBody({ card, opts }) {
       );
     case 'bank':
       return <div>{card.groups.map((g) => <p key={g.label}><b>{g.label}:</b> {g.items.map((x, i) => <span key={i} className="nchip"><Rich text={x} /></span>)}</p>)}</div>;
+    case 'vocab':
+      return <ul>{card.items.map(([w, m, ex]) => <li key={w}><b>{w}</b> — {m}{ex ? <i> ({ex})</i> : null}</li>)}</ul>;
     case 'model':
       return (
         <div>
@@ -123,7 +126,7 @@ function EnglishBody({ card, opts }) {
 
 function ByteBlock({ card, opts }) {
   if (!hasBody(card)) return null;
-  const english = ['steps', 'dont', 'bank', 'model', 'try', 'annotated'].includes(card.type);
+  const english = ['steps', 'dont', 'bank', 'model', 'try', 'annotated', 'vocab'].includes(card.type);
   return (
     <section className="nb">
       <h4>{card.title}</h4>

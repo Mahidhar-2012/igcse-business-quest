@@ -1526,5 +1526,217 @@
     "title": "Study routine"
    }
   ]
+ },
+ {
+  "id": "unit-12",
+  "kind": "generated",
+  "unit": 12,
+  "unitTitle": "Topic vocabulary",
+  "title": "Topic vocabulary",
+  "syllabusRef": "English as a Second Language",
+  "status": "draft",
+  "minutes": 138,
+  "objectives": [
+   {
+    "id": "vocab-arts-music-and-entertainment",
+    "text": "Arts, Music and Entertainment"
+   },
+   {
+    "id": "vocab-culture-and-traditions",
+    "text": "Culture and Traditions"
+   },
+   {
+    "id": "vocab-digital-life-and-technology",
+    "text": "Digital Life and Technology"
+   },
+   {
+    "id": "vocab-education-and-school-life",
+    "text": "Education and School Life"
+   },
+   {
+    "id": "vocab-environment-and-conservation",
+    "text": "Environment and Conservation"
+   },
+   {
+    "id": "vocab-family-and-relationships",
+    "text": "Family and Relationships"
+   },
+   {
+    "id": "vocab-food-and-eating-habits",
+    "text": "Food and Eating Habits"
+   },
+   {
+    "id": "vocab-future-plans-and-ambitions",
+    "text": "Future Plans and Ambitions"
+   },
+   {
+    "id": "vocab-global-issues",
+    "text": "Global Issues"
+   },
+   {
+    "id": "vocab-health-and-wellbeing",
+    "text": "Health and Wellbeing"
+   },
+   {
+    "id": "vocab-home-and-local-area",
+    "text": "Home and Local Area"
+   },
+   {
+    "id": "vocab-lifestyle-and-daily-routines",
+    "text": "Lifestyle and Daily Routines"
+   },
+   {
+    "id": "vocab-media-and-communication",
+    "text": "Media and Communication"
+   },
+   {
+    "id": "vocab-people-and-achievement",
+    "text": "People and Achievement"
+   },
+   {
+    "id": "vocab-public-places-and-services",
+    "text": "Public Places and Services"
+   },
+   {
+    "id": "vocab-safety-and-rules",
+    "text": "Safety and Rules"
+   },
+   {
+    "id": "vocab-science-and-innovation",
+    "text": "Science and Innovation"
+   },
+   {
+    "id": "vocab-shopping-and-consumer-life",
+    "text": "Shopping and Consumer Life"
+   },
+   {
+    "id": "vocab-sports-and-leisure",
+    "text": "Sports and Leisure"
+   },
+   {
+    "id": "vocab-teenage-life",
+    "text": "Teenage Life"
+   },
+   {
+    "id": "vocab-the-natural-world",
+    "text": "The Natural World"
+   },
+   {
+    "id": "vocab-transport-and-travel",
+    "text": "Transport and Travel"
+   },
+   {
+    "id": "vocab-work-and-careers",
+    "text": "Work and Careers"
+   }
+  ],
+  "terms": [
+   [
+    "complete phrases",
+    "vocab-arts-music-and-entertainment"
+   ],
+   [
+    "precisely",
+    "vocab-arts-music-and-entertainment"
+   ],
+   [
+    "one idiom at most",
+    "vocab-arts-music-and-entertainment"
+   ]
+  ],
+  "sections": [
+   {
+    "id": "vocab-arts-music-and-entertainment",
+    "title": "Arts, Music and Entertainment"
+   },
+   {
+    "id": "vocab-culture-and-traditions",
+    "title": "Culture and Traditions"
+   },
+   {
+    "id": "vocab-digital-life-and-technology",
+    "title": "Digital Life and Technology"
+   },
+   {
+    "id": "vocab-education-and-school-life",
+    "title": "Education and School Life"
+   },
+   {
+    "id": "vocab-environment-and-conservation",
+    "title": "Environment and Conservation"
+   },
+   {
+    "id": "vocab-family-and-relationships",
+    "title": "Family and Relationships"
+   },
+   {
+    "id": "vocab-food-and-eating-habits",
+    "title": "Food and Eating Habits"
+   },
+   {
+    "id": "vocab-future-plans-and-ambitions",
+    "title": "Future Plans and Ambitions"
+   },
+   {
+    "id": "vocab-global-issues",
+    "title": "Global Issues"
+   },
+   {
+    "id": "vocab-health-and-wellbeing",
+    "title": "Health and Wellbeing"
+   },
+   {
+    "id": "vocab-home-and-local-area",
+    "title": "Home and Local Area"
+   },
+   {
+    "id": "vocab-lifestyle-and-daily-routines",
+    "title": "Lifestyle and Daily Routines"
+   },
+   {
+    "id": "vocab-media-and-communication",
+    "title": "Media and Communication"
+   },
+   {
+    "id": "vocab-people-and-achievement",
+    "title": "People and Achievement"
+   },
+   {
+    "id": "vocab-public-places-and-services",
+    "title": "Public Places and Services"
+   },
+   {
+    "id": "vocab-safety-and-rules",
+    "title": "Safety and Rules"
+   },
+   {
+    "id": "vocab-science-and-innovation",
+    "title": "Science and Innovation"
+   },
+   {
+    "id": "vocab-shopping-and-consumer-life",
+    "title": "Shopping and Consumer Life"
+   },
+   {
+    "id": "vocab-sports-and-leisure",
+    "title": "Sports and Leisure"
+   },
+   {
+    "id": "vocab-teenage-life",
+    "title": "Teenage Life"
+   },
+   {
+    "id": "vocab-the-natural-world",
+    "title": "The Natural World"
+   },
+   {
+    "id": "vocab-transport-and-travel",
+    "title": "Transport and Travel"
+   },
+   {
+    "id": "vocab-work-and-careers",
+    "title": "Work and Careers"
+   }
+  ]
  }
 ]

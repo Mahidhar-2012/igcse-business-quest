@@ -167,8 +167,10 @@ test('search finds titles, terms, sections and objectives, and needs every word'
   assert.equal(searchBook(book, 'speed time').every((r) => /speed/i.test(r.text) && /time/i.test(r.text)), true);
 });
 
-test('every subject has a book, and the hub list matches the real books', () => {
-  assert.deepEqual([...BOOK_SUBJECTS].sort(), SUBJECTS_META.map((s) => s.id).sort());
+test('the book list matches the textbook sources and every one builds', () => {
+  // Every subject with a book is a real subject; some subjects (e.g. Global Perspectives) have no textbook.
+  const ids = new Set(SUBJECTS_META.map((s) => s.id));
+  assert.ok([...BOOK_SUBJECTS].every((id) => ids.has(id)), 'a book subject is not a real subject');
   assert.deepEqual([...BOOK_SUBJECTS].sort(), Object.keys(SOURCES).sort());
   for (const id of BOOK_SUBJECTS) assert.ok(makeBook(id, generatedJson(id)), `${id}: no book`);
 });

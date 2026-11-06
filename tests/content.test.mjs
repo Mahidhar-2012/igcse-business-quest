@@ -150,7 +150,7 @@ test('physics: figure references point to existing vector diagrams', async () =>
 test('english: lessons have unique ids and valid card types', () => {
   const ids = english.allLessons.map((l) => l.id);
   assert.equal(new Set(ids).size, ids.length, 'duplicate english lesson ids');
-  const types = new Set(['note', 'steps', 'dont', 'bank', 'model', 'try', 'annotated']);
+  const types = new Set(['note', 'steps', 'dont', 'bank', 'model', 'try', 'annotated', 'vocab']);
   for (const lesson of english.allLessons) {
     assert.ok(lesson.cards.length > 0, `${lesson.id}: no cards`);
     for (const card of lesson.cards) {
@@ -169,6 +169,7 @@ test('notes: every lesson of the five tipped courses has an examiner tip and com
       assert.ok(TIPS[sub.id] && TIPS[sub.id][0] && TIPS[sub.id][1], `${sub.id}: missing tip or mistake`);
     }
   }
-  for (const l of english.allLessons) { all.add(l.id); assert.ok(TIPS[l.id] && TIPS[l.id][0] && TIPS[l.id][1], `: missing tip or mistake`); }
+  // Writing lessons carry examiner tips; the topic-vocabulary word banks are reference material and do not.
+  for (const l of english.allLessons) { all.add(l.id); if (l.id.startsWith('vocab-')) continue; assert.ok(TIPS[l.id] && TIPS[l.id][0] && TIPS[l.id][1], `${l.id}: missing tip or mistake`); }
   for (const id of Object.keys(TIPS)) assert.ok(all.has(id), `tips for unknown lesson ${id}`);
 });

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Atom, Briefcase, PenLine, FlaskConical, TrendingUp, Leaf, Sigma, Calculator, Cpu, House, Brain, FileText, ChartColumn, School, Sun, Moon, MonitorSmartphone } from 'lucide-react';
+import { Atom, Briefcase, PenLine, FlaskConical, TrendingUp, Leaf, Sigma, Calculator, Cpu, Globe, House, Brain, FileText, ChartColumn, School, Sun, Moon, MonitorSmartphone } from 'lucide-react';
 import { getTheme, setTheme } from '../lib/theme.js';
 import { cloudEnabled } from '../lib/cloud.js';
 
-export const ICONS = { physics: Atom, business: Briefcase, english: PenLine, chemistry: FlaskConical, economics: TrendingUp, biology: Leaf, maths: Sigma, addmaths: Calculator, cs: Cpu };
+export const ICONS = { physics: Atom, business: Briefcase, english: PenLine, chemistry: FlaskConical, economics: TrendingUp, biology: Leaf, maths: Sigma, addmaths: Calculator, cs: Cpu, gp: Globe };
 
 /** Brand mark: a rounded orange tile with a star. */
 export function Logo({ size = 40 }) {

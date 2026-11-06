@@ -67,6 +67,7 @@ function cardBlocks(card) {
     case 'steps': out.push({ type: 'list', ordered: true, items: card.items }); break;
     case 'dont': out.push({ type: 'proscons', options: [{ name: 'Do and avoid', pros: card.doList, cons: card.avoidList, proLabel: 'Do', conLabel: 'Avoid' }] }); break;
     case 'bank': out.push({ type: 'list', items: card.groups.map((g) => `**${g.label}:** ${g.items.join(' · ')}`) }); break;
+    case 'vocab': out.push({ type: 'list', items: (card.items || []).map(([w, m, ex]) => `**${w}** — ${m}${ex ? ` (${ex})` : ''}`) }); break;
     case 'model':
       out.push({ type: 'example', title: 'Model answer', stem: list(card.task).filter((x) => !String(x).startsWith('[Pictures')).join(' ') + (card.words ? ` (${card.words} words)` : ''), answer: list(card.paras), notes: list(card.why) });
       break;
