@@ -125,7 +125,7 @@ export const SUBJECTS_META = [
     color: '#4f46e5',
     text: '#4338ca',
     storageKey: 'igcse-gp:v1',
-    total: 7,
+    total: 11,
     kind: 'notes',
   },
   {

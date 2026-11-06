@@ -2,9 +2,13 @@
 import { HOWTO } from './howto.js';
 import { paper1 } from './paper1.js';
 import { paper2 } from './paper2.js';
+import { paper3 } from './paper3.js';
+import { paper4 } from './paper4.js';
+import { paper5 } from './paper5.js';
+import { paper6 } from './paper6.js';
 
 export { HOWTO };
-export const PAPERS = [paper1, paper2];
+export const PAPERS = [paper1, paper2, paper3, paper4, paper5, paper6];
 
 /** Flatten a paper's parts in order, keeping the question they belong to. */
 export const partsOf = (paper) => paper.questions.flatMap((q) => q.parts.map((p) => ({ q, p })));
