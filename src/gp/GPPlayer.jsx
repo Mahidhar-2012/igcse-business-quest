@@ -196,6 +196,13 @@ export default function GPPlayer({ paper, onExit, onFinish }) {
           <h2 className="text-lg font-black leading-snug">{p.label && <span className="mr-2 rounded-lg bg-slate-100 px-2 py-0.5 text-sm">({p.label})</span>}<span className="text-indigo-700">{p.command}</span> {p.text}</h2>
           <span className="shrink-0 rounded-full bg-amber-100 px-3 py-1 text-sm font-black text-amber-800">[{p.marks}]</span>
         </div>
+        {p.options && (
+          <ul className="mb-3 space-y-1.5" aria-label="Courses of action to choose from">
+            {p.options.map((o) => (
+              <li key={o} className="rounded-xl border-2 border-indigo-100 bg-indigo-50/60 px-3 py-2 text-sm font-semibold leading-relaxed text-slate-700">{o}</li>
+            ))}
+          </ul>
+        )}
         <p className="mb-1 flex items-start gap-2 text-xs font-semibold text-slate-500"><Lightbulb className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden />{p.hint}</p>
         <p className="mb-3 text-xs font-semibold text-slate-500">{FORMAT[p.scheme.type]}</p>
         <label className="sr-only" htmlFor="gp-answer">Your answer</label>

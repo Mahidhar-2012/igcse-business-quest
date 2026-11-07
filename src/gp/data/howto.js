@@ -118,28 +118,29 @@ export const GP_Q3 = lesson('gp-q3', 'Question 3 — evaluate two arguments (16 
     ]),
   ]);
 
-export const GP_Q4 = lesson('gp-q4', 'Question 4 — recommend a course of action', '🎯',
-  'Recommend and justify an action in response to the global issue', [
+export const GP_Q4 = lesson('gp-q4', 'Question 4 — choose and justify a course of action', '🎯',
+  'Choose ONE of the courses of action you are given and justify it', [
     note('What Question 4 asks',
-      'You recommend **a course of action** in response to the issue (for example which proposal a campaign group should choose) and **justify** it. This is the **longest essay** question, marked in **levels**.',
-      'You may **compare several actions** or **justify one** — both work. You must assess **impact and consequences** and reach a **balanced, supported conclusion**.',
+      'You are given **three possible courses of action** in response to the issue. You must **choose ONE**, explain why it is the **best** choice, and **justify** it. This is the **longest essay** question, marked in **levels**.',
+      'You are not just describing the action: you must assess its **impact and consequences**, **weigh it against the other options you were given**, and reach a **balanced, supported conclusion**.',
+      'Choose the option you can argue **best from the sources** — not necessarily the one you personally like. There is no single “right” choice; the marks are for the justification.',
     ),
-    steps('How to structure it', 'Judgement + reasons + evidence + balance + conclusion.', [
-      'Decide on your recommended action early, then argue for it.',
+    steps('How to structure it', 'Choice + reasons + evidence + balance + conclusion.', [
+      'State **which option you choose** (A, B or C) early, then argue for it.',
       'Explain the **likely impact**: who it reaches, how much change it could make, and the **consequences** (cost, time, who benefits, barriers).',
       'Use **material from the sources**, and you may add your own relevant examples (allowed, not required).',
-      'Give a **balanced** view: acknowledge a drawback or a weaker alternative and say why your choice is still best.',
-      'End with a **clear conclusion** that links the action back to the group’s aim.',
+      'Give a **balanced** view: show why **the other options are weaker** and why your choice is still best.',
+      'End with a **clear conclusion** that links your chosen action back to the group’s aim.',
     ]),
     dont('What separates high and low answers',
-      ['Explaining WHY an action would be effective and have impact', 'Weighing consequences for different groups', 'Reaching a clear, justified conclusion'],
-      ['Listing ways to solve the problem with no evaluation', 'Describing HOW to carry out an action instead of why it is best', 'Drifting into general opinions about the topic'],
+      ['Explaining WHY your chosen action would be effective and have impact', 'Comparing it with the other options and showing why they are weaker', 'Weighing consequences for different groups', 'Reaching a clear, justified conclusion'],
+      ['Listing ways to solve the problem with no evaluation', 'Describing HOW to carry out an action instead of why it is best', 'Ignoring the other options you were given', 'Drifting into general opinions about the topic'],
     ),
-    stems('Sentence starters for a recommendation', null, [
-      '“I recommend… because it would… which directly supports the aim of…”',
-      '“This action would have a greater impact than… because…”',
+    stems('Sentence starters for your choice', null, [
+      '“I would choose option… because it would… which directly supports the aim of…”',
+      '“This option would have a greater impact than… because…”',
       '“One consequence to weigh is… however, on balance…”',
-      '“In conclusion, the most effective action is… because…”',
+      '“In conclusion, the best course of action is… because…”',
     ]),
   ]);
 

@@ -49,10 +49,13 @@ export const LEVELS = {
 /** Grade bands for the 70-mark paper (indicative only — Cambridge sets grade boundaries each series). */
 export const gradeFor = (pct) => (pct >= 80 ? 'A*' : pct >= 70 ? 'A' : pct >= 60 ? 'B' : pct >= 50 ? 'C' : pct >= 40 ? 'D' : pct >= 30 ? 'E' : 'Keep practising');
 
-/** Build a part. mark is either {points:[{t,m}]} or {levels:'<key>'}. */
-export const P = (label, command, text, marks, mark, hint, model) => ({
+/** Build a part. mark is either {points:[{t,m}]} or {levels:'<key>'}.
+ *  options (optional): a list of labelled courses of action the candidate must choose ONE from
+ *  (used by Question 4, which offers several actions and asks you to pick and justify one). */
+export const P = (label, command, text, marks, mark, hint, model, options) => ({
   label, command, text, marks,
   scheme: mark.points ? { type: 'points', points: mark.points } : { type: 'levels', levels: LEVELS[mark.levels] },
   hint,
   model,
+  options,
 });
