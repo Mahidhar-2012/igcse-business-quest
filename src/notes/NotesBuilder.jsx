@@ -297,21 +297,28 @@ export default function NotesBuilder({ title, code, units, onBack, findGlossary 
   const [preview, setPreview] = useState(false);
   const sheetRef = useRef(null);
 
-  const download = () => {
+  // Build a clean, self-contained copy of the sheet and hand it to the browser's own
+  // print-to-PDF engine (via a hidden iframe). This renders the diagrams natively — exactly
+  // as on screen, with no content change — and produces a real PDF, not an HTML file.
+  const downloadPdf = () => {
     if (!sheetRef.current) return;
     const css = [...document.styleSheets].map((sh) => {
       try { return [...sh.cssRules].map((r) => r.cssText).join('\n'); } catch { return ''; }
     }).join('\n');
     const name = `${title.replace(/[^\w]+/g, '-').replace(/^-|-$/g, '')}-notes`;
-    const html = `<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} notes</title><style>${css}\nbody{margin:0;background:#fff;color:#111}.wrap{max-width:900px;margin:0 auto;padding:16px}</style></head><body><div class="wrap">${sheetRef.current.innerHTML}</div></body></html>`;
-    const url = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${name}.html`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    const html = `<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${name}</title><style>${css}\nbody{margin:0;background:#fff;color:#111}.wrap{max-width:900px;margin:0 auto;padding:16px}@media print{.wrap{max-width:none;padding:0}}</style></head><body><div class="wrap">${sheetRef.current.innerHTML}</div></body></html>`;
+    const iframe = document.createElement('iframe');
+    iframe.setAttribute('aria-hidden', 'true');
+    Object.assign(iframe.style, { position: 'fixed', right: '0', bottom: '0', width: '0', height: '0', border: '0', opacity: '0' });
+    iframe.srcdoc = html;
+    iframe.onload = () => {
+      const win = iframe.contentWindow;
+      if (!win) { iframe.remove(); return; }
+      win.addEventListener('afterprint', () => setTimeout(() => iframe.remove(), 300));
+      setTimeout(() => { try { win.focus(); win.print(); } catch { iframe.remove(); } }, 300);
+      setTimeout(() => { if (document.body.contains(iframe)) iframe.remove(); }, 60000);
+    };
+    document.body.appendChild(iframe);
   };
 
   const toggle =(id) => setIds((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
@@ -328,9 +335,9 @@ export default function NotesBuilder({ title, code, units, onBack, findGlossary 
       <div className="notes-root">
         <div className="no-print sticky top-0 z-30 flex flex-wrap items-center gap-2 border-b-2 border-slate-200 bg-white/95 px-3 py-2">
           <button type="button" className="btn btn-ghost" onClick={() => setPreview(false)}><ArrowLeft className="h-4 w-4" aria-hidden /> Change chapters</button>
-          <button type="button" className="btn btn-green" onClick={download}><Download className="h-4 w-4" aria-hidden /> Download file</button>
-          <button type="button" className="btn btn-ghost" onClick={() => window.print()}><Printer className="h-4 w-4" aria-hidden /> Print / save as PDF</button>
-          <span className="text-sm font-bold text-slate-500">{ids.size} lessons · {countBytes(units, ids)} bytes. The download is one file that opens in any browser, offline.</span>
+          <button type="button" className="btn btn-green" onClick={downloadPdf}><Download className="h-4 w-4" aria-hidden /> Download PDF</button>
+          <button type="button" className="btn btn-ghost" onClick={() => window.print()}><Printer className="h-4 w-4" aria-hidden /> Print</button>
+          <span className="text-sm font-bold text-slate-500">{ids.size} lessons · {countBytes(units, ids)} bytes. Saves a PDF — if a print dialog appears, choose “Save as PDF”.</span>
         </div>
         <div ref={sheetRef} className="mx-auto max-w-[900px] bg-white p-4 print:p-0">
           <Sheet title={title} code={code} units={units} ids={ids} opts={opts} findGlossary={findGlossary} />
@@ -343,7 +350,7 @@ export default function NotesBuilder({ title, code, units, onBack, findGlossary 
     <div className="mx-auto max-w-3xl px-4 py-5">
       <button type="button" className="btn btn-ghost mb-3" onClick={onBack}><ArrowLeft className="h-4 w-4" aria-hidden /> Back to {title}</button>
       <h1 className="mb-1 flex items-center gap-2 text-2xl font-black"><FileText className="h-6 w-6" aria-hidden /> Printable notes</h1>
-      <p className="mb-4 text-sm font-semibold text-slate-600">Pick the chapters you want. The app puts the knowledge bytes, diagrams, formulae and key definitions for those chapters onto a concise cheat sheet, with command words, tick-box checklists and a self-test with answers. Download it as a file, or print it or save it as a PDF.</p>
+      <p className="mb-4 text-sm font-semibold text-slate-600">Pick the chapters you want. The app puts the knowledge bytes, diagrams, formulae and key definitions for those chapters onto a concise cheat sheet, with command words, tick-box checklists and a self-test with answers. Download it as a PDF, or print it.</p>
 
       <div className="mb-4 flex flex-wrap gap-2">
         <button type="button" className="btn btn-ghost" onClick={() => setIds(new Set(allIds))}>Select all</button>
