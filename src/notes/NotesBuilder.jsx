@@ -295,18 +295,19 @@ export default function NotesBuilder({ title, code, units, onBack, findGlossary 
   const [ids, setIds] = useState(() => new Set());
   const [opts, setOpts] = useState({ figures: true, tips: true, definitions: true, equations: true, commandWords: true, checklist: true, recall: true, examQs: true, models: false, twoCol: true, large: false, mono: false });
   const [preview, setPreview] = useState(false);
+  const [busy, setBusy] = useState(false);
   const sheetRef = useRef(null);
 
-  // Build a clean, self-contained copy of the sheet and hand it to the browser's own
-  // print-to-PDF engine (via a hidden iframe). This renders the diagrams natively — exactly
-  // as on screen, with no content change — and produces a real PDF, not an HTML file.
-  const downloadPdf = () => {
+  const fileBase = () => `${title.replace(/[^\w]+/g, '-').replace(/^-|-$/g, '')}-notes`;
+
+  // Fallback only: hand a self-contained copy of the sheet to the browser's own print-to-PDF
+  // engine (hidden iframe). Used if direct PDF generation fails (e.g. a very long sheet).
+  const printFallback = () => {
     if (!sheetRef.current) return;
     const css = [...document.styleSheets].map((sh) => {
       try { return [...sh.cssRules].map((r) => r.cssText).join('\n'); } catch { return ''; }
     }).join('\n');
-    const name = `${title.replace(/[^\w]+/g, '-').replace(/^-|-$/g, '')}-notes`;
-    const html = `<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${name}</title><style>${css}\nbody{margin:0;background:#fff;color:#111}.wrap{max-width:900px;margin:0 auto;padding:16px}@media print{.wrap{max-width:none;padding:0}}</style></head><body><div class="wrap">${sheetRef.current.innerHTML}</div></body></html>`;
+    const html = `<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${fileBase()}</title><style>${css}\nbody{margin:0;background:#fff;color:#111}.wrap{max-width:900px;margin:0 auto;padding:16px}@media print{.wrap{max-width:none;padding:0}}</style></head><body><div class="wrap">${sheetRef.current.innerHTML}</div></body></html>`;
     const iframe = document.createElement('iframe');
     iframe.setAttribute('aria-hidden', 'true');
     Object.assign(iframe.style, { position: 'fixed', right: '0', bottom: '0', width: '0', height: '0', border: '0', opacity: '0' });
@@ -319,6 +320,40 @@ export default function NotesBuilder({ title, code, units, onBack, findGlossary 
       setTimeout(() => { if (document.body.contains(iframe)) iframe.remove(); }, 60000);
     };
     document.body.appendChild(iframe);
+  };
+
+  // Generate a real PDF in the browser and download it directly — one tap, no print dialog.
+  // Render an off-screen, fixed-width clone so the page looks like A4 on phones too; the
+  // diagrams are plain SVG and rasterise cleanly, so the content is unchanged.
+  const downloadPdf = async () => {
+    if (!sheetRef.current || busy) return;
+    setBusy(true);
+    const holder = document.createElement('div');
+    try {
+      const mod = await import('html2pdf.js');
+      const html2pdf = mod.default || mod;
+      const clone = sheetRef.current.cloneNode(true);
+      Object.assign(clone.style, { maxWidth: '800px', width: '800px', margin: '0' });
+      Object.assign(holder.style, { position: 'fixed', left: '-10000px', top: '0', width: '800px', background: '#ffffff' });
+      holder.appendChild(clone);
+      document.body.appendChild(holder);
+      // Keep the render canvas within browser limits: lower the scale for taller sheets.
+      const h = clone.scrollHeight;
+      const scale = h > 9000 ? 1.4 : h > 5000 ? 1.7 : 2;
+      await html2pdf().set({
+        margin: [8, 8, 10, 8],
+        filename: `${fileBase()}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale, backgroundColor: '#ffffff', useCORS: true, logging: false },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['css', 'legacy'], avoid: ['svg', 'figure', 'table'] },
+      }).from(clone).save();
+    } catch {
+      printFallback(); // library blocked or sheet too large — fall back to native print-to-PDF
+    } finally {
+      holder.remove();
+      setBusy(false);
+    }
   };
 
   const toggle =(id) => setIds((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
@@ -335,9 +370,9 @@ export default function NotesBuilder({ title, code, units, onBack, findGlossary 
       <div className="notes-root">
         <div className="no-print sticky top-0 z-30 flex flex-wrap items-center gap-2 border-b-2 border-slate-200 bg-white/95 px-3 py-2">
           <button type="button" className="btn btn-ghost" onClick={() => setPreview(false)}><ArrowLeft className="h-4 w-4" aria-hidden /> Change chapters</button>
-          <button type="button" className="btn btn-green" onClick={downloadPdf}><Download className="h-4 w-4" aria-hidden /> Download PDF</button>
+          <button type="button" disabled={busy} className="btn btn-green disabled:opacity-60" onClick={downloadPdf}><Download className="h-4 w-4" aria-hidden /> {busy ? 'Preparing PDF…' : 'Download PDF'}</button>
           <button type="button" className="btn btn-ghost" onClick={() => window.print()}><Printer className="h-4 w-4" aria-hidden /> Print</button>
-          <span className="text-sm font-bold text-slate-500">{ids.size} lessons · {countBytes(units, ids)} bytes. Saves a PDF — if a print dialog appears, choose “Save as PDF”.</span>
+          <span className="text-sm font-bold text-slate-500">{ids.size} lessons · {countBytes(units, ids)} bytes. Downloads a PDF with your diagrams — no print dialog.</span>
         </div>
         <div ref={sheetRef} className="mx-auto max-w-[900px] bg-white p-4 print:p-0">
           <Sheet title={title} code={code} units={units} ids={ids} opts={opts} findGlossary={findGlossary} />
