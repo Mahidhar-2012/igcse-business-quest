@@ -1,58 +1,94 @@
-// Lightweight, same-device "class mode" sessions.
+// Lightweight, same-device "class mode" for Physics.
 //
-// A signed-in student's Physics progress is saved under their own namespaced localStorage key,
-// so a teacher using the SAME device/browser can review everyone from the teacher dashboard.
-// This is NOT real security or cloud sync: the passwords (see Portal.jsx) are a convenience gate,
-// and progress lives in this browser only. Physics only for now.
+// Students sign in with name + email + team. Their Physics progress is saved per student
+// (keyed by email) so a teacher on the SAME device/browser can review everyone and run a
+// team points scoreboard. This is NOT secure login or cloud sync: the teacher password is a
+// convenience gate and all data lives in this browser only.
 
 const PHYSICS_BASE = 'igcse-physics-quest:v1';
-const ACTIVE_KEY = 'iq:activeStudent'; // roll number of the signed-in student, or absent
-const ROLES_KEY = 'iq:classRoll'; // remembers roll numbers seen on this device (even before any progress)
+const ACTIVE_KEY = 'iq:activeStudent';   // active student's email (their id)
+const STUDENTS_KEY = 'iq:classStudents'; // { [email]: {name,email,team,joinedAt} }
+const TEAMS_KEY = 'iq:physicsTeams';     // [{id,name,points}]
 
 export const PHYSICS_BASE_KEY = PHYSICS_BASE;
-export const studentKey = (roll) => `${PHYSICS_BASE}::${roll}`;
 
+// Team names are editable by the teacher; ids stay stable so students keep their team if renamed.
+const DEFAULT_TEAMS = [
+  { id: 'newtons', name: 'Newtons', points: 0 },
+  { id: 'einsteins', name: 'Einsteins', points: 0 },
+];
+
+const safeParse = (s, fb) => { try { return JSON.parse(s); } catch { return fb; } };
+
+export const normalizeEmail = (e) => String(e || '').trim().toLowerCase();
+export const isEmail = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(e || '').trim());
+export const studentKey = (email) => `${PHYSICS_BASE}::${normalizeEmail(email)}`;
+
+// ---- active student --------------------------------------------------------
 export const getActiveStudent = () => {
   try { return localStorage.getItem(ACTIVE_KEY) || null; } catch { return null; }
 };
-
-export const setActiveStudent = (roll) => {
+export const setActiveStudent = (email) => {
   try {
-    if (roll) {
-      localStorage.setItem(ACTIVE_KEY, roll);
-      rememberRoll(roll);
-    } else {
-      localStorage.removeItem(ACTIVE_KEY);
-    }
+    if (email) localStorage.setItem(ACTIVE_KEY, normalizeEmail(email));
+    else localStorage.removeItem(ACTIVE_KEY);
   } catch { /* private mode: just won't persist */ }
 };
 
-/** Physics storage key to use right now — namespaced to the signed-in student, if any. */
+/** Physics storage key to use now — namespaced to the signed-in student, if any. */
 export const physicsStorageKey = () => {
-  const roll = getActiveStudent();
-  return roll ? studentKey(roll) : PHYSICS_BASE;
+  const email = getActiveStudent();
+  return email ? studentKey(email) : PHYSICS_BASE;
 };
 
-const readRoster = () => {
-  try { return JSON.parse(localStorage.getItem(ROLES_KEY) || '[]'); } catch { return []; }
-};
+// ---- student profiles ------------------------------------------------------
+const readStudents = () => safeParse(localStorage.getItem(STUDENTS_KEY), {}) || {};
 
-const rememberRoll = (roll) => {
+export const upsertStudent = ({ name, email, team }) => {
+  const id = normalizeEmail(email);
   try {
-    const set = new Set(readRoster());
-    set.add(roll);
-    localStorage.setItem(ROLES_KEY, JSON.stringify([...set]));
+    const all = readStudents();
+    all[id] = {
+      name: String(name || '').trim(),
+      email: id,
+      team,
+      joinedAt: all[id]?.joinedAt || Date.now(),
+    };
+    localStorage.setItem(STUDENTS_KEY, JSON.stringify(all));
   } catch { /* ignore */ }
+  return id;
 };
 
-/** Every roll number known on this device: those with saved progress + any that have signed in. */
-export const listStudents = () => {
-  const set = new Set(readRoster());
-  try {
-    for (let i = 0; i < localStorage.length; i++) {
-      const k = localStorage.key(i);
-      if (k && k.startsWith(`${PHYSICS_BASE}::`)) set.add(k.slice(PHYSICS_BASE.length + 2));
-    }
-  } catch { /* ignore */ }
-  return [...set].sort((a, b) => String(a).localeCompare(String(b), undefined, { numeric: true }));
+export const getStudent = (email) => readStudents()[normalizeEmail(email)] || null;
+
+export const listStudents = () =>
+  Object.values(readStudents()).sort((a, b) => String(a.name || '').localeCompare(String(b.name || '')));
+
+// ---- teams + points --------------------------------------------------------
+export const getTeams = () => {
+  const t = safeParse(localStorage.getItem(TEAMS_KEY), null);
+  if (Array.isArray(t) && t.length) return t.map((x) => ({ points: 0, ...x }));
+  return DEFAULT_TEAMS.map((x) => ({ ...x }));
 };
+
+const saveTeams = (teams) => { try { localStorage.setItem(TEAMS_KEY, JSON.stringify(teams)); } catch { /* ignore */ } };
+
+export const addTeamPoints = (id, delta) => {
+  const teams = getTeams().map((t) => (t.id === id ? { ...t, points: Math.max(0, (t.points || 0) + delta) } : t));
+  saveTeams(teams);
+  return teams;
+};
+
+export const renameTeam = (id, name) => {
+  const teams = getTeams().map((t) => (t.id === id ? { ...t, name: String(name || '').trim() || t.name } : t));
+  saveTeams(teams);
+  return teams;
+};
+
+export const resetTeamPoints = () => {
+  const teams = getTeams().map((t) => ({ ...t, points: 0 }));
+  saveTeams(teams);
+  return teams;
+};
+
+export const teamName = (id) => getTeams().find((t) => t.id === id)?.name || '—';

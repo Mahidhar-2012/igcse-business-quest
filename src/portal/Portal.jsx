@@ -1,16 +1,17 @@
 import { useMemo, useState } from 'react';
-import { GraduationCap, UserRound, LayoutGrid, LogOut, RefreshCw, BookOpen } from 'lucide-react';
+import { GraduationCap, UserRound, LayoutGrid, LogOut, RefreshCw, BookOpen, Trophy, Plus, Minus, Pencil, Check } from 'lucide-react';
 import { units } from '../physics/data/index.js';
-import { getActiveStudent, setActiveStudent, listStudents, studentKey } from './session.js';
+import {
+  getActiveStudent, setActiveStudent, upsertStudent, getStudent, listStudents,
+  studentKey, isEmail, getTeams, addTeamPoints, renameTeam, resetTeamPoints, teamName,
+} from './session.js';
 
-// Convenience gate only — these passwords live in the page source and protect nothing.
-// Physics-only class mode (same device). Teacher password supplied by the user.
+// Convenience gate only — this password lives in the page source and protects nothing.
 const TEACHER_PW = '0625@garvit';
-const studentPw = (roll) => `${roll}@0625`;
 
-function summarise(roll) {
+function summarise(email) {
   let raw = null;
-  try { raw = JSON.parse(localStorage.getItem(studentKey(roll)) || 'null'); } catch { /* ignore */ }
+  try { raw = JSON.parse(localStorage.getItem(studentKey(email)) || 'null'); } catch { /* ignore */ }
   const s = raw || {};
   const subs = s.subs || {};
   let total = 0, done = 0, stars = 0;
@@ -25,9 +26,7 @@ function summarise(roll) {
   let r = 0, w = 0;
   for (const k in acc) { r += acc[k].r || 0; w += acc[k].w || 0; }
   return {
-    roll,
-    done,
-    total,
+    done, total,
     mastery: total ? Math.round((stars / (total * 3)) * 100) : 0,
     xp: s.xp || 0,
     streak: s.streak || 0,
@@ -68,9 +67,12 @@ function Field({ label, ...props }) {
 
 function Login({ onTeacher, onStudent }) {
   const [tab, setTab] = useState('student');
-  const [roll, setRoll] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [team, setTeam] = useState('');
   const [pw, setPw] = useState('');
   const [err, setErr] = useState('');
+  const teams = useMemo(getTeams, []);
 
   const submit = (e) => {
     e.preventDefault();
@@ -80,10 +82,10 @@ function Login({ onTeacher, onStudent }) {
       else setErr('Wrong teacher password.');
       return;
     }
-    const id = roll.trim();
-    if (!id) return setErr('Enter your roll number.');
-    if (pw === studentPw(id)) onStudent(id);
-    else setErr('Wrong password. It is your roll number, then @0625.');
+    if (!name.trim()) return setErr('Enter your name.');
+    if (!isEmail(email)) return setErr('Enter a valid email address.');
+    if (!team) return setErr('Choose your team.');
+    onStudent({ name: name.trim(), email, team });
   };
 
   return (
@@ -102,39 +104,60 @@ function Login({ onTeacher, onStudent }) {
       </div>
 
       <form onSubmit={submit} className="space-y-3 rounded-2xl border-2 border-slate-200 bg-white p-4">
-        {tab === 'student' && (
-          <Field label="Roll number" value={roll} onChange={(e) => setRoll(e.target.value)} placeholder="e.g. 17" autoComplete="off" />
+        {tab === 'student' ? (
+          <>
+            <Field label="Your name" value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Aditi Sharma" autoComplete="off" />
+            <Field label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" autoComplete="off" />
+            <div>
+              <span className="text-xs font-extrabold uppercase tracking-wide text-slate-500">Your team</span>
+              <div className="mt-1 flex flex-wrap gap-2">
+                {teams.map((t) => (
+                  <button
+                    key={t.id}
+                    type="button"
+                    onClick={() => setTeam(t.id)}
+                    className={`flex-1 rounded-xl border-2 px-3 py-2.5 text-sm font-black transition ${team === t.id ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50'}`}
+                  >
+                    {t.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </>
+        ) : (
+          <Field label="Teacher password" type="password" value={pw} onChange={(e) => setPw(e.target.value)} placeholder="••••••••" autoComplete="off" />
         )}
-        <Field
-          label="Password"
-          type="password"
-          value={pw}
-          onChange={(e) => setPw(e.target.value)}
-          placeholder={tab === 'student' ? 'roll number @0625' : '••••••••'}
-          autoComplete="off"
-        />
         {err && <p className="text-sm font-bold text-rose-600">{err}</p>}
         <button type="submit" className="w-full rounded-xl bg-indigo-600 px-4 py-2.5 text-base font-black text-white hover:bg-indigo-700">
-          {tab === 'teacher' ? 'Open teacher dashboard' : 'Sign in'}
+          {tab === 'teacher' ? 'Open teacher dashboard' : 'Start learning'}
         </button>
-        <p className="text-xs font-semibold text-slate-500">
-          {tab === 'student'
-            ? 'Your password is your roll number followed by @0625 (for example, 17@0625).'
-            : 'Teachers can see every student who has signed in on this device.'}
-        </p>
       </form>
     </Shell>
   );
 }
 
-function StudentHome({ roll, onLogout }) {
-  const sum = useMemo(() => summarise(roll), [roll]);
+function Stat({ label, value }) {
+  return (
+    <div className="rounded-xl border-2 border-slate-200 bg-white p-2">
+      <p className="text-lg font-black text-slate-800">{value}</p>
+      <p className="text-[11px] font-bold uppercase tracking-wide text-slate-400">{label}</p>
+    </div>
+  );
+}
+
+function StudentHome({ email, onLogout }) {
+  const profile = useMemo(() => getStudent(email), [email]);
+  const sum = useMemo(() => summarise(email), [email]);
+  const myTeam = useMemo(() => teamName(profile?.team), [profile]);
+
   return (
     <Shell title="Physics class">
       <div className="rounded-2xl border-2 border-emerald-200 bg-emerald-50 p-4">
-        <p className="text-sm font-bold text-emerald-700">Signed in as</p>
-        <p className="text-2xl font-black text-emerald-900">Roll {roll}</p>
-        <p className="mt-1 text-sm font-semibold text-emerald-800">Your Physics progress is saved under your roll number on this device.</p>
+        <p className="text-sm font-bold text-emerald-700">Signed in</p>
+        <p className="text-2xl font-black text-emerald-900">{profile?.name || email}</p>
+        <p className="mt-1 text-sm font-semibold text-emerald-800">
+          Team <b>{myTeam}</b> · {email} — your Physics progress saves on this device.
+        </p>
       </div>
 
       <div className="mt-4 grid grid-cols-3 gap-2 text-center">
@@ -153,59 +176,47 @@ function StudentHome({ roll, onLogout }) {
   );
 }
 
-function Stat({ label, value }) {
-  return (
-    <div className="rounded-xl border-2 border-slate-200 bg-white p-2">
-      <p className="text-lg font-black text-slate-800">{value}</p>
-      <p className="text-[11px] font-bold uppercase tracking-wide text-slate-400">{label}</p>
-    </div>
-  );
-}
-
-function TeacherDashboard({ onExit }) {
-  const [tick, setTick] = useState(0);
-  const rows = useMemo(() => listStudents().map(summarise), [tick]);
-  const started = rows.filter((r) => r.started);
+function TeamCard({ team, leading, onPoints, onRename }) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(team.name);
+  const save = () => { onRename(team.id, draft); setEditing(false); };
 
   return (
-    <Shell title="Teacher dashboard">
-      <div className="mb-3 flex items-center gap-2">
-        <p className="text-sm font-bold text-slate-500">Physics · {started.length} student{started.length === 1 ? '' : 's'} active on this device</p>
-        <button type="button" onClick={() => setTick((t) => t + 1)} className="icon-btn ml-auto" aria-label="Refresh"><RefreshCw className="h-4 w-4" /></button>
-        <button type="button" onClick={onExit} className="rounded-xl border-2 border-slate-200 bg-white px-3 py-1.5 text-xs font-black text-slate-600 hover:bg-slate-50">Sign out</button>
+    <div className={`rounded-2xl border-2 p-4 ${leading ? 'border-amber-300 bg-amber-50' : 'border-slate-200 bg-white'}`}>
+      <div className="flex items-center gap-2">
+        {editing ? (
+          <>
+            <input
+              value={draft}
+              onChange={(e) => setDraft(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && save()}
+              className="min-w-0 flex-1 rounded-lg border-2 border-indigo-300 px-2 py-1 text-base font-black text-slate-800 outline-none"
+              aria-label="Team name"
+              autoFocus
+            />
+            <button type="button" onClick={save} className="icon-btn !text-emerald-600" aria-label="Save team name"><Check className="h-4 w-4" /></button>
+          </>
+        ) : (
+          <>
+            <span className="flex items-center gap-1.5 text-lg font-black text-slate-800">
+              {leading && <Trophy className="h-5 w-5 text-amber-500" aria-hidden />} {team.name}
+            </span>
+            <button type="button" onClick={() => { setDraft(team.name); setEditing(true); }} className="icon-btn !h-7 !w-7 !text-slate-400" aria-label={`Rename ${team.name}`}><Pencil className="h-3.5 w-3.5" /></button>
+          </>
+        )}
+        <span className="ml-auto text-3xl font-black tabular-nums text-indigo-700">{team.points}</span>
       </div>
-
-      {rows.length === 0 ? (
-        <div className="rounded-2xl border-2 border-dashed border-slate-300 bg-white p-6 text-center">
-          <p className="font-black text-slate-700">No students yet</p>
-          <p className="mt-1 text-sm font-semibold text-slate-500">
-            Ask each student to open this app on this device, go to Physics class, and sign in with their roll number (password: roll number @0625). Their progress will then appear here.
-          </p>
-        </div>
-      ) : (
-        <ul className="space-y-2">
-          {rows.map((r) => (
-            <li key={r.roll} className="rounded-2xl border-2 border-slate-200 bg-white p-3">
-              <div className="flex items-center gap-2">
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-indigo-100 text-sm font-black text-indigo-700">{String(r.roll).slice(0, 3)}</span>
-                <span className="font-black text-slate-800">Roll {r.roll}</span>
-                {!r.started && <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-500">signed in, no work yet</span>}
-                <span className="ml-auto text-xs font-bold text-slate-400">🔥 {r.streak} · ⚡ {r.xp} XP</span>
-              </div>
-              <div className="mt-2 grid grid-cols-4 gap-2 text-center">
-                <Mini label="Lessons" value={`${r.done}/${r.total}`} />
-                <Mini label="Mastery" value={`${r.mastery}%`} />
-                <Mini label="Accuracy" value={r.accuracy == null ? '—' : `${r.accuracy}%`} />
-                <Mini label="To review" value={r.mistakes} />
-              </div>
-              <div className="mt-2 h-2 overflow-hidden rounded-full bg-slate-100">
-                <div className="h-full rounded-full bg-indigo-500" style={{ width: `${r.mastery}%` }} />
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
-    </Shell>
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        {[1, 3, 5].map((n) => (
+          <button key={n} type="button" onClick={() => onPoints(team.id, n)} className="flex items-center gap-1 rounded-xl bg-indigo-600 px-3 py-1.5 text-sm font-black text-white hover:bg-indigo-700">
+            <Plus className="h-3.5 w-3.5" aria-hidden /> {n}
+          </button>
+        ))}
+        <button type="button" onClick={() => onPoints(team.id, -1)} className="ml-auto flex items-center gap-1 rounded-xl border-2 border-slate-200 bg-white px-3 py-1.5 text-sm font-black text-slate-600 hover:bg-slate-50" aria-label={`Subtract 1 from ${team.name}`}>
+          <Minus className="h-3.5 w-3.5" aria-hidden /> 1
+        </button>
+      </div>
+    </div>
   );
 }
 
@@ -218,22 +229,101 @@ function Mini({ label, value }) {
   );
 }
 
+function StudentRow({ s }) {
+  const sum = summarise(s.email);
+  return (
+    <li className="rounded-2xl border-2 border-slate-200 bg-white p-3">
+      <div className="flex items-center gap-2">
+        <span className="grid h-9 w-9 place-items-center rounded-full bg-indigo-100 text-sm font-black text-indigo-700">{(s.name || '?').slice(0, 1).toUpperCase()}</span>
+        <div className="min-w-0">
+          <p className="truncate font-black text-slate-800">{s.name || s.email}</p>
+          <p className="truncate text-xs font-semibold text-slate-400">{s.email}</p>
+        </div>
+        <span className="ml-auto whitespace-nowrap text-xs font-bold text-slate-400">🔥 {sum.streak} · ⚡ {sum.xp}</span>
+      </div>
+      <div className="mt-2 grid grid-cols-4 gap-2 text-center">
+        <Mini label="Lessons" value={`${sum.done}/${sum.total}`} />
+        <Mini label="Mastery" value={`${sum.mastery}%`} />
+        <Mini label="Accuracy" value={sum.accuracy == null ? '—' : `${sum.accuracy}%`} />
+        <Mini label="To review" value={sum.mistakes} />
+      </div>
+      <div className="mt-2 h-2 overflow-hidden rounded-full bg-slate-100">
+        <div className="h-full rounded-full bg-indigo-500" style={{ width: `${sum.mastery}%` }} />
+      </div>
+    </li>
+  );
+}
+
+function TeacherDashboard({ onExit }) {
+  const [tick, setTick] = useState(0);
+  const refresh = () => setTick((t) => t + 1);
+  const teams = useMemo(getTeams, [tick]);
+  const students = useMemo(listStudents, [tick]);
+  const maxPoints = Math.max(0, ...teams.map((t) => t.points || 0));
+
+  const onPoints = (id, delta) => { addTeamPoints(id, delta); refresh(); };
+  const onRename = (id, name) => { renameTeam(id, name); refresh(); };
+
+  return (
+    <Shell title="Teacher dashboard">
+      <div className="mb-2 flex items-center gap-2">
+        <h2 className="flex items-center gap-1.5 text-sm font-black uppercase tracking-wide text-slate-500"><Trophy className="h-4 w-4 text-amber-500" aria-hidden /> Team points</h2>
+        <button type="button" onClick={() => { if (window.confirm('Reset both teams to 0 points?')) { resetTeamPoints(); refresh(); } }} className="ml-auto rounded-lg border-2 border-slate-200 bg-white px-2 py-1 text-xs font-black text-slate-500 hover:bg-slate-50">Reset points</button>
+        <button type="button" onClick={onExit} className="rounded-lg border-2 border-slate-200 bg-white px-2 py-1 text-xs font-black text-slate-600 hover:bg-slate-50">Sign out</button>
+      </div>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {teams.map((t) => (
+          <TeamCard key={t.id} team={t} leading={maxPoints > 0 && t.points === maxPoints} onPoints={onPoints} onRename={onRename} />
+        ))}
+      </div>
+
+      <div className="mb-2 mt-6 flex items-center gap-2">
+        <h2 className="text-sm font-black uppercase tracking-wide text-slate-500">Students · Physics ({students.length})</h2>
+        <button type="button" onClick={refresh} className="icon-btn ml-auto" aria-label="Refresh"><RefreshCw className="h-4 w-4" /></button>
+      </div>
+
+      {students.length === 0 ? (
+        <div className="rounded-2xl border-2 border-dashed border-slate-300 bg-white p-6 text-center">
+          <p className="font-black text-slate-700">No students yet</p>
+          <p className="mt-1 text-sm font-semibold text-slate-500">Ask each student to open this app on this device, go to Physics class, and sign in with their name, email and team. They will appear here.</p>
+        </div>
+      ) : (
+        teams.map((t) => {
+          const members = students.filter((s) => s.team === t.id);
+          if (!members.length) return null;
+          return (
+            <section key={t.id} className="mt-3">
+              <p className="mb-1 text-xs font-black uppercase tracking-wide text-indigo-500">{t.name} · {members.length}</p>
+              <ul className="space-y-2">{members.map((s) => <StudentRow key={s.email} s={s} />)}</ul>
+            </section>
+          );
+        })
+      )}
+      {students.some((s) => !teams.find((t) => t.id === s.team)) && (
+        <section className="mt-3">
+          <p className="mb-1 text-xs font-black uppercase tracking-wide text-slate-400">No team</p>
+          <ul className="space-y-2">{students.filter((s) => !teams.find((t) => t.id === s.team)).map((s) => <StudentRow key={s.email} s={s} />)}</ul>
+        </section>
+      )}
+    </Shell>
+  );
+}
+
 export default function Portal() {
-  const [screen, setScreen] = useState(() => (getActiveStudent() ? { name: 'student', roll: getActiveStudent() } : { name: 'login' }));
+  const [screen, setScreen] = useState(() => (getActiveStudent() ? { name: 'student', email: getActiveStudent() } : { name: 'login' }));
 
   if (screen.name === 'teacher') return <TeacherDashboard onExit={() => setScreen({ name: 'login' })} />;
   if (screen.name === 'student') {
-    return (
-      <StudentHome
-        roll={screen.roll}
-        onLogout={() => { setActiveStudent(null); setScreen({ name: 'login' }); }}
-      />
-    );
+    return <StudentHome email={screen.email} onLogout={() => { setActiveStudent(null); setScreen({ name: 'login' }); }} />;
   }
   return (
     <Login
       onTeacher={() => setScreen({ name: 'teacher' })}
-      onStudent={(roll) => { setActiveStudent(roll); setScreen({ name: 'student', roll }); }}
+      onStudent={({ name, email, team }) => {
+        upsertStudent({ name, email, team });
+        setActiveStudent(email);
+        setScreen({ name: 'student', email });
+      }}
     />
   );
 }
