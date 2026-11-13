@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Zap, Flame, Volume2, VolumeX, ShieldAlert, Settings, Unlock, Trash2, BookText, LayoutGrid, FileText } from 'lucide-react';
+import { Zap, Flame, Volume2, VolumeX, ShieldAlert, Settings, Unlock, Trash2, BookText, LayoutGrid, FileText, FlaskConical } from 'lucide-react';
 import { UNIT_COLORS, ProgressRing } from './UnitDashboard.jsx';
 
-export default function Header({ state, unitStats, activeUnitId, onSelectUnit, onOpenMistakes, onOpenGlossary, onOpenNotes, onHome, onToggle, onReset, showUnits, courseUnits, title = 'Business Quest' }) {
+export default function Header({ state, unitStats, activeUnitId, onSelectUnit, onOpenMistakes, onOpenGlossary, onOpenNotes, onOpenDemos, onHome, onToggle, onReset, showUnits, courseUnits, title = 'Business Quest' }) {
   const [menu, setMenu] = useState(false);
   const active = courseUnits.find((u) => u.id === activeUnitId);
 
@@ -48,6 +48,15 @@ export default function Header({ state, unitStats, activeUnitId, onSelectUnit, o
               </span>
             )}
           </button>
+          {onOpenDemos && <button
+            type="button"
+            onClick={onOpenDemos}
+            aria-label="Live demonstrations"
+            title="Live demos"
+            className="icon-btn !text-indigo-600 hover:!bg-indigo-50"
+          >
+            <FlaskConical className="h-5 w-5" />
+          </button>}
           {onOpenNotes && <button
             type="button"
             onClick={onOpenNotes}

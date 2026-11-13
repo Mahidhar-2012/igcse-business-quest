@@ -4,6 +4,7 @@ import UnitDashboard from '../components/UnitDashboard.jsx';
 import LessonPlayer from '../components/LessonPlayer.jsx';
 import MistakeBankModal from '../components/MistakeBankModal.jsx';
 import NotesBuilder from '../notes/NotesBuilder.jsx';
+import DemoGallery from '../components/DemoGallery.jsx';
 import ReviewBanner from '../components/ReviewBanner.jsx';
 import { useProgress } from '../lib/store.js';
 import { dueIds, SESSION_SIZE } from '../lib/srs.js';
@@ -33,7 +34,7 @@ const buildLessonItems = (sub, qItem) => {
  * config = { id, appTitle, heading, gradient, storageKey, units, questionIndex, subQuestionIds, CardView }
  */
 export default function CourseApp({ onHome, config, deep }) {
-  const { id, appTitle, heading, gradient, storageKey, units, questionIndex, subQuestionIds, CardView } = config;
+  const { id, appTitle, heading, gradient, storageKey, units, questionIndex, subQuestionIds, CardView, demos } = config;
   const course = useMemo(() => ({ units, questionIndex, key: storageKey, oldKey: null }), [units, questionIndex, storageKey]);
   const qItem = useCallback((qid) => ({ kind: 'q', qid, challenge: questionIndex[qid].challenge }), [questionIndex]);
   useMemo(() => checkTotal(id, units.reduce((n, u) => n + u.submodules.length, 0)), [id, units]);
@@ -44,6 +45,8 @@ export default function CourseApp({ onHome, config, deep }) {
   const [activeUnitId, setActiveUnitId] = useState(() => (units.find((u) => !unitStats[u.id].allDone) || units[0]).id);
   const [view, setView] = useState(() => {
     if (deep === 'notes') return { name: 'notes' };
+    if (deep === 'demos') return { name: 'demos' };
+    if (demos?.some((d) => d.id === deep)) return { name: 'demo', demoId: deep };
     if (deep === 'review' && due.length) return { name: 'review', ids: due.slice(0, SESSION_SIZE) };
     return { name: 'dashboard' };
   });
@@ -124,6 +127,11 @@ export default function CourseApp({ onHome, config, deep }) {
     );
   } else if (view.name === 'notes') {
     body = <NotesBuilder title={heading.replace(/^IGCSE /, '').replace(/\s*\d{4}$/, '')} code={heading.match(/\d{4}/)?.[0] ?? null} units={units} onBack={exit} />;
+  } else if (view.name === 'demos') {
+    body = <DemoGallery demos={demos} onOpen={(demoId) => setView({ name: 'demo', demoId })} onBack={exit} />;
+  } else if (view.name === 'demo') {
+    const demo = demos?.find((d) => d.id === view.demoId);
+    body = demo ? <demo.Component onBack={() => setView({ name: 'demos' })} /> : null;
   } else if (view.name === 'review') {
     body = (
       <LessonPlayer
@@ -163,6 +171,7 @@ export default function CourseApp({ onHome, config, deep }) {
           onSelectUnit={setActiveUnitId}
           onOpenMistakes={() => setMistakesOpen(true)}
           onOpenNotes={() => setView({ name: 'notes' })}
+          onOpenDemos={demos?.length ? () => setView({ name: 'demos' }) : undefined}
           onHome={onHome}
           onToggle={toggle}
           onReset={reset}

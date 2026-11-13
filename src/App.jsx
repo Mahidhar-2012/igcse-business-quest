@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
+import { GraduationCap } from 'lucide-react';
 import { loadOverview } from './lib/overview.js';
 import { SUBJECTS_META } from './subjects.meta.js';
 import { Logo, BottomNav, ThemeButton, ICONS } from './hub/parts.jsx';
@@ -25,6 +26,7 @@ const LOADERS = {
 const SUBJECTS = SUBJECTS_META.filter((s) => LOADERS[s.id] && ICONS[s.id]);
 const TeacherApp = lazy(() => import('./teacher/TeacherApp.jsx'));
 const TextbookApp = lazy(() => import('./textbook/TextbookApp.jsx'));
+const PortalApp = lazy(() => import('./portal/Portal.jsx'));
 const TABS = ['learn', 'recall', 'notes', 'progress', ...(cloudEnabled ? ['classes'] : [])];
 const CURRENT_KEY = 'iq:current';
 
@@ -34,6 +36,7 @@ const parseHash = () => {
   if (!a) return { tab: 'learn' };
   if (a === 'teacher' && cloudEnabled) return { teacher: [b, ...rest].filter(Boolean) };
   if (a === 'book') return { book: [b, ...rest].filter(Boolean) };
+  if (a === 'portal') return { portal: true };
   if (TABS.includes(a)) return { tab: a, classId: b || null };
   const s = SUBJECTS.find((x) => x.id === a);
   return s ? { subject: s.id, deep: b || null } : { tab: 'learn' };
@@ -69,6 +72,9 @@ function Hub({ tab, classId }) {
             <h1 className="font-display text-2xl font-black leading-none text-brand-dark">IGCSE Quest</h1>
             <p className="mt-0.5 text-xs font-bold text-slate-500">{totalDone} of {totalLessons} lessons done</p>
           </div>
+          <a href="#/portal" className="icon-btn" aria-label="Physics class sign-in" title="Class mode">
+            <GraduationCap className="h-5 w-5" />
+          </a>
           <NotificationBell />
           <AccountButton />
           <ThemeButton />
@@ -113,7 +119,8 @@ export default function App() {
       {Active && <Active key={`${route.subject}:${route.deep || ''}`} onHome={home} deep={route.deep} />}
       {route.teacher && <TeacherApp path={route.teacher} />}
       {route.book && <TextbookApp path={route.book} />}
-      {!route.subject && !route.teacher && !route.book && <Hub tab={route.tab} classId={route.classId} />}
+      {route.portal && <PortalApp />}
+      {!route.subject && !route.teacher && !route.book && !route.portal && <Hub tab={route.tab} classId={route.classId} />}
     </Suspense>
   );
 }
